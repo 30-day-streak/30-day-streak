@@ -114,7 +114,7 @@ export default class CreateChallenge extends Component {
             <option value="skill">Skill</option>
             <option value="other">Other</option>
           </select>
-          <button type="submit">Add a Project</button>
+          <button type="submit">Add Challenge</button>
         </form>
       </>
     );
