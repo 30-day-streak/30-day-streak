@@ -25,7 +25,7 @@ const challengeSchema = new Schema({
       "Skill",
       "Other"
     ],
-    required: true
+    // required: true
   },
   owner: {
     type: Schema.Types.ObjectId, ref: 'User',

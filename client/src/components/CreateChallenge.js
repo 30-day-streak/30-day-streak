@@ -28,11 +28,11 @@ export default class CreateChallenge extends Component {
       .post('/challenges', {
         title: this.state.title,
         goal: this.state.goal,
-        // dailyTarget: {
-        //   description: this.state.dailyTargetDescription,
-        //   number: this.state.dailyTargetNumber,
-        //   unit: this.state.dailyTargetUnit,
-        // },
+        dailyTarget: {
+          description: this.state.dailyTargetDescription,
+          number: this.state.dailyTargetNumber,
+          unit: this.state.dailyTargetUnit,
+        },
         // category: this.state.category,
         // owner: owner
         // private: false
@@ -42,9 +42,9 @@ export default class CreateChallenge extends Component {
         this.setState({
           title: '',
           goal: '',
-          // dailyTargetDescription: '',
-          // dailyTargetNumber: '',
-          // dailyTargetUnit: '',
+          dailyTargetDescription: '',
+          dailyTargetNumber: '',
+          dailyTargetUnit: '',
           // category: '',
           // private: '',
         });
@@ -72,6 +72,30 @@ export default class CreateChallenge extends Component {
             id="goal"
             name="goal"
             value={this.state.goal}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="dailyTargetDescription">Daily Target Description</label>
+          <input
+            type="text"
+            id="dailyTargetDescription"
+            name="dailyTargetDescription"
+            value={this.state.dailyTargetDescription}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="dailyTargetNumber">Daily Target Number</label>
+          <input
+            type="number"
+            id="dailyTargetNumber"
+            name="dailyTargetNumber"
+            value={this.state.dailyTargetNumber}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="dailyTargetUnit">Daily Target Unit</label>
+          <input
+            type="text"
+            id="dailyTargetUnit"
+            name="dailyTargetUnit"
+            value={this.state.dailyTargetUnit}
             onChange={this.handleChange}
           />
           <button type="submit">Add a Project</button>
