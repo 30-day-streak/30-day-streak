@@ -25,7 +25,7 @@ const challengeSchema = new Schema({
       "Skill",
       "Other"
     ],
-    required: true
+    // required: true
   },
   owner: {
     type: Schema.Types.ObjectId, ref: 'User',
@@ -36,10 +36,10 @@ const challengeSchema = new Schema({
   //     type: Schema.Types.ObjectId, ref: 'User',
   //     required: true
   //   },
-  //   rating: number,
-  //   comment: string
+  //   rating: Number,
+  //   comment: String
   // }],
-  // private: boolean
+  // private: Boolean
 });
 
 const Challenge = mongoose.model('Challenge', challengeSchema);
