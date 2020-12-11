@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const challengeSchema = new Schema({
   title: {
-    type: string,
+    type: String,
     required: true
   },
   goal: {
-    type: string,
+    type: String,
     required: true
   },
   dailyTarget: {
@@ -15,11 +15,11 @@ const challengeSchema = new Schema({
       type: string,
       required: true
     },
-    number: number,
-    unit: string,
+    number: Number,
+    unit: String,
   },
   category: {
-    type: string,
+    type: String,
     eNum: [
       "Eat",
       "Train",
