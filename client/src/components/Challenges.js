@@ -12,7 +12,6 @@ export default class Challenges extends Component {
   getData = () => {
     axios.get('/challenges')
       .then(response => {
-        console.log(response);
         this.setState({
           challenges: response.data
         })
@@ -25,14 +24,19 @@ export default class Challenges extends Component {
   }
 
   render() {
-    console.log(this.state.challenges)
+    console.log('USER',this.props)
     return (
       <div>
-        {/* <Filter /> */}
-        <OneChallenge 
-          challenges={this.state.challenges} 
-          getData={this.state.getData}
-        />
+        {
+          this.state.challenges.map(challenge => {
+            return (
+              <OneChallenge 
+                challenge={challenge}
+                user={this.props.user}
+              />
+            )
+          })
+        }
       </div>
     )
   }

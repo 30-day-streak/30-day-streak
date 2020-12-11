@@ -24,7 +24,7 @@ const userSchema = new Schema({
     },
     status: { 
       type: String,
-      eNum: ['active', 'favorite', 'completed', 'withdrawn']
+      enum: ['active', 'favorite', 'completed', 'withdrawn']
     },
     tracker: [{
       day: Number,

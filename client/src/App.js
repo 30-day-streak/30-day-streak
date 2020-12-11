@@ -14,13 +14,13 @@ class App extends Component {
     user: this.props.user
   }
 
-  setUser = user => {
-    this.setState({
-      user: user
-    })
-  }
+  // setUser = user => {
+  //   this.setState({
+  //     user: user
+  //   })
+  // }
 
-  render(){
+  render() {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
