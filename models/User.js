@@ -6,7 +6,7 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  passport: { 
+  password: { 
     type: String,
     required: true,
   },
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     },
     tracker: [{
       day: Number,
-      reachedTarget: boolean,
+      reachedTarget: Boolean,
     }],
     startDate: Date,
     grandPrize: String
