@@ -37,7 +37,7 @@ class App extends Component {
           <Route
             exact
             path='/challenges/create'
-            render={props => <CreateChallenge {...props}/>}
+            render={props => <CreateChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
       </div>
