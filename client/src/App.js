@@ -37,13 +37,13 @@ class App extends Component {
           />
           <Route
             exact
-<<<<<<< HEAD
             path='/challenges'
             render={props => <Challenges setUser={this.setUser} {...props} />}
-=======
+          />
+          <Route
+            exact
             path='/challenges/create'
             render={props => <CreateChallenge setUser={this.setUser} {...props} />}
->>>>>>> fd0fa382852f4a875d1b9fb3057f6e0040d1c5d3
           />
         </Switch>
       </div>
