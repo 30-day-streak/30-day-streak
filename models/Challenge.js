@@ -3,17 +3,15 @@ const Schema = mongoose.Schema;
 const challengeSchema = new Schema({
   title: {
     type: String,
-    // required: true
+    required: true
   },
   goal: {
     type: String,
-    // required: true
+    required: true
   },
   dailyTarget: {
-    // required: true,
     description: {
       type: String,
-      // required: true
     },
     number: Number,
     unit: String,

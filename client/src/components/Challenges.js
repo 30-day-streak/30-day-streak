@@ -29,7 +29,6 @@ export default class Challenges extends Component {
     return (
       <div>
         {/* <Filter /> */}
-        <p>TEST</p>
         <OneChallenge 
           challenges={this.state.challenges} 
           getData={this.state.getData}
