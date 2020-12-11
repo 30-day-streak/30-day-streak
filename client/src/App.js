@@ -7,6 +7,7 @@ import CreateReward from "./components/CreateReward";
 import Navbar from './components/Navbar';
 import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
+import Rewards from './components/Rewards';
 
 
 class App extends Component {
@@ -51,6 +52,11 @@ class App extends Component {
           exact
           path="/CreateReward"
           render={props => <CreateReward setUser={this.setUser} {...props} />}
+        />
+        <Route
+          exact
+          path='/rewards'
+          render={props => <Rewards setUser={this.setUser} {...props} />}
         />
       </div>
 
