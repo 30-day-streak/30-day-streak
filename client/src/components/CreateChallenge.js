@@ -66,6 +66,7 @@ export default class CreateChallenge extends Component {
             name="title"
             value={this.state.title}
             onChange={this.handleChange}
+            required
           />
           <label htmlFor="goal">Goal</label>
           <input
@@ -74,6 +75,7 @@ export default class CreateChallenge extends Component {
             name="goal"
             value={this.state.goal}
             onChange={this.handleChange}
+            required
           />
           <label htmlFor="dailyTargetDescription">
             Daily Target Description
@@ -84,6 +86,7 @@ export default class CreateChallenge extends Component {
             name="dailyTargetDescription"
             value={this.state.dailyTargetDescription}
             onChange={this.handleChange}
+            required
           />
           <label htmlFor="dailyTargetNumber">Daily Target Number</label>
           <input
@@ -107,6 +110,7 @@ export default class CreateChallenge extends Component {
             id="category"
             value={this.state.dailyTargetNumber}
             onChange={this.handleChange}
+            required
           >
             <option value="eat">Eat</option>
             <option value="train">Train</option>

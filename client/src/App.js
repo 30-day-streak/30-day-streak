@@ -45,6 +45,11 @@ class App extends Component {
             path='/challenges/create'
             render={props => <CreateChallenge setUser={this.setUser} {...props} />}
           />
+          <Route 
+          exact
+          path='./challenges/start'
+          render={props => <CreateChallenge setUser={this.setUser} {...props} />}
+          />
         </Switch>
       </div>
     );
