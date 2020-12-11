@@ -6,7 +6,7 @@ const Challenge = require ('../models/Challenge')
 router.post('/', (req, res) => {
   // console.log('test');
   console.log('req:', req.body);
-  const { title, goal} = req.body;
+  const { title, goal, category} = req.body;
   const {description, number, unit} = req.body.dailyTarget
   // const owner = req.user._id
   // console.log('owner', owner);
@@ -18,7 +18,8 @@ router.post('/', (req, res) => {
       description,
       number,
       unit
-    }
+    },
+    category
   })
     // // Get the data and return the project data as json
     // // best practice to send http code so that the client knows what's happening

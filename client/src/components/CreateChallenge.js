@@ -13,6 +13,7 @@ export default class CreateChallenge extends Component {
   };
 
   handleChange = (event) => {
+    // console.log(event.target.value);
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -33,7 +34,7 @@ export default class CreateChallenge extends Component {
           number: this.state.dailyTargetNumber,
           unit: this.state.dailyTargetUnit,
         },
-        // category: this.state.category,
+        category: this.state.category,
         // owner: owner
         // private: false
       })
@@ -45,7 +46,7 @@ export default class CreateChallenge extends Component {
           dailyTargetDescription: '',
           dailyTargetNumber: '',
           dailyTargetUnit: '',
-          // category: '',
+          category: '',
           // private: '',
         });
         // update the parent components state (in Projects) by calling getData()
@@ -74,7 +75,9 @@ export default class CreateChallenge extends Component {
             value={this.state.goal}
             onChange={this.handleChange}
           />
-          <label htmlFor="dailyTargetDescription">Daily Target Description</label>
+          <label htmlFor="dailyTargetDescription">
+            Daily Target Description
+          </label>
           <input
             type="text"
             id="dailyTargetDescription"
@@ -98,6 +101,19 @@ export default class CreateChallenge extends Component {
             value={this.state.dailyTargetUnit}
             onChange={this.handleChange}
           />
+          <label htmlFor="category">Choose a category:</label>
+          <select
+            name="category"
+            id="category"
+            value={this.state.dailyTargetNumber}
+            onChange={this.handleChange}
+          >
+            <option value="eat">Eat</option>
+            <option value="train">Train</option>
+            <option value="habit">Habit</option>
+            <option value="skill">Skill</option>
+            <option value="other">Other</option>
+          </select>
           <button type="submit">Add a Project</button>
         </form>
       </>
