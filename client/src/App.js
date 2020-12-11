@@ -6,7 +6,7 @@ import Login from './components/auth/Login';
 import Navbar from './components/Navbar';
 import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
-
+import StartChallenge from './components/StartChallenge'
 
 class App extends Component {
 
@@ -47,8 +47,9 @@ class App extends Component {
           />
           <Route 
           exact
-          path='./challenges/start'
-          render={props => <CreateChallenge setUser={this.setUser} {...props} />}
+          // path='/challenges/:id/start'
+          path='/challenges/start'
+          render={props => <StartChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
       </div>
