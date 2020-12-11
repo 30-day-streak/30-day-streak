@@ -2,24 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const challengeSchema = new Schema({
   title: {
-    type: string,
+    type: String,
     required: true
   },
   goal: {
-    type: string,
+    type: String,
     required: true
   },
   dailyTarget: {
-    required: true,
     description: {
-      type: string,
-      required: true
+      type: String,
     },
-    number: number,
-    unit: string,
+    number: Number,
+    unit: String,
   },
   category: {
-    type: string,
+    type: String,
     eNum: [
       "Eat",
       "Train",
@@ -31,7 +29,7 @@ const challengeSchema = new Schema({
   },
   owner: {
     type: Schema.Types.ObjectId, ref: 'User',
-    required: true
+    // required: true
   }
   // reviews: [{
   //   user: {
