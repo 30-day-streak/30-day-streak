@@ -35,7 +35,7 @@ router.get('/rewards/:id', (req, res, next) => {
   });
 
   // create a reward
-router.post('rewards', (req, res, next) => {
+router.post('/', (req, res, next) => {
   const {name, description, category, url} = req.body;
   Reward.create({
     name,

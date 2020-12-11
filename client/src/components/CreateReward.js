@@ -9,9 +9,6 @@ export default class CreateReward extends Component {
   }
 
   handleChange = (event) => {
-    // console.log(event.target.value);
-    console.log(event.target);
-
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -32,16 +29,16 @@ export default class CreateReward extends Component {
         category: this.state.category,
         url: this.state.url
       })
-      .then (() => {
+      .then(() => {
         // reinitialise state
-        this.state({
+        this.setState({
           name: '',
-        description: '',
-        category: '',
-        url: ''
+          description: '',
+          category: '',
+          url: ''
         })
-        .catch(err => console.log(err));
       })
+      .catch(err => console.log(err));
   }
 
   render() {

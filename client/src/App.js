@@ -21,22 +21,26 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
-          <Navbar user={this.state.user} setUser={this.setUser} />
-          <Switch>
-            <Route
-              exact
-              path='/signup'
-              render={props => <SignUp setUser={this.setUser} {...props} />}
-            />
-            <Route
-              exact
-              path='/login'
-              render={props => <Login setUser={this.setUser} {...props} />}
-            />
-          </Switch>
-          <CreateReward />
-        </div>
+      <div className="App">
+        <Navbar user={this.state.user} setUser={this.setUser} />
+        <Switch>
+          <Route
+            exact
+            path='/signup'
+            render={props => <SignUp setUser={this.setUser} {...props} />}
+          />
+          <Route
+            exact
+            path='/login'
+            render={props => <Login setUser={this.setUser} {...props} />}
+          />
+        </Switch>
+        <Route
+          exact
+          path="/CreateReward"
+          render={props => <CreateReward setUser={this.setUser} {...props} />}
+        />
+      </div>
 
     );
   }
