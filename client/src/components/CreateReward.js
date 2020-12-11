@@ -44,6 +44,10 @@ export default class CreateReward extends Component {
   render() {
     return (
       <div>
+        <h2>Create a new award</h2>
+        <p>Need some ideas for incentives to achieving your goals?</p>
+        <p>Check out what <a href="#">other users have added</a> or see if there is something you like on <a href="https://www.developgoodhabits.com/reward-yourself/" target="_blank">this list</a> or <a href="https://organisemyhouse.com/reward-yourself/" target="_blank">this one</a>.</p>
+        <br />
         <form onSubmit={this.handleSubmit}>
 
           <label htmlFor="name">Name</label>
@@ -75,6 +79,7 @@ export default class CreateReward extends Component {
             onChange={this.handleChange}>
             <option value="Food">Food</option>
             <option value="Activity/Experience">Activity/Experience</option>
+            <option value="" selected="selected">Select a category</option>
             <option value="Gift">Gift</option>
             <option value="Self-care">Self-care</option>
             <option value="Other">Other</option>
@@ -91,7 +96,7 @@ export default class CreateReward extends Component {
             onChange={this.handleChange} />
           <br />
 
-          <button type="submit">Save my reward</button>
+          <button type="submit">Save to my list of rewards</button>
         </form>
 
       </div >
