@@ -40,7 +40,7 @@ class App extends Component {
             exact
             path='/challenges'
             render={props => {
-            if (this.state.user) return <Challenges {...props} />
+            if (this.state.user) return <Challenges {...props} user={this.state.user} />
             else return <Redirect to='/' />
             }}
           />
