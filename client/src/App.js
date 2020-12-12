@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import Navbar from './components/Navbar';
@@ -14,13 +14,14 @@ class App extends Component {
     user: this.props.user
   }
 
-  // setUser = user => {
-  //   this.setState({
-  //     user: user
-  //   })
-  // }
+  setUser = user => {
+    this.setState({
+      user: user
+    })
+  }
 
   render() {
+    console.log('SU', this.state.user, 'PU', this.props.user)
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -38,7 +39,10 @@ class App extends Component {
           <Route
             exact
             path='/challenges'
-            render={props => <Challenges setUser={this.setUser} {...props} />}
+            render={props => {
+            if (this.state.user) return <Challenges {...props} />
+            else return <Redirect to='/' />
+            }}
           />
           <Route
             exact

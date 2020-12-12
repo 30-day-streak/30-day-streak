@@ -6,7 +6,7 @@ import OneChallenge from './OneChallenge';
 export default class Challenges extends Component {
 
   state = {
-    challenges: []
+    challenges: [],
   }
 
   getData = () => {
@@ -24,7 +24,7 @@ export default class Challenges extends Component {
   }
 
   render() {
-    console.log('USER',this.props)
+    console.log('USER',this.props.user)
     return (
       <div>
         {
