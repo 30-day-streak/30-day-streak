@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import CreateReward from "./components/CreateReward";
@@ -40,7 +40,10 @@ class App extends Component {
           <Route
             exact
             path='/challenges'
-            render={props => <Challenges setUser={this.setUser} {...props} />}
+            render={props => {
+            if (this.state.user) return <Challenges {...props} user={this.state.user} />
+            else return <Redirect to='/' />
+            }}
           />
           <Route
             exact

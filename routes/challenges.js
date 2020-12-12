@@ -6,7 +6,6 @@ const Challenge = require('../models/Challenge');
 router.get('/', (req, res) => {
   Challenge.find()
     .then(challenges => {
-      console.log(challenges)
       res.status(200).json(challenges);
     })
     .catch(err => {
@@ -36,7 +35,7 @@ router.post('/', (req, res) => {
   const { title, goal, category} = req.body;
   const {description, number, unit} = req.body.dailyTarget
   const owner = req.user._id
-  console.log('owner', owner);
+  // console.log('owner', owner);
   Challenge.create({
     title,
     goal,
@@ -53,7 +52,7 @@ router.post('/', (req, res) => {
     // // best practice to send http code so that the client knows what's happening
     // .then(res.status(201));
   .then(challenge => {
-    console.log('sucessful add');
+    // console.log('sucessful add');
     res.status(201).json(challenge)
   })
   .catch(err => {
