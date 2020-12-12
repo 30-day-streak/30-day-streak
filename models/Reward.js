@@ -2,15 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const rewardSchema = new Schema({
   name: {
-    type: string,
+    type: String,
     required: true
   },
   description: {
-    type: string,
-    required: true
+    type: String,
   },
   category: {
-    type: string,
+    type: String,
     required: true,
     eNum: [
       "Food",
@@ -20,7 +19,7 @@ const rewardSchema = new Schema({
       "Other"
     ]
   },
-  url: string
+  url: String
 });
 
 const Reward = mongoose.model('Reward', rewardSchema);

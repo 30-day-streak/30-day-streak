@@ -14,7 +14,6 @@ router.get('/:id', (req, res) => {
 router.put('/:id/status', (req, res, next) => {
   console.log(req.body.favorite)
   if (req.body.favorite) {
-    console.log('ADD')
     User.findByIdAndUpdate(req.user._id, {
         $push: {
           challenges: {
@@ -28,7 +27,6 @@ router.put('/:id/status', (req, res, next) => {
     })
     .catch(err => next(err))
   } else {
-    console.log('REMOVE')
     User.findByIdAndUpdate(req.user._id, {
       $pull: {
         challenges: {

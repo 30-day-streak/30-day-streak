@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
+import CreateReward from "./components/CreateReward";
 import Navbar from './components/Navbar';
 import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
+import Rewards from './components/Rewards';
 
 
 class App extends Component {
@@ -21,7 +23,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('SU', this.state.user, 'PU', this.props.user)
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -50,10 +51,21 @@ class App extends Component {
             render={props => <CreateChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
+        <Route
+          exact
+          path="/CreateReward"
+          render={props => <CreateReward setUser={this.setUser} {...props} />}
+        />
+        <Route
+          exact
+          path='/rewards'
+          render={props => <Rewards setUser={this.setUser} {...props} />}
+        />
       </div>
+
     );
   }
-  
+
 }
 
 export default App;
