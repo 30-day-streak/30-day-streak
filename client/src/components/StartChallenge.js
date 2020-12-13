@@ -61,36 +61,37 @@ export default class StartChallenge extends Component {
 
   test = () => {
     console.log('test button clicked');
-    axios
-    .put('/users/test')
-  }
+    axios.put('/users/test');
+  };
 
   render() {
     return (
-      <div>
-        <h2>
-          Congratulations! Here is the information for the CHALLENGE you're
-          starting TODAY!
-        </h2>
-        <h3>{this.state.title}</h3>
-        <p>Goal: {this.state.goal}</p>
-        <p>
-          Daily target: {this.state.dailyTargetDescription}
-          {this.state.dailyTargetUnit} {this.state.dailyTargetNumber}
-        </p>
-        <h2>Pick your GRAND PRIZE for completing it</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="prize">Prize</label>
-          <input
-            type="text"
-            id="prize"
-            name="prize"
-            value={this.state.prize}
-            onChange={this.handleChange}
-            required
-          />
-          <button onClick={this.test}>Let's do it!</button>
-        </form>
+      <div className="start-challenge-page">
+        <div className="start-challenge-page-content">
+          <h1>Congratulations!</h1>
+          <h2>
+            Here is the information for the CHALLENGE you're starting TODAY!
+          </h2>
+          <h3>{this.state.title}</h3>
+          <p>Goal: {this.state.goal}</p>
+          <p>
+            Daily target: {this.state.dailyTargetDescription}
+            {this.state.dailyTargetUnit} {this.state.dailyTargetNumber}
+          </p>
+          <h2>Pick your GRAND PRIZE for completing it</h2>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="prize">Prize</label>
+            <input
+              type="text"
+              id="prize"
+              name="prize"
+              value={this.state.prize}
+              onChange={this.handleChange}
+              required
+            />
+            <button onClick={this.test}>Let's do it!</button>
+          </form>
+        </div>
       </div>
     );
   }

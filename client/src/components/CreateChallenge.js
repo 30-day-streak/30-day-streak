@@ -13,7 +13,7 @@ export default class CreateChallenge extends Component {
   };
 
   handleChange = (event) => {
-    // console.log(event.target.value);
+    console.log(event.target.name);
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -23,7 +23,7 @@ export default class CreateChallenge extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(this.state);
+    console.log(this.state);
     console.log(this.state);
     axios
       .post('/challenges', {
@@ -58,37 +58,57 @@ export default class CreateChallenge extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title</label>
+      <div className="create-challenge-page">
+        <form onSubmit={this.handleSubmit} className="create-challenge-form">
+        <h1>Create a Challenge</h1>
+        {/* <h3>Here you can make your own customized challenge</h3> */}
+        <div className="create-challenge-form-item">
+          <label htmlFor="title">Name your challenge: </label>
+          <br/>
           <input
             type="text"
             id="title"
             name="title"
             value={this.state.title}
             onChange={this.handleChange}
+            placeholder="Example: Get More Sleep"
             required
           />
-          <label htmlFor="goal">Goal</label>
+          </div>
+
+          <div className="create-challenge-form-item">
+          <label htmlFor="goal">What do you want to accomplish with this challenge?</label>
+          <br/>
           <input
             type="text"
             id="goal"
             name="goal"
             value={this.state.goal}
             onChange={this.handleChange}
+            placeholder="Example: Improve my sleep habits so I feel more rested and alert throughout the day"
             required
           />
+          </div>
+
+          <div className="create-challenge-form-item">
           <label htmlFor="dailyTargetDescription">
-            Daily Target Description
+            What will you do every day to meet this goal?
           </label>
+          <br/>
           <input
             type="text"
             id="dailyTargetDescription"
             name="dailyTargetDescription"
             value={this.state.dailyTargetDescription}
             onChange={this.handleChange}
+            placeholder="Example: Get 8 hours of sleep each night"
             required
           />
+          </div>
+
+          {/* <div className="create-challenge-form-item">
           <label htmlFor="dailyTargetNumber">Daily Target Number</label>
+          <br/>
           <input
             type="number"
             id="dailyTargetNumber"
@@ -96,7 +116,11 @@ export default class CreateChallenge extends Component {
             value={this.state.dailyTargetNumber}
             onChange={this.handleChange}
           />
+          </div>
+
+          <div className="create-challenge-form-item">
           <label htmlFor="dailyTargetUnit">Daily Target Unit</label>
+          <br/>
           <input
             type="text"
             id="dailyTargetUnit"
@@ -104,11 +128,15 @@ export default class CreateChallenge extends Component {
             value={this.state.dailyTargetUnit}
             onChange={this.handleChange}
           />
-          <label htmlFor="category">Choose a category:</label>
+          </div> */}
+
+          <div className="create-challenge-form-item create-challenge-form-select">
+          <label htmlFor="category">What category does your challenge fall into?</label>
+          <br/>
           <select
             name="category"
             id="category"
-            value={this.state.dailyTargetNumber}
+            value={this.state.category}
             onChange={this.handleChange}
             required
           >
@@ -118,8 +146,11 @@ export default class CreateChallenge extends Component {
             <option value="skill">Skill</option>
             <option value="other">Other</option>
           </select>
-          <button type="submit">Add Challenge</button>
+          </div>
+
+          <button type="submit">Create Challenge</button>
         </form>
+        </div>
       </>
     );
   }
