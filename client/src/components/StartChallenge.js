@@ -52,11 +52,18 @@ export default class StartChallenge extends Component {
   //   // check here in the props that they are named the same from the route
   //   const id = this.props.match.params.challengeID
   //   axios
-  //     .post(`/users/${id}/start`, {
+  //  // maybe post here?
+  //     .put(`/users/${id}/start`, {
   //       prize: this.state.prize
   //     })
   //     .then(res.redirect('/'))
   // }
+
+  test = () => {
+    console.log('test button clicked');
+    axios
+    .put('/users/test')
+  }
 
   render() {
     return (
@@ -82,7 +89,7 @@ export default class StartChallenge extends Component {
             onChange={this.handleChange}
             required
           />
-          <button>Let's do it!</button>
+          <button onClick={this.test}>Let's do it!</button>
         </form>
       </div>
     );
