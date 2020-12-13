@@ -11,9 +11,9 @@ export default function OneReward(props) {
             <div className="card-header">
               <p>{ reward.category }</p>
             </div>
-            <h2>{ reward.title }</h2>
+            <h2>{ reward.name }</h2>
             <p><strong>Goal:</strong> { reward.goal }</p>
-            <p><strong>Dailt Target:</strong> { reward.dailyTarget.description } { reward.dailyTarget.number } { reward.dailyTarget.unit }</p>
+            <p><strong>Daily Target:</strong> { reward.dailyTarget.description } { reward.dailyTarget.number } { reward.dailyTarget.unit }</p>
           </div>
         )
       })}

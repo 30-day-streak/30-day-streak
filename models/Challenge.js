@@ -30,7 +30,7 @@ const challengeSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId, ref: 'User',
     // required: true
-  }
+  },
   // reviews: [{
   //   user: {
   //     type: Schema.Types.ObjectId, ref: 'User',
@@ -40,6 +40,8 @@ const challengeSchema = new Schema({
   //   comment: String
   // }],
   // private: Boolean
+}, {
+  timestamps: true
 });
 
 const Challenge = mongoose.model('Challenge', challengeSchema);
