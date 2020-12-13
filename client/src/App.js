@@ -1,12 +1,15 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
+import CreateReward from "./components/CreateReward";
 import Navbar from './components/Navbar';
 import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
+import Rewards from './components/Rewards';
+
 
 class App extends Component {
 
@@ -20,7 +23,7 @@ class App extends Component {
     })
   }
 
-  render(){
+  render() {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -38,7 +41,10 @@ class App extends Component {
           <Route
             exact
             path='/challenges'
-            render={props => <Challenges setUser={this.setUser} {...props} />}
+            render={props => {
+            if (this.state.user) return <Challenges {...props} user={this.state.user} />
+            else return <Redirect to='/' />
+            }}
           />
           <Route
             exact
@@ -52,10 +58,21 @@ class App extends Component {
           render={props => <StartChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
+        <Route
+          exact
+          path="/CreateReward"
+          render={props => <CreateReward setUser={this.setUser} {...props} />}
+        />
+        <Route
+          exact
+          path='/rewards'
+          render={props => <Rewards setUser={this.setUser} {...props} />}
+        />
       </div>
+
     );
   }
-  
+
 }
 
 export default App;
