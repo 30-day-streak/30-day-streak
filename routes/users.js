@@ -76,6 +76,20 @@ router.put('/:id/status', (req, res, next) => {
   }
 })
 
+router.put('/:id', (req, res, next) => {
+  console.log('yay!');
+  const {user} = req.body;
+  User.findByIdAndUpdate(
+    req.params.id,
+    {user}
+  )
+  .then(user => {
+    res.status(200).json(user)
+  })
+  .catch(err => {
+  })
+})
+
 // change challenge status from favorite to active
 
 

@@ -9,6 +9,7 @@ export default class CreateChallenge extends Component {
     dailyTargetDescription: '',
     category: '',
     user: this.props.user,
+    challengeID: '',
   };
 
   handleChange = (event) => {
@@ -24,6 +25,7 @@ export default class CreateChallenge extends Component {
     event.preventDefault();
     console.log('success');
     console.log(this.state);
+    let id = this.state.user._id
     axios
       .post('/challenges', {
         title: this.state.title,
@@ -34,16 +36,24 @@ export default class CreateChallenge extends Component {
         category: this.state.category,
       })
       .then(res => {
-        console.log(res);
-        this.setState({
-          challengeID: res.data._id
-          // private: '',
-        // this.props.history.push('/');
+        let user = this.props.user
+        let newUser = user.challenges.push({
+          id: res.data._id,
+          status: 'favorite'
         })
-      // });
-    // .catch(err => console.log(err))
-      })
+        this.setState({
+          user: newUser
+          })
+        })
+        .then(axios.put(`/users/${id}`), {
+          user: this.state.user
+        }).then(res => {
+          this.props.history.push('/');
+        })
+        // console.log('state', this.state);
+      // })
   };
+          
 
   componentDidMount () {
     this.setState({
@@ -52,7 +62,6 @@ export default class CreateChallenge extends Component {
   }
 
   render() {
-    // console.log('props from create challenge', this.state.user.challenges.push());
     return (
       <>
       <div className="create-challenge-page">
