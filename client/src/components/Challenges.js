@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import Filter from './filter/Filter.js';
 import OneChallenge from './onechallenge/OneChallenge';
 
@@ -10,7 +11,7 @@ export default class Challenges extends Component {
     challenges: [],
     search: '',
     category: '',
-    
+
     //user
     filterFavorites: false,
   }
@@ -79,6 +80,7 @@ export default class Challenges extends Component {
           categories={ categories }
           setFilter={ this.setFilter }
         />
+        <Link to="/challenges/create"><button>Create a challenge</button></Link>
         {
           filtered.map(challenge => {
             return (
