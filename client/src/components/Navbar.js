@@ -14,6 +14,7 @@ export default function Navbar(props) {
   return (
     <nav className="">
         <Link to="/">Home</Link>
+        <div className="nav-bar-right-side">
       {props.user ? (
         <>
             <Link to="/challenges">Challenges</Link>
@@ -27,6 +28,7 @@ export default function Navbar(props) {
           <Link to="/login">Log In</Link>
         </>
       )}
+      </div>
     </nav>
   )
 }

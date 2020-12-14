@@ -36,3 +36,100 @@
     transform: rotate(360deg);
   }
 }
+
+/* NavBar */
+/* nav {
+  background-color:  #68B0AB;
+  height: 4vw;
+  display: flex;
+  justify-content: space-between;
+} 
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 1vw;
+  font-size: 1.9vw;
+}
+
+.nav-bar-right-side {
+  display: flex
+} */
+
+
+/* Create Challenges CSS */
+
+.create-challenge-form {
+  padding: 0;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black
+}
+
+.create-challenge-page {
+  background-color: #f8f9fa;
+  height: 100vw;
+}
+
+.create-challenge-form h1 {
+  color: #68B0AB
+}
+
+.create-challenge-form button {
+  background-color:  #68B0AB;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 1.5vw;
+  margin: 2vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+
+.create-challenge-form input {
+  width: 70vw;
+}
+
+.create-challenge-form-item {
+  text-align: left;
+  /* margin: 2vw; */
+}
+
+.create-challenge-form-item input {
+  margin: 1vw 0 
+}
+.create-challenge-form-select {
+  width: 70vw
+}
+
+/* Start Challenge CSS */
+
+.start-challenge-page {
+  height: 100vw;
+  background-color: #f8f9fa;
+  display: flex; 
+  justify-content: center;
+  align-items: start;
+}
+
+.start-challenge-page h1{
+    color: #68B0AB;
+    margin: 0;
+    /* padding: 2vw 0 0 0 */
+}
+
+.start-challenge-page h2 {
+  color: #6c757d
+}
+
+.start-challenge-page-content {
+  margin: 0;
+  padding: 0;
+  width: 50vw;
+  border: 2px solid #6c757d;
+  margin: 3vw;
+  padding: 3vw;
+  border-radius: 10px;
+}
