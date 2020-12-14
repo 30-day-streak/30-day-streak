@@ -21,42 +21,6 @@ export default class CreateChallenge extends Component {
     });
   };
 
-  // handleSubmitLater = (event) => {
-  //   event.preventDefault();
-  //   // console.log('success');
-  //   // console.log('state from create challenge',this.state);
-  //   let id = this.state.user._id;
-  //   axios
-  //     .post('/challenges', {
-  //       title: this.state.title,
-  //       goal: this.state.goal,
-  //       dailyTarget: {
-  //         description: this.state.dailyTargetDescription,
-  //       },
-  //       category: this.state.category,
-  //     })
-  //     .then((res) => {
-  //       let user = this.props.user;
-  //       user.challenges.push({
-  //         id: res.data._id,
-  //         status: 'favorite',
-  //       });
-  //       this.setState({
-  //         user: this.props.user,
-  //       });
-  //       console.log('state', this.state.user);
-  //     })
-  //     .then(
-  //       axios.put(`/users/${id}`), {
-  //       user: this.state.user,
-  //     })
-  //     .then((res) => {
-  //       this.props.history.push('/');
-  //     });
-  //   // console.log('state', this.state);
-  //   // })
-  // };
-
   handleSubmitLater = async (event) => {
     event.preventDefault();
     console.log('user before post', this.state.user);
@@ -85,7 +49,7 @@ export default class CreateChallenge extends Component {
       const updatedUser = await axios.put(`/users/${id}`, {
         user: this.state.user,
       });
-      // console.log(updatedUser.data);
+      this.props.history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -199,7 +163,7 @@ export default class CreateChallenge extends Component {
               </select>
             </div>
 
-            <button type="submit" form="create-challenge-form">
+            <button type="submit" form="create-challenge-form" onClick={this.handleSubmitLater}>
               Save challenge for later
             </button>
             {/* <button type="submit" form="create-challenge-form" onSubmit={this.handleSubmitStart}>Start challenge now!</button> */}

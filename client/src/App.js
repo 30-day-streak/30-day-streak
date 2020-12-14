@@ -9,6 +9,7 @@ import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
+import Dashboard from './components/dashboard/Dashboard';
 
 
 class App extends Component {
@@ -41,9 +42,14 @@ class App extends Component {
           />
           <Route
             exact
+            path='/'
+            render={props => <Dashboard user={this.state.user} setUser={this.setUser} {...props} />}
+          />
+          <Route
+            exact
             path='/challenges'
             render={props => {
-            if (this.state.user) return <Challenges {...props} user={this.state.user} setUser={this.setUser} />
+            if (this.state.user) return <Challenges user={this.state.user} {...props} />
             else return <Redirect to='/' />
             }}
           />
@@ -53,27 +59,25 @@ class App extends Component {
             render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.props.user}/>}
           />
           <Route 
-          exact
-          path='/challenges/:id/start'
-          // path='/challenges/start'
-          render={props => <StartChallenge setUser={this.setUser} {...props} />}
+            exact
+            path='/challenges/:id/start'
+            // path='/challenges/start'
+            render={props => <StartChallenge setUser={this.setUser} {...props} />}
+          />
+          <Route
+            exact
+            path="/CreateReward"
+            render={props => <CreateReward setUser={this.setUser} {...props} />}
+          />
+          <Route
+            exact
+            path='/rewards'
+            render={props => <Rewards setUser={this.setUser} {...props} />}
           />
         </Switch>
-        <Route
-          exact
-          path="/CreateReward"
-          render={props => <CreateReward setUser={this.setUser} {...props} />}
-        />
-        <Route
-          exact
-          path='/rewards'
-          render={props => <Rewards setUser={this.setUser} {...props} />}
-        />
       </div>
-
     );
   }
-
 }
 
 export default App;

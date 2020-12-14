@@ -33,28 +33,25 @@ export default class Challenges extends Component {
   // filterFavorites
 
   filter = () => {
-    // to help with only displaying the user specific favorites
+    // filter favorites
     if (this.state.filterFavorites) {
       const favoriteIds = this.props.user.challenges.filter(challenge => {
         return challenge.status === 'favorite'
       }).map(challenge => challenge.id)
-
       return this.state.challenges.filter(challenge => { 
-        console.log(favoriteIds, challenge._id, favoriteIds.includes(challenge.id))
         return favoriteIds.includes(challenge._id)
       })
     } else {
-
       const excludedIds = this.props.user.challenges.filter(challenge => {
         return challenge.status === 'active' || challenge.status === 'completed' || challenge.status === 'withdrawn'
       }).map(challenge => challenge.id)
 
       return this.state.challenges.filter(challenge => { 
-        //search bar
+        // search bar
         return `${challenge.title}${challenge.goal}`.toLowerCase().includes(this.state.search.toLowerCase()) &&
-        //categories filter
+        // filter categories 
         (this.state.category === challenge.category || !this.state.category) &&
-        //exclude active, completed and withdrawn challenges
+        // exclude active, completed and withdrawn challenges
         !excludedIds.includes(challenge.id)
       })
     }
@@ -66,7 +63,10 @@ export default class Challenges extends Component {
 
   render() {
     const filtered = this.filter()
+<<<<<<< HEAD
     // console.log('filtered',filtered)
+=======
+>>>>>>> 1bae1efb78337d4c051a9bc4457ebe13e5be1dd1
 
     const categories = this.state.challenges.map(challenge => { return challenge.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
