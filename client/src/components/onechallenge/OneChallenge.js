@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom';
 export default class OneChallenge extends Component {
 
   state = {
-    category: '',
     favorite: false,
   }
 
@@ -22,11 +21,12 @@ export default class OneChallenge extends Component {
     axios.put(`/users/${challengeID}/status`, {
       favorite: newFavorite
     })
+    this.props.getData()
   }
 
   initialSetUp = () => {
     const foundInUserFavorites = this.props.user.challenges.some(challenge => {
-      return challenge.id === this.props.challenge._id;
+      return challenge.id === this.props.challenge._id && challenge.status === 'favorite'
     })
 
     this.setState({ 
@@ -39,17 +39,21 @@ export default class OneChallenge extends Component {
   }
 
   render() {
+    console.log('render');
+    console.log('oneCHal', this.props.challenges);
     return (
-      // <div class="container center">
-        <div className="card" key={ this.props.challenge.id }>
+      <>
+      {/* <div class="container center"> */}
+        <div className="card" key={ this.props.challenge._id }>
           <p>{ this.props.challenge.category }</p>
           <h2>{ this.props.challenge.title }</h2>
           <hr/>
           <p>{ this.props.challenge.goal }</p>
           <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} style={{width: "50px"}} onClick={ this.toggleFavorite } alt="favorite" />
-          <Link to={`/challenges/${this.props.challenge.id}/start`}><button>Start</button></Link>
+          <Link to={`/challenges/${this.props.challenge._id}/start`}><button>Start</button></Link>
         </div>
-      // </div>
+      {/* </div> */}
+    </>
     )
   }
 }
