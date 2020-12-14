@@ -4,12 +4,12 @@ const Reward = require('../models/Reward');
 
 // get all rewards
 
-router.get('/rewards', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Reward.find()
     .then(rewards => {
       console.log(rewards);
 
-      res.status(200).json(projects);
+      res.status(200).json(rewards);
     })
     .catch(err => {
       console.log(err);
@@ -18,7 +18,7 @@ router.get('/rewards', (req, res, next) => {
 });
 
 // get a specific reward
-router.get('/rewards/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   Reward, findById(req.params.id)
     .then(reward => {
       if (!reward) {

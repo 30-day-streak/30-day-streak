@@ -9,6 +9,7 @@ import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -21,6 +22,29 @@ class App extends Component {
     this.setState({
       user: user
     })
+  }
+
+  toggleFavouriteReward = (rewardId, favStatus) => {
+    console.log(`toggling`, rewardId, favStatus);
+    const updatedUser = this.state.user
+    if (favStatus) {
+      updatedUser.rewards.push(rewardId);
+      console.log(`updated user rewards`, updatedUser.rewards);
+    } else {
+      updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
+        console.log({ profileRewardId }, { rewardId })
+        return profileRewardId !== rewardId
+      });
+      console.log(`updated user rewards`, updatedUser.rewards);
+    }
+    this.setState({
+      user: updatedUser
+    })
+    axios.put(`/users/${updatedUser._id}`, {
+      challenges: updatedUser.challenges,
+      rewards: updatedUser.rewards
+    })
+
   }
 
   render() {
@@ -42,8 +66,8 @@ class App extends Component {
             exact
             path='/challenges'
             render={props => {
-            if (this.state.user) return <Challenges {...props} user={this.state.user} />
-            else return <Redirect to='/' />
+              if (this.state.user) return <Challenges {...props} user={this.state.user} />
+              else return <Redirect to='/' />
             }}
           />
           <Route
@@ -51,11 +75,11 @@ class App extends Component {
             path='/challenges/create'
             render={props => <CreateChallenge setUser={this.setUser} {...props} />}
           />
-          <Route 
-          exact
-          // path='/challenges/:id/start'
-          path='/challenges/start'
-          render={props => <StartChallenge setUser={this.setUser} {...props} />}
+          <Route
+            exact
+            // path='/challenges/:id/start'
+            path='/challenges/start'
+            render={props => <StartChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
         <Route
@@ -66,7 +90,16 @@ class App extends Component {
         <Route
           exact
           path='/rewards'
-          render={props => <Rewards setUser={this.setUser} {...props} />}
+          render={props => {
+            if (this.state.user) return <
+              Rewards
+              {...props}
+              user={this.state.user}
+              setUser={this.setUser}
+              toggleFavouriteReward={this.toggleFavouriteReward}
+            />
+            else return <Redirect to='/' />
+          }}
         />
       </div>
 
