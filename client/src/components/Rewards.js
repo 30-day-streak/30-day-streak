@@ -22,14 +22,17 @@ export default class Rewards extends Component {
 
   componentDidMount() {
     this.getData();
-
   }
+
+  // updateList = () =>{
+  //   this.forceUpdate()
+  // }
 
   render() {
     const rewards = this.state.rewards
     return (
       <div>
-        <CreateReward {...this.props} />
+        <CreateReward {...this.props} forceRewardListUpdate={this.getData}/>
         {rewards.map(reward => {
           return (
             <div key={reward._id}>
