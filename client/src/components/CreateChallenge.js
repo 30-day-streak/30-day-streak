@@ -87,7 +87,7 @@ export default class CreateChallenge extends Component {
       const updatedUser = await axios.put(`/users/${id}`, {
         user: this.state.user,
       });
-      this.props.history.push('/');
+      this.props.history.push(`/challenges/${newChallenge.data._id}/start`);
     } catch (error) {
       console.log(error);
     }
