@@ -8,7 +8,9 @@ export default class Dashboard extends Component {
   render() {
 
     // users with no challenges
-    if (!this.props.user.challenges) {
+  const activeChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
+
+    if (!activeChallenges) {
       return (
         <div className="instruction-container">
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
@@ -22,13 +24,16 @@ export default class Dashboard extends Component {
               You get rewards when reaching a certain milestones. If you 'like' the ones that you favor, the reward will be generated amongst them.
             </li>
             <li>
-              Let the streak begin! :)
+              Let the streak begin!
             </li>
           </ol>
         </div>
       )
     // users with active challenges
     } else {
+      return (
+        <div>TEST</div>
+      )
       // builing the view for the logged in users here now
     }
   }
