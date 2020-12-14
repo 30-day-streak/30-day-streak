@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './OneChallenge.css';
+import {Link} from 'react-router-dom';
+
 
 export default class OneChallenge extends Component {
 
@@ -44,6 +46,7 @@ export default class OneChallenge extends Component {
           <hr/>
           <p>{ this.props.challenge.goal }</p>
           <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} style={{width: "50px"}} onClick={ this.toggleFavorite } alt="favorite" />
+          <Link to={`/challenges/${this.props.challenge.id}/start`}><button>Start</button></Link>
         </div>
       // </div>
     )

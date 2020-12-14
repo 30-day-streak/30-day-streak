@@ -6,9 +6,11 @@ import OneChallenge from './onechallenge/OneChallenge';
 export default class Challenges extends Component {
 
   state = {
+    //challenges
     challenges: [],
     search: '',
     category: '',
+    //user
     favorite: false,
   }
 
