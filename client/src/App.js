@@ -7,6 +7,7 @@ import CreateReward from "./components/CreateReward";
 import Navbar from './components/navbar/Navbar';
 import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
+import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
 
 
@@ -49,6 +50,12 @@ class App extends Component {
             exact
             path='/challenges/create'
             render={props => <CreateChallenge setUser={this.setUser} {...props} />}
+          />
+          <Route 
+          exact
+          // path='/challenges/:id/start'
+          path='/challenges/start'
+          render={props => <StartChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
         <Route
