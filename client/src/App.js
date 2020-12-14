@@ -43,7 +43,7 @@ class App extends Component {
             exact
             path='/challenges'
             render={props => {
-            if (this.state.user) return <Challenges {...props} user={this.state.user} />
+            if (this.state.user) return <Challenges {...props} user={this.state.user} setUser={this.setUser} />
             else return <Redirect to='/' />
             }}
           />
@@ -54,8 +54,8 @@ class App extends Component {
           />
           <Route 
           exact
-          // path='/challenges/:id/start'
-          path='/challenges/start'
+          path='/challenges/:id/start'
+          // path='/challenges/start'
           render={props => <StartChallenge setUser={this.setUser} {...props} />}
           />
         </Switch>
