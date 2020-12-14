@@ -34,6 +34,8 @@ const userSchema = new Schema({
     grandPrize: String
   }],
   rewards: [{type: Schema.Types.ObjectId, ref: 'Reward'}]
+}, {
+  timestamps: true
 });
 
 const User = mongoose.model('User', userSchema);

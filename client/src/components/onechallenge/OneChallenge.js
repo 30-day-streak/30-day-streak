@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './OneChallenge.css';
 
 export default class OneChallenge extends Component {
 
   state = {
+    category: '',
     favorite: false,
   }
 
@@ -40,7 +42,7 @@ export default class OneChallenge extends Component {
         <div className="card-header">
           <p>{ this.props.challenge.category }</p>
         </div>
-        <div className="card-header">
+        <div className="card-title">
           <h2>{ this.props.challenge.title }</h2>
           <p><strong>Goal:</strong> { this.props.challenge.goal }</p>
           <p><strong>Daily Target:</strong> { this.props.challenge.dailyTarget.description } { this.props.challenge.dailyTarget.number } { this.props.challenge.dailyTarget.unit }</p>
