@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 ​
 export default class Dashboard extends Component {
   render() {
-
     // users with no challenges
   const activeChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 ​

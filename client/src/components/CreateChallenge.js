@@ -163,7 +163,7 @@ export default class CreateChallenge extends Component {
               </select>
             </div>
 
-            <button type="submit" form="create-challenge-form" onClick={this.handleSubmitLater}>
+            <button type="submit" form="create-challenge-form" >
               Save challenge for later
             </button>
             {/* <button type="submit" form="create-challenge-form" onSubmit={this.handleSubmitStart}>Start challenge now!</button> */}
