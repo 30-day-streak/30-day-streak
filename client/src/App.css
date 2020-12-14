@@ -38,7 +38,7 @@
 }
 
 /* NavBar */
-nav {
+/* nav {
   background-color:  #68B0AB;
   height: 4vw;
   display: flex;
@@ -48,22 +48,24 @@ nav {
 nav a {
   color: white;
   text-decoration: none;
-  padding: 1vw
+  padding: 1vw;
+  font-size: 1.9vw;
 }
 
 .nav-bar-right-side {
   display: flex
-}
+} */
 
 
 /* Create Challenges CSS */
 
 .create-challenge-form {
   padding: 0;
-  /* width: 50vw; */
+  width: 80vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid black
 }
 
 .create-challenge-page {
