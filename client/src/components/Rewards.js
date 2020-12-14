@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import Filter from './Filter';
 import OneReward from './OneReward';
+import CreateReward from './CreateReward'
 
 export default class Rewards extends Component {
 
@@ -12,7 +13,6 @@ export default class Rewards extends Component {
   getData = () => {
     axios.get('/rewards')
       .then(response => {
-        console.log(response);
         this.setState({
           rewards: response.data
         })
@@ -22,22 +22,25 @@ export default class Rewards extends Component {
 
   componentDidMount() {
     this.getData();
+
   }
 
   render() {
-    console.log(this.state.challenges)
+    const rewards = this.state.rewards
     return (
       <div>
-        {/* <Filter /> */}
-        {this.state.rewards.map(reward => {
-        console.log('reward', reward)
-        return (
-        <OneReward 
-          reward={this.state.reward} 
-        />  
-        )
-      })}
-        
+        <CreateReward {...this.props} />
+        {rewards.map(reward => {
+          return (
+            <div key={reward._id}>
+              <OneReward
+                reward={reward}
+                {...this.props}
+              />
+            </div>
+          )
+        })}
+
       </div>
     )
   }

@@ -5,7 +5,8 @@ export default class CreateReward extends Component {
     name: '',
     description: '',
     category: '',
-    url: ''
+    url: '',
+    showForm: false
   }
 
   handleChange = (event) => {
@@ -41,10 +42,16 @@ export default class CreateReward extends Component {
       .catch(err => console.log(err));
   }
 
+toggleAddAward = () => {
+  this.setState((state) => ({
+    showForm: !state.showForm
+  }));
+}
+
   render() {
     return (
       <div>
-        <h2>Create a new award</h2>
+        <h2 onClick="toggleAddAward">Create a new reward</h2>
         <p>Need some ideas for incentives to achieving your goals?</p>
         <p>Check out what <a href="#">other users have added</a> or see if there is something you like on <a href="https://www.developgoodhabits.com/reward-yourself/" target="_blank">this list</a> or <a href="https://organisemyhouse.com/reward-yourself/" target="_blank">this one</a>.</p>
         <br />
