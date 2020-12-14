@@ -20,6 +20,8 @@ const rewardSchema = new Schema({
     ]
   },
   url: String
+}, {
+  timestamps: true
 });
 
 const Reward = mongoose.model('Reward', rewardSchema);
