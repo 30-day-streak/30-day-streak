@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import CreateReward from "./components/CreateReward";
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Challenges from './components/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import Rewards from './components/Rewards';

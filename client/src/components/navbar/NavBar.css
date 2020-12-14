@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #696D7D;
+  padding: 15px 20px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+}
+
+.link {
+  color: #FAF3DD;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+}
