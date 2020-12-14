@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
-import axios from 'axios';
-import './Dashboard.css';
-import {Link} from 'react-router-dom';
-
+import React, {Component} from 'react';
+import './Dashboard.css'
+import {Link} from 'react-router-dom'
 
 export default class Dashboard extends Component {
   render() {
-
     // users with no challenges
   const activeChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
-
     if (!activeChallenges) {
       return (
         <div className="instruction-container">

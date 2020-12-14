@@ -37,9 +37,10 @@ const challengeSchema = new Schema(
     //   comment: String
     // }],
     // private: Boolean
-  },{
-    timestamps: true,
   }
+  // ,{
+  //   timestamps: true,
+  // }
 );
 
 const Challenge = mongoose.model('Challenge', challengeSchema);

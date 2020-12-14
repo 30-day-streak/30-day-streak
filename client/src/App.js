@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log('user from app page', this.props.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -55,7 +56,7 @@ class App extends Component {
           <Route
             exact
             path='/challenges/create'
-            render={props => <CreateChallenge setUser={this.setUser} {...props} />}
+            render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.props.user}/>}
           />
           <Route 
             exact

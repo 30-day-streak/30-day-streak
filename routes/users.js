@@ -1,4 +1,5 @@
 const express = require('express');
+const Challenge = require('../models/Challenge');
 const router = express.Router();
 const User = require('../models/User');
 
@@ -75,6 +76,32 @@ router.put('/:id/status', (req, res, next) => {
     .catch(err => next(err))
   }
 })
+
+router.put('/:id', (req, res, next) => {
+  // console.log('req user', req.user);
+  const {challenges} = req.body.user;
+  console.log('user challenges', challenges);
+  User.findByIdAndUpdate(
+    req.params.id,
+    {challenges}
+  )
+  .then(user => {
+    res.status(200).json(user)
+  })
+  .catch(err => {
+  })
+})
+
+// router.put('/:id', async (req, res, next) => {
+//   const id = req.params.id
+//   // console.log('id', id);
+//   // const {challenges} = req.user
+//   console.log('req.body', req.body.user.challenges);
+//   let usersChallenges = await Challenge.findById(req.params.id)
+  
+  
+//   // User.findByIdAndUpdate(id, {challenges})
+// })
 
 // change challenge status from favorite to active
 
