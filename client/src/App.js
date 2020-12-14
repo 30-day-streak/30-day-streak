@@ -10,6 +10,7 @@ import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
 import axios from 'axios';
+import Dashboard from './components/dashboard/Dashboard';
 
 
 class App extends Component {
@@ -48,6 +49,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log('user from app page', this.props.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -57,36 +59,43 @@ class App extends Component {
             path='/signup'
             render={props => <SignUp setUser={this.setUser} {...props} />}
           />
+      
           <Route
             exact
             path='/login'
             render={props => <Login setUser={this.setUser} {...props} />}
           />
+      
+          <Route
+            exact
+            path='/'
+            render={props => <Dashboard user={this.state.user} setUser={this.setUser} {...props} />}
+      
+          />
           <Route
             exact
             path='/challenges'
             render={props => {
+
               if (this.state.user) return <Challenges {...props} user={this.state.user} />
               else return <Redirect to='/' />
+
             }}
           />
+
           <Route
             exact
             path='/challenges/create'
-            render={props => <CreateChallenge setUser={this.setUser} {...props} />}
+            render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.props.user}/>}
           />
-          <Route
-            exact
-            // path='/challenges/:id/start'
-            path='/challenges/start'
-            render={props => <StartChallenge setUser={this.setUser} {...props} />}
-          />
-        </Switch>
+
+        
         <Route
           exact
           path="/CreateReward"
           render={props => <CreateReward setUser={this.setUser} {...props} />}
         />
+            
         <Route
           exact
           path='/rewards'
@@ -101,11 +110,19 @@ class App extends Component {
             else return <Redirect to='/' />
           }}
         />
-      </div>
 
+          <Route 
+            exact
+            path='/challenges/:id/start'
+            // path='/challenges/start'
+            render={props => <StartChallenge setUser={this.setUser} {...props} />}
+          />
+
+      </Switch>
+
+      </div>
     );
   }
-
 }
 
 export default App;

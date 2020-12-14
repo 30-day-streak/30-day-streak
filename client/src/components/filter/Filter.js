@@ -38,12 +38,11 @@ export default class Filter extends Component {
         <div className="filter">
           <input 
             type="checkbox" 
-            id="favorites" 
-            name="favorites" 
-            // value={this.state.favorite}
+            id="filterFavorites" 
+            name="filterFavorites" 
             onChange={this.handleChange}
           />
-          <label htmlFor="favorites">My Favorites</label>
+          <label htmlFor="filterFavorites">My Favorites</label>
         </div>
       </div>
     )

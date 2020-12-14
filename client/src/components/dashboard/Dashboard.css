@@ -1,0 +1,15 @@
+.instruction-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  line-height: 3rem;
+}
+
+ol {
+  text-align: left;
+}
+
