@@ -41,7 +41,8 @@ export default class OneChallenge extends Component {
   render() {
     return (
       // <div class="container center">
-        <div class="card">
+        <div className="card" key={ this.props.challenge.id }>
+          <p>{ this.props.challenge.category }</p>
           <h2>{ this.props.challenge.title }</h2>
           <hr/>
           <p>{ this.props.challenge.goal }</p>
