@@ -37,8 +37,7 @@ const challengeSchema = new Schema(
     //   comment: String
     // }],
     // private: Boolean
-  },
-  {
+  },{
     timestamps: true,
   }
 );

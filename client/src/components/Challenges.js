@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Filter from './Filter';
+import Filter from './filter/Filter.js';
 import OneChallenge from './onechallenge/OneChallenge';
 
 export default class Challenges extends Component {
