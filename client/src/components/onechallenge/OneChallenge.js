@@ -38,17 +38,16 @@ export default class OneChallenge extends Component {
 
   render() {
     return (
-      <div className="card" key={ this.props.challenge._id }>
-        <div className="card-header">
-          <p>{ this.props.challenge.category }</p>
-        </div>
-        <div className="card-title">
+      // <div class="container center">
+        <div class="card">
           <h2>{ this.props.challenge.title }</h2>
-          <p><strong>Goal:</strong> { this.props.challenge.goal }</p>
-          <p><strong>Daily Target:</strong> { this.props.challenge.dailyTarget.description } { this.props.challenge.dailyTarget.number } { this.props.challenge.dailyTarget.unit }</p>
-          <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} onClick={ this.toggleFavorite } alt="favorite" />
+          <hr/>
+          <p>{ this.props.challenge.goal }</p>
+          <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} style={{width: "50px"}} onClick={ this.toggleFavorite } alt="favorite" />
         </div>
-      </div>
+      // </div>
     )
   }
 }
+
+
