@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 export default class CreateChallenge extends Component {
   state = {
     title: '',
     goal: '',
     dailyTargetDescription: '',
-    dailyTargetNumber: '',
-    dailyTargetUnit: '',
     category: '',
-    // private: '',
+    user: this.props.user,
   };
 
   handleChange = (event) => {
@@ -21,9 +20,9 @@ export default class CreateChallenge extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleSubmitLater = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    console.log('success');
     console.log(this.state);
     axios
       .post('/challenges', {
@@ -31,35 +30,33 @@ export default class CreateChallenge extends Component {
         goal: this.state.goal,
         dailyTarget: {
           description: this.state.dailyTargetDescription,
-          number: this.state.dailyTargetNumber,
-          unit: this.state.dailyTargetUnit,
         },
         category: this.state.category,
-        // owner: owner
-        // private: false
       })
-      .then(() => {
-        // set the form to it's initial state (empty input fields)
+      .then(res => {
+        console.log(res);
         this.setState({
-          title: '',
-          goal: '',
-          dailyTargetDescription: '',
-          dailyTargetNumber: '',
-          dailyTargetUnit: '',
-          category: '',
+          challengeID: res.data._id
           // private: '',
-        });
-        // update the parent components state (in Projects) by calling getData()
-        // this.props.getData();
-      });
+        // this.props.history.push('/');
+        })
+      // });
     // .catch(err => console.log(err))
+      })
   };
 
+  componentDidMount () {
+    this.setState({
+      user: this.props.user
+    })
+  }
+
   render() {
+    // console.log('props from create challenge', this.state.user.challenges.push());
     return (
       <>
       <div className="create-challenge-page">
-        <form onSubmit={this.handleSubmit} className="create-challenge-form">
+        <form className="create-challenge-form" id="create-challenge-form" onSubmit={this.handleSubmitLater}>
         <h1>Create a Challenge</h1>
         {/* <h3>Here you can make your own customized challenge</h3> */}
         <div className="create-challenge-form-item">
@@ -148,7 +145,8 @@ export default class CreateChallenge extends Component {
           </select>
           </div>
 
-          <button type="submit">Create Challenge</button>
+          <button type="submit" form="create-challenge-form" >Save challenge for later</button>
+          {/* <button type="submit" form="create-challenge-form" onSubmit={this.handleSubmitStart}>Start challenge now!</button> */}
         </form>
         </div>
       </>
