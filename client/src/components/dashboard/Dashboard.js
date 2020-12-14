@@ -9,6 +9,7 @@ export default class Dashboard extends Component {
     // users with no challenges
   const activeChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 ​
+
     if (!activeChallenges) {
       return (
         <div className="instruction-container">
