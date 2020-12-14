@@ -49,7 +49,8 @@ export default class CreateChallenge extends Component {
       console.log('user after set state', this.state.user);
 
       const updatedUser = await axios.put(`/users/${id}`, {
-        user: this.state.user,
+        challenges: this.state.user.challenges, 
+        rewards: this.state.user.rewards
       });
       this.props.history.push('/challenges');
     } catch (error) {
@@ -73,7 +74,7 @@ export default class CreateChallenge extends Component {
       });
 
       let user = this.props.user;
-      console.log('user', this.props.user);
+      // console.log('user', this.props.user);
       user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'active',
@@ -85,7 +86,8 @@ export default class CreateChallenge extends Component {
       // console.log('user after set state', this.state.user);
 
       const updatedUser = await axios.put(`/users/${id}`, {
-        user: this.state.user,
+        challenges: this.state.user.challenges, 
+        rewards: this.state.user.rewards
       });
       this.props.history.push(`/challenges/${newChallenge.data._id}/start`);
     } catch (error) {

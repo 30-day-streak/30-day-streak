@@ -39,8 +39,7 @@ export default class OneChallenge extends Component {
   }
 
   render() {
-    console.log('render');
-    console.log('oneCHal', this.props.challenges);
+    // console.log(this.props);
     return (
       <>
       {/* <div class="container center"> */}

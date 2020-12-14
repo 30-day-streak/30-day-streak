@@ -63,6 +63,7 @@ export default class StartChallenge extends Component {
         user = user.challenges.map((challenge) => {
           if (challenge.id === challengeId) {
             challenge.status = 'active';
+            challenge.startDate = new Date()
           }
           return challenge
         });
@@ -72,16 +73,18 @@ export default class StartChallenge extends Component {
           id: this.props.match.params.id,
           status: 'active',
           tracker: [],
+          startDate: new Date()
         });
       }
-      console.log('user after click', user);
+      // console.log('user after click', user);
       this.setState({
         user: this.props.user,
       });
-      console.log('user after set state', this.state.user);
+      // console.log('user after set state', this.state.user);
 
       const updatedUser = await axios.put(`/users/${userId}`, {
-        user: this.state.user,
+        challenges: this.state.user.challenges, 
+        rewards: this.state.user.rewards,
       });
       this.props.history.push('/');
     } catch (error) {
@@ -95,6 +98,7 @@ export default class StartChallenge extends Component {
   // };
 
   render() {
+    // console.log(this.props);
     return (
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">
