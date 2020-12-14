@@ -7,7 +7,7 @@ export default class CreateChallenge extends Component {
     title: '',
     goal: '',
     dailyTargetDescription: '',
-    category: '',
+    category: 'eat',
     user: this.props.user,
     challengeID: '',
   };
@@ -38,7 +38,7 @@ export default class CreateChallenge extends Component {
 
       let user = this.props.user;
       console.log('user', this.props.user);
-      user.challenges.push({
+      user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'favorite',
         tracker: [],
@@ -74,7 +74,7 @@ export default class CreateChallenge extends Component {
 
       let user = this.props.user;
       console.log('user', this.props.user);
-      user.challenges.push({
+      user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'active',
         tracker: [],

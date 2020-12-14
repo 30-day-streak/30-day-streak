@@ -62,7 +62,7 @@ class App extends Component {
             exact
             path='/challenges/:id/start'
             // path='/challenges/start'
-            render={props => <StartChallenge setUser={this.setUser} {...props} />}
+            render={props => <StartChallenge setUser={this.setUser} {...props} user={this.props.user}/>}
           />
           <Route
             exact
