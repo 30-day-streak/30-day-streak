@@ -49,6 +49,7 @@ export default class Challenges extends Component {
     
     const filtered = this.filter(this.state.challenges)
     // console.log(filtered)
+    console.log('props challenge page', this.props.user);
 
     const categories = this.state.challenges.map(challenge => { return challenge.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
