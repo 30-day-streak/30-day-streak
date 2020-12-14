@@ -63,10 +63,6 @@ export default class Challenges extends Component {
 
   render() {
     const filtered = this.filter()
-<<<<<<< HEAD
-    // console.log('filtered',filtered)
-=======
->>>>>>> 1bae1efb78337d4c051a9bc4457ebe13e5be1dd1
 
     const categories = this.state.challenges.map(challenge => { return challenge.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
