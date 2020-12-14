@@ -22,6 +22,7 @@ export default class CreateChallenge extends Component {
   };
 
   handleSubmitLater = async (event) => {
+    console.log('clicked');
     event.preventDefault();
     console.log('user before post', this.state.user);
     let id = this.state.user._id;
@@ -40,11 +41,48 @@ export default class CreateChallenge extends Component {
       user.challenges.push({
         id: newChallenge.data._id,
         status: 'favorite',
+        tracker: [],
       });
       this.setState({
         user: this.props.user,
       });
       console.log('user after set state', this.state.user);
+
+      const updatedUser = await axios.put(`/users/${id}`, {
+        user: this.state.user,
+      });
+      this.props.history.push('/challenges');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  handleSubmitStart = async (event) => {
+    // console.log('clicked');
+    event.preventDefault();
+    // console.log('user before post', this.state.user);
+    let id = this.state.user._id;
+    try {
+      const newChallenge = await axios.post('/challenges', {
+        title: this.state.title,
+        goal: this.state.goal,
+        dailyTarget: {
+          description: this.state.dailyTargetDescription,
+        },
+        category: this.state.category,
+      });
+
+      let user = this.props.user;
+      console.log('user', this.props.user);
+      user.challenges.push({
+        id: newChallenge.data._id,
+        status: 'active',
+        tracker: [],
+      });
+      this.setState({
+        user: this.props.user,
+      });
+      // console.log('user after set state', this.state.user);
 
       const updatedUser = await axios.put(`/users/${id}`, {
         user: this.state.user,
@@ -69,7 +107,6 @@ export default class CreateChallenge extends Component {
           <form
             className="create-challenge-form"
             id="create-challenge-form"
-            onSubmit={this.handleSubmitLater}
           >
             <h1>Create a Challenge</h1>
             {/* <h3>Here you can make your own customized challenge</h3> */}
@@ -163,10 +200,10 @@ export default class CreateChallenge extends Component {
               </select>
             </div>
 
-            <button type="submit" form="create-challenge-form" >
+            <button form="create-challenge-form" onClick={this.handleSubmitLater}>
               Save challenge for later
             </button>
-            {/* <button type="submit" form="create-challenge-form" onSubmit={this.handleSubmitStart}>Start challenge now!</button> */}
+            <button form="create-challenge-form" onClick={this.handleSubmitStart}>Start challenge now!</button>
           </form>
         </div>
       </>
