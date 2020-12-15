@@ -37,7 +37,7 @@ export default class FullTracker extends Component {
 
   render() {
     // const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
-    // console.log(this.state.user);
+    console.log(this.state.user);
     // console.log('props from full tracker page', this.props);
     return (
       <div className="full-tracker">
