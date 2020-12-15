@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 // import axios from 'axios';
 import './Dashboard.css';
 import {Link} from 'react-router-dom';
-import ActiveChallenge from './ActiveChallengePreview';
+import ActiveChallengePreview from './ActiveChallengePreview';
+import ActiveChallengeDetails from './ActiveChallengeDetails';
 
 export default class Dashboard extends Component {
+
+  state = {
+    user: ''
+  }
 
   render() {
 
@@ -37,6 +42,7 @@ export default class Dashboard extends Component {
       
     // users with active challenges
     } else {
+      console.log('active challenges', activeChallenges);
       return (
         <div className="container">
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
@@ -44,7 +50,10 @@ export default class Dashboard extends Component {
           <div className="dashboard-container">
           { activeChallenges.map(challenge => { 
             return (
-              <ActiveChallenge challenge={challenge} />
+              <>
+                <ActiveChallengePreview challenge={challenge} />
+                <ActiveChallengeDetails challenge={challenge} user={this.props.user}/>
+              </>
             )
           })}
           </div>

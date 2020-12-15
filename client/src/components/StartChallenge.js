@@ -64,6 +64,7 @@ export default class StartChallenge extends Component {
           if (challenge.id === challengeId) {
             challenge.status = 'active';
             challenge.startDate = new Date()
+            challenge.tracker = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0];
           }
           return challenge
         });
@@ -72,7 +73,7 @@ export default class StartChallenge extends Component {
         return user.challenges.unshift({
           id: this.props.match.params.id,
           status: 'active',
-          tracker: [],
+          tracker: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0],
           startDate: new Date()
         });
       }

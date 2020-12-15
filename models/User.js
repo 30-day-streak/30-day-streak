@@ -26,10 +26,7 @@ const userSchema = new Schema({
       type: String,
       enum: ['active', 'favorite', 'completed', 'withdrawn']
     },
-    tracker: [{
-      day: Number,
-      reachedTarget: Boolean,
-    }],
+    tracker: [],
     startDate: Date,
     grandPrize: String
   }],

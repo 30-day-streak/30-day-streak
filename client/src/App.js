@@ -69,7 +69,7 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={props => <Dashboard user={this.state.user} {...props} />}
+            render={props => <Dashboard setUser={this.setUser} user={this.props.user} {...props} />}
           />
           <Route
             exact
