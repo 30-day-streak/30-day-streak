@@ -6,7 +6,7 @@ export default class ActiveChallengeDetails extends Component {
 
 
     render() {
-    
+    // console.log('props from active challange details', this.props);
     
     return (
       <div className="activeContainer">

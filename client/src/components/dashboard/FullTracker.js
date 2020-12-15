@@ -15,7 +15,13 @@ export default class FullTracker extends Component {
     let challengeTracker = this.state.user.challenges[0].tracker
     let index = target.id
     console.log('index', index);
-    challengeTracker[index] ++
+    if(challengeTracker[index] === 0){
+      challengeTracker[index] ++
+    } else if(challengeTracker[index] === 1){
+      challengeTracker[index] ++
+    } else {
+      challengeTracker[index] --
+    }
     console.log('after click', challengeTracker);
     console.log('user after click', this.state.user);
     this.setState({
