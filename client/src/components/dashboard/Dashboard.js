@@ -10,7 +10,6 @@ export default class Dashboard extends Component {
     console.log(this.props.user.challenges)
     const activeChallengesIds = this.props.user.challenges.filter(challenge => challenge.status === 'active').map(challenge => challenge.id)
     // const activeChallenges = this.props.challenges.filter(challenge => activeChallengesIds.includes(challenge.id))
-    
     // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 

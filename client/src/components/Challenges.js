@@ -33,11 +33,11 @@ export default class Challenges extends Component {
   filter = () => {
     const favoriteIds = this.props.user.challenges.filter(challenge => {
       return challenge.status === 'favorite'
-    }).map(challenge => challenge.id)
+    }).map(challenge => challenge.id._id)
 
     const excludedIds = this.props.user.challenges.filter(challenge => {
       return challenge.status === 'active' || challenge.status === 'completed' || challenge.status === 'withdrawn'
-    }).map(challenge => challenge.id)
+    }).map(challenge => challenge.id._id)
     
     if (this.state.favoritesFilter) {
       return this.state.challenges.filter(challenge => { 
@@ -81,6 +81,7 @@ export default class Challenges extends Component {
                   challenge={ challenge }
                   user={ this.props.user}
                   getData={ this.getData }
+                  filtered={filtered}
               />
             )
           })
