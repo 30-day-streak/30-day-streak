@@ -25,10 +25,15 @@ export default class OneChallenge extends Component {
   }
 
   initialSetUp = () => {
-    const foundInUserFavorites = this.props.user.challenges.some(challenge => {
-      console.log('challenge',challenge, challenge.id._id === this.props.challenge._id && challenge.status === 'favorite')
+    // const foundInUserFavorites = this.props.user.challenges.some(challenge => {
+    //   console.log('challenge',challenge, challenge.id._id === this.props.challenge._id && challenge.status === 'favorite')
+    //   return challenge.id._id === this.props.challenge._id && challenge.status === 'favorite'
+    // })
+    const foundInUserFavorites = this.props.user.challenges.find(challenge => {
+      // console.log('challenge',challenge, challenge.id._id === this.props.challenge._id && challenge.status === 'favorite')
       return challenge.id._id === this.props.challenge._id && challenge.status === 'favorite'
     })
+    console.log(foundInUserFavorites, "foundInUserFavorites")
 
     this.setState({ 
       favorite: foundInUserFavorites,
@@ -40,8 +45,15 @@ export default class OneChallenge extends Component {
     this.initialSetUp()
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.favorite !== this.state.favorite) {
+  //     console.log('UPDATE')
+  //     this.initialSetUp()
+  //   }
+  // }
+
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.favorite !== this.state.favorite) {
+    if (prevProps.filtered !== this.props.filtered) {
       console.log('UPDATE')
       this.initialSetUp()
     }
