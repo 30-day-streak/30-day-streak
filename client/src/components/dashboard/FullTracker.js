@@ -1,32 +1,72 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class FullTracker extends Component {
   state = {
-    array: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0],
-    user: ''
-  }
+    array: [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    user: '',
+  };
 
-  handleChange = (event) => {
-    const target = event.target;
-    const value = target.checked;
-    const name = target.name;
-
-    // console.log('user tracker array', this.state.user.challenges[0].tracker);
-    let challengeTracker = this.state.user.challenges[0].tracker
-    let index = target.id
-    console.log('index', index);
-    if(challengeTracker[index] === 0){
-      challengeTracker[index] ++
-    } else if(challengeTracker[index] === 1){
-      challengeTracker[index] ++
-    } else {
-      challengeTracker[index] --
+  handleChange = async (event) => {
+    try {
+      const target = event.target;
+      const value = target.checked;
+      const name = target.name;
+      // console.log('user tracker array', this.state.user.challenges[0].tracker);
+      let challengeTracker = this.state.user.challenges[0].tracker;
+      let index = target.id;
+      console.log('index', index);
+      if (challengeTracker[index] === 0) {
+        challengeTracker[index]++;
+      } else if (challengeTracker[index] === 1) {
+        challengeTracker[index]++;
+      } else {
+        challengeTracker[index]--;
+      }
+      console.log('after click', challengeTracker);
+      console.log('user after click', this.state.user);
+      this.setState({
+        [name]: value,
+      });
+      let userId = this.state.user._id;
+      const updatedUser = await axios.put(`/users/${userId}`, {
+        challenges: this.state.user.challenges,
+        rewards: this.state.user.rewards,
+      });
+    } catch (error) {
+      console.log(error);
     }
-    console.log('after click', challengeTracker);
-    console.log('user after click', this.state.user);
-    this.setState({
-      [name]: value,
-    });
   };
 
   componentDidMount = () => {
@@ -41,18 +81,30 @@ export default class FullTracker extends Component {
     // console.log('props from full tracker page', this.props);
     return (
       <div className="full-tracker">
-        Tracker for {this.props.challenge.id}
+        {/* Tracker for {this.props.challenge.id} */}
         <div>
-          <br/>
+          <br />
           {/* <fieldset id="one"> */}
           <label htmlFor="1">1</label>
-          <input type="checkbox" name="one" id="1" onClick={this.handleChange} checked={this.state.one}/>
+          <input
+            type="checkbox"
+            name="one"
+            id="1"
+            onClick={this.handleChange}
+            checked={this.state.one}
+          />
           {/* <label htmlFor="oneFail">1 no</label>
           <input type="checkbox" name="one" id="oneFail" onChange={this.handleChange} checked={this.state.one} /> */}
           {/* </fieldset> */}
-          <br/>
+          <br />
           <label htmlFor="two">2</label>
-          <input type="checkbox" name="two" id="2" onClick={this.handleChange} checked={this.state.two}/>
+          <input
+            type="checkbox"
+            name="two"
+            id="2"
+            onClick={this.handleChange}
+            checked={this.state.two}
+          />
           {/* <br/>
           <label htmlFor="3">3</label>
           <input type="checkbox" name="3" id="3"/> */}
@@ -139,6 +191,6 @@ export default class FullTracker extends Component {
           <input type="checkbox" name="30" id="30"/> */}
         </div>
       </div>
-    )
+    );
   }
 }
