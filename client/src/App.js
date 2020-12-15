@@ -5,7 +5,7 @@ import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import CreateReward from "./components/CreateReward";
 import Navbar from './components/navbar/Navbar';
-import Challenges from './components/Challenges';
+import Challenges from './components/challenges/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';

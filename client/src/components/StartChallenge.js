@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Challenges from './Challenges';
+import Challenges from './challenges/Challenges';
 
 export default class StartChallenge extends Component {
   state = {
