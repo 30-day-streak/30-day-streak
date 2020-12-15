@@ -21,7 +21,7 @@ export default function Navbar(props) {
           <Link className="link" to="/challenges">Challenges</Link>
           <Link className="link" to="/rewards">Rewards</Link>
           <Link className="link" to="/profile">Profile</Link>
-          <Link className="link" to="/" onClick={() => handleLogout(props)}>Log Out</Link>
+          <Link className="link" to="/login" onClick={() => handleLogout(props)}>Log Out</Link>
         </div>
       ) : (
           <div className="links">
