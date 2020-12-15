@@ -81,7 +81,7 @@ router.put('/:id/status', (req, res, next) => {
 // general user update from frontend
 router.put('/:id', (req, res, next) => {
   const { challenges, rewards } = req.body
-console.log(req.body);
+// console.log(req.body);
 
   User.findByIdAndUpdate(
     req.params.id,
@@ -90,7 +90,7 @@ console.log(req.body);
   )
     .then(user => {
       console.log({ user });
-      res.status(200).json(project);
+      res.status(200).json(user);
     })
     .catch(err => { console.log(err) })
 });
