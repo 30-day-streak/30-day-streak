@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout } from '../../services/auth';
 import './NavBar.css'
 
@@ -10,7 +10,8 @@ export default function Navbar(props) {
       props.setUser(null)
     })
   }
-    
+
+  
   return (
     <nav className="navbar">
       <div className="logo">
@@ -21,7 +22,9 @@ export default function Navbar(props) {
           <Link className="link" to="/challenges">Challenges</Link>
           <Link className="link" to="/rewards">Rewards</Link>
           <Link className="link" to="/profile">Profile</Link>
+
           <Link className="link" to="/login" onClick={() => handleLogout(props)}>Log Out</Link>
+
         </div>
       ) : (
           <div className="links">
@@ -32,3 +35,4 @@ export default function Navbar(props) {
     </nav>
   )
 }
+
