@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const User = require('../models/User');
+const Challenge = require('../models/Challenge');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
@@ -70,7 +71,11 @@ router.delete('/logout', (req, res) => {
 })
 
 router.get('/loggedin', (req, res) => {
-  res.json(req.user);
+  User.findById(req.user._id).populate('challenges.id').populate('rewards')
+  .then(response => {
+    console.log('response', response)
+    res.json(response)})
+  // res.json(req.user);
 })
 
 module.exports = router;
