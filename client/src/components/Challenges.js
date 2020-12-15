@@ -31,7 +31,6 @@ export default class Challenges extends Component {
   }
 
   filter = () => {
-    // filter favorites
     const favoriteIds = this.props.user.challenges.filter(challenge => {
       return challenge.status === 'favorite'
     }).map(challenge => challenge.id)
@@ -41,7 +40,6 @@ export default class Challenges extends Component {
     }).map(challenge => challenge.id)
     
     if (this.state.favoritesFilter) {
-      // favorites filter
       return this.state.challenges.filter(challenge => { 
         return favoriteIds.includes(challenge._id)
       })

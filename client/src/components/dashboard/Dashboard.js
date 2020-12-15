@@ -8,13 +8,13 @@ export default class Dashboard extends Component {
   
   render() {
     const activeChallengesIds = this.props.user.challenges.filter(challenge => challenge.status === 'active').map(challenge => challenge.id)
-    console.log('CH', this.props.challenges)
     const activeChallenges = this.props.challenges.filter(challenge => activeChallengesIds.includes(challenge.id))
-    console.log({activeChallenges})
-    // users with no challenges
+    
+    // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 
     if (!userHasActiveChallenges) {
+
       return (
         <div className="instruction-container">
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
@@ -33,6 +33,7 @@ export default class Dashboard extends Component {
           </ol>
         </div>
       )
+      
     // users with active challenges
     } else {
       return (

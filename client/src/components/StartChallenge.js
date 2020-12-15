@@ -10,6 +10,7 @@ export default class StartChallenge extends Component {
     dailyTargetNumber: '',
     dailyTargetUnit: '',
     prize: '',
+    user: '',
   };
 
   handleChange = (event) => {
@@ -20,51 +21,84 @@ export default class StartChallenge extends Component {
     });
   };
 
-  // DO NOT DELETE :)
-  // WAITING ON OTHER COMPONENTS TO UNCOMMENT
-  // activate this when the get challenges by ID route is up and running
-  // getData = () => {
-  //   const id = this.props.match.params.challengeID;
-  //   axios
-  //     .get(`/challenges/${challengeID}`)
-  //     .then((response) => {
-  //       console.log(response);
-  //       this.setState({
-  //         title: response.data.title,
-  //         goal: response.data.goal,
-  //         dailyTargetDescription: response.data.dailyTarget.description,
-  //         dailyTargetNumber: response.data.dailyTarget.number,
-  //         dailyTargetUnit: response.data.dailyTarget.number,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log('error', err);
-  //     });
-  // };
-
-  // activate this with get data
-  // componentDidMount = () => {
-  //   this.getData();
-  // };
-
-  // handleSubmit = (event) => {
-  //   // event.preventDefault();
-  //   // check here in the props that they are named the same from the route
-  //   const id = this.props.match.params.challengeID
-  //   axios
-  //  // maybe post here?
-  //     .put(`/users/${id}/start`, {
-  //       prize: this.state.prize
-  //     })
-  //     .then(res.redirect('/'))
-  // }
-
-  test = () => {
-    console.log('test button clicked');
-    axios.put('/users/test');
+  getData = () => {
+    const challengeId = this.props.match.params.id;
+    // console.log('id from request',id);
+    axios
+      .get(`/challenges/${challengeId}`)
+      .then((response) => {
+        this.setState({
+          title: response.data.title,
+          goal: response.data.goal,
+          dailyTargetDescription: response.data.dailyTarget.description,
+          dailyTargetNumber: response.data.dailyTarget.number,
+          dailyTargetUnit: response.data.dailyTarget.unit,
+        });
+      })
+      .catch((err) => {
+        console.log('error', err);
+      });
   };
 
+  // activate this with get data
+  componentDidMount = () => {
+    this.getData();
+    this.setState({
+      user: this.props.user,
+    });
+  };
+
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    // console.log('user before post', this.props.user);
+    let userId = this.state.user._id;
+    const challengeId = this.props.match.params.id;
+    try {
+      let user = this.props.user;
+      // console.log('first user', user);
+      const alreadyInUser = user.challenges.some((challenge) => {
+        return challenge.id === challengeId;
+      });
+      if (alreadyInUser) {
+        user = user.challenges.map((challenge) => {
+          if (challenge.id === challengeId) {
+            challenge.status = 'active';
+            challenge.startDate = new Date()
+          }
+          return challenge
+        });
+      } 
+      else {
+        return user.challenges.unshift({
+          id: this.props.match.params.id,
+          status: 'active',
+          tracker: [],
+          startDate: new Date()
+        });
+      }
+      // console.log('user after click', user);
+      this.setState({
+        user: this.props.user,
+      });
+      // console.log('user after set state', this.state.user);
+
+      const updatedUser = await axios.put(`/users/${userId}`, {
+        challenges: this.state.user.challenges, 
+        rewards: this.state.user.rewards,
+      });
+      this.props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // test = () => {
+  //   console.log('test button clicked');
+  //   axios.put('/users/test');
+  // };
+
   render() {
+    // console.log(this.props);
     return (
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">
@@ -75,8 +109,8 @@ export default class StartChallenge extends Component {
           <h3>{this.state.title}</h3>
           <p>Goal: {this.state.goal}</p>
           <p>
-            Daily target: {this.state.dailyTargetDescription}
-            {this.state.dailyTargetUnit} {this.state.dailyTargetNumber}
+            Daily target: {this.state.dailyTargetDescription}{' '}
+            {this.state.dailyTargetNumber} {this.state.dailyTargetUnit}
           </p>
           <h2>Pick your GRAND PRIZE for completing it</h2>
           <form onSubmit={this.handleSubmit}>
@@ -89,7 +123,7 @@ export default class StartChallenge extends Component {
               onChange={this.handleChange}
               required
             />
-            <button onClick={this.test}>Let's do it!</button>
+            <button onClick={this.handleSubmit}>Let's do it!</button>
           </form>
         </div>
       </div>
