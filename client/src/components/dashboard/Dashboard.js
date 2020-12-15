@@ -11,13 +11,13 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    // console.log('props from dashboard', this.props)
-    // const activeChallengesIds = this.props.user.challenges.filter(challenge => challenge.status === 'active').map(challenge => challenge.id)
-    // this.props.user.challenges = this.props.user.challenges.map((challenge) => [challenge])
     console.log('props after array manipulation', this.props.user.challenges);
     const activeChallenges = this.props.user.challenges.filter(
       (challenge) => challenge.status === 'active' 
-    );    // users with no active challenges
+    );    
+
+    
+    // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 
     if (!userHasActiveChallenges) {
@@ -48,14 +48,15 @@ export default class Dashboard extends Component {
         <>
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
           <p>Your Active Challenges:</p>
+
           <div className="dashboard-container">
           { activeChallenges.map((challenge) => { 
             return (
               <ActiveChallengeDetails challenge={challenge} user={this.props.user}/>
             )
           })}
-          {/* <ActiveChallengeDetails user={this.props.user}/> */}
           </div>
+
         </>
       )
       // builing the view for the logged in users here now

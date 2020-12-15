@@ -6,7 +6,7 @@ export default class ActiveChallengeDetails extends Component {
     // console.log('props from active challange details', this.props)
     return (
       <div className="activeContainer">
-        <FullTracker challenge={this.props.challenge} user={this.props.user}/>
+        <FullTracker challenge={this.props.challenge} user={this.props.user} key={this.props.challenge.id}/>
       </div>
     );
   }
