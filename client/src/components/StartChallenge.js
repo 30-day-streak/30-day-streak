@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Challenges from './Challenges';
 
+
 export default class StartChallenge extends Component {
   state = {
     title: '',
@@ -149,15 +150,16 @@ export default class StartChallenge extends Component {
         challenges: this.state.user.challenges,
         rewards: this.state.user.rewards,
       });
-      this.props.history.push('/');
+      const {history} = this.props
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
   };
 
   render() {
-    console.log('user from state in render', this.state.user);
-    console.log('user from the props in render', this.props.user);
+    // console.log('user from state in render', this.state.user);
+    // console.log('user from the props in render', this.props.user);
     return (
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">
