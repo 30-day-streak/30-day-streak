@@ -10,8 +10,14 @@ export default class Dashboard extends Component {
     user: ''
   }
 
+  componentDidMount = () => {
+    this.setState({
+      user: this.props.user,
+    })
+  }
+
   render() {
-    console.log('props after array manipulation', this.props.user.challenges);
+    // console.log('props after array manipulation', this.props.user.challenges);
     const activeChallenges = this.props.user.challenges.filter(
       (challenge) => challenge.status === 'active' 
     );    
@@ -43,7 +49,7 @@ export default class Dashboard extends Component {
       
     // users with active challenges
     } else {
-      console.log('active challenges', activeChallenges);
+      // console.log('user from props', this.props.user);
       return (
         <>
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>

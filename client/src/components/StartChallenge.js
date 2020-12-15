@@ -19,6 +19,7 @@ export default class StartChallenge extends Component {
     this.setState({
       [name]: value,
     });
+    // console.log(this.state);
   };
 
   getData = () => {
@@ -50,41 +51,102 @@ export default class StartChallenge extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log('user before post', this.props.user);
     let userId = this.state.user._id;
     const challengeId = this.props.match.params.id;
     try {
       let user = this.props.user;
-      // console.log('first user', user);
       const alreadyInUser = user.challenges.some((challenge) => {
-        return challenge.id === challengeId;
+        return challenge.id._id === challengeId;
       });
       if (alreadyInUser) {
         user = user.challenges.map((challenge) => {
-          if (challenge.id === challengeId) {
+          if (challenge.id._id === challengeId) {
+            console.log('match');
             challenge.status = 'active';
-            challenge.startDate = new Date()
-            challenge.tracker = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0];
+            challenge.startDate = new Date();
+            challenge.tracker = [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+            ];
+            challenge.grandPrize = this.state.prize
           }
-          return challenge
+          return challenge;
         });
-      } 
-      else {
-        return user.challenges.unshift({
+      } else {
+        user.challenges.unshift({
           id: this.props.match.params.id,
           status: 'active',
-          tracker: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0],
-          startDate: new Date()
+          tracker: [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+          ],
+          startDate: new Date(),
+          grandPrize: this.state.prize
         });
       }
-      // console.log('user after click', user);
       this.setState({
         user: this.props.user,
       });
-      // console.log('user after set state', this.state.user);
+      console.log('user after set state', this.state.user);
 
       const updatedUser = await axios.put(`/users/${userId}`, {
-        challenges: this.state.user.challenges, 
+        challenges: this.state.user.challenges,
         rewards: this.state.user.rewards,
       });
       this.props.history.push('/');
@@ -93,13 +155,9 @@ export default class StartChallenge extends Component {
     }
   };
 
-  // test = () => {
-  //   console.log('test button clicked');
-  //   axios.put('/users/test');
-  // };
-
   render() {
-    // console.log(this.props);
+    console.log('user from state in render', this.state.user);
+    console.log('user from the props in render', this.props.user);
     return (
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">
@@ -124,7 +182,9 @@ export default class StartChallenge extends Component {
               onChange={this.handleChange}
               required
             />
-            <button onClick={this.handleSubmit}>Let's do it!</button>
+            <button type="submit" onSubmit={this.handleSubmit}>
+              Let's do it!
+            </button>
           </form>
         </div>
       </div>

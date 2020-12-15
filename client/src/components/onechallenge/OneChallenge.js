@@ -41,7 +41,7 @@ export default class OneChallenge extends Component {
   }
 
   componentDidMount() {
-    console.log('MOUNTING')
+    // console.log('MOUNTING')
     this.initialSetUp()
   }
 
