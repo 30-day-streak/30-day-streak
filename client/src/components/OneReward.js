@@ -3,36 +3,34 @@ import React, { Component } from 'react'
 
 export default class OneReward extends Component {
   state = {
-    favourite: false
+    favorite: false
   };
 
   toggleFavorite = () => {
-    console.log(this.state.favourite);
+    const newFavorite = !this.state.favorite
 
-    const newFavourite = !this.state.favourite
-    console.log({ newFavourite });
-
-    this.props.toggleFavouriteReward(this.props.reward._id, newFavourite);
-    this.setState({ favourite: newFavourite });
-    // this.forceUpdate()
+    this.props.toggleFavoriteReward(this.props.reward._id, newFavorite);
+    this.setState({ favorite: newFavorite });
   }
 
   initialSetUp = () => {
-    // console.log(`props`, this.props);
-    const foundInUserFavourites = this.props.user.rewards.some(reward => {
+    const foundInUserFavorites = this.props.user.rewards.some(reward => {
       return reward === this.props.reward._id;
     })
-    // console.log({foundInUserFavourites});
 
     this.setState({
-      favourite: foundInUserFavourites
+      favorite: foundInUserFavorites
     })
   }
 
   componentDidMount() {
     this.initialSetUp();
-    // console.log(this.props);
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.filtered !== this.props.filtered) {
+      this.initialSetUp()
+    }
   }
 
   render() {

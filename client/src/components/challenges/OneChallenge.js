@@ -47,7 +47,7 @@ export default class OneChallenge extends Component {
   }
 
   render() {
-
+    // console.log(this.state)
     return (
       <>
       {/* <div class="container center"> */}

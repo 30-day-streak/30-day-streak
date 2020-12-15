@@ -25,7 +25,7 @@ class App extends Component {
     })
   }
 
-  toggleFavouriteReward = (rewardId, favStatus) => {
+  toggleFavoriteReward = (rewardId, favStatus) => {
     console.log(`toggling`, rewardId, favStatus);
     const updatedUser = this.state.user
     if (favStatus) {
@@ -45,7 +45,6 @@ class App extends Component {
       challenges: updatedUser.challenges,
       rewards: updatedUser.rewards
     })
-
   }
 
   render() {
@@ -98,7 +97,7 @@ class App extends Component {
               {...props}
               user={this.state.user}
               setUser={this.setUser}
-              toggleFavouriteReward={this.toggleFavouriteReward}
+              toggleFavoriteReward={this.toggleFavoriteReward}
             />
             else return <Redirect to='/' />
           }}
