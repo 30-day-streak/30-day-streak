@@ -8,13 +8,13 @@ export default class OneReward extends Component {
 
   toggleFavorite = () => {
     console.log(this.state.favourite);
-    
+
     const newFavourite = !this.state.favourite
-    console.log( {newFavourite} );
-    
+    console.log({ newFavourite });
+
     this.props.toggleFavouriteReward(this.props.reward._id, newFavourite);
-    this.setState({ favourite: newFavourite});
-    this.forceUpdate()
+    this.setState({ favourite: newFavourite });
+    // this.forceUpdate()
   }
 
   initialSetUp = () => {
@@ -23,7 +23,7 @@ export default class OneReward extends Component {
       return reward === this.props.reward._id;
     })
     // console.log({foundInUserFavourites});
-    
+
     this.setState({
       favourite: foundInUserFavourites
     })
@@ -32,7 +32,7 @@ export default class OneReward extends Component {
   componentDidMount() {
     this.initialSetUp();
     // console.log(this.props);
-    
+
   }
 
   render() {
