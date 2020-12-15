@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import './Dashboard.css';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import ActiveChallengePreview from './ActiveChallengePreview';
 import ActiveChallengeDetails from './ActiveChallengeDetails';
 import axios from 'axios';
 
@@ -25,11 +26,10 @@ export default class Dashboard extends Component {
   // };
 
   render() {
-    // console.log('props after array manipulation', this.props.user.challenges);
-    const activeChallenges = this.props.user.challenges.filter(
-      (challenge) => challenge.status === 'active'
-    );
 
+    if (this.props.user) {
+
+    const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
     // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(
       (challenge) => challenge.status === 'active'
@@ -92,7 +92,7 @@ export default class Dashboard extends Component {
           <div className="dashboard-container">
             {activeChallenges.map((challenge) => {
               return (
-                <ActiveChallengeDetails
+                <ActiveChallengePreview
                   challenge={challenge}
                   user={this.props.user}
                 />
@@ -103,5 +103,10 @@ export default class Dashboard extends Component {
       );
       // builing the view for the logged in users here now
     }
+  } else {
+    return (
+      <div>test</div>
+    )
+  }
   }
 }

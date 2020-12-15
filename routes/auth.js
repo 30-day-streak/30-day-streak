@@ -74,7 +74,6 @@ router.get('/loggedin', (req, res) => {
   console.log('req from backend', req.user._id);
   User.findById(req.user._id).populate('challenges.id').populate('rewards')
   .then(response => {
-    console.log('response', response)
     res.json(response)})
   // res.json(req.user);
 })
