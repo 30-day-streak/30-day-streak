@@ -18,14 +18,14 @@ export default class Filter extends Component {
           <input 
             type="text" 
             placeholder="Search..."
-            name="search"
+            name="searchFilter"
             onChange={this.handleChange}
           />
         </div>
         {/* Category dropdown */}
         <div className="filter">
-          <label htmlFor="category">Category</label>
-          <select name="category" id="category" onChange={ this.handleChange }>
+          <label htmlFor="categoryFilter">Category</label>
+          <select name="categoryFilter" id="categoryFilter" onChange={ this.handleChange }>
             <option value=''>All</option>
             { this.props.categories.map(option => {
               return (
@@ -38,11 +38,11 @@ export default class Filter extends Component {
         <div className="filter">
           <input 
             type="checkbox" 
-            id="filterFavorites" 
-            name="filterFavorites" 
+            id="favoritesFilter" 
+            name="favoritesFilter" 
             onChange={this.handleChange}
           />
-          <label htmlFor="filterFavorites">My Favorites</label>
+          <label htmlFor="favoritesFilter">My Favorites</label>
         </div>
       </div>
     )

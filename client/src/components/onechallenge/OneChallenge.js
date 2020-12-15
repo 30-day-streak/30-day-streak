@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom';
 export default class OneChallenge extends Component {
 
   state = {
-    category: '',
     favorite: false,
   }
 
@@ -22,11 +21,12 @@ export default class OneChallenge extends Component {
     axios.put(`/users/${challengeID}/status`, {
       favorite: newFavorite
     })
+    this.props.getData()
   }
 
   initialSetUp = () => {
     const foundInUserFavorites = this.props.user.challenges.some(challenge => {
-      return challenge.id === this.props.challenge._id;
+      return challenge.id === this.props.challenge._id && challenge.status === 'favorite'
     })
 
     this.setState({ 

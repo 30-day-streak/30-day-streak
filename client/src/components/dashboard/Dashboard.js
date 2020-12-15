@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 import './Dashboard.css';
 import {Link} from 'react-router-dom';
-
+import ActiveChallenge from './ActiveChallenge';
 
 export default class Dashboard extends Component {
+  
   render() {
-
+    const activeChallengesIds = this.props.user.challenges.filter(challenge => challenge.status === 'active').map(challenge => challenge.id)
+    console.log('CH', this.props.challenges)
+    const activeChallenges = this.props.challenges.filter(challenge => activeChallengesIds.includes(challenge.id))
+    console.log({activeChallenges})
     // users with no challenges
-  const activeChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
+    const userHasActiveChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 
-    if (!activeChallenges) {
+    if (!userHasActiveChallenges) {
       return (
         <div className="instruction-container">
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
@@ -32,7 +36,17 @@ export default class Dashboard extends Component {
     // users with active challenges
     } else {
       return (
-        <div>TEST</div>
+        <>
+          <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
+          <p>Your Active Challenges:</p>
+          <div className="dashboard-container">
+          { activeChallenges.map(challenge => { 
+            return (
+              <ActiveChallenge user={this.props.user} challenge={challenge} />
+            )
+          })}
+          </div>
+        </>
       )
       // builing the view for the logged in users here now
     }
