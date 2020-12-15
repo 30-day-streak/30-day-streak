@@ -5,12 +5,13 @@ import {Link} from 'react-router-dom';
 import ActiveChallenge from './ActiveChallenge';
 
 export default class Dashboard extends Component {
-  
+
   render() {
-    console.log(this.props, `dash props`);
+
+    console.log(this.props.user.challenges)
     const activeChallengesIds = this.props.user.challenges.filter(challenge => challenge.status === 'active').map(challenge => challenge.id)
     // const activeChallenges = this.props.challenges.filter(challenge => activeChallengesIds.includes(challenge.id))
-    
+
     // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(challenge => challenge.status === 'active')
 
@@ -41,13 +42,15 @@ export default class Dashboard extends Component {
         <>
           <h2>Welcome { this.props.user.name ? this.props.user.name : this.props.user.username }! </h2>
           <p>Your Active Challenges:</p>
-          {/* <div className="dashboard-container">
-          { activeChallenges.map(challenge => { 
+
+          <div className="dashboard-container">
+          {/* { activeChallenges.map(challenge => { 
             return (
               <ActiveChallenge user={this.props.user} challenge={challenge} />
             )
-          })}
-          </div> */}
+          })} */}
+          </div>
+
         </>
       )
       // builing the view for the logged in users here now
