@@ -27,7 +27,6 @@ export default class FullTracker extends Component {
     this.setState({
       [name]: value,
     });
-    
   };
 
   componentDidMount = () => {
@@ -37,11 +36,12 @@ export default class FullTracker extends Component {
   };
 
   render() {
+    // const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
     // console.log(this.state.user);
-    const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
+    // console.log('props from full tracker page', this.props);
     return (
       <div className="full-tracker">
-        Tracker for {activeChallenges[0].id}
+        Tracker for {this.props.challenge.id}
         <div>
           <br/>
           {/* <fieldset id="one"> */}

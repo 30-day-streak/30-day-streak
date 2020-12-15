@@ -7,7 +7,7 @@ import ActiveChallengeDetails from './ActiveChallengeDetails';
 export default class Dashboard extends Component {
 
   render() {
-    console.log(this.props.user.challenges)
+    // console.log(this.props.user.challenges)
     // const activeChallengesIds = this.props.user.challenges.filter(challenge => challenge.status === 'active').map(challenge => challenge.id)
     const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
     
