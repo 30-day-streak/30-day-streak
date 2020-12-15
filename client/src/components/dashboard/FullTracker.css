@@ -1,0 +1,18 @@
+.completed {
+  background-color: green;
+  width: 4vw;
+  height: 4vw
+}
+
+.failed {
+  background-color: red;
+  width: 4vw;
+  height: 4vw;
+}
+
+.not-attempted {
+  background-color: gray;
+  width: 4vw;
+  height: 4vw;
+}
+
