@@ -1,8 +1,14 @@
+.continer h2 {
+  color: #68B0AB;
+  margin: 30px auto;
+  text-align: center;
+}
+
 .instruction-container {
   display: flex;
   flex-direction: column;
   width: 80%;
-  border: 1px solid #ccc;
+  border: 1px solid #68B0AB;
   align-items: center;
   justify-content: center;
   margin: 20px auto;
@@ -13,9 +19,34 @@ ol {
   text-align: left;
 }
 
-.activeChallenge {
+.active-preview {
   flex: display;
-  width: 80 vw;
-  margin: 0 auto;
+  flex-flow: nowrap;
+  justify-content: space-between;
+  /* width: 80vw; */
+  /* margin: 0 auto; */
+  border: 1px solid #68B0AB;
+  margin: 10px auto;
+  padding: 15px;
 }
 
+.preview-title {
+  width: 30%;
+  margin: 0 5px;
+  padding: 10px;
+  overflow: wrap;
+}
+
+.preview-tracker {
+  width: 30%;
+  margin: 0 5px;
+  padding: 10px;
+
+}
+
+.preview-streak {
+  width: 30%;
+  margin: 0 5px;
+  padding: 10px;
+
+}

@@ -73,7 +73,6 @@ router.delete('/logout', (req, res) => {
 router.get('/loggedin', (req, res) => {
   User.findById(req.user._id).populate('challenges.id').populate('rewards')
   .then(response => {
-    console.log('response', response)
     res.json(response)})
   // res.json(req.user);
 })

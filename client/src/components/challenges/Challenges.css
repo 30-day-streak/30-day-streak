@@ -7,7 +7,17 @@ body{
   background-color: #FAF3DD;
 }
 
-.container{
+.tool-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around
+}
+.tool-bar img {
+  width: 40px;
+}
+
+.challenges-container{
   width: 80%;
   min-height: 100vh;  
   display: -webkit-box;  
@@ -21,7 +31,7 @@ body{
   justify-content: center;
 }
 
-.center{
+.center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -30,10 +40,27 @@ body{
           justify-content: center;
 }
 
-.card{
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 5px;
+}
+
+.card-header p {
+  margin: 0;
+}
+
+.card-header img {
+  width: 20px;
+  height: 100%;
+}
+
+.card {
   background-color: #C8D5B9;
   width: 250px;
   min-height: 250px * 1.618;
+  text-align: center;
   
   display: -webkit-box;
   
@@ -60,17 +87,17 @@ body{
   -webkit-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
   -o-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
   transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
-
+}
   
-  h1,h2,h3,h4,h5{
+  h1,h2,h3,h4,h5 {
     margin: 0px;
-    padding: 0px 0px 15px 0px;
+    padding: 0px;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 30px;
+    font-size: 1.4rem;
     color: #696D7D;
   }
   
-  hr{
+  hr {
     display: block;
     border: none;
     height: 3px;
@@ -86,7 +113,7 @@ body{
     transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
   }
   
-  p{
+  p {
     margin: 15px 0px 0px 0px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 100;
@@ -103,21 +130,20 @@ body{
     animation-duration: 1.5s;
   }
   
-  /* button{
+  button {
     border: none;
     background-color: #696D7D;
-    width: 50%;
-    margin: 10px auto;
-    padding: 10px 30px;
+    width: 40%;
+    margin: 20px auto 10px;
+    padding: 10px 20px;
     color: #FAF3DD;
     font-family: 'Noto Sans KR', sans-serif;
     text-transform: uppercase;
-  } */
-  img {
-    height: 50px;
-    /* margin: 10px auto; */
   }
-}
+
+  a {
+    margin: 0;
+  }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes line-show {
