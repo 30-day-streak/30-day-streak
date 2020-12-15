@@ -13,3 +13,9 @@ ol {
   text-align: left;
 }
 
+.activeChallenge {
+  flex: display;
+  width: 80 vw;
+  margin: 0 auto;
+}
+

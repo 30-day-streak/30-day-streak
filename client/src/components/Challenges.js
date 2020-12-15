@@ -4,16 +4,16 @@ import {Link} from 'react-router-dom';
 import Filter from './filter/Filter.js';
 import OneChallenge from './onechallenge/OneChallenge';
 
+
 export default class Challenges extends Component {
 
-  state = {
-    //challenges
-    challenges: [],
-    search: '',
-    category: '',
 
-    //user
-    filterFavorites: false,
+  state = {
+    challenges: [],
+    //filter
+    searchFilter: '',
+    categoryFilter: '',
+    favoritesFilter: false,
   }
 
   getData = () => {
@@ -30,37 +30,33 @@ export default class Challenges extends Component {
     this.setState({ [name]: value })
   }
 
-  // filterFavorites
-
   filter = () => {
-    // filter favorites
-    // console.log('state challenges', this.state.challenges);
-    if (this.state.filterFavorites) {
-      const favoriteIds = this.props.user.challenges.filter(challenge => {
-        return challenge.status === 'favorite'
-      }).map(challenge => challenge.id)
+    const favoriteIds = this.props.user.challenges.filter(challenge => {
+      return challenge.status === 'favorite'
+    }).map(challenge => challenge.id)
+
+    const excludedIds = this.props.user.challenges.filter(challenge => {
+      return challenge.status === 'active' || challenge.status === 'completed' || challenge.status === 'withdrawn'
+    }).map(challenge => challenge.id)
+    
+    if (this.state.favoritesFilter) {
       return this.state.challenges.filter(challenge => { 
         return favoriteIds.includes(challenge._id)
       })
     } else {
-      const excludedIds = this.props.user.challenges.filter(challenge => {
-        return challenge.status === 'active' || challenge.status === 'completed' || challenge.status === 'withdrawn'
-      }).map(challenge => challenge.id)
-
       return this.state.challenges.filter(challenge => { 
-        // search bar
-        return `${challenge.title}${challenge.goal}`.toLowerCase().includes(this.state.search.toLowerCase()) &&
-        // filter categories 
-        (this.state.category === challenge.category || !this.state.category) &&
+        // search bar filter
+        return `${challenge.title}${challenge.goal}`.toLowerCase().includes(this.state.searchFilter.toLowerCase()) &&
+        // categories filter
+        (this.state.categoryFilter === challenge.category || !this.state.categoryFilter) &&
         // exclude active, completed and withdrawn challenges
-        !excludedIds.includes(challenge.id)
+        !excludedIds.includes(challenge._id)
       })
     }
   }
 
   componentDidMount() {
     this.getData();
-    // this.filter()
   }
 
   render() {
@@ -84,7 +80,7 @@ export default class Challenges extends Component {
               <OneChallenge 
                   challenge={ challenge }
                   user={ this.props.user}
-                  getData={this.getData}
+                  getData={ this.getData }
               />
             )
           })
