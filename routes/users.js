@@ -47,8 +47,7 @@ router.get('/:id', (req, res) => {
 })
 
 // add a challenge to users challenges (favorites)
-router.put('/:id/status', (req, res, next) => {
-  console.log(req.body.favorite)
+router.put('/:id/challengesfavorite', (req, res, next) => {
   if (req.body.favorite) {
     User.findByIdAndUpdate(req.user._id, {
       $push: {
@@ -77,6 +76,30 @@ router.put('/:id/status', (req, res, next) => {
   }
 })
 
+// add a reward to users rewards (favorites)
+router.put('/:id/rewardsfavorite', (req, res, next) => {
+  if (req.body.favorite) {
+    User.findByIdAndUpdate(req.user._id, {
+      $push: {
+        rewards: req.params.id,
+      }
+    })
+      .then(reward => {
+        res.status(200).json(reward);
+      })
+      .catch(err => next(err))
+  } else {
+    User.findByIdAndUpdate(req.user._id, {
+      $pull: {
+        rewards: req.params.id,
+      }
+    })
+      .then(reward => {
+        res.status(200).json(reward);
+      })
+      .catch(err => next(err))
+  }
+})
 
 // general user update from frontend
 router.put('/:id', (req, res, next) => {
