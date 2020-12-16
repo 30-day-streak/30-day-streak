@@ -13,7 +13,7 @@ export default class Dashboard extends Component {
   };
 
   componentDidMount = async () => {
-    console.log('user id?', this.props.user._id);
+    // console.log('user id?', this.props.user._id);
     // try {
     //   let loggedinUser = await axios.get('/users/')
     //   return loggedinUser

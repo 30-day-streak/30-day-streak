@@ -107,7 +107,7 @@ router.put('/:id', (req, res, next) => {
 
   User.findByIdAndUpdate(
     req.params.id,
-    { /* challenges,  */rewards },
+    { challenges, rewards },
     { new: true }
   )
     .then(user => {
