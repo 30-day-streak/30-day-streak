@@ -1,6 +1,13 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
   text-align: center;
+  background-color: #e8e8e8;
 }
+
+/* .App {
+} */
 
 .container {
   margin: 50px;
@@ -17,6 +24,54 @@
   }
 }
 
+<<<<<<< HEAD
+/* Create Challenges CSS */
+
+.create-challenge-form {
+  padding: 0;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black
+}
+
+.create-challenge-page {
+  background-color: #e8e8e8;
+  height: 100vw;
+}
+
+.create-challenge-form h1 {
+  color: #68B0AB
+}
+
+.create-challenge-form button {
+  background-color:  #f05454;
+  color: #e8e8e8;
+  border: none;
+  border-radius: 3px;
+  padding: 1.5vw;
+  margin: 2vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+
+.create-challenge-form input {
+  width: 70vw;
+}
+
+.create-challenge-form-item {
+  text-align: left;
+  /* margin: 2vw; */
+}
+
+.create-challenge-form-item input {
+  margin: 1vw 0 
+}
+.create-challenge-form-select {
+  width: 70vw
+}
+=======
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,6 +91,63 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+<<<<<<< HEAD
+=======
+/* NavBar */
+/* nav {
+  background-color:  #f67358
+  height: 4vw;
+  display: flex;
+  justify-content: space-between;
+}  */
+
+/* nav a {
+  color: white;
+  text-decoration: none;
+  padding: 1vw;
+  font-size: 1.9vw;
+}
+
+.nav-bar-right-side {
+  display: flex
+} */
+
+
+/* Create Challenges CSS */
+
+
+
+
+/* Start Challenge CSS */
+
+.start-challenge-page {
+  height: 100vw;
+  /* background-color: #f8f9fa; */
+  display: flex; 
+  justify-content: center;
+  align-items: start;
+}
+
+.start-challenge-page h1{
+    color: #f05454;
+    margin: 0;
+    /* padding: 2vw 0 0 0 */
+}
+
+.start-challenge-page h2 {
+  color: #f05454
+}
+
+.start-challenge-page-content {
+  margin: 0;
+  padding: 0;
+  width: 50vw;
+  /* border: 2px solid #6c757d; */
+  margin: 3vw;
+  padding: 3vw;
+  border-radius: 10px;
 }
 
 
