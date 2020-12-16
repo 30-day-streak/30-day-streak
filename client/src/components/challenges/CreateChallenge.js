@@ -132,7 +132,7 @@ export default class CreateChallenge extends Component {
                 Goal:
               </label>
               <br />
-              <input
+              <textarea
                 type="text"
                 id="goal"
                 name="goal"
@@ -140,6 +140,7 @@ export default class CreateChallenge extends Component {
                 onChange={this.handleChange}
                 placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
                 required
+                textarea
               />
             </div>
 

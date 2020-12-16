@@ -14,13 +14,16 @@
   padding: 4vw;
   margin: 4vw
 }
-
 /* .create-challenge-form h1 {
   color: #68B0AB
 } */
 
 .create-challenge-form button {
   width: 150px;
+}
+
+.create-challenge-form textarea {
+  width: 50vw;
 }
 
 .create-challenge-form input {

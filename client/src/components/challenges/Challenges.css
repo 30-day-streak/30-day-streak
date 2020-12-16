@@ -166,7 +166,7 @@ body{
 /* Standard syntax */
 @keyframes p-show {
   from {color: #FAF3DD;}
-  to {color: #f05454;}
+  to {color:#222831;}
 }
 
 /* Safari 4.0 - 8.0 */
