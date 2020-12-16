@@ -71,7 +71,7 @@ export default class Rewards extends Component {
                 filtered={ filtered }
                 getData={ this.getData }
                 setUser={ this.props.setUser }
-                toggleFavoriteReward = { this.props.toggleFavoriteReward }
+                // toggleFavoriteReward = { this.props.toggleFavoriteReward }
               />
             </div>
           )

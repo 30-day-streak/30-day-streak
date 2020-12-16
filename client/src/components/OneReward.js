@@ -20,9 +20,16 @@ export default class OneReward extends Component {
 
     // 3. toggleFavoriteReward but moved from App.js
     // const updatedUser = this.props.user;
+    // console.log('newFavorite', newFavorite)
+    // console.log('user', updatedUser.rewards)
     // if (newFavorite) updatedUser.rewards.push(this.props.reward._id);
     // else {
-    //   updatedUser.rewards.pop(this.props.reward._id);
+    //   updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
+    //     console.log(profileRewardId._id, this.props.reward._id, profileRewardId._id !== this.props.reward._id)
+    //     return profileRewardId._id !== this.props.reward._id
+    //   });
+    //   console.log('updated user', updatedUser.rewards)
+    //   // updatedUser.rewards.pop(this.props.reward._id);
     // }
     // this.props.setUser(updatedUser);
     // axios.put(`/users/${updatedUser._id}`, {
@@ -34,6 +41,7 @@ export default class OneReward extends Component {
     
     // refresh data
     this.props.getData()
+    console.log('refresh')
   }
 
   initialSetUp = () => {
@@ -51,7 +59,9 @@ export default class OneReward extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.filtered.length != this.props.filtered.length) {
+    console.log('this', this.state.favorite, 'prev', prevState.favorite, prevState.favorite !== this.state.favorite)
+    if (prevProps.filtered.length !== this.props.filtered.length) {
+      console.log('toggle')
       this.initialSetUp()
     }
   }
