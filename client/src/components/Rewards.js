@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Filter from './filter/Filter';
 import OneReward from './OneReward';
-import './challenges/Challenges.css';
+// import './challenges/Challenges.css';
 import CreateReward from './CreateReward';
 
 export default class Rewards extends Component {
