@@ -12,18 +12,15 @@ export default class Dashboard extends Component {
     reload: true,
   };
 
-  // refreshPage() {
-  //   window.location.reload(1);
-  // }
-
-  // componentDidMount = async () => {
-  //   try {
-  //     let loggedinUser = await axios.get('/users/loggedin')
-  //     return loggedinUser
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  componentDidMount = async () => {
+    console.log('user id?', this.props.user._id);
+    // try {
+    //   let loggedinUser = await axios.get('/users/')
+    //   return loggedinUser
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
 
   render() {
     console.log(this.props.user)
