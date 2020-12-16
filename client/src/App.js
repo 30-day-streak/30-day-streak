@@ -12,6 +12,7 @@ import Rewards from './components/Rewards';
 // import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
 import Notifications from './components/Notifications';
+import Profile from './components/Profile'
 
 class App extends Component {
 
@@ -105,6 +106,12 @@ class App extends Component {
             exact
             path='/challenges/:id/start'
             render={props => <StartChallenge setUser={this.setUser} {...props} user={this.state.user}/>}
+          />
+
+<Route
+            exact
+            path='/profile'
+            render={props => <Profile setUser={this.setUser} {...props} user={this.state.user}/>}
           />
 
       </Switch>
