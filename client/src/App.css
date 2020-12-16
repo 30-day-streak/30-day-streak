@@ -24,6 +24,7 @@ body {
   }
 }
 
+<<<<<<< HEAD
 /* Create Challenges CSS */
 
 .create-challenge-form {
@@ -70,33 +71,92 @@ body {
 .create-challenge-form-select {
   width: 70vw
 }
+=======
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* NavBar */
+/* nav {
+  background-color:  #f67358
+  height: 4vw;
+  display: flex;
+  justify-content: space-between;
+}  */
+
+/* nav a {
+  color: white;
+  text-decoration: none;
+  padding: 1vw;
+  font-size: 1.9vw;
+}
+
+.nav-bar-right-side {
+  display: flex
+} */
+
+
+/* Create Challenges CSS */
+
+
+>>>>>>> 087e5619de917e548936ef1850170d9cd0f6642e
 
 /* Start Challenge CSS */
 
 .start-challenge-page {
   height: 100vw;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   display: flex; 
   justify-content: center;
   align-items: start;
 }
 
 .start-challenge-page h1{
-    color: #68B0AB;
+    color: #f05454;
     margin: 0;
     /* padding: 2vw 0 0 0 */
 }
 
 .start-challenge-page h2 {
-  color: #6c757d
+  color: #f05454
 }
 
 .start-challenge-page-content {
   margin: 0;
   padding: 0;
   width: 50vw;
-  border: 2px solid #6c757d;
+  /* border: 2px solid #6c757d; */
   margin: 3vw;
   padding: 3vw;
   border-radius: 10px;
+}
+
+.button-light {
+  width: 10vw;
+  background-color: #e8e8e8;
+  border: 2px solid #f05454;
+  border-radius: 5px;
+  color: #f05454;
+}
+
+.button-dark {
+  width: 10vw;
+  border-radius: 5px;
 }

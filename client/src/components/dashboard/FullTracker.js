@@ -27,40 +27,50 @@ export default class FullTracker extends Component {
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
-      if (challengeTracker[index] === 0) {
-        challengeTracker[index]++;
-      } else if (challengeTracker[index] === 1) {
-        challengeTracker[index]++;
-      } else {
-        challengeTracker[index]--;
+
+      if (event.target.id < this.props.challengeDay) {
+        if (challengeTracker[index] === 0) {
+          challengeTracker[index]++;
+        } else if (challengeTracker[index] === 1) {
+          challengeTracker[index]++;
+        } else {
+          challengeTracker[index]--;
+        }
+        // console.log('challenge tracker after click', challengeTracker);
+        // console.log('state after click', this.state);
+        this.setState({
+          [name]: value,
+        });
+        let userId = this.state.user._id;
+        const updatedUser = await axios.put(`/users/${userId}`, {
+          challenges: this.state.user.challenges,
+          rewards: this.state.user.rewards,
+        });
+        const refresh = this.props.refreshActiveChallengeDetails() 
       }
-      // console.log('challenge tracker after click', challengeTracker);
-      // console.log('state after click', this.state);
-      this.setState({
-        [name]: value,
-      });
-      let userId = this.state.user._id;
-      const updatedUser = await axios.put(`/users/${userId}`, {
-        challenges: this.state.user.challenges,
-        rewards: this.state.user.rewards,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
   };
 
+  notifications = () => {
+  
+  }
+
   componentDidMount = () => {
+
+    console.log(`props at mount`, this.props);
     this.setState({
       user: this.props.user,
     });
-    this.initialSetupTracker();
+
   };
 
   render() {
     let challengeTracker = this.props.challenge.tracker;
     return (
       <div className="full-tracker">
-        <div>tracker</div>
+        <p>click on a day to update the tracker</p>
 
         <div className="set-of-five-checkboxes">
           <TrackerButton
@@ -68,6 +78,7 @@ export default class FullTracker extends Component {
             user={this.props.user}
             handleChange={this.handleChange}
             challenge={this.props.challenge}
+            streakStatus={this.props.streakStatus}
           />
           <TrackerButton
             index="1"

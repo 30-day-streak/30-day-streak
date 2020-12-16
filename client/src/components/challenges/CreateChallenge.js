@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './CreateChallenge.css'
 
 export default class CreateChallenge extends Component {
   state = {
@@ -202,10 +203,10 @@ export default class CreateChallenge extends Component {
               </select>
             </div>
 
-            <button form="create-challenge-form" onClick={this.handleSubmitLater}>
-              Save challenge for later
+            <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+              Save for later
             </button>
-            <button form="create-challenge-form" onClick={this.handleSubmitStart}>Start challenge now!</button>
+            <button className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>Start now!</button>
           </form>
         </div>
       </>
