@@ -26,17 +26,24 @@ export default class Dashboard extends Component {
       if (arr[i] !== arr[i - 1]) s += " ";
       s += arr[i];
     }
+
+    // calculate total days successfully completed
+    const completed = s.split('1').length - 1
+
+    //split data into streaks
     let streaks = s.split(" ")
     streaks = streaks.filter(streak => streak[0] === "1")
+    //find longest streak
     let longest = 0
     streaks.forEach(streak => {
       let streakLength = streak.length;
       if (streakLength > longest) longest = streakLength;
     })
-    console.log(streaks)
+    //compile return array
     let output = {
       currentStreak: 0,
       longestStreak: longest,
+      daysCompleted: completed
     }
     if (arr[days - 1] === 1) {
       output.currentStreak = streaks[streaks.length - 1].length
