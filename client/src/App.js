@@ -6,8 +6,8 @@ import Login from './components/auth/Login';
 import CreateReward from "./components/CreateReward";
 import Navbar from './components/navbar/Navbar';
 import Challenges from './components/challenges/Challenges';
-import CreateChallenge from './components/CreateChallenge';
-import StartChallenge from './components/StartChallenge'
+import CreateChallenge from './components/challenges/CreateChallenge';
+import StartChallenge from './components/challenges/StartChallenge'
 import Rewards from './components/Rewards';
 // import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
@@ -64,11 +64,10 @@ class App extends Component {
             path='/login'
             render={props => <Login setUser={this.setUser} {...props} />}
           />
-      
           <Route
             exact
             path='/'
-            render={props => <Dashboard setUser={this.setUser} user={this.props.user} {...props} />}
+            render={props => <Dashboard setUser={this.setUser} user={this.state.user} {...props} />}
           />
           <Route
             exact
@@ -81,7 +80,7 @@ class App extends Component {
           <Route
             exact
             path='/challenges/create'
-            render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.props.user}/>}
+            render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.state.user}/>}
           />
           <Route
             exact
@@ -105,7 +104,7 @@ class App extends Component {
           <Route 
             exact
             path='/challenges/:id/start'
-            render={props => <StartChallenge setUser={this.setUser} {...props} user={this.props.user}/>}
+            render={props => <StartChallenge setUser={this.setUser} {...props} user={this.state.user}/>}
           />
 
       </Switch>

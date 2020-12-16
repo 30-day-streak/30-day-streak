@@ -102,7 +102,11 @@ export default class Dashboard extends Component {
     }
   } else {
     return (
-      <div>test</div>
+      <div>
+        Think about something you always wanted to add to your life and try it for the next 30 days.
+        30 days just about the right amount of time to add a new habit or substract a habit.
+        If you really want something badly enough, you can do ANYTHING for 30 days
+      </div>
     )
   }
   }
