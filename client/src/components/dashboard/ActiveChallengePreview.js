@@ -3,7 +3,13 @@ import axios from 'axios';
 import ActiveChallengeDetails from './ActiveChallengeDetails';
 
 export default class ActiveChallengePreview extends Component {
+
+  state = {
+    challengeDay: 0
+  }
+
   render() {
+
     return (
       <div className="active-preview">
         <div className="preview-title">
@@ -18,6 +24,9 @@ export default class ActiveChallengePreview extends Component {
         <ActiveChallengeDetails
           challenge={this.props.challenge}
           user={this.props.user}
+          challengeDay={this.state.challengeDay}
+          calculateChallengeDay={this.props.calculateChallengeDay}
+          streakStatus={this.props.streakStatus}
         />
       </div>
     );
