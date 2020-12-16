@@ -15,6 +15,15 @@ export default class ActiveChallengePreview extends Component {
     }));
   };
 
+  componentDidMount() {
+    const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
+    console.log({challengeDay});
+    this.setState({
+      challengeDay: challengeDay,
+    })
+    
+  }
+
   render() {
     return (
       <div className="active-preview">

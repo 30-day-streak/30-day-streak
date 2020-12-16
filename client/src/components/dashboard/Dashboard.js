@@ -13,14 +13,12 @@ export default class Dashboard extends Component {
   };
 
   calculateChallengeDay = (created_at) => {
-    const start = Math.floor([created_at] / 86400000)
-    const today = Math.ceil(new Date() / 86400000)
-    const trackingDay = today - start
-    return trackingDay
+    const startAsMilliseconds = new Date(created_at).getTime();
+    return Math.ceil(new Date() / 86400000) -
+      Math.floor([startAsMilliseconds] / 86400000);
   }
 
   streakStatus = (arr, days) => {
-    console.log(arr.length);
     let s = arr[0].toString();
     for (let i = 1; i < days; i++) {
       if (arr[i] !== arr[i - 1]) s += " ";
@@ -51,102 +49,102 @@ export default class Dashboard extends Component {
     return output
   }
 
-componentDidMount = async () => {
-  console.log('user id?', this.props.user._id);
-  // try {
-  //   let loggedinUser = await axios.get('/users/')
-  //   return loggedinUser
-  // } catch (error) {
-  //   console.log(error);
-  // }
-};
+  componentDidMount = async () => {
+    console.log('user id?', this.props.user._id);
+    // try {
+    //   let loggedinUser = await axios.get('/users/')
+    //   return loggedinUser
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
 
-render() {
-  if (this.props.user) {
-    const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
-    // users with no active challenges
-    const userHasActiveChallenges = this.props.user.challenges.some(
-      (challenge) => challenge.status === 'active'
-    );
+  render() {
+    if (this.props.user) {
+      const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
+      // users with no active challenges
+      const userHasActiveChallenges = this.props.user.challenges.some(
+        (challenge) => challenge.status === 'active'
+      );
 
-    if (!userHasActiveChallenges) {
-      return (
-        <div className="instruction-container">
-          <h2>
-            Welcome{' '}
-            {this.props.user.name
-              ? this.props.user.name
-              : this.props.user.username}
+      if (!userHasActiveChallenges) {
+        return (
+          <div className="instruction-container">
+            <h2>
+              Welcome{' '}
+              {this.props.user.name
+                ? this.props.user.name
+                : this.props.user.username}
             !{' '}
-          </h2>
-          <ol>
-            <li>
-              <Link to="/challenges">
-                <button>BROWSE</button>
-              </Link>{' '}
+            </h2>
+            <ol>
+              <li>
+                <Link to="/challenges">
+                  <button>BROWSE</button>
+                </Link>{' '}
               the existing challenges, or{' '}
-              <Link to="/challenges/create">
-                <button>CREATE</button>
-              </Link>{' '}
+                <Link to="/challenges/create">
+                  <button>CREATE</button>
+                </Link>{' '}
               your own. You can 'like' your favorite challenges and come back to
               them late when you're ready to start a challenge.
             </li>
-            <li>
-              <Link to="/rewards">
-                <button>BROWSE</button>
-              </Link>{' '}
+              <li>
+                <Link to="/rewards">
+                  <button>BROWSE</button>
+                </Link>{' '}
               the existing rewards or{' '}
-              <Link to="/rewards/create">
-                <button>CREATE</button>
-              </Link>{' '}
+                <Link to="/rewards/create">
+                  <button>CREATE</button>
+                </Link>{' '}
               your own motivate you. You get rewards when reaching a certain
               milestones. If you 'like' the ones that you favor, the reward will
               be generated amongst them.
             </li>
-            <li>Let the streak begin!</li>
-          </ol>
-        </div>
-      );
-
-      // users with active challenges
-    } else {
-      // this.reload()
-      // console.log('user from props', this.props.user);
-      return (
-        <>
-          <h2>
-            Welcome{' '}
-            {this.props.user.name
-              ? this.props.user.name
-              : this.props.user.username}
-            !{' '}
-          </h2>
-          <p>Your Active Challenges:</p>
-
-          <div className="dashboard-container">
-            {activeChallenges.map((challenge) => {
-              return (
-                <ActiveChallengePreview
-                  challenge={challenge}
-                  user={this.props.user}
-                  calculateChallengeDay={this.calculateChallengeDay}
-                  streakStatus={this.streakStatus}
-                />
-              );
-            })}
+              <li>Let the streak begin!</li>
+            </ol>
           </div>
-        </>
-      );
-      // builing the view for the logged in users here now
+        );
+
+        // users with active challenges
+      } else {
+        // this.reload()
+        // console.log('user from props', this.props.user);
+        return (
+          <>
+            <h2>
+              Welcome{' '}
+              {this.props.user.name
+                ? this.props.user.name
+                : this.props.user.username}
+            !{' '}
+            </h2>
+            <p>Your Active Challenges:</p>
+
+            <div className="dashboard-container">
+              {activeChallenges.map((challenge) => {
+                return (
+                  <ActiveChallengePreview
+                    challenge={challenge}
+                    user={this.props.user}
+                    calculateChallengeDay={this.calculateChallengeDay}
+                    streakStatus={this.streakStatus}
+                  />
+                );
+              })}
+            </div>
+          </>
+        );
+        // builing the view for the logged in users here now
+      }
+    } else {
+      return (
+        <div>
+          Think about something you always wanted to add to your life and try it for the next 30 days.
+          30 days just about the right amount of time to add a new habit or substract a habit.
+          If you really want something badly enough, you can do ANYTHING for 30 days
+        </div>
+      )
     }
-  } else {
-    return (
-      <div>
-        Think about something you always wanted to add to your life and try it for the next 30 days.
-        30 days just about the right amount of time to add a new habit or substract a habit.
-        If you really want something badly enough, you can do ANYTHING for 30 days
-      </div>
-    )
   }
-}
 }
