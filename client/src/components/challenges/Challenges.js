@@ -76,18 +76,18 @@ export default class Challenges extends Component {
           <Link to="/challenges/create"><img src="/images/plus.png" /></Link>
         </div>
         <div className="challenges-container">
-        {
-          filtered.map(challenge => {
-            return (
-              <OneChallenge 
-                  challenge={ challenge }
-                  user={ this.props.user}
-                  getData={ this.getData }
-                  filtered={ filtered }
-              />
-            )
-          })
-        }
+          {
+            filtered.map(challenge => {
+              return (
+                <OneChallenge 
+                    challenge={ challenge }
+                    user={ this.props.user}
+                    getData={ this.getData }
+                    filtered={ filtered }
+                />
+              )
+            })
+          }
         </div>
       </div>
     )

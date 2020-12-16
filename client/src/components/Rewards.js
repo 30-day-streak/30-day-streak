@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Filter from './filter/Filter';
 import OneReward from './OneReward';
 import './challenges/Challenges.css';
-// import CreateReward from './CreateReward';
+import CreateReward from './CreateReward';
 
 export default class Rewards extends Component {
 
@@ -70,25 +70,29 @@ export default class Rewards extends Component {
             categories={ categories }
             setFilter={ this.setFilter }
           />
-          <Link to="/rewards/create"><img src="/images/plus.png" /></Link>
+          {/* <Link to="/rewards/create"><img src="/images/plus.png" /></Link> */}
         </div>
         
-        {/* <CreateReward {...this.props} forceRewardListUpdate={this.getData}/> */}
+        <CreateReward {...this.props} forceRewardListUpdate={this.getData}/>
 
-        {filtered.map(reward => {
-          return (
-            <div key={reward._id}>
-              <OneReward
-                reward={ reward }
-                user={ this.props.user}
-                filtered={ filtered }
-                getData={ this.getData }
-                // setUser={ this.props.setUser }
-                // toggleFavoriteReward = { this.props.toggleFavoriteReward }
-              />
-            </div>
-          )
-        })}
+        <div className="challenges-container">
+          { 
+            filtered.map(reward => {
+              return (
+                <div key={reward._id}>
+                  <OneReward
+                    reward={ reward }
+                    user={ this.props.user}
+                    filtered={ filtered }
+                    getData={ this.getData }
+                    // setUser={ this.props.setUser }
+                    // toggleFavoriteReward = { this.props.toggleFavoriteReward }
+                  />
+                </div>
+              ) 
+            })
+          }
+        </div>
       </div>
     )
   }
