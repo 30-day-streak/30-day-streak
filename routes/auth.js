@@ -60,22 +60,28 @@ router.post('/login', (req, res) => {
       if (err) {
         return res.status(500).json({ message: 'Error while attempting to login' })
       }
-      return res.status(200).json(user);
+      User.findById(user._id).populate('challenges.id').populate('rewards')
+      .then(user => {
+        return res.status(200).json(user);
+      })
     })
   })(req, res)
 });
 
 router.delete('/logout', (req, res) => {
   req.logout();
-  res.json({ message: 'Successful logout' });
+  res.json({ message: 'Successful logout' })
 })
 
 router.get('/loggedin', (req, res) => {
-  console.log('req from backend', req.user._id);
-  User.findById(req.user._id).populate('challenges.id').populate('rewards')
-  .then(response => {
-    res.json(response)})
-  // res.json(req.user);
+  if (req.user) {
+    User.findById(req.user._id).populate('challenges.id').populate('rewards')
+    .then(response => {
+      console.log(response)
+      res.json(response)})
+  } else {
+    res.json(req.user);
+  }
 })
 
 module.exports = router;
