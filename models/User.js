@@ -30,12 +30,12 @@ const userSchema = new Schema({
     startDate: Date,
     grandPrize: String
   }],
-  rewards: [{type: Schema.Types.ObjectId, ref: 'Reward'}],
-  subGoals7DayStreak: Boolean,
-  subGoal21DayStreak: Boolean,
-  notification15days: Boolean,
-  notification28Days: Boolean,
-  notificationComplete: Boolean
+  rewards: [{type: Schema.Types.ObjectId, ref: 'Reward'}]
+  // subGoals7DayStreak: Boolean,
+  // subGoal21DayStreak: Boolean,
+  // notification15days: Boolean,
+  // notification28Days: Boolean,
+  // notificationComplete: Boolean
 }, {
   timestamps: true
 });

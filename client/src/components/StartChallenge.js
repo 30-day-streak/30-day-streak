@@ -63,7 +63,8 @@ export default class StartChallenge extends Component {
       if (alreadyInUser) {
         user = user.challenges.map((challenge) => {
           if (challenge.id._id === challengeId) {
-            console.log('match');
+            // console.log('match');
+            // console.log('challenge.status', challenge.status);
             challenge.status = 'active';
             challenge.startDate = new Date();
             challenge.tracker = [
@@ -100,6 +101,7 @@ export default class StartChallenge extends Component {
             ];
             challenge.grandPrize = this.state.prize
           }
+          // console.log('challenge after update', challenge);
           return challenge;
         });
       } else {
@@ -145,7 +147,9 @@ export default class StartChallenge extends Component {
       this.setState({
         user: this.props.user,
       });
-      console.log('user after set state', this.state.user);
+      console.log('user challlenges after set state', this.state.user.challenges);
+      console.log('user rewards after set state', this.state.user.rewards);
+
 
       const updatedUser = await axios.put(`/users/${userId}`, {
         challenges: this.state.user.challenges,

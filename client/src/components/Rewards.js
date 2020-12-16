@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import Filter from './filter/Filter';
 import OneReward from './OneReward';
-import CreateReward from './CreateReward'
+// import './challenges/Challenges.css';
+import CreateReward from './CreateReward';
 
 export default class Rewards extends Component {
 
@@ -13,8 +15,6 @@ export default class Rewards extends Component {
     categoryFilter: '',
     favoritesFilter: false,
   }
-
-
 
   getData = () => {
     axios.get('/rewards')
@@ -63,26 +63,36 @@ export default class Rewards extends Component {
 
     return (
       <div>
-        <Filter 
-          categories={ categories }
-          setFilter={ this.setFilter }
-        />
+        <div className="tool-bar">
+          <Filter 
+            // challenges={ this.state.challenges }
+            // user={ this.props.user}
+            categories={ categories }
+            setFilter={ this.setFilter }
+          />
+          {/* <Link to="/rewards/create"><img src="/images/plus.png" /></Link> */}
+        </div>
+        
         <CreateReward {...this.props} forceRewardListUpdate={this.getData}/>
-        {filtered.map(reward => {
-          return (
-            <div key={reward._id}>
-              <OneReward
-                reward={ reward }
-                user={ this.props.user}
-                filtered={ filtered }
-                getData={ this.getData }
-                setUser={ this.props.setUser }
-                // toggleFavoriteReward = { this.props.toggleFavoriteReward }
-              />
-            </div>
-          )
-        })}
 
+        <div className="challenges-container">
+          { 
+            filtered.map(reward => {
+              return (
+                <div key={reward._id}>
+                  <OneReward
+                    reward={ reward }
+                    user={ this.props.user}
+                    filtered={ filtered }
+                    getData={ this.getData }
+                    // setUser={ this.props.setUser }
+                    // toggleFavoriteReward = { this.props.toggleFavoriteReward }
+                  />
+                </div>
+              ) 
+            })
+          }
+        </div>
       </div>
     )
   }
