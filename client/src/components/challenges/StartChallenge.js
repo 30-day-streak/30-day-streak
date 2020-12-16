@@ -99,7 +99,7 @@ export default class StartChallenge extends Component {
               0,
               0,
             ];
-            challenge.grandPrize = this.state.prize
+            challenge.grandPrize = this.state.prize;
           }
           // console.log('challenge after update', challenge);
           return challenge;
