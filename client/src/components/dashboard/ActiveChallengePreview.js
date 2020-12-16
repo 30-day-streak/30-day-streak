@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ActiveChallengeDetails from './ActiveChallengeDetails';
+import TrackerButton from './TrackerButton'
 
 export default class ActiveChallengePreview extends Component {
   state = {
@@ -29,7 +30,12 @@ export default class ActiveChallengePreview extends Component {
             {this.props.challenge.id.dailyTarget.unit}
           </p>
           <p>
-            Today: 
+            Today: <TrackerButton
+            index="100"
+            user={this.props.user}
+            handleChange={this.handleChange}
+            challenge={this.props.challenge}
+          />
           </p>
           {this.state.activeChallengeDetails && (
             <ActiveChallengeDetails
