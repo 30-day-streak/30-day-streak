@@ -28,6 +28,9 @@ export default class ActiveChallengePreview extends Component {
             {this.props.challenge.id.dailyTarget.number}{' '}
             {this.props.challenge.id.dailyTarget.unit}
           </p>
+          <p>
+            Today: 
+          </p>
           {this.state.activeChallengeDetails && (
             <ActiveChallengeDetails
               challenge={this.props.challenge}
