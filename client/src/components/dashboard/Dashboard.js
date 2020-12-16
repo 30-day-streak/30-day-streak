@@ -102,10 +102,16 @@ export default class Dashboard extends Component {
     }
   } else {
     return (
-      <div>
+      <div welcome-container>
         Think about something you always wanted to add to your life and try it for the next 30 days.
         30 days just about the right amount of time to add a new habit or substract a habit.
         If you really want something badly enough, you can do ANYTHING for 30 days
+
+        Small sustainable changes are more likely to stick. 
+
+        So... what are you waiting for?
+        The next 30 days are going to pass whether you liek it or not, so why not think about something you have always wanted to try.. for the next 30 days?
+
       </div>
     )
   }
