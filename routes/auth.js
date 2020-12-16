@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 router.post('/signup', (req, res, next) => {
+  console.log('signup', req.body);
   const { username, password, firstName, lastName, email } = req.body;
 
   if (password.length < 8) {
@@ -23,7 +24,6 @@ router.post('/signup', (req, res, next) => {
         // hash the password, create the user and send the user to the client
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-
         User.create({
           username,
           password: hash,
