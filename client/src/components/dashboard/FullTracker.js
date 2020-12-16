@@ -6,7 +6,6 @@ import TrackerButton from './TrackerButton';
 export default class FullTracker extends Component {
   state = {
     user: '',
-    challengeDay: 0,
   };
 
   initialSetupTracker = () => {
@@ -28,7 +27,7 @@ export default class FullTracker extends Component {
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
-      console.log(`event`, event.target);
+
       if (event.target.id <= this.props.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
