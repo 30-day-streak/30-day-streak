@@ -7,7 +7,6 @@ import './Challenges.css';
 
 export default class Challenges extends Component {
 
-
   state = {
     challenges: [],
     //filter
@@ -69,8 +68,8 @@ export default class Challenges extends Component {
       <div>
         <div className="tool-bar">
           <Filter 
-            challenges={ this.state.challenges }
-            user={ this.props.user}
+            // challenges={ this.state.challenges }
+            // user={ this.props.user}
             categories={ categories }
             setFilter={ this.setFilter }
           />

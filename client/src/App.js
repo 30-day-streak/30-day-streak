@@ -9,10 +9,10 @@ import Challenges from './components/challenges/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
-import axios from 'axios';
+// import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
-import Notifications from './components/Notifications';
-import { compare } from 'bcrypt';
+// import Notifications from './components/Notifications';
+// import { compare } from 'bcrypt';
 
 class App extends Component {
 
@@ -86,23 +86,23 @@ class App extends Component {
           />
           <Route
             exact
-            path="/CreateReward"
+            path="/rewards/create"
             render={props => <CreateReward setUser={this.setUser} {...props} />}
           />
-        <Route
-          exact
-          path='/rewards'
-          render={props => {
-            if (this.state.user) return (
-            <Rewards
-              {...props}
-              user={this.state.user}
-              setUser={this.setUser}
-              // toggleFavoriteReward={this.toggleFavoriteReward}
-            />)
-            else return (<Redirect to='/' />)
-          }}
-        />
+          <Route
+            exact
+            path='/rewards'
+            render={props => {
+              if (this.state.user) return (
+              <Rewards
+                {...props}
+                user={this.state.user}
+                setUser={this.setUser}
+                // toggleFavoriteReward={this.toggleFavoriteReward}
+              />)
+              else return (<Redirect to='/' />)
+            }}
+          />
           <Route 
             exact
             path='/challenges/:id/start'

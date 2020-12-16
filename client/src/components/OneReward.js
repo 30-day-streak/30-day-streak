@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
+import './challenges/Challenges.css';
 
 export default class OneReward extends Component {
+
   state = {
-    favorite: false
+    favorite: '',
   };
 
   toggleFavorite = () => {
@@ -41,7 +43,6 @@ export default class OneReward extends Component {
     
     // refresh data
     this.props.getData()
-    console.log('refresh')
   }
 
   initialSetUp = () => {
@@ -59,25 +60,24 @@ export default class OneReward extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('this', this.state.favorite, 'prev', prevState.favorite, prevState.favorite !== this.state.favorite)
     if (prevProps.filtered.length !== this.props.filtered.length) {
-      console.log('toggle')
       this.initialSetUp()
     }
   }
 
   render() {
     return (
-      <form className="card" key={this.props.reward._id}>
+      <div className="card" key={this.props.reward._id}>
         <div className="card-header">
-          <p>{this.props.reward._id}</p>
-          <h2>{this.props.reward.name}</h2>
+          <p>{ this.props.reward.category }</p>
+          <img src={ this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} onClick={this.toggleFavorite} alt="favorite" />
         </div>
-        { this.props.reward.description && <p>{this.props.reward.description}</p>}
-        <p>{this.props.reward.category}</p>
+        <h3>{ this.props.reward.name }</h3>
+        <hr/>
+        <p>{ this.props.reward.description && this.props.reward.description }</p>
+  
         { this.props.reward.url && <a href="{this.props.reward.url}">Link</a>}
-        <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} style={{ width: "50px" }} onClick={this.toggleFavorite} alt="favorite" />
-      </form>
+      </div>
     )
   }
 }

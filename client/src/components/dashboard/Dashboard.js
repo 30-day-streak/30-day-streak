@@ -26,9 +26,9 @@ export default class Dashboard extends Component {
   // };
 
   render() {
-
+    console.log(this.props.user)
     if (this.props.user) {
-
+    
     const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
     // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(
