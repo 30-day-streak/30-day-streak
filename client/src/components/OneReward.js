@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import axios from 'axios';
+import axios from 'axios';
 
 export default class OneReward extends Component {
   state = {
@@ -9,13 +9,36 @@ export default class OneReward extends Component {
   toggleFavorite = () => {
     const newFavorite = !this.state.favorite
 
-    this.props.toggleFavoriteReward(this.props.reward._id, newFavorite);
+    // 1. via Apps.js
+    // this.props.toggleFavoriteReward(this.props.reward._id, newFavorite);
+
+    // 2. the way it's done with challenges / different route
+    const rewardID = this.props.reward._id;
+    axios.put(`/users/${rewardID}/rewardsfavorite`, {
+      favorite: newFavorite,
+    })
+
+    // 3. toggleFavoriteReward but moved from App.js
+    // const updatedUser = this.props.user;
+    // if (newFavorite) updatedUser.rewards.push(this.props.reward._id);
+    // else {
+    //   updatedUser.rewards.pop(this.props.reward._id);
+    // }
+    // this.props.setUser(updatedUser);
+    // axios.put(`/users/${updatedUser._id}`, {
+    //   rewards: updatedUser.rewards
+    // })
+
+    //update state
     this.setState({ favorite: newFavorite });
+    
+    // refresh data
+    this.props.getData()
   }
 
   initialSetUp = () => {
     const foundInUserFavorites = this.props.user.rewards.some(reward => {
-      return reward === this.props.reward._id;
+      return reward._id === this.props.reward._id;
     })
 
     this.setState({
@@ -28,7 +51,7 @@ export default class OneReward extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.filtered !== this.props.filtered) {
+    if (prevProps.filtered.length != this.props.filtered.length) {
       this.initialSetUp()
     }
   }

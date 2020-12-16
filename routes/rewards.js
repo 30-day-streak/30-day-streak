@@ -7,8 +7,7 @@ const Reward = require('../models/Reward');
 router.get('/', (req, res, next) => {
   Reward.find()
     .then(rewards => {
-      console.log(rewards);
-
+      // console.log(rewards);
       res.status(200).json(rewards);
     })
     .catch(err => {

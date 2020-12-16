@@ -25,30 +25,30 @@ class App extends Component {
     })
   }
 
-  toggleFavoriteReward = (rewardId, favStatus) => {
-    console.log(`toggling`, rewardId, favStatus);
-    const updatedUser = this.state.user
-    if (favStatus) {
-      updatedUser.rewards.push(rewardId);
-      console.log(`updated user rewards`, updatedUser.rewards);
-    } else {
-      updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
-        console.log({ profileRewardId }, { rewardId })
-        return profileRewardId !== rewardId
-      });
-      console.log(`updated user rewards`, updatedUser.rewards);
-    }
-    this.setState({
-      user: updatedUser
-    })
-    axios.put(`/users/${updatedUser._id}`, {
-      challenges: updatedUser.challenges,
-      rewards: updatedUser.rewards
-    })
-  }
+  // toggleFavoriteReward = (rewardId, favStatus) => {
+  //   console.log(`toggling`, rewardId, favStatus);
+  //   const updatedUser = this.state.user
+  //   if (favStatus) {
+  //     updatedUser.rewards.push(rewardId);
+  //     console.log(`updated user rewards`, updatedUser.rewards);
+  //   } else {
+  //     updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
+  //       console.log({ profileRewardId }, { rewardId })
+  //       return profileRewardId !== rewardId
+  //     });
+  //     console.log(`updated user rewards`, updatedUser.rewards);
+  //   }
+  //   this.setState({
+  //     user: updatedUser
+  //   })
+  //   axios.put(`/users/${updatedUser._id}`, {
+  //     challenges: updatedUser.challenges,
+  //     rewards: updatedUser.rewards
+  //   })
+  // }
 
   render() {
-    // console.log('user from app page', this.props.user);
+    console.log('user from app page', this.props.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -92,14 +92,14 @@ class App extends Component {
           exact
           path='/rewards'
           render={props => {
-            if (this.state.user) return <
-              Rewards
+            if (this.state.user) return (
+            <Rewards
               {...props}
               user={this.state.user}
               setUser={this.setUser}
-              toggleFavoriteReward={this.toggleFavoriteReward}
-            />
-            else return <Redirect to='/' />
+              // toggleFavoriteReward={this.toggleFavoriteReward}
+            />)
+            else return (<Redirect to='/' />)
           }}
         />
           <Route 

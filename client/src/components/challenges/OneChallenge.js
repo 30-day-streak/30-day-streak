@@ -13,20 +13,19 @@ export default class OneChallenge extends Component {
   toggleFavorite = () => {
     const newFavorite = !this.state.favorite;
     // change state
-    this.setState({ 
-      favorite: newFavorite
-    });
+    this.setState({ favorite: newFavorite });
     // update database
     const challengeID = this.props.challenge._id;
-    axios.put(`/users/${challengeID}/status`, {
-      favorite: newFavorite
+    axios.put(`/users/${challengeID}/challengesfavorite`, {
+      favorite: newFavorite,
     })
+    //refresh displayed information
     this.props.getData()
   }
 
   initialSetUp = () => {
-
     //find instead of some?
+    // console.log(this.props.user.challenges)
     const foundInUserFavorites = this.props.user.challenges.some(challenge => {
       return challenge.id._id === this.props.challenge._id && challenge.status === 'favorite'
     })
@@ -41,13 +40,12 @@ export default class OneChallenge extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.filtered !== this.props.filtered) {
+    if (prevProps.filtered.length != this.props.filtered.length) {
       this.initialSetUp()
     }
   }
 
   render() {
-    // console.log(this.state)
     return (
       <>
       {/* <div class="container center"> */}

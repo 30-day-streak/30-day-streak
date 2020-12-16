@@ -51,7 +51,6 @@ export default class Rewards extends Component {
 
   render() {
     const filtered = this.filter();
-    console.log(filtered.length)
 
     const categories = this.state.rewards.map(reward => { return reward.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
@@ -71,6 +70,7 @@ export default class Rewards extends Component {
                 user={ this.props.user}
                 filtered={ filtered }
                 getData={ this.getData }
+                setUser={ this.props.setUser }
                 toggleFavoriteReward = { this.props.toggleFavoriteReward }
               />
             </div>
