@@ -28,7 +28,7 @@ export default class FullTracker extends Component {
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
 
-      if (event.target.id <= this.props.challengeDay) {
+      if (event.target.id < this.props.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
         } else if (challengeTracker[index] === 1) {
@@ -46,11 +46,16 @@ export default class FullTracker extends Component {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
+        const refresh = this.props.refreshActiveChallengeDetails() 
       }
       } catch (error) {
         console.log(error);
       }
   };
+
+  notifications = () => {
+  
+  }
 
   componentDidMount = () => {
 
@@ -73,6 +78,7 @@ export default class FullTracker extends Component {
             user={this.props.user}
             handleChange={this.handleChange}
             challenge={this.props.challenge}
+            streakStatus={this.props.streakStatus}
           />
           <TrackerButton
             index="1"
