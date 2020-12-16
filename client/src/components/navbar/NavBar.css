@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #696D7D;
+  background-color: #30475e;
   padding: 15px 20px;
 }
 
@@ -12,9 +12,10 @@
 }
 
 .link {
-  color: #FAF3DD;
-  margin-right: 20px;
+  color: #e8e8e8;
+  margin-right: 40px;
   font-size: 1.2rem;
   text-decoration: none;
   font-weight: 600;
 }
+
