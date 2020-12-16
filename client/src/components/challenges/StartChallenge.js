@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Challenges from './Challenges';
 import  { Redirect } from 'react-router-dom'
+import './StartChallenge.css'
 
 
 export default class StartChallenge extends Component {
@@ -147,10 +148,8 @@ export default class StartChallenge extends Component {
       this.setState({
         user: this.props.user,
       });
-      console.log('user challlenges after set state', this.state.user.challenges);
-      console.log('user rewards after set state', this.state.user.rewards);
-
-
+      // console.log('user challlenges after set state', this.state.user.challenges);
+      // console.log('user rewards after set state', this.state.user.rewards);
       const updatedUser = await axios.put(`/users/${userId}`, {
         challenges: this.state.user.challenges,
         rewards: this.state.user.rewards,
@@ -169,9 +168,9 @@ export default class StartChallenge extends Component {
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">
           <h1>Congratulations!</h1>
-          <h2>
+          <p>
             Here is the information for the CHALLENGE you're starting TODAY!
-          </h2>
+          </p>
           <h3>{this.state.title}</h3>
           <p>Goal: {this.state.goal}</p>
           <p>
@@ -189,7 +188,7 @@ export default class StartChallenge extends Component {
               onChange={this.handleChange}
               required
             />
-            <button type="submit" onSubmit={this.handleSubmit}>
+            <button className="button-dark" type="submit" onSubmit={this.handleSubmit}>
               Let's do it!
             </button>
           </form>
