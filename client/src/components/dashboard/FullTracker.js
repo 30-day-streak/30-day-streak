@@ -65,7 +65,7 @@ export default class FullTracker extends Component {
     let challengeTracker = this.props.challenge.tracker;
     return (
       <div className="full-tracker">
-        <div>tracker</div>
+        <p>click on a day to update the tracker</p>
 
         <div className="set-of-five-checkboxes">
           <TrackerButton

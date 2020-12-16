@@ -15,40 +15,40 @@ export default class ActiveChallengePreview extends Component {
     }));
   };
 
-  // handleChange = async (event) => {
-  //   try {
-  //     const target = event.target;
-  //     const value = target.checked;
-  //     const name = target.id;
-  //     // console.log('user tracker array', this.state.user.challenges[0].tracker);
-  //     let challengeTracker = this.props.challenge.tracker;
-  //     console.log('challengeTracker', challengeTracker);
-  //     let index = target.id;
-  //     console.log('challengeDay', this.state.challengeDay);
-  //     if (event.target.id <= this.props.challengeDay) {
-  //       if (challengeTracker[index] === 0) {
-  //         challengeTracker[index]++;
-  //       } else if (challengeTracker[index] === 1) {
-  //         challengeTracker[index]++;
-  //       } else {
-  //         challengeTracker[index]--;
-  //       }
-  //       // console.log('challenge tracker after click', challengeTracker);
-  //       // console.log('state after click', this.state);
-  //       this.setState({
-  //         [name]: value,
-  //       });
-  //       let userId = this.state.user._id;
-  //       const updatedUser = await axios.put(`/users/${userId}`, {
-  //         challenges: this.state.user.challenges,
-  //         rewards: this.state.user.rewards,
-  //       });
-  //     }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  // };
-  
+  handleChange = async (event) => {
+    try {
+      const target = event.target;
+      const value = target.checked;
+      const name = target.id;
+      // console.log('user tracker array', this.state.user.challenges[0].tracker);
+      let challengeTracker = this.props.challenge.tracker;
+      console.log('challengeTracker', challengeTracker);
+      let index = target.id;
+      console.log('challengeDay', this.state.challengeDay);
+      if (event.target.id <= this.state.challengeDay) {
+        if (challengeTracker[index] === 0) {
+          challengeTracker[index]++;
+        } else if (challengeTracker[index] === 1) {
+          challengeTracker[index]++;
+        } else {
+          challengeTracker[index]--;
+        }
+        // console.log('challenge tracker after click', challengeTracker);
+        // console.log('state after click', this.state);
+        this.setState({
+          [name]: value,
+        });
+        let userId = this.state.user._id;
+        const updatedUser = await axios.put(`/users/${userId}`, {
+          challenges: this.state.user.challenges,
+          rewards: this.state.user.rewards,
+        });
+      }
+      } catch (error) {
+        console.log(error);
+      }
+  };
+
   componentDidMount() {
     const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
     console.log({challengeDay});
@@ -73,7 +73,7 @@ export default class ActiveChallengePreview extends Component {
         </p>
         <p>
           Today: <TrackerButton
-            index="0"
+            index={this.state.challengeDay}
             user={this.props.user}
             handleChange={this.handleChange}
             challenge={this.props.challenge}
@@ -89,7 +89,8 @@ export default class ActiveChallengePreview extends Component {
             streakStatus={this.props.streakStatus}
           />
         )}
-        <button onClick={this.toggleChallengeDetails}>Details</button>
+        {!this.state.activeChallengeDetails && <button className="button-light" onClick={this.toggleChallengeDetails}>show details</button>}
+        {this.state.activeChallengeDetails && <button className="button-light" onClick={this.toggleChallengeDetails}>hide details</button>}
       </div>
     );
 

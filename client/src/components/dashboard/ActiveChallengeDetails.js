@@ -10,7 +10,7 @@ export default class ActiveChallengeDetails extends Component {
     console.log(`current streak ${currentStreak}, Longest streak ${longestStreak}`);
     const daysLeft = 30 - this.props.challengeDay
 
-   return (
+  return (
       <div className="activeContainer">
         <p className="progress">Progress</p>
         <div className="active-challenge-details-user-info-container">
