@@ -6,6 +6,7 @@ import TrackerButton from './TrackerButton';
 export default class FullTracker extends Component {
   state = {
     user: '',
+    challengeDay: 0,
   };
 
   initialSetupTracker = () => {
@@ -27,33 +28,38 @@ export default class FullTracker extends Component {
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
-      if (challengeTracker[index] === 0) {
-        challengeTracker[index]++;
-      } else if (challengeTracker[index] === 1) {
-        challengeTracker[index]++;
-      } else {
-        challengeTracker[index]--;
+      console.log(`event`, event.target);
+      if (event.target.id <= this.props.challengeDay) {
+        if (challengeTracker[index] === 0) {
+          challengeTracker[index]++;
+        } else if (challengeTracker[index] === 1) {
+          challengeTracker[index]++;
+        } else {
+          challengeTracker[index]--;
+        }
+        // console.log('challenge tracker after click', challengeTracker);
+        // console.log('state after click', this.state);
+        this.setState({
+          [name]: value,
+        });
+        let userId = this.state.user._id;
+        const updatedUser = await axios.put(`/users/${userId}`, {
+          challenges: this.state.user.challenges,
+          rewards: this.state.user.rewards,
+        });
       }
-      // console.log('challenge tracker after click', challengeTracker);
-      // console.log('state after click', this.state);
-      this.setState({
-        [name]: value,
-      });
-      let userId = this.state.user._id;
-      const updatedUser = await axios.put(`/users/${userId}`, {
-        challenges: this.state.user.challenges,
-        rewards: this.state.user.rewards,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
   };
 
   componentDidMount = () => {
+
+    console.log(`props at mount`, this.props);
     this.setState({
       user: this.props.user,
     });
-    this.initialSetupTracker();
+
   };
 
   render() {

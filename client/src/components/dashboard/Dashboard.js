@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import './Dashboard.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ActiveChallengePreview from './ActiveChallengePreview';
 import ActiveChallengeDetails from './ActiveChallengeDetails';
 import axios from 'axios';
@@ -12,20 +12,57 @@ export default class Dashboard extends Component {
     reload: true,
   };
 
-  componentDidMount = async () => {
-    // console.log('user id?', this.props.user._id);
-    // try {
-    //   let loggedinUser = await axios.get('/users/')
-    //   return loggedinUser
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
+  calculateChallengeDay = (created_at) => {
+    const start = Math.floor([created_at] / 86400000)
+    const today = Math.ceil(new Date() / 86400000)
+    const trackingDay = today - start
+    return trackingDay
+  }
 
-  render() {
-    console.log(this.props.user)
-    if (this.props.user) {
-    
+  streakStatus = (arr, days) => {
+    console.log(arr.length);
+    let s = arr[0].toString();
+    for (let i = 1; i < days; i++) {
+      if (arr[i] !== arr[i - 1]) s += " ";
+      s += arr[i];
+    }
+
+    // calculate total days successfully completed
+    const completed = s.split('1').length - 1
+
+    //split data into streaks
+    let streaks = s.split(" ")
+    streaks = streaks.filter(streak => streak[0] === "1")
+    //find longest streak
+    let longest = 0
+    streaks.forEach(streak => {
+      let streakLength = streak.length;
+      if (streakLength > longest) longest = streakLength;
+    })
+    //compile return array
+    let output = {
+      currentStreak: 0,
+      longestStreak: longest,
+      daysCompleted: completed
+    }
+    if (arr[days - 1] === 1) {
+      output.currentStreak = streaks[streaks.length - 1].length
+    }
+    return output
+  }
+
+componentDidMount = async () => {
+  console.log('user id?', this.props.user._id);
+  // try {
+  //   let loggedinUser = await axios.get('/users/')
+  //   return loggedinUser
+  // } catch (error) {
+  //   console.log(error);
+  // }
+};
+
+render() {
+  if (this.props.user) {
     const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
     // users with no active challenges
     const userHasActiveChallenges = this.props.user.challenges.some(
@@ -92,6 +129,8 @@ export default class Dashboard extends Component {
                 <ActiveChallengePreview
                   challenge={challenge}
                   user={this.props.user}
+                  calculateChallengeDay={this.calculateChallengeDay}
+                  streakStatus={this.streakStatus}
                 />
               );
             })}
@@ -109,5 +148,5 @@ export default class Dashboard extends Component {
       </div>
     )
   }
-  }
+}
 }
