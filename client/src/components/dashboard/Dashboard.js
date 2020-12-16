@@ -49,15 +49,8 @@ export default class Dashboard extends Component {
     return output
   }
 
-  componentDidMount = async () => {
-    console.log('user id?', this.props.user._id);
-    // try {
-    //   let loggedinUser = await axios.get('/users/')
-    //   return loggedinUser
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
+componentDidMount = async () => {
+};
 
   render() {
     if (this.props.user) {
