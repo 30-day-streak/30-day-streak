@@ -93,6 +93,8 @@ body {
   }
 }
 
+<<<<<<< HEAD
+=======
 /* NavBar */
 /* nav {
   background-color:  #f67358
@@ -116,7 +118,7 @@ body {
 /* Create Challenges CSS */
 
 
->>>>>>> 087e5619de917e548936ef1850170d9cd0f6642e
+
 
 /* Start Challenge CSS */
 
@@ -147,6 +149,7 @@ body {
   padding: 3vw;
   border-radius: 10px;
 }
+
 
 .button-light {
   width: 10vw;
