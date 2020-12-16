@@ -204,9 +204,9 @@ export default class CreateChallenge extends Component {
             </div>
 
             <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
-              Save challenge for later
+              Save for later
             </button>
-            <button className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>Start challenge now!</button>
+            <button className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>Start now!</button>
           </form>
         </div>
       </>
