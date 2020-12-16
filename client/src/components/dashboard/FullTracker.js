@@ -57,8 +57,9 @@ export default class FullTracker extends Component {
 
 
   render() {
-    // console.log(this.state);
+    // console.log('props from tracker render', this.props.challenge);
     // console.log('props from full tracker page', this.props);
+    // const activeChallenge = 
     let challengeTracker = this.props.challenge.tracker;
     return (
       <div className="full-tracker">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Filter from './filter/Filter';
 import OneReward from './OneReward';
 import CreateReward from './CreateReward'
+import Filter from './filter/Filter';
 
 export default class Rewards extends Component {
 
@@ -14,9 +15,13 @@ export default class Rewards extends Component {
     favoritesFilter: false,
   }
 
+
+
   getData = () => {
     axios.get('/rewards')
       .then(response => {
+        console.log({ response });
+
         this.setState({
           rewards: response.data
         })
@@ -47,6 +52,8 @@ export default class Rewards extends Component {
 
   componentDidMount() {
     this.getData();
+    console.log(`props`, this.props);
+
   }
 
   render() {

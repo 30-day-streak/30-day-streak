@@ -11,7 +11,8 @@ import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
 import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
-
+import Notifications from './components/Notifications';
+import { compare } from 'bcrypt';
 
 class App extends Component {
 
