@@ -18,7 +18,7 @@ export default class Challenges extends Component {
 
   getData = () => {
     axios.get('/challenges')
-      .then(response => {
+      .then(response => {        
         this.setState({
           challenges: response.data
         })
