@@ -3,7 +3,7 @@ import axios from 'axios';
 import Filter from './filter/Filter';
 import OneReward from './OneReward';
 import CreateReward from './CreateReward'
-import Filter from './filter/Filter';
+// import Filter from './filter/Filter';
 
 export default class Rewards extends Component {
 
