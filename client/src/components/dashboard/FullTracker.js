@@ -56,9 +56,6 @@ export default class FullTracker extends Component {
   };
 
   render() {
-    if (!this.props.challenge.id.title) {
-      window.location.reload(false);
-    } else {
       // console.log('props from tracker render', this.props.challenge);
       // console.log('props from full tracker page', this.props);
       // const activeChallenge =
@@ -443,6 +440,5 @@ export default class FullTracker extends Component {
           </div>
         </div>
       );
-    }
   }
 }
