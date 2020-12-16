@@ -5,13 +5,14 @@ import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import CreateReward from "./components/CreateReward";
 import Navbar from './components/navbar/Navbar';
-import Challenges from './components/Challenges';
+import Challenges from './components/challenges/Challenges';
 import CreateChallenge from './components/CreateChallenge';
 import StartChallenge from './components/StartChallenge'
 import Rewards from './components/Rewards';
 import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
-
+import Notifications from './components/Notifications';
+import { compare } from 'bcrypt';
 
 class App extends Component {
 
@@ -69,7 +70,7 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={props => <Dashboard user={this.state.user} {...props} />}
+            render={props => <Dashboard setUser={this.setUser} user={this.props.user} {...props} />}
           />
           <Route
             exact

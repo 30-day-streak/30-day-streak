@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Filter.css';
+import {Link} from 'react-router-dom';
 
 export default class Filter extends Component {
 

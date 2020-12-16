@@ -26,14 +26,16 @@ const userSchema = new Schema({
       type: String,
       enum: ['active', 'favorite', 'completed', 'withdrawn']
     },
-    tracker: [{
-      day: Number,
-      reachedTarget: Boolean,
-    }],
+    tracker: [],
     startDate: Date,
     grandPrize: String
   }],
-  rewards: [{type: Schema.Types.ObjectId, ref: 'Reward'}]
+  rewards: [{type: Schema.Types.ObjectId, ref: 'Reward'}],
+  subGoals7DayStreak: boolean,
+  subGoal21DayStreak: boolean,
+  notification15days:boolean,
+  notification28Days:boolean,
+  notificationComplete:boolean
 }, {
   timestamps: true
 });

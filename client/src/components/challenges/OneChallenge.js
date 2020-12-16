@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './OneChallenge.css';
+import './Challenges.css';
 import {Link} from 'react-router-dom';
-
+import './Challenges.css';
 
 export default class OneChallenge extends Component {
 
@@ -25,15 +25,11 @@ export default class OneChallenge extends Component {
   }
 
   initialSetUp = () => {
-    // const foundInUserFavorites = this.props.user.challenges.some(challenge => {
-    //   console.log('challenge',challenge, challenge.id._id === this.props.challenge._id && challenge.status === 'favorite')
-    //   return challenge.id._id === this.props.challenge._id && challenge.status === 'favorite'
-    // })
-    const foundInUserFavorites = this.props.user.challenges.find(challenge => {
-      // console.log('challenge',challenge, challenge.id._id === this.props.challenge._id && challenge.status === 'favorite')
+
+    //find instead of some?
+    const foundInUserFavorites = this.props.user.challenges.some(challenge => {
       return challenge.id._id === this.props.challenge._id && challenge.status === 'favorite'
     })
-    // console.log(foundInUserFavorites, "foundInUserFavorites")
 
     this.setState({ 
       favorite: foundInUserFavorites,
@@ -41,20 +37,11 @@ export default class OneChallenge extends Component {
   }
 
   componentDidMount() {
-    // console.log('MOUNTING')
     this.initialSetUp()
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.favorite !== this.state.favorite) {
-  //     console.log('UPDATE')
-  //     this.initialSetUp()
-  //   }
-  // }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.filtered !== this.props.filtered) {
-      // console.log('UPDATE')
       this.initialSetUp()
     }
   }
@@ -65,11 +52,13 @@ export default class OneChallenge extends Component {
       <>
       {/* <div class="container center"> */}
         <div className="card" key={ this.props.challenge._id }>
-          <p>{ this.props.challenge.category }</p>
-          <h2>{ this.props.challenge.title }</h2>
+          <div className='card-header'>
+            <p>{ this.props.challenge.category }</p>
+            <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} onClick={ this.toggleFavorite } alt="favorite" />
+          </div>
+          <h3>{ this.props.challenge.title }</h3>
           <hr/>
           <p>{ this.props.challenge.goal }</p>
-          <img src={this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} style={{width: "50px"}} onClick={ this.toggleFavorite } alt="favorite" />
           <Link to={`/challenges/${this.props.challenge._id}/start`}><button>Start</button></Link>
         </div>
       {/* </div> */}

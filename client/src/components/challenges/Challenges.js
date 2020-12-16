@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Filter from './filter/Filter.js';
-import OneChallenge from './onechallenge/OneChallenge';
-
+import Filter from '../filter/Filter.js';
+import OneChallenge from './OneChallenge';
+import './Challenges.css';
 
 export default class Challenges extends Component {
 
@@ -67,13 +67,16 @@ export default class Challenges extends Component {
 
     return (
       <div>
-        <Filter 
-          challenges={ this.state.challenges }
-          user={ this.props.user}
-          categories={ categories }
-          setFilter={ this.setFilter }
-        />
-        <Link to="/challenges/create"><button>Create a challenge</button></Link>
+        <div className="tool-bar">
+          <Filter 
+            challenges={ this.state.challenges }
+            user={ this.props.user}
+            categories={ categories }
+            setFilter={ this.setFilter }
+          />
+          <Link to="/challenges/create"><img src="/images/plus.png" /></Link>
+        </div>
+        <div className="challenges-container">
         {
           filtered.map(challenge => {
             return (
@@ -81,11 +84,12 @@ export default class Challenges extends Component {
                   challenge={ challenge }
                   user={ this.props.user}
                   getData={ this.getData }
-                  filtered={filtered}
+                  filtered={ filtered }
               />
             )
           })
         }
+        </div>
       </div>
     )
   }
