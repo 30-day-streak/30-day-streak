@@ -33,7 +33,7 @@ export default class OneChallenge extends Component {
       // console.log('challenge',challenge, challenge.id._id === this.props.challenge._id && challenge.status === 'favorite')
       return challenge.id._id === this.props.challenge._id && challenge.status === 'favorite'
     })
-    console.log(foundInUserFavorites, "foundInUserFavorites")
+    // console.log(foundInUserFavorites, "foundInUserFavorites")
 
     this.setState({ 
       favorite: foundInUserFavorites,
@@ -41,7 +41,7 @@ export default class OneChallenge extends Component {
   }
 
   componentDidMount() {
-    console.log('MOUNTING')
+    // console.log('MOUNTING')
     this.initialSetUp()
   }
 
@@ -54,7 +54,7 @@ export default class OneChallenge extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.filtered !== this.props.filtered) {
-      console.log('UPDATE')
+      // console.log('UPDATE')
       this.initialSetUp()
     }
   }

@@ -24,9 +24,8 @@ export default class Filter extends Component {
         </div>
         {/* Category dropdown */}
         <div className="filter">
-          <label htmlFor="categoryFilter">Category</label>
           <select name="categoryFilter" id="categoryFilter" onChange={ this.handleChange }>
-            <option value=''>All</option>
+            <option value=''>Category</option>
             { this.props.categories.map(option => {
               return (
                 <option>{ option }</option>
