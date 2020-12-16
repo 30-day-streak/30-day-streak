@@ -4,7 +4,7 @@
 }
 
 body{
-  background-color: #FAF3DD;
+  background-color: #e8e8e8;
 }
 
 .tool-bar {
@@ -57,7 +57,7 @@ body{
 }
 
 .card {
-  background-color: #C8D5B9;
+  /* background-color: #C8D5B9; */
   width: 250px;
   min-height: 250px * 1.618;
   text-align: center;
@@ -94,14 +94,14 @@ body{
     padding: 0px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.4rem;
-    color: #696D7D;
+    color: #f05454;
   }
   
   hr {
     display: block;
     border: none;
     height: 3px;
-    background-color: #696D7D;
+    background-color: #f05454;
     margin: 0px;
     
     -webkit-animation-name: line-show; /* Safari 4.0 - 8.0 */
@@ -122,7 +122,7 @@ body{
     font-size: 16px;
     word-break: break-all;
     word-wrap: pre-wrap;
-    color: #696D7D;
+    color: #222831;
     
     -webkit-animation-name: p-show; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
@@ -132,7 +132,7 @@ body{
   
   button {
     border: none;
-    background-color: #696D7D;
+    background-color: #f05454;
     width: 40%;
     margin-top: 10px;;
     padding: 10px 15px;
@@ -160,20 +160,20 @@ body{
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes p-show {
   from {color: #FAF3DD;}
-  to {color: #696D7D;}
+  to {color: #f05454;}
 }
 
 /* Standard syntax */
 @keyframes p-show {
   from {color: #FAF3DD;}
-  to {color: #696D7D;}
+  to {color: #f05454;}
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes shadow-show {
   from {
-    -webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;
-    box-shadow: 0px 0px 0px 0px #e0e0e0;
+    -webkit-box-shadow: 0px 0px 0px 0px #222831;
+    box-shadow: 0px 0px 0px 0px #222831;
   }
   to {
     -webkit-box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%);
@@ -183,6 +183,6 @@ body{
 
 /* Standard syntax */
 @keyframes shadow-show {
-  from {-webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;box-shadow: 0px 0px 0px 0px #e0e0e0;}
+  from {-webkit-box-shadow: 0px 0px 0px 0px #222831;box-shadow: 0px 0px 0px 0px #222831;}
   to {-webkit-box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%); box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%);}
 }

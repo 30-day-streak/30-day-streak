@@ -40,13 +40,13 @@
 
 /* NavBar */
 /* nav {
-  background-color:  #68B0AB;
+  background-color:  #f67358
   height: 4vw;
   display: flex;
   justify-content: space-between;
-} 
+}  */
 
-nav a {
+/* nav a {
   color: white;
   text-decoration: none;
   padding: 1vw;

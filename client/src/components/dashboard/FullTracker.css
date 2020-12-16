@@ -1,17 +1,17 @@
 .completed {
-  background-color: green;
+  background-color: #30475e;
   width: 4vw;
   height: 4vw
 }
 
 .failed {
-  background-color: red;
+  background-color: #f05454;
   width: 4vw;
   height: 4vw;
 }
 
 .not-attempted {
-  background-color: gray;
+  background-color: #e8e8e8;
   width: 4vw;
   height: 4vw;
 }

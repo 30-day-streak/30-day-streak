@@ -15,7 +15,42 @@ export default class ActiveChallengePreview extends Component {
     }));
   };
 
+  handleChange = async (event) => {
+    try {
+      const target = event.target;
+      const value = target.checked;
+      const name = target.id;
+      // console.log('user tracker array', this.state.user.challenges[0].tracker);
+      let challengeTracker = this.props.challenge.tracker;
+      console.log('challengeTracker', challengeTracker);
+      let index = target.id;
+      console.log('challengeDay', this.state.challengeDay);
+      if (event.target.id <= this.props.challengeDay) {
+        if (challengeTracker[index] === 0) {
+          challengeTracker[index]++;
+        } else if (challengeTracker[index] === 1) {
+          challengeTracker[index]++;
+        } else {
+          challengeTracker[index]--;
+        }
+        // console.log('challenge tracker after click', challengeTracker);
+        // console.log('state after click', this.state);
+        this.setState({
+          [name]: value,
+        });
+        let userId = this.state.user._id;
+        const updatedUser = await axios.put(`/users/${userId}`, {
+          challenges: this.state.user.challenges,
+          rewards: this.state.user.rewards,
+        });
+      }
+      } catch (error) {
+        console.log(error);
+      }
+  };
+
   render() {
+    console.log('props from preview ');
     return (
       <div className="active-preview">
         <div className="preview-title">
@@ -28,7 +63,13 @@ export default class ActiveChallengePreview extends Component {
           {this.props.challenge.id.dailyTarget.unit}
         </p>
         <p>
-          Today:
+          Today: <TrackerButton
+            index="0"
+            user={this.props.user}
+            handleChange={this.handleChange}
+            challenge={this.props.challenge}
+            challengeDay={this.state.challengeDay}
+          />
           </p>
         {this.state.activeChallengeDetails && (
           <ActiveChallengeDetails
