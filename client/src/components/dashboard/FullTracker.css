@@ -22,6 +22,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url('./Transparent_X.png');
+  background-size: cover;
 }
 
 .not-attempted {
