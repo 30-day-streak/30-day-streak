@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Challenges.css';
-import {Link} from 'react-router-dom';
 import './Challenges.css';
 
 export default class OneChallenge extends Component {
@@ -40,7 +39,7 @@ export default class OneChallenge extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.filtered.length != this.props.filtered.length) {
+    if (prevProps.filtered.length !== this.props.filtered.length) {
       this.initialSetUp()
     }
   }
@@ -56,13 +55,11 @@ export default class OneChallenge extends Component {
           </div>
           <h3>{ this.props.challenge.title }</h3>
           <hr/>
-          <p>{ this.props.challenge.goal }</p>
-          <Link to={`/challenges/${this.props.challenge._id}/start`}><button>Start</button></Link>
+          <p>{ this.props.challenge.goal && this.props.challenge.goal }</p>
+          {/* <Link to={`/challenges/${this.props.challenge._id}/start`}><button>Start</button></Link> */}
         </div>
       {/* </div> */}
     </>
     )
   }
 }
-
-
