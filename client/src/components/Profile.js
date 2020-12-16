@@ -12,8 +12,9 @@ export default class Profile extends Component {
             <b>Username:</b> {this.props.user.username}
           </p>
           <p>
-            <b>Name:</b> {this.props.user.firstName} {this.props.user.lastname}
+            <b>Name:</b> {this.props.user.firstName} {this.props.user.lastName}
           </p>
+          <p><b>Email:</b> {this.props.user.email}</p>
         </div>
         <div className="profile-challenges-history">
           <h2>Challenge History</h2>
