@@ -1,31 +1,73 @@
-.continer h2 {
-  color: #68B0AB;
+.instruction-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  /* border: 1px solid #f05454; */
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 30px;
+  line-height: 3rem;
+  color: #222831;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.instruction-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f05454;
   margin: 30px auto;
   text-align: center;
 }
 
-.instruction-container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  border: 1px solid #68B0AB;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  line-height: 3rem;
+.instruction-container h4 {
+  font-family: Rubik;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #30475e;
+  margin: 10px auto;
+  text-align: center;
+  line-height: 2rem;
 }
 
-ol {
-  text-align: left;
+.button-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.one-button {
+  width: 100%;
+  margin: 20px;
+}
+
+.one-button h5 {
+  color: #f05454;
+  font-family: Rubik;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.one-button button {
+  width: 100%;
+  padding: 15px 10px;
+  background-color: #f05454;
+  font-family: Rubik;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+button :hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .active-preview {
   flex: display;
   flex-flow: nowrap;
   justify-content: space-between;
-  /* width: 80vw; */
-  /* margin: 0 auto; */
-  border: 1px solid #68B0AB;
+  width: 80vw;
+  margin: 0 auto;
+  border: 1px solid #f05454;
   margin: 10px auto;
   padding: 15px;
 }
@@ -41,14 +83,127 @@ ol {
   width: 30%;
   margin: 0 5px;
   padding: 10px;
-
 }
 
 .preview-streak {
   width: 30%;
   margin: 0 5px;
   padding: 10px;
+}
 
+.welcome-container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.scroll-container {
+  display: block;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+  width: 100vw;
+  height: 70vh;
+}
+
+.light {
+  background-color: #e8e8e8;
+}
+
+/* .light h1, h2, h3, h4, h5, h6, p {
+  color: #222831;
+} */
+
+.dark {
+  background-color: #222831;
+}
+
+/* .dark h1, h2, h3, h4, h5, h6, p {
+  color: #e8e8e8;
+} */
+
+.one {
+  width: 100vw;
+  opacity: 0.8;
+  vertical-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  background-image: url('./background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.one h1, h2 {
+  font-family: Rubik;
+  color: #222831;
+  width: 50%;
+  margin: 30px auto;
+  opacity: 1;
+}
+
+.one h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #222831;
+}
+
+.one h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.two {
+  background-color: #222831;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.two h1 {
+  font-family: Rubik;
+  font-size: 2rem;
+  color: #e8e8e8;
+  margin: 50px auto;
+}
+
+.three {
+  text-align: center;
+}
+
+.three h1 {
+  font-family: Rubik;
+  font-size: 2rem;
+  color: #222831;
+  margin: 30px auto;
+}
+
+.four {
+  text-align: left;
+  height: 100%;
+}
+
+.four p {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin: 30px 100px;
+}
+
+.four ol {
+  margin: 30px 100px;
+
+}
+
+.four li {
+  color: #e8e8e8;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 
