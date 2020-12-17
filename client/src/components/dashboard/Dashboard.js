@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import './Dashboard.css';
-import { Link } from 'react-router-dom';
 import ActiveChallengePreview from './ActiveChallengePreview';
-// import ActiveChallengeDetails from './ActiveChallengeDetails';
-import axios from 'axios';
+import DashboardHome from './DashboardHome';
+import DashboardNoActiveChallenges from './DashboardNoActiveChallenges';
 
 export default class Dashboard extends Component {
-  
-  // state = {
-  //   user: '',
-  //   reload: true,
-  // };
 
   calculateChallengeDay = (created_at) => {
     const startAsMilliseconds = new Date(created_at).getTime();
@@ -25,7 +18,6 @@ export default class Dashboard extends Component {
       if (arr[i] !== arr[i - 1]) s += " ";
       s += arr[i];
     }
-
     // calculate total days successfully completed
     const completed = s.split('1').length - 1
 
@@ -50,57 +42,23 @@ export default class Dashboard extends Component {
     return output
   }
 
-
   render() {
-    // logged in user
+
+// logged in user
     if (this.props.user) {
       const activeChallenges = this.props.user.challenges.filter(challenge => challenge.status === 'active')
-
-      // users with no active challenges
       const userHasActiveChallenges = this.props.user.challenges.some(
         (challenge) => challenge.status === 'active'
       );
-      // console.log(this.props.user);
+
+// users with no active challenges
       if (!userHasActiveChallenges) {
         return (
-          <div className="instruction-container">
-            <h2>Welcome{' '}
-              {this.props.user.firstName
-                ? this.props.user.firstName
-                : this.props.user.username} !
-            </h2>
-            <h4>You don't have any active challenges at the moment.<br/><br/>
-            Browse challenges and rewards to save your favorite ones.<br/>
-            You can also create your own! They will be automatically saved to your favorites.<br/><br/>
-            When you feel ready go to challenges, pick one and let the adventure begin!</h4>
-            
-            <div className="button-container">
-              <div className="one-button">
-              <h5>Challenges</h5>
-              <Link to="/challenges">
-                <button >BROWSE</button>
-              </Link>
-              <Link to="/challenges/create">
-                <button>CREATE</button>
-              </Link>
-              </div>
-    
-              <div className="one-button">
-              <h5>Rewards</h5>
-              <Link to="/rewards">
-                  <button>BROWSE</button>
-                </Link>
-                <Link to="/rewards/create">
-                  <button>CREATE</button>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <DashboardNoActiveChallenges user={ this.props.user } />
         );
-        // users with active challenges
+      
+// users with active challenges
       } else {
-        // this.reload()
-        // console.log('user from props', this.props.user);
         return (
           <>
             <h2>Welcome{' '}
@@ -111,26 +69,29 @@ export default class Dashboard extends Component {
             <p>Your Active Challenges:</p>
 
             <div className="dashboard-container">
-              {activeChallenges.map((challenge) => {
-                return (
-                  <ActiveChallengePreview
-                    challenge={challenge}
-                    user={this.props.user}
-                    calculateChallengeDay={this.calculateChallengeDay}
-                    streakStatus={this.streakStatus}
-                    setUser={this.props.setUser}
-                    {...this.props}
-                  />
-                );
-              })}
+              { activeChallenges.map((challenge) => {
+                  return (
+                    <ActiveChallengePreview
+                      challenge={challenge}
+                      user={this.props.user}
+                      calculateChallengeDay={this.calculateChallengeDay}
+                      streakStatus={this.streakStatus}
+                      setUser={this.props.setUser}
+                      {...this.props}
+                    />
+                  );
+                })
+              }
             </div>
+
           </>
         );
       }
 
-    // guest user (not logged in)
+// guest user (not logged in)
     } else {
       return (
+<<<<<<< HEAD
         <div className="welcome-container">
           {/* intro */}
           <div className="scroll-container one" >
@@ -180,6 +141,9 @@ export default class Dashboard extends Component {
             </ol>
           </div>
         </div>
+=======
+        <DashboardHome />
+>>>>>>> main
       )
     }
   }

@@ -4,6 +4,8 @@
   justify-content: space-between;
   background-color: #30475e;
   padding: 15px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  align-items: center;
 }
 
 .links {
@@ -13,9 +15,17 @@
 
 .link {
   color: #e8e8e8;
+<<<<<<< HEAD
   margin-right: 20px;
+=======
+  margin-right: 40px;
+  font-family: Rubik;
+>>>>>>> main
   font-size: 1.2rem;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
 }
 
+.navbar-logo {
+  padding: 0 0 0 2vw
+}

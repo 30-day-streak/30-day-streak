@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 router.post('/signup', (req, res, next) => {
-  console.log('signup', req.body);
+  // console.log('signup', req.body);
   const { username, password, firstName, lastName, email } = req.body;
 
   if (password.length < 8) {

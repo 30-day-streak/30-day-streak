@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './FullTracker.css'
+import './Dashboard.css'
 
 export default class TrackerButton extends Component {
   render() {

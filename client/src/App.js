@@ -3,16 +3,20 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
-import CreateReward from "./components/CreateReward";
 import Navbar from './components/navbar/Navbar';
 import Challenges from './components/challenges/Challenges';
 import CreateChallenge from './components/challenges/CreateChallenge';
 import StartChallenge from './components/challenges/StartChallenge'
-import Rewards from './components/Rewards';
-// import axios from 'axios';
+import Rewards from './components/rewards/Rewards';
+import CreateReward from "./components/rewards/CreateReward";
 import Dashboard from './components/dashboard/Dashboard';
+import Profile from './components/profile/Profile';
 import Modal from './components/modal/Modal';
+<<<<<<< HEAD
 import Profile from './components/Profile'
+=======
+import Notifications from './components/Notifications';
+>>>>>>> main
 
 class App extends Component {
 
@@ -68,6 +72,7 @@ class App extends Component {
     return null;
   }
 
+<<<<<<< HEAD
 
 
 
@@ -93,12 +98,15 @@ class App extends Component {
   //   })
   // }
 
+=======
+>>>>>>> main
   render() {
     return (
       <div className="App" >
 
         <Navbar user={this.state.user} setUser={this.setUser} />
 
+<<<<<<< HEAD
         { this.state.modalIsActive && <div className="modal">
           <Modal
             modalIsActive={this.state.modalIsActive}
@@ -108,6 +116,13 @@ class App extends Component {
           />
         </div>
         }
+=======
+        {/* <Modal
+          modalIsActive={this.state.modalIsActive}
+          event={this.state.modalEvent}
+          reward={this.state.modalReward}
+        /> */}
+>>>>>>> main
 
         < Switch >
           <Route
@@ -132,10 +147,7 @@ class App extends Component {
           <Route
             exact
             path='/challenges'
-            render={props => {
-              if (this.state.user) return <Challenges {...props} user={this.state.user} />
-              else return <Redirect to='/' />
-            }}
+            render={props => <Challenges user={this.state.user} setUser={this.setUser} {...props} />}
           />
           <Route
             exact

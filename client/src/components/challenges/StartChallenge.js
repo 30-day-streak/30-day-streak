@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Challenges from './Challenges';
-import  { Redirect } from 'react-router-dom'
-import './StartChallenge.css'
+import './Challenges.css'
 
 
 export default class StartChallenge extends Component {
@@ -22,12 +20,10 @@ export default class StartChallenge extends Component {
     this.setState({
       [name]: value,
     });
-    // console.log(this.state);
   };
 
   getData = () => {
     const challengeId = this.props.match.params.id;
-    // console.log('id from request',id);
     axios
       .get(`/api/challenges/${challengeId}`)
       .then((response) => {
@@ -64,8 +60,6 @@ export default class StartChallenge extends Component {
       if (alreadyInUser) {
         user = user.challenges.map((challenge) => {
           if (challenge.id._id === challengeId) {
-            // console.log('match');
-            // console.log('challenge.status', challenge.status);
             challenge.status = 'active';
             challenge.startDate = new Date();
             challenge.tracker = [
@@ -102,7 +96,6 @@ export default class StartChallenge extends Component {
             ];
             challenge.grandPrize = this.state.prize;
           }
-          // console.log('challenge after update', challenge);
           return challenge;
         });
       } else {
@@ -148,12 +141,13 @@ export default class StartChallenge extends Component {
       this.setState({
         user: this.props.user,
       });
-      // console.log('user challlenges after set state', this.state.user.challenges);
-      // console.log('user rewards after set state', this.state.user.rewards);
       const updatedUser = await axios.put(`/api/users/${userId}`, {
         challenges: this.state.user.challenges,
         rewards: this.state.user.rewards,
       });
+      console.log('updatedUser.data', updatedUser.data);
+      this.props.setUser(updatedUser.data)
+      // let updatedUser = await axios.get('/auth/loggedin')
       const {history} = this.props
       history.push('/');
     } catch (error) {
@@ -162,8 +156,6 @@ export default class StartChallenge extends Component {
   };
 
   render() {
-    // console.log('user from state in render', this.state.user);
-    // console.log('user from the props in render', this.props.user);
     return (
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">

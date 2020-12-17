@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FullTracker from './FullTracker';
-import './ActiveChallengeDetails.css';
+import './Dashboard.css';
 
 export default class ActiveChallengeDetails extends Component {
   state = {
@@ -8,8 +8,8 @@ export default class ActiveChallengeDetails extends Component {
   };
 
   refreshActiveChallengeDetails = () => {
-    this.setState ({ refreshToggle: !this.state.refreshToggle });
-  }
+    this.setState({ refreshToggle: !this.state.refreshToggle });
+  };
 
   render() {
     const { currentStreak, longestStreak } = this.props.streakStatus(
@@ -36,15 +36,20 @@ export default class ActiveChallengeDetails extends Component {
           />
           {/* </div> */}
           <div className="active-challenge-details-user-info-text">
-            <p> {daysLeft} days to go!</p>
-            <p>Current streak: {currentStreak}</p>
-            <p>Longest streak: {longestStreak}</p>
+            <div className="days-left">
+              {' '}
+              <h1>{daysLeft}</h1> days to go!{' '}
+            </div>
+            <div>
+              <p>Current streak: {currentStreak}</p>
+              <p>Longest streak: {longestStreak}</p>
 
-            <div className="active-challenge-details-prize">
-              <p>
-                EYES ON THE PRIZE: <br />
-                {this.props.challenge.grandPrize}
-              </p>
+              <div className="active-challenge-details-prize">
+                <p>
+                  EYES ON THE PRIZE: <br />
+                  {this.props.challenge.grandPrize}
+                </p>
+              </div>
             </div>
           </div>
         </div>

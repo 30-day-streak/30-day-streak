@@ -17,7 +17,7 @@ export default class Challenges extends Component {
 
   getData = () => {
     axios.get('/api/challenges')
-      .then(response => {        
+      .then(response => {
         this.setState({
           challenges: response.data
         })
@@ -30,6 +30,7 @@ export default class Challenges extends Component {
   }
 
   filter = () => {
+    
     const favoriteIds = this.props.user.challenges.filter(challenge => {
       return challenge.status === 'favorite'
     }).map(challenge => challenge.id._id)
@@ -37,13 +38,13 @@ export default class Challenges extends Component {
     const excludedIds = this.props.user.challenges.filter(challenge => {
       return challenge.status === 'active' || challenge.status === 'completed' || challenge.status === 'withdrawn'
     }).map(challenge => challenge.id._id)
-    
+
     if (this.state.favoritesFilter) {
-      return this.state.challenges.filter(challenge => { 
+      return this.state.challenges.filter(challenge => {
         return favoriteIds.includes(challenge._id)
       })
     } else {
-      return this.state.challenges.filter(challenge => { 
+      return this.state.challenges.filter(challenge => {
         // search bar filter
         return `${challenge.title}${challenge.goal}`.toLowerCase().includes(this.state.searchFilter.toLowerCase()) &&
         // categories filter
@@ -59,17 +60,16 @@ export default class Challenges extends Component {
   }
 
   render() {
+
     const filtered = this.filter()
-
-    const categories = this.state.challenges.map(challenge => { return challenge.category})
+    console.log('filtered', filtered)
+    const categories = this.state.challenges.map(challenge => { return challenge.category })
     .filter((category, index, array) => { return array.indexOf(category) === index })
-
+    
     return (
       <div>
         <div className="tool-bar">
-          <Filter 
-            // challenges={ this.state.challenges }
-            // user={ this.props.user}
+          <Filter
             categories={ categories }
             setFilter={ this.setFilter }
           />
@@ -79,11 +79,12 @@ export default class Challenges extends Component {
           {
             filtered.map(challenge => {
               return (
-                <OneChallenge 
+                <OneChallenge
                     challenge={ challenge }
                     user={ this.props.user }
                     getData={ this.getData }
                     filtered={ filtered }
+                    setUser={this.props.setUser}
                 />
               )
             })
@@ -93,4 +94,3 @@ export default class Challenges extends Component {
     )
   }
 }
-
