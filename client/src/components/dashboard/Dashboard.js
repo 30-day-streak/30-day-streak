@@ -54,7 +54,7 @@ export default class Dashboard extends Component {
 // users with no active challenges
       if (!userHasActiveChallenges) {
         return (
-          <DashboardNoActiveChallenges />
+          <DashboardNoActiveChallenges user={ this.props.user } />
         );
       
 // users with active challenges
@@ -83,6 +83,7 @@ export default class Dashboard extends Component {
                 })
               }
             </div>
+
           </>
         );
       }

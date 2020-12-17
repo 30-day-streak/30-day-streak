@@ -2,13 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 
-export default function DashboardNoActiveChallenges() {
+export default function DashboardNoActiveChallenges(props) {
   return (
     <div className="instruction-container">
       <h2>Welcome{' '}
-        {this.props.user.firstName
-          ? this.props.user.firstName
-          : this.props.user.username} !
+        {props.user.firstName
+          ? props.user.firstName
+          : props.user.username} !
       </h2>
       <h4>You don't have any active challenges at the moment.<br/><br/>
       Browse challenges and rewards to save your favorite ones.<br/>
