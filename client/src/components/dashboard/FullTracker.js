@@ -42,7 +42,7 @@ export default class FullTracker extends Component {
           [name]: value,
         });
         let userId = this.state.user._id;
-        const updatedUser = await axios.put(`/users/${userId}`, {
+        const updatedUser = await axios.put(`/api/users/${userId}`, {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
@@ -56,6 +56,7 @@ export default class FullTracker extends Component {
   };
 
   componentDidMount = () => {
+
     this.setState({
       user: this.props.user,
     });
@@ -65,7 +66,7 @@ export default class FullTracker extends Component {
     let challengeTracker = this.props.challenge.tracker;
     return (
       <div className="full-tracker">
-        <div>tracker</div>
+        <p>click on a day to update the tracker</p>
 
         <div className="set-of-five-checkboxes">
           <TrackerButton

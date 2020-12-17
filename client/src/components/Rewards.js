@@ -17,7 +17,7 @@ export default class Rewards extends Component {
   }
 
   getData = () => {
-    axios.get('/rewards')
+    axios.get('/api/rewards')
       .then(response => {
         console.log({ response });
 

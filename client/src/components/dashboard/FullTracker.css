@@ -1,19 +1,42 @@
 .completed {
-  background-color: green;
-  width: 4vw;
-  height: 4vw
+  background-color: #30475e;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #222831;
+  border-radius: 3px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url('./Transparent_X.png');
+  background-size: cover;
 }
 
 .failed {
-  background-color: red;
-  width: 4vw;
-  height: 4vw;
+  background-color:  #30475e;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #222831;
+  border-radius: 3px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .not-attempted {
-  background-color: gray;
-  width: 4vw;
-  height: 4vw;
+  background-color: #e8e8e8;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #222831;
+  border-radius: 3px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .set-of-five-checkboxes {

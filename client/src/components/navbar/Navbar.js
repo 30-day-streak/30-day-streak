@@ -30,8 +30,8 @@ export default function Navbar(props) {
         </div>
       ) : (
           <div className="links">
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Log In</Link>
+            <Link className="link" to="/signup">Sign Up</Link>
+            <Link className="link" to="/login">Log In</Link>
           </div>
         )}
     </nav>

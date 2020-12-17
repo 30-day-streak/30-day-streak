@@ -13,6 +13,7 @@ import Rewards from './components/Rewards';
 import Dashboard from './components/dashboard/Dashboard';
 import Modal from './components/modal/Modal';
 import Notifications from './components/Notifications';
+import Profile from './components/Profile'
 
 class App extends Component {
 
@@ -122,7 +123,14 @@ class App extends Component {
             render={props => <StartChallenge setUser={this.setUser} {...props} user={this.state.user} />}
           />
 
-        </Switch>
+          <Route
+            exact
+            path='/profile'
+            render={props => <Profile setUser={this.setUser} {...props} user={this.state.user}/>}
+          />
+
+      </Switch>
+
       </div>
     );
   }
