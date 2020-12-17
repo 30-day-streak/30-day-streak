@@ -111,7 +111,7 @@ router.put('/:id', (req, res, next) => {
     { new: true }
   )
     .then(user => {
-      console.log({ user });
+      // console.log({ user });
       res.status(200).json(user);
     })
     .catch(err => { console.log(err) })
