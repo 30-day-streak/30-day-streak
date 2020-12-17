@@ -63,6 +63,7 @@ button :hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px auto;
   padding: 15px;
+  font-family: Rubik;
 }
 
 .active-preview button {
@@ -268,7 +269,7 @@ button :hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url('./Transparent_Xpink.png');
+  background-image: url('./Transparent_X.png');
   background-size: cover;
 }
 
@@ -330,7 +331,8 @@ button :hover {
   background-color: #30475e;
   border: 2px solid #30475e;
   color: #e8e8e8;
-  font-size: 2vw;
+  font-size: 1.5vw;
+  font-family: Rubik;
 }
 
 .prize {
@@ -351,7 +353,7 @@ button :hover {
 }
 
 .days-left-and-prize {
-  border: 2px solid #30475e;
+  /* border: 2px solid #30475e; */
   border-radius: 5px;
   padding: 10px
 }

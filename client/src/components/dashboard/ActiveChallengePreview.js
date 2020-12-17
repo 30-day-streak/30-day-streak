@@ -23,102 +23,135 @@ export default class ActiveChallengePreview extends Component {
     return rewards[chosenRewardIndex];
   };
 
-  notifier = async() => {
+  notifier = async () => {
     const today = this.state.challengeDay;
     const thisProjectsTracker = this.props.challenge.tracker;
-    const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, today);
+    const streakStatusData = this.props.streakStatus(
+      this.props.challenge.tracker,
+      today
+    );
     const userID = this.props.userId;
-    let changedToggle = "";
+    let changedToggle = '';
     console.log(`notifier called`);
     console.log({ today });
     console.log(`todays val`, thisProjectsTracker[today - 1]);
 
     console.log({ streakStatusData });
 
-
-
     //7-day streak
-    if (thisProjectsTracker[today - 1] === 1 &&
-      streakStatusData.currentStreak === 7
-      && this.props.challenge.subGoals7DayStreak === false
+    if (
+      thisProjectsTracker[today - 1] === 1 &&
+      streakStatusData.currentStreak === 7 &&
+      this.props.challenge.subGoals7DayStreak === false
     ) {
-      changedToggle = "subGoals7DayStreak";
+      changedToggle = 'subGoals7DayStreak';
       let todaysReward = this.selectReward();
-      await this.props.notifyMilestone(["7", todaysReward, this.props.challenge.id, changedToggle]);
+      await this.props.notifyMilestone([
+        '7',
+        todaysReward,
+        this.props.challenge.id,
+        changedToggle,
+      ]);
 
       console.log(`7 day streak`);
       this.props.challenge.subGoals7DayStreak = true;
-      return    }
+      return;
+    }
 
     //half-way
-    if (thisProjectsTracker[today - 1] === 1 &&
-      (today === 15 || today === 16 || today === 17)
-      && this.props.challenge.notification15Days === false
+    if (
+      thisProjectsTracker[today - 1] === 1 &&
+      (today === 15 || today === 16 || today === 17) &&
+      this.props.challenge.notification15Days === false
     ) {
       console.log(this.props.challenge.notification15Days);
-      changedToggle = "notification15Days";
-      await this.props.notifyMilestone(["15", {}, this.props.challenge.id, changedToggle]);
+      changedToggle = 'notification15Days';
+      await this.props.notifyMilestone([
+        '15',
+        {},
+        this.props.challenge.id,
+        changedToggle,
+      ]);
       console.log(`half way`);
       this.props.challenge.notification15Days = true;
       console.log(this.props.challenge.notification15Days);
-      return
+      return;
     }
 
     //21-day streak
-    if (thisProjectsTracker[today - 1] === 1 &&
-      streakStatusData.currentStreak === 21
-      && this.props.challenge.subGoals21DayStreak === false
+    if (
+      thisProjectsTracker[today - 1] === 1 &&
+      streakStatusData.currentStreak === 21 &&
+      this.props.challenge.subGoals21DayStreak === false
     ) {
       let todaysReward = this.selectReward();
-      changedToggle = "subGoals21DayStreak";
-      await this.props.notifyMilestone(["21", todaysReward, this.props.challenge.id, changedToggle]);
+      changedToggle = 'subGoals21DayStreak';
+      await this.props.notifyMilestone([
+        '21',
+        todaysReward,
+        this.props.challenge.id,
+        changedToggle,
+      ]);
       console.log(`21-day streak`);
       this.props.challenge.subGoals21DayStreak = true;
-      return
+      return;
     }
 
     //nearly there
-    if (thisProjectsTracker[today - 1] === 1 &&
-      today === 28
-      && this.props.challenge.notification28Days === false
+    if (
+      thisProjectsTracker[today - 1] === 1 &&
+      today === 28 &&
+      this.props.challenge.notification28Days === false
     ) {
-      changedToggle = "notification28Days";
-      await this.props.notifyMilestone(["28", {}, this.props.challenge.id, changedToggle]);
+      changedToggle = 'notification28Days';
+      await this.props.notifyMilestone([
+        '28',
+        {},
+        this.props.challenge.id,
+        changedToggle,
+      ]);
 
       console.log(`nearly there`);
       this.props.challenge.notification28Days = true;
-      return
+      return;
     }
 
     //completion
-    if (today >= 30
-      && this.props.challenge.notificationComplete === false
-    ) {
+    if (today >= 30 && this.props.challenge.notificationComplete === false) {
       if (streakStatusData.daysCompleted === 30) {
-
-        changedToggle = "notificationCompleted"
-        await this.props.notifyMilestone(["success", {}, this.props.challenge.id, changedToggle]);
+        changedToggle = 'notificationCompleted';
+        await this.props.notifyMilestone([
+          'success',
+          {},
+          this.props.challenge.id,
+          changedToggle,
+        ]);
         console.log(`notify complete`);
         //main goal
       } else {
         console.log(`notify near complete`);
-        changedToggle = "notificationCompleted"
-        await this.props.notifyMilestone(["notQuite", {}, this.props.challenge.id, changedToggle]);
+        changedToggle = 'notificationCompleted';
+        await this.props.notifyMilestone([
+          'notQuite',
+          {},
+          this.props.challenge.id,
+          changedToggle,
+        ]);
       }
       this.props.challenge.notificationComplete = true;
-      return
-    };
-  }
+      return;
+    }
+  };
 
   componentDidMount() {
-    const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
+    const challengeDay = this.props.calculateChallengeDay(
+      this.props.challenge.startDate
+    );
     this.setState({
       challengeDay: challengeDay,
-    })
+    });
     console.log(`startdate`, this.props.challenge.startDate);
-
   }
-
 
   // withdrawFromChallenge = async () => {
   //   try {
@@ -131,7 +164,6 @@ export default class ActiveChallengePreview extends Component {
   //     console.log(error);
   //   }
   // };
-
 
   handleChange = async (event) => {
     console.log(this.props.user);
@@ -152,7 +184,6 @@ export default class ActiveChallengePreview extends Component {
         } else {
           challengeTracker[index]--;
           challengeTracker[index]--;
-
         }
         this.setState({
           [name]: value,
@@ -169,7 +200,6 @@ export default class ActiveChallengePreview extends Component {
       console.log(error);
     }
   };
-
 
   componentDidMount = async () => {
     try {
@@ -191,7 +221,6 @@ export default class ActiveChallengePreview extends Component {
   //   console.log('prev props from active challenge preview', prevProps);
   // }
 
-
   render() {
     // console.log('user challenges at render', this.props.user.challenges);
     // console.log('challenge props from render', this.props.challenge)
@@ -208,25 +237,26 @@ export default class ActiveChallengePreview extends Component {
             <h5>{this.props.challenge.id.title}</h5>
             <p>{this.props.challenge.id.goal}</p>
             <p>
-              {this.props.challenge.id.dailyTarget.description}
-              {this.props.challenge.id.dailyTarget.number}
+              {this.props.challenge.id.dailyTarget.description}{' '}
+              {this.props.challenge.id.dailyTarget.number}{' '}
               {this.props.challenge.id.dailyTarget.unit}
             </p>
           </div>
-          <div className="awesome-button">
-            <p>
-              Click below to <br /> log today:{' '}
-            </p>
-            <TrackerButton
-              index={todayIndex}
-              user={this.props.user}
-              handleChange={this.handleChange}
-              challenge={this.props.challenge}
-              challengeDay={this.state.challengeDay}
-            />
-          </div>
+          {!this.state.activeChallengeDetails && (
+            <div className="awesome-button">
+              <p>
+                Click below to <br /> log today:{' '}
+              </p>
 
-
+              <TrackerButton
+                index={todayIndex}
+                user={this.props.user}
+                handleChange={this.handleChange}
+                challenge={this.props.challenge}
+                challengeDay={this.state.challengeDay}
+              />
+            </div>
+          )}
         </div>
         {this.state.activeChallengeDetails && (
           <ActiveChallengeDetails
@@ -257,4 +287,3 @@ export default class ActiveChallengePreview extends Component {
   }
 }
 // }
- 

@@ -39,7 +39,7 @@ export default class FullTracker extends Component {
           challengeTracker[index]++;
         } else {
           challengeTracker[index]--;
-          challengeTracker[index]--;
+          // challengeTracker[index]--;
         }
         // console.log('challenge tracker after click', challengeTracker);
         // console.log('state after click', this.state);
