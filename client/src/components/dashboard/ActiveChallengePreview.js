@@ -16,6 +16,14 @@ export default class ActiveChallengePreview extends Component {
     }));
   };
 
+  withdrawFromChallenge = () => {
+    axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
+    .then(() => {
+      console.log('test')
+      // this.props.history.push('/')
+    })
+  }
+
   handleChange = async (event) => {
     try {
       const target = event.target;
@@ -24,7 +32,6 @@ export default class ActiveChallengePreview extends Component {
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
-
       if (event.target.id < this.props.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
@@ -51,10 +58,8 @@ export default class ActiveChallengePreview extends Component {
   };
 
   componentDidMount() {
-    const challengeDay = this.props.calculateChallengeDay(
-      this.props.challenge.startDate
-    );
-    console.log({ challengeDay });
+    const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
+    // console.log({challengeDay});
     this.setState({
       challengeDay: challengeDay,
     });
@@ -113,6 +118,14 @@ export default class ActiveChallengePreview extends Component {
               hide details
             </button>
           )}
+          {this.state.activeChallengeDetails && 
+            <button 
+              className="button-light" 
+              onClick={this.withdrawFromChallenge}
+            >
+            i give up, i'm a bit fat looser
+            </button>
+          }
         </div>
       );
     }

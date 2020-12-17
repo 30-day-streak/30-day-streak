@@ -58,8 +58,7 @@ export default class FullTracker extends Component {
   }
 
   componentDidMount = () => {
-
-    console.log(`props at mount`, this.props);
+    // console.log(`props at mount`, this.props);
     this.setState({
       user: this.props.user,
     });

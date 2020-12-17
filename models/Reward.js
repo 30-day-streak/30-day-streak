@@ -12,11 +12,12 @@ const rewardSchema = new Schema({
     type: String,
     required: true,
     eNum: [
-      "Food",
-      "Activity/Experience",
-      "Gift",
-      "Self-care",
-      "Other"
+      "food",
+      "entertainment",
+      "shopping",
+      "self-care",
+      "travel and outdoors",
+      "other"
     ]
   },
   url: String
