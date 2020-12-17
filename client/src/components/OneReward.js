@@ -16,7 +16,7 @@ export default class OneReward extends Component {
 
     // 2. the way it's done with challenges / different route
     const rewardID = this.props.reward._id;
-    axios.put(`/users/${rewardID}/rewardsfavorite`, {
+    axios.put(`/api/users/${rewardID}/rewardsfavorite`, {
       favorite: newFavorite,
     })
 

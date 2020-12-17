@@ -40,7 +40,7 @@ export default class ActiveChallengePreview extends Component {
           [name]: value,
         });
         let userId = this.state.user._id;
-        const updatedUser = await axios.put(`/users/${userId}`, {
+        const updatedUser = await axios.put(`/api/users/${userId}`, {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });

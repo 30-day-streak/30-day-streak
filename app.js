@@ -84,13 +84,13 @@ const auth = require('./routes/auth');
 app.use('/auth', auth);
 
 const challenges = require('./routes/challenges');
-app.use('/challenges', challenges);
+app.use('/api/challenges', challenges);
 
 const rewards = require('./routes/rewards');
-app.use('/rewards', rewards);
+app.use('/api/rewards', rewards);
 
 const users = require('./routes/users');
-app.use('/users', users);
+app.use('/api/users', users);
 
 app.use((req, res) => {
   // If no routes match, send them the React HTML.
