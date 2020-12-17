@@ -108,82 +108,86 @@ export default class CreateChallenge extends Component {
             className="create-challenge-form"
             id="create-challenge-form"
           >
-          <h1>Create a Challenge</h1>
+            <h1>Create a Challenge</h1>
               <div className="create-challenge-form-fields">
-              <div className="create-challenge-form-item">
-                <label htmlFor="title">Title: </label>
-                <br />
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={this.state.title}
-                  onChange={this.handleChange}
-                  placeholder="Example Title: Get More Sleep"
-                  required
-                />
+                <div className="create-challenge-form-item">
+                  <label htmlFor="title">Title: </label>
+                  <br />
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.handleChange}
+                    placeholder="Example Title: Get More Sleep"
+                    required
+                  />
+                </div>
+    
+                <div className="create-challenge-form-item">
+                  <label htmlFor="goal">
+                    Goal:
+                  </label>
+                  <br />
+                  <textarea
+                    type="text"
+                    id="goal"
+                    name="goal"
+                    value={this.state.goal}
+                    onChange={this.handleChange}
+                    placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
+                    required
+                    textarea
+                  />
+                </div>
+    
+                <div className="create-challenge-form-item">
+                  <label htmlFor="dailyTargetDescription">
+                    Daily Action:
+                  </label>
+                  <br />
+                  <input
+                    type="text"
+                    id="dailyTargetDescription"
+                    name="dailyTargetDescription"
+                    value={this.state.dailyTargetDescription}
+                    onChange={this.handleChange}
+                    placeholder="Example Action: Get 8 hours of sleep each night"
+                    required
+                  />
+                </div>
+    
+                <div className="create-challenge-form-item">
+                  <label htmlFor="category">
+                    Category &nbsp; &nbsp;
+                  </label>
+                  {/* <br /> */}
+                  <select
+                    name="category"
+                    id="category"
+                    value={this.state.category}
+                    onChange={this.handleChange}
+                    required>
+                    <option value="health">Health</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="career">Career</option>
+                    <option value="productivity">Productivity</option>
+                    <option value="finance">Finance</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
               </div>
-  
-              <div className="create-challenge-form-item">
-                <label htmlFor="goal">
-                  Goal:
-                </label>
-                <br />
-                <textarea
-                  type="text"
-                  id="goal"
-                  name="goal"
-                  value={this.state.goal}
-                  onChange={this.handleChange}
-                  placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
-                  required
-                  textarea
-                />
-              </div>
-  
-              <div className="create-challenge-form-item">
-                <label htmlFor="dailyTargetDescription">
-                  Daily Action:
-                </label>
-                <br />
-                <input
-                  type="text"
-                  id="dailyTargetDescription"
-                  name="dailyTargetDescription"
-                  value={this.state.dailyTargetDescription}
-                  onChange={this.handleChange}
-                  placeholder="Example Action: Get 8 hours of sleep each night"
-                  required
-                />
-              </div>
-  
-              <div className="create-challenge-form-item ">
-                <label htmlFor="category">
-                  Category: &nbsp; &nbsp;
-                </label>
-                {/* <br /> */}
-                <select
-                  name="category"
-                  id="category"
-                  value={this.state.category}
-                  onChange={this.handleChange}
-                  required
-                >
-                  <option value="health">Health</option>
-                  <option value="fitness">Fitness</option>
-                  <option value="career">Career</option>
-                  <option value="productivity">Productivity</option>
-                  <option value="finance">Finance</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-          
-          <div className="create-challenge-buttons">
-            <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
-              Save for later
-            </button>
-            <button className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>Start now!</button>
+            
+            <div className="create-challenge-buttons">
+              <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+                Cancel
+              </button>
+              <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+                Save for later
+              </button>
+              <button className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>
+                Start now!
+              </button>
             </div>
           </form>
         </div>

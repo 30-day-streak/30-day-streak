@@ -6,17 +6,21 @@ body {
   background-color: #e8e8e8;
 }
 
-
-
 .button-light {
+  font-weight: 500;
   width: 10vw;
   background-color: #e8e8e8;
   border: 2px solid #f05454;
   border-radius: 5px;
   color: #f05454;
+  padding: 5px 10px;
+  margin: 0 10px;
 }
 
 .button-dark {
+  font-weight: 500;
   width: 10vw;
   border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 10px;
 }

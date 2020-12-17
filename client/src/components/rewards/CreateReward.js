@@ -17,8 +17,6 @@ export default class CreateReward extends Component {
   getData = () => {
     axios.get('/api/rewards')
       .then(response => {
-        console.log({ response });
-
         this.setState({
           rewards: response.data
         })
@@ -32,7 +30,6 @@ export default class CreateReward extends Component {
     this.setState({
       [name]: value,
     });
-    console.log('state form create rewards', this.state);
   };
 
   resetState = () => {
@@ -50,7 +47,6 @@ export default class CreateReward extends Component {
         url: this.state.url
       })
       .then((response) => {
-        console.log(`axios response`, response);
         // reinitialise state
         this.resetState()
         this.getData()
@@ -68,70 +64,89 @@ export default class CreateReward extends Component {
   render() {
     return (
       <div>
-        <h2 onClick={this.toggleAddReward}>Create a new reward</h2>
         {this.state.showForm &&
-          <div>
-            <p>Need some ideas for incentives to achieving your goals?</p>
-            <p>Check out what <a href="#">other users have added</a> or see if there is something you like on 
-            <a href="https://www.developgoodhabits.com/reward-yourself/" target="_blank"> this list </a>
-             or <a href="https://organisemyhouse.com/reward-yourself/" target="_blank">this one</a>.</p>
+          <div className="create-challenge-page">
+            <form 
+              className="create-challenge-form"
+              onSubmit={this.handleSubmit}>
 
-            <br />
-            <form onSubmit={this.handleSubmit}>
+                <div className="create-challenge-header">
+                  <h1 onClick={this.toggleAddReward}>Create a new reward</h1>
+                  <p>Need some ideas for incentives to achieving your goals?</p>
+                  <p>Check out what <a href="#">other users have added</a> or see if there is something you like on 
+                  <a href="https://www.developgoodhabits.com/reward-yourself/" target="_blank"> this list </a>
+                  or <a href="https://organisemyhouse.com/reward-yourself/" target="_blank">this one</a>.</p>
+                </div>
 
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={this.state.name}
-                placeholder="Give your reward a name"
-                onChange={this.handleChange}
-              />
-              <br />
+              <div className="create-challenge-form-fields">
+                <div className="create-challenge-form-item">
 
-              <label htmlFor="description">Description</label>
-              <input
-                type="text"
-                id="description"
-                name="description"
-                value={this.state.description}
-                placeholder="Add a more detailed description if you need one"
-                onChange={this.handleChange} />
-              <br />
+                  <div className="create-challenge-form-item">
+                    <label htmlFor="name">Name</label>
+                    <br />
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={this.state.name}
+                      placeholder="Give your reward a name"
+                      onChange={this.handleChange}/>
+                  </div>
 
-              <label htmlFor="category">Category</label>
-              <select
-                id="category"
-                name="category"
-                value={this.state.category}
-                placeholder="Select category"
-                onChange={this.handleChange}>
-                {/* <option value="" selected="selected">Select a category</option> */}
-                <option value="entertainment">Art and Entertainment</option>
-                <option value="food">Food</option>
-                <option value="self-care">Self-care</option>
-                <option value="shopping">Shopping</option>
-                <option value="travel and outdoors">Travel and Outdoors</option>
-                <option value="Other">Other</option>
-              </select>
-              <br />
+                  <div className="create-challenge-form-item">
+                    <label htmlFor="description">Description</label>
+                    <br />
+                    <input
+                      type="text"
+                      id="description"
+                      name="description"
+                      value={this.state.description}
+                      placeholder="Add a more detailed description if you need one"
+                      onChange={this.handleChange} />
+                  </div>
 
-              <label htmlFor="url">Link</label>
-              <input
-                type="text"
-                id="url"
-                name="url"
-                value={this.state.url}
-                placeholder="You can add a link to an internet page here"
-                onChange={this.handleChange} />
-              <br />
+                  <div className="create-challenge-form-item">
+                    <label htmlFor="url">Link</label>
+                    <br />
+                    <input
+                      type="text"
+                      id="url"
+                      name="url"
+                      value={this.state.url}
+                      placeholder="You can add a link to an internet page here"
+                      onChange={this.handleChange} />
+                  </div>
 
-              <button type="submit">Save to my list of rewards</button><button type="cancel" onClick={this.resetState}>Cancel</button>
+                  <div className="create-challenge-form-item">
+                    <label htmlFor="category">Category  &nbsp; &nbsp;</label>
+                    <select
+                      id="category"
+                      name="category"
+                      value={this.state.category}
+                      placeholder="Select category"
+                      onChange={this.handleChange}>
+                      {/* <option value="" selected="selected">Select a category</option> */}
+                      <option value="entertainment">Art and Entertainment</option>
+                      <option value="food">Food</option>
+                      <option value="self-care">Self-care</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="travel and outdoors">Travel and Outdoors</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div className="create-challenge-buttons">
+                <button className="button-light" type="cancel" onClick={this.resetState}>Cancel</button>
+                <button className="button-dark" type="submit">Save to favorites</button>
+              </div>
             </form>
           </div>
         }
-      </div >
+      </div>
     )
   }
 }
