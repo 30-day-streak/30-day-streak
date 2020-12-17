@@ -43,8 +43,10 @@
   margin-bottom: 5px;
 }
 
-.card-header p {
+.card-header span {
   margin: 0 0 10px 0;
+  color: #f05454;
+  font-weight: 100;
 }
 
 .card-header img {
@@ -89,7 +91,7 @@
 .challenges-container h1,h2,h3,h4,h5 {
     margin: 0 0 10px 0;
     padding: 0px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 1.4rem;
     color: #222831;
   }
@@ -97,8 +99,8 @@
   .challenges-container hr {
     display: block;
     border: none;
-    height: 1.5px;
-    background-color: #222831;
+    height: 1px;
+    background-color: #f05454;
     margin: 0px;
     
     -webkit-animation-name: line-show; /* Safari 4.0 - 8.0 */
@@ -111,7 +113,7 @@
   }
   
   .challenges-container p {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-weight: 100;
     letter-spacing: -0.25px;
     line-height: 1.25;
@@ -128,6 +130,7 @@
 
   .challenges-container a {
     margin: 0;
+    color: #f05454;
   }
 
 /* Safari 4.0 - 8.0 */
@@ -235,7 +238,7 @@
   margin: 1vw;
 }
 
-.create-challenge-form-select {
+.create-challenge-form select {
   font-family: Rubik;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -281,8 +284,8 @@
 }
 
 .start-challenge-page h1{
-    color: #f05454;
-    margin: 0;
+  color: #f05454;
+  margin: 0;
 }
 
 .start-challenge-page h2 {

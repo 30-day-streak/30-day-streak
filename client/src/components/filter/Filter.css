@@ -1,12 +1,88 @@
 .filter-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   width: 80vw;
   padding: 20px;
   font-size: 1.2rem;
   color: #696D7D;
+
 }
 
 filter {
   margin: 0 10px;
 }
+
+.filter-bar label {
+  font-family: Rubik;
+  font-weight: 400;
+
+}
+
+.filter-item {
+  margin: 1vw;
+  border: 1px dotted #30475e;
+  width: 25vw;
+}
+
+.search-filter input {
+  font-family: Rubik;
+  font-size: 1rem;
+  background-color: #e8e8e8;
+  color: #30475e;
+  line-height: 1.2rem;
+  padding: 11px;
+  border: 1px solid #e8e8e8;
+  /* border: 1px dotted #30475e; */
+}
+
+.search-filter input ::placeholder{
+  font-family: Rubik;
+  font-size: 1rem;
+  background-color: #e8e8e8;
+  color: #30475e;
+  line-height: 1.2rem;
+  padding: 10px;
+}
+
+.dropdown-filter select {
+  font-family: Rubik;
+  font-size: 1rem;
+  background-color: #e8e8e8;
+  color: #30475e;
+  border: 1px solid #e8e8e8;
+  line-height: 1.2rem;
+  padding: 10px;
+  width: 25vw;
+  /* border: 1px dotted #30475e; */
+}
+
+.checkbox-filter {
+  padding: 10px;
+  width: 25vw;
+  /* border: 1px dotted #30475e; */
+
+}
+
+.checkbox-filter label {
+  font-family: Rubik;
+  font-size: 1rem;
+  color: #30475e;
+  line-height: 1.2rem;
+
+}
+
+.checkbox-filter input:checked ~ .checkmark {
+  background-color: #30475e;
+}
+
+.checkbox-filter:hover input {
+  background-color: #ccc;
+}
+
+
+
+
+
+
+

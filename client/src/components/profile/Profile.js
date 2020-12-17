@@ -9,7 +9,7 @@ export default class Profile extends Component {
     ownerFilter: false,
   }
 
-  getData = () => {
+  getChallenges = () => {
     axios.get('/api/challenges')
       .then(response => {   
         console.log('HERE',response.data)     
@@ -45,7 +45,7 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getChallenges();
   }
 
   render() {

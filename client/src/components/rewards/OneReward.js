@@ -46,7 +46,7 @@ export default class OneReward extends Component {
       this.props.setUser(updatedUser.data)
       console.log('user after set new user', this.props.user);
       // refresh data
-      this.props.getData();
+      this.props.getRewards();
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +76,7 @@ export default class OneReward extends Component {
     return (
       <div className="card" key={this.props.reward._id}>
         <div className="card-header">
-          <p>{this.props.reward.category}</p>
+          <span>{this.props.reward.category}</span>
           <img
             src={
               this.state.favorite
@@ -88,7 +88,7 @@ export default class OneReward extends Component {
           />
         </div>
         <h3>{this.props.reward.name}</h3>
-        <hr />
+        {this.props.reward.description && <hr /> }
         <p>{this.props.reward.description && this.props.reward.description}</p>
 
         {this.props.reward.url && <a href="{this.props.reward.url}">Link</a>}

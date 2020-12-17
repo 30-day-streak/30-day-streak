@@ -21,9 +21,7 @@ export default class CreateChallenge extends Component {
   };
 
   handleSubmitLater = async (event) => {
-    console.log('clicked');
     event.preventDefault();
-    console.log('user before post', this.state.user);
     let id = this.state.user._id;
     try {
       const newChallenge = await axios.post('/api/challenges', {
@@ -36,7 +34,6 @@ export default class CreateChallenge extends Component {
       });
 
       let user = this.props.user;
-      console.log('user', this.props.user);
       user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'favorite',
@@ -45,7 +42,6 @@ export default class CreateChallenge extends Component {
       this.setState({
         user: this.props.user,
       });
-      console.log('user after set state', this.state.user);
 
       const updatedUser = await axios.put(`/api/users/${id}`, {
         challenges: this.state.user.challenges, 
@@ -58,9 +54,7 @@ export default class CreateChallenge extends Component {
   };
 
   handleSubmitStart = async (event) => {
-    // console.log('clicked');
     event.preventDefault();
-    // console.log('user before post', this.state.user);
     let id = this.state.user._id;
     try {
       const newChallenge = await axios.post('/api/challenges', {
@@ -73,7 +67,6 @@ export default class CreateChallenge extends Component {
       });
 
       let user = this.props.user;
-      // console.log('user', this.props.user);
       user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'active',
@@ -82,7 +75,6 @@ export default class CreateChallenge extends Component {
       this.setState({
         user: this.props.user,
       });
-      // console.log('user after set state', this.state.user);
       const updatedUser = await axios.put(`/api/users/${id}`, {
         challenges: this.state.user.challenges, 
         rewards: this.state.user.rewards
@@ -100,7 +92,7 @@ export default class CreateChallenge extends Component {
   }
 
   render() {
-    // console.log(this.props.user);
+
     return (
       <>
         <div className="create-challenge-page">

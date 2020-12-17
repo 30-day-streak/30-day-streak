@@ -14,7 +14,7 @@ export default class CreateReward extends Component {
     this.initialState = this.state
   }
 
-  getData = () => {
+  getRewards = () => {
     axios.get('/api/rewards')
       .then(response => {
         this.setState({
@@ -49,7 +49,7 @@ export default class CreateReward extends Component {
       .then((response) => {
         // reinitialise state
         this.resetState()
-        this.getData()
+        this.getRewards()
         this.props.history.push('/rewards');
       })
       .catch(err => console.log(err));
