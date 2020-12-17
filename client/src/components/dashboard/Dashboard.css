@@ -57,6 +57,15 @@
   font-weight: 400;
 }
 
+.one-button button {
+  width: 100%;
+  padding: 15px 10px;
+  background-color: #f05454;
+  font-family: Rubik;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 button :hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

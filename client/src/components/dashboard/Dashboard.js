@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
 import ActiveChallengePreview from './ActiveChallengePreview';
-import ActiveChallengeDetails from './ActiveChallengeDetails';
+// import ActiveChallengeDetails from './ActiveChallengeDetails';
 import axios from 'axios';
 
 export default class Dashboard extends Component {
@@ -50,6 +50,7 @@ export default class Dashboard extends Component {
     return output
   }
 
+
   render() {
     // logged in user
     if (this.props.user) {
@@ -77,7 +78,7 @@ export default class Dashboard extends Component {
               <div className="one-button">
               <h5>Challenges</h5>
               <Link to="/challenges">
-                <button>BROWSE</button>
+                <button >BROWSE</button>
               </Link>
               <Link to="/challenges/create">
                 <button>CREATE</button>

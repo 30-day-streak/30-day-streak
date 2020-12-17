@@ -42,27 +42,24 @@ export default class FullTracker extends Component {
           [name]: value,
         });
         let userId = this.state.user._id;
-        const updatedUser = await axios.put(`/users/${userId}`, {
+        const updatedUser = await axios.put(`/api/users/${userId}`, {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
-        const refresh = this.props.refreshActiveChallengeDetails() 
+        const refresh = this.props.refreshActiveChallengeDetails()
+        const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, this.props.challengeDay)
+        const generateNotifications = this.props.notifier(streakStatusData)
       }
-      } catch (error) {
-        console.log(error);
-      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  notifications = () => {
-  
-  }
-
   componentDidMount = () => {
-    // console.log(`props at mount`, this.props);
+
     this.setState({
       user: this.props.user,
     });
-
   };
 
   render() {
@@ -77,7 +74,6 @@ export default class FullTracker extends Component {
             user={this.props.user}
             handleChange={this.handleChange}
             challenge={this.props.challenge}
-            streakStatus={this.props.streakStatus}
           />
           <TrackerButton
             index="1"

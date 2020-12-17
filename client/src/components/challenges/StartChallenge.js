@@ -29,7 +29,7 @@ export default class StartChallenge extends Component {
     const challengeId = this.props.match.params.id;
     // console.log('id from request',id);
     axios
-      .get(`/challenges/${challengeId}`)
+      .get(`/api/challenges/${challengeId}`)
       .then((response) => {
         this.setState({
           title: response.data.title,
@@ -100,7 +100,7 @@ export default class StartChallenge extends Component {
               0,
               0,
             ];
-            challenge.grandPrize = this.state.prize
+            challenge.grandPrize = this.state.prize;
           }
           // console.log('challenge after update', challenge);
           return challenge;
@@ -150,7 +150,7 @@ export default class StartChallenge extends Component {
       });
       // console.log('user challlenges after set state', this.state.user.challenges);
       // console.log('user rewards after set state', this.state.user.rewards);
-      const updatedUser = await axios.put(`/users/${userId}`, {
+      const updatedUser = await axios.put(`/api/users/${userId}`, {
         challenges: this.state.user.challenges,
         rewards: this.state.user.rewards,
       });

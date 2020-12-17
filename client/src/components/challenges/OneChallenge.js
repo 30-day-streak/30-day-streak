@@ -15,7 +15,7 @@ export default class OneChallenge extends Component {
     this.setState({ favorite: newFavorite });
     // update database
     const challengeID = this.props.challenge._id;
-    axios.put(`/users/${challengeID}/challengesfavorite`, {
+    axios.put(`/api/users/${challengeID}/challengesfavorite`, {
       favorite: newFavorite,
     })
     //refresh displayed information
@@ -51,7 +51,7 @@ export default class OneChallenge extends Component {
         <div className="card" key={ this.props.challenge._id }>
           <div className='card-header'>
             <p>{ this.props.challenge.category }</p>
-            <img src={this.state.favorite ? '/images/favorite1.png' : '/images/unfavorite1.png'} onClick={ this.toggleFavorite } alt="favorite" />
+            <img src={this.state.favorite ? './images/favorite1.png' : './images/unfavorite1.png'} onClick={ this.toggleFavorite } alt="favorite" />
           </div>
           <h3>{ this.props.challenge.title }</h3>
           <hr/>

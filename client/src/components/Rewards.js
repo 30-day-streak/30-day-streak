@@ -17,7 +17,7 @@ export default class Rewards extends Component {
   }
 
   getData = () => {
-    axios.get('/rewards')
+    axios.get('/api/rewards')
       .then(response => {
         console.log({ response });
 
@@ -70,11 +70,10 @@ export default class Rewards extends Component {
             categories={ categories }
             setFilter={ this.setFilter }
           />
-          {/* <Link to="/rewards/create"><img src="/images/plus.png" /></Link> */}
+          <Link to="/rewards/create"><img src="/images/plus.png" /></Link>
         </div>
         
-        <CreateReward {...this.props} forceRewardListUpdate={this.getData}/>
-
+        {/* <CreateReward {...this.props} forceRewardListUpdate={this.getData}/> */}
         <div className="challenges-container">
           { 
             filtered.map(reward => {
