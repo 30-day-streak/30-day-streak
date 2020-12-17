@@ -16,7 +16,7 @@ export default class ActiveChallengeDetails extends Component {
   };
 
   render() {
-    console.log('props in active challange details', this.props.challenge);
+    // console.log('props in active challange details', this.props.challenge);
     const { currentStreak, longestStreak } = this.props.streakStatus(
       this.props.challenge.tracker,
       this.props.challengeDay
@@ -41,8 +41,6 @@ export default class ActiveChallengeDetails extends Component {
           />
           {/* </div> */}
           <div className="active-challenge-details-user-info-text">
-            <p>Challenge started on:</p>
-            <p>Challenge ends on:</p>
             <p> {daysLeft} days to go!</p>
             <p>Current streak: {currentStreak}</p>
             <p>Longest streak: {longestStreak}</p>

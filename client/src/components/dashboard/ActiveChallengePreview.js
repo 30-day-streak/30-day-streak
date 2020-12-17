@@ -69,7 +69,7 @@ export default class ActiveChallengePreview extends Component {
     if (!this.props.challenge.id.title) {
       window.location.reload(false);
     } else {
-      console.log('props from preview ');
+      // console.log('props from preview ');
       return (
         <div className="active-preview">
           <div className="preview-title">
