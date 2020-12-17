@@ -77,7 +77,7 @@ export default class Dashboard extends Component {
               <div className="one-button">
               <h5>Challenges</h5>
               <Link to="/challenges">
-                <button>BROWSE</button>
+                <button >BROWSE</button>
               </Link>
               <Link to="/challenges/create">
                 <button>CREATE</button>
