@@ -28,7 +28,7 @@ export default class SignUp extends Component {
       } else {
         //put the user in the state of App.js
         this.props.setUser(data);
-        this.props.history.push('/')
+        this.props.history.push('/');
       }
     })
   }

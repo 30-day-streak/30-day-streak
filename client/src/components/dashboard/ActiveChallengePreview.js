@@ -15,6 +15,16 @@ export default class ActiveChallengePreview extends Component {
     }));
   };
 
+  withdrawFromChallenge = () => {
+    console.log('id', this.props.challenge.id._id)
+    axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
+    .then(() => {
+      console.log('test')
+
+      // this.props.history.push('/')
+    })
+  }
+
   handleChange = async (event) => {
     try {
       const target = event.target;
@@ -22,9 +32,9 @@ export default class ActiveChallengePreview extends Component {
       const name = target.id;
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
-      console.log('challengeTracker', challengeTracker);
+      // console.log('challengeTracker', challengeTracker);
       let index = target.id;
-      console.log('challengeDay', this.state.challengeDay);
+      // console.log('challengeDay', this.state.challengeDay);
       if (event.target.id <= this.state.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
@@ -51,7 +61,7 @@ export default class ActiveChallengePreview extends Component {
 
   componentDidMount() {
     const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
-    console.log({challengeDay});
+    // console.log({challengeDay});
     this.setState({
       challengeDay: challengeDay,
     })
@@ -59,7 +69,7 @@ export default class ActiveChallengePreview extends Component {
   }
 
   render() {
-    console.log('props from preview ');
+    // console.log('props from preview ');
     return (
       <div className="active-preview">
         <div className="preview-title">
@@ -91,6 +101,8 @@ export default class ActiveChallengePreview extends Component {
         )}
         {!this.state.activeChallengeDetails && <button className="button-light" onClick={this.toggleChallengeDetails}>show details</button>}
         {this.state.activeChallengeDetails && <button className="button-light" onClick={this.toggleChallengeDetails}>hide details</button>}
+        {this.state.activeChallengeDetails && <button className="button-light" onClick={this.withdrawFromChallenge}>i give up, i'm a bit fat looser</button>}
+
       </div>
     );
 

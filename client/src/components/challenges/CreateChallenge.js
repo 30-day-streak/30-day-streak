@@ -8,13 +8,12 @@ export default class CreateChallenge extends Component {
     title: '',
     goal: '',
     dailyTargetDescription: '',
-    category: 'eat',
+    category: '',
     user: this.props.user,
     challengeID: '',
   };
 
   handleChange = (event) => {
-    // console.log(event.target.name);
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -195,10 +194,11 @@ export default class CreateChallenge extends Component {
                 onChange={this.handleChange}
                 required
               >
-                <option value="eat">Eat</option>
-                <option value="train">Train</option>
-                <option value="habit">Habit</option>
-                <option value="skill">Skill</option>
+                <option value="health">Health</option>
+                <option value="fitness">Fitness</option>
+                <option value="career">Career</option>
+                <option value="productivity">Productivity</option>
+                <option value="finance">Finance</option>
                 <option value="other">Other</option>
               </select>
             </div>

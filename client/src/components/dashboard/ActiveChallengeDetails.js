@@ -8,17 +8,17 @@ export default class ActiveChallengeDetails extends Component {
   }
 
   refreshActiveChallengeDetails = () => {
-    console.log(`toggleIn`, this.state.toggle);
+    // console.log(`toggleIn`, this.state.toggle);
     
     this.setState ({ refreshToggle: !this.state.refreshToggle });
-    console.log(`toggleOut`, this.state.toggle);
+    // console.log(`toggleOut`, this.state.toggle);
   }
 
 
   render() {
-    console.log('props in active challange details', this.props.challenge);
+    // console.log('props in active challange details', this.props.challenge);
     const { currentStreak, longestStreak } = this.props.streakStatus(this.props.challenge.tracker, this.props.challengeDay)
-    console.log(`current streak ${currentStreak}, Longest streak ${longestStreak}`);
+    // console.log(`current streak ${currentStreak}, Longest streak ${longestStreak}`);
     const daysLeft = 30 - this.props.challengeDay
 
     return (
