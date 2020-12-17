@@ -104,15 +104,21 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
 // update status / withdrawn from challenge
 router.put('/:id/withdraw', (req, res, next) => {
   console.log('challenge id', req.params.id, req.body.status)
-  User.findByIdAndUpdate(req.user._id, 
-    { 'challenges.id': req.params.id },
-    { $set: {status: req.body.status }}
-  )
+  User.findOneAndUpdate({ 
+    "_id": req.user._id,
+    "challenges.id": req.params.id
+  }, { 
+    "$set": {
+      "challenges.$.status": "withdrawn"
+    }
+  })
   .then(challenge => {
-    // console.log(challenge)
+    console.log('CHALLENGE', challenge)
     res.status(200).json(challenge);
   })
-  .catch(err => next(err))
+  .catch(err => {
+    console.log(err)
+    next(err)})
 });
 
 // general user update from frontend

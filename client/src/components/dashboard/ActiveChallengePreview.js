@@ -28,7 +28,6 @@ export default class ActiveChallengePreview extends Component {
     const thisProjectsTracker = this.props.challenge.tracker
     const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, today)
     console.log({ streakStatusData });
-
     console.log(`thisProjectTracker ${thisProjectsTracker}, today ${today}`);
     console.log({ streakStatusData });
     console.log(`tracker today`, thisProjectsTracker[today - 1]);
@@ -97,10 +96,12 @@ export default class ActiveChallengePreview extends Component {
   }
 
   withdrawFromChallenge = () => {
-    axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
-    .then(() => {
+    axios.put(`/users/${this.props.challenge.id._id}/withdraw`)
+    .then((user) => {
+      console.log('user', user.data)
+      this.props.setUser(user.data)
       console.log('test')
-      // this.props.history.push('/')
+      this.props.history.push('/')
     })
   }
 
@@ -210,6 +211,5 @@ export default class ActiveChallengePreview extends Component {
         </div>
       );
     }
-
   }
 }

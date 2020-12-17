@@ -81,7 +81,7 @@ export default class Challenges extends Component {
               return (
                 <OneChallenge 
                     challenge={ challenge }
-                    user={ this.props.user}
+                    user={ this.props.user }
                     getData={ this.getData }
                     filtered={ filtered }
                 />
