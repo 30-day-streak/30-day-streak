@@ -42,3 +42,9 @@
 .set-of-five-checkboxes {
   display: flex
 }
+
+.full-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

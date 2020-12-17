@@ -116,7 +116,7 @@ router.put('/:id/withdraw', (req, res, next) => {
     "$set": {
       "challenges.$.status": "withdrawn"
     }
-  })
+  }, { new: true })
   .then(challenge => {
     // console.log('CHALLENGE', challenge)
     res.status(200).json(challenge);
