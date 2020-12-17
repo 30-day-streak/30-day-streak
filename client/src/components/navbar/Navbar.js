@@ -17,14 +17,15 @@ export default function Navbar(props) {
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link className="link" to="/">Home</Link>
+        <Link className="link" to="/">
+        <img src="./images/logoLight.png" alt="logo link to homepage" width="50vw" className="navbar-logo"/>
+        </Link>
       </div>
       {props.user ? (
         <div className="links">
           <Link className="link" to="/challenges">Challenges</Link>
           <Link className="link" to="/rewards">Rewards</Link>
           <Link className="link" to="/profile">Profile</Link>
-
           <Link className="link" to="/login" onClick={() => handleLogout(props)}>Log Out</Link>
 
         </div>

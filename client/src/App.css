@@ -8,7 +8,7 @@ body {
 
 .button-light {
   font-weight: 500;
-  width: 10vw;
+  width: 100px;
   background-color: #e8e8e8;
   border: 2px solid #f05454;
   border-radius: 5px;
@@ -19,7 +19,7 @@ body {
 
 .button-dark {
   font-weight: 500;
-  width: 10vw;
+  width: 100px;
   border-radius: 5px;
   padding: 5px 10px;
   margin: 0 10px;

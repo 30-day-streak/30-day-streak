@@ -116,9 +116,9 @@ router.put('/:id/withdraw', (req, res, next) => {
     "$set": {
       "challenges.$.status": "withdrawn"
     }
-  })
+  }, { new: true })
   .then(challenge => {
-    console.log('CHALLENGE', challenge)
+    // console.log('CHALLENGE', challenge)
     res.status(200).json(challenge);
   })
   .catch(err => {
@@ -134,7 +134,7 @@ router.put('/:id', (req, res, next) => {
     .populate('challenges.id')
     .populate('rewards')
     .then((user) => {
-      console.log({ user });
+      // console.log({ user });
       res.status(200).json(user);
     })
     .catch((err) => {
