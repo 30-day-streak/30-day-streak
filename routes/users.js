@@ -74,7 +74,6 @@ router.put('/:id/challengesfavorite', (req, res, next) => {
       .populate('challenges.id')
       .populate('rewards')
       .then((user) => {
-        console.log('delete favorite user', user);
         res.status(200).json(user);
       })
       .catch((err) => next(err));
@@ -89,6 +88,8 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
         rewards: req.params.id,
       },
     }, { new: true })
+      .populate('challenges.id')
+      .populate('rewards')
       .then((reward) => {
         res.status(200).json(reward);
       })
@@ -99,6 +100,8 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
         rewards: req.params.id,
       },
     }, { new: true })
+      .populate('challenges.id')
+      .populate('rewards')
       .then((reward) => {
         res.status(200).json(reward);
       })

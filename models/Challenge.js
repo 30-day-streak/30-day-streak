@@ -26,7 +26,6 @@ const challengeSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-      // }
     },
     // reviews: [{
     //   user: {
