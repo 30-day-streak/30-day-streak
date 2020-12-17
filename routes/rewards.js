@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
       res.status(200).json(rewards);
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       res.json(err);
     })
 });
@@ -21,14 +21,14 @@ router.get('/:id', (req, res, next) => {
   Reward, findById(req.params.id)
     .then(reward => {
       if (!reward) {
-        console.log(`no reward listed under this id`);
+        // console.log(`no reward listed under this id`);
         res.status(404).json(reward)
       } else {
         res.status(200).json(rewards)
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       res.json(err)
     })
   });
@@ -46,7 +46,7 @@ router.post('/', (req, res, next) => {
     res.status(201).json(reward)
   })
   .catch(err => {
-    console.log(err);
+    // console.log(err);
     res.json(err)
   })
 })

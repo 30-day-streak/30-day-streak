@@ -16,6 +16,16 @@ export default class ActiveChallengePreview extends Component {
     }));
   };
 
+  withdrawFromChallenge = () => {
+    console.log('id', this.props.challenge.id._id)
+    axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
+    .then(() => {
+      console.log('test')
+
+      // this.props.history.push('/')
+    })
+  }
+
   handleChange = async (event) => {
     try {
       const target = event.target;
@@ -23,9 +33,9 @@ export default class ActiveChallengePreview extends Component {
       const name = target.id;
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
-      console.log('challengeTracker', challengeTracker);
+      // console.log('challengeTracker', challengeTracker);
       let index = target.id;
-      console.log('challengeDay', this.state.challengeDay);
+      // console.log('challengeDay', this.state.challengeDay);
       if (event.target.id <= this.state.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
@@ -51,16 +61,60 @@ export default class ActiveChallengePreview extends Component {
   };
 
   componentDidMount() {
+<<<<<<< HEAD
+    const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
+    // console.log({challengeDay});
+=======
     const challengeDay = this.props.calculateChallengeDay(
       this.props.challenge.startDate
     );
     console.log({ challengeDay });
+>>>>>>> 83e66d453b362765ecae4cd8d7e77309e787b67a
     this.setState({
       challengeDay: challengeDay,
     });
   }
 
   render() {
+<<<<<<< HEAD
+    // console.log('props from preview ');
+    return (
+      <div className="active-preview">
+        <div className="preview-title">
+          <h5>{this.props.challenge.id.title}</h5>
+        </div>
+        <p>{this.props.challenge.id.goal}</p>
+        <p>
+          {this.props.challenge.id.dailyTarget.description}{' '}
+          {this.props.challenge.id.dailyTarget.number}{' '}
+          {this.props.challenge.id.dailyTarget.unit}
+        </p>
+        <p>
+          Today: <TrackerButton
+            index={this.state.challengeDay}
+            user={this.props.user}
+            handleChange={this.handleChange}
+            challenge={this.props.challenge}
+            challengeDay={this.state.challengeDay}
+          />
+          </p>
+        {this.state.activeChallengeDetails && (
+          <ActiveChallengeDetails
+            challenge={this.props.challenge}
+            user={this.props.user}
+            challengeDay={this.state.challengeDay}
+            calculateChallengeDay={this.props.calculateChallengeDay}
+            streakStatus={this.props.streakStatus}
+          />
+        )}
+        {!this.state.activeChallengeDetails && <button className="button-light" onClick={this.toggleChallengeDetails}>show details</button>}
+        {this.state.activeChallengeDetails && <button className="button-light" onClick={this.toggleChallengeDetails}>hide details</button>}
+        {this.state.activeChallengeDetails && <button className="button-light" onClick={this.withdrawFromChallenge}>i give up, i'm a bit fat looser</button>}
+
+      </div>
+    );
+
+=======
     if (!this.props.challenge.id.title) {
       window.location.reload(false);
     } else {
@@ -114,5 +168,6 @@ export default class ActiveChallengePreview extends Component {
         </div>
       );
     }
+>>>>>>> 83e66d453b362765ecae4cd8d7e77309e787b67a
   }
 }
