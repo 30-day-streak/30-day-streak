@@ -12,11 +12,6 @@ import CreateReward from "./components/rewards/CreateReward";
 import Dashboard from './components/dashboard/Dashboard';
 import Profile from './components/profile/Profile';
 import Modal from './components/modal/Modal';
-<<<<<<< HEAD
-import Profile from './components/Profile'
-=======
-import Notifications from './components/Notifications';
->>>>>>> main
 
 class App extends Component {
 
@@ -72,7 +67,7 @@ class App extends Component {
     return null;
   }
 
-<<<<<<< HEAD
+
 
 
 
@@ -98,15 +93,14 @@ class App extends Component {
   //   })
   // }
 
-=======
->>>>>>> main
+
   render() {
     return (
       <div className="App" >
 
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-<<<<<<< HEAD
+
         { this.state.modalIsActive && <div className="modal">
           <Modal
             modalIsActive={this.state.modalIsActive}
@@ -116,13 +110,13 @@ class App extends Component {
           />
         </div>
         }
-=======
+
         {/* <Modal
           modalIsActive={this.state.modalIsActive}
           event={this.state.modalEvent}
           reward={this.state.modalReward}
         /> */}
->>>>>>> main
+
 
         < Switch >
           <Route
