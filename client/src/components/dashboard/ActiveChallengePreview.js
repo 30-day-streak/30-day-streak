@@ -29,12 +29,9 @@ export default class ActiveChallengePreview extends Component {
       const target = event.target;
       const value = target.checked;
       const name = target.id;
-      // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
-      // console.log('challengeTracker', challengeTracker);
       let index = target.id;
-      // console.log('challengeDay', this.state.challengeDay);
-      if (event.target.id <= this.state.challengeDay) {
+      if (event.target.id < this.props.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
         } else if (challengeTracker[index] === 1) {
@@ -52,10 +49,11 @@ export default class ActiveChallengePreview extends Component {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
+        const refresh = this.props.refreshActiveChallengeDetails() 
       }
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
   };
 
   componentDidMount() {
@@ -67,6 +65,8 @@ export default class ActiveChallengePreview extends Component {
   }
 
   render() {
+    const challengeDay = this.state.challengeDay
+    const todayIndex = challengeDay - 1
     if (!this.props.challenge.id.title) {
       window.location.reload(false);
     } else {
@@ -85,7 +85,7 @@ export default class ActiveChallengePreview extends Component {
           <div className="awesome-button">
             <p>Click below to log today: </p>
             <TrackerButton
-              index={this.state.challengeDay}
+              index={todayIndex}
               user={this.props.user}
               handleChange={this.handleChange}
               challenge={this.props.challenge}
