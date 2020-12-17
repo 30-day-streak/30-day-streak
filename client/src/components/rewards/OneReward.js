@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './challenges/Challenges.css';
+import '../challenges/Challenges.css';
 
 export default class OneReward extends Component {
 

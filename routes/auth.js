@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 router.post('/signup', (req, res, next) => {
-  console.log('signup', req.body);
+  // console.log('signup', req.body);
   const { username, password, firstName, lastName, email } = req.body;
 
   if (password.length < 8) {
@@ -77,7 +77,7 @@ router.get('/loggedin', (req, res) => {
   if (req.user) {
     User.findById(req.user._id).populate('challenges.id').populate('rewards')
     .then(response => {
-      console.log(response)
+      // console.log(response)
       res.json(response)})
   } else {
     res.json(req.user);

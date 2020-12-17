@@ -10,8 +10,9 @@ export default class Profile extends Component {
   }
 
   getData = () => {
-    axios.get('/challenges')
-      .then(response => {        
+    axios.get('/api/challenges')
+      .then(response => {   
+        console.log('HERE',response.data)     
         this.setState({
           challenges: response.data
         })
@@ -23,7 +24,8 @@ export default class Profile extends Component {
 
     if (this.state.ownerFilter) {
       return this.state.challenges.filter(challenge => {
-        console.log('OWNER', challenge.owner, 'USER', this.props.user._id, 'EQUAL?', challenge.owner === this.props.user._id)
+        // console.log('OWNER', challenge.owner, 'USER', this.props.user._id, 'EQUAL?', challenge.owner === this.props.user._id)
+        console.log('CHALLENGE', challenge)
         return challenge.owner === this.props.user._id
       })
     } else {
@@ -48,8 +50,9 @@ export default class Profile extends Component {
 
   render() {
     const filtered = this.filter()
-    console.log('FILTERED', filtered)
+    // console.log('FILTERED', filtered)
     console.log('status', this.state.statusFilter)
+    console.log('challenges', this.state.challenges)
 
     return (
       <>

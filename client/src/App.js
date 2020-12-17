@@ -3,17 +3,16 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
-import CreateReward from "./components/CreateReward";
 import Navbar from './components/navbar/Navbar';
 import Challenges from './components/challenges/Challenges';
 import CreateChallenge from './components/challenges/CreateChallenge';
 import StartChallenge from './components/challenges/StartChallenge'
-import Rewards from './components/Rewards';
-// import axios from 'axios';
+import Rewards from './components/rewards/Rewards';
+import CreateReward from "./components/rewards/CreateReward";
 import Dashboard from './components/dashboard/Dashboard';
+import Profile from './components/profile/Profile';
 import Modal from './components/modal/Modal';
 import Notifications from './components/Notifications';
-import Profile from './components/Profile'
 
 class App extends Component {
 
@@ -34,39 +33,16 @@ class App extends Component {
     this.setState({ modalIsActive: !this.state.modalIsActive })
   }
 
-
-  // toggleFavoriteReward = (rewardId, favStatus) => {
-  //   console.log(`toggling`, rewardId, favStatus);
-  //   const updatedUser = this.state.user
-  //   if (favStatus) {
-  //     updatedUser.rewards.push(rewardId);
-  //     console.log(`updated user rewards`, updatedUser.rewards);
-  //   } else {
-  //     updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
-  //       console.log({ profileRewardId }, { rewardId })
-  //       return profileRewardId !== rewardId
-  //     });
-  //     console.log(`updated user rewards`, updatedUser.rewards);
-  //   }
-  //   this.setState({
-  //     user: updatedUser
-  //   })
-  //   axios.put(`/users/${updatedUser._id}`, {
-  //     challenges: updatedUser.challenges,
-  //     rewards: updatedUser.rewards
-  //   })
-  // }
-
   render() {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-        <Modal
+        {/* <Modal
           modalIsActive={this.state.modalIsActive}
           event={this.state.modalEvent}
           reward={this.state.modalReward}
-        />
+        /> */}
 
         <Switch>
           <Route

@@ -13,7 +13,7 @@
   width: 40px;
 }
 
-.challenges-container{
+.challenges-container {
   /* width: 80%; */
   min-height: 100vh;  
   display: -webkit-box;  
@@ -86,7 +86,7 @@
   transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
 }
   
-  h1,h2,h3,h4,h5 {
+.challenges-container h1,h2,h3,h4,h5 {
     margin: 0 0 10px 0;
     padding: 0px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -94,7 +94,7 @@
     color: #222831;
   }
   
-  hr {
+  .challenges-container hr {
     display: block;
     border: none;
     height: 1.5px;
@@ -110,7 +110,7 @@
     transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
   }
   
-  p {
+  .challenges-container p {
     margin: 15px 0px 5px 0px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 100;
@@ -138,7 +138,7 @@
     text-transform: uppercase;
   }
 
-  a {
+  .challenges-container a {
     margin: 0;
   }
 
@@ -182,4 +182,127 @@
 @keyframes shadow-show {
   from {-webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;box-shadow: 0px 0px 0px 0px #e0e0e0;}
   to {-webkit-box-shadow: -20px -20px 0px 0px lighten(#696D7D, 5%); box-shadow: -20px -20px 0px 0px lighten(#696D7D, 5%);}
+}
+
+/* CREATE CHALLENGE */
+
+.create-challenge-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-challenge-form {
+  padding: 0;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 4vw;
+  margin: 4vw
+}
+
+.create-challenge-form-fields {
+  margin: 30px auto;
+}
+
+.create-challenge-form h1 {
+  font-family: Rubik;
+  font-size: 2rem;
+  color: #f05454;
+}
+
+.create-challenge-form button {
+  font-family: Rubik;
+  width: 150px;
+}
+
+.create-challenge-form textarea {
+  font-family: Rubik;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 10px;
+  width: 50vw;
+  margin: 1vw 0;
+}
+
+.create-challenge-form input {
+  font-family: Rubik;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  width: 50vw;
+}
+
+.create-challenge-form-item {
+  font-family: Rubik;
+  text-align: left;
+  margin: 1vw;
+}
+
+.create-challenge-form-select {
+  font-family: Rubik;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 5px 10px;
+  width: 50vw
+}
+
+.create-challenge-form-item label {
+  font-family: Rubik;
+  text-align: left;
+}
+.create-challenge-form-item input {
+  font-family: Rubik;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 5px 10px;
+  margin: 1vw 0;
+}
+
+#category {
+  padding: 5px 10px;
+  font-family: Rubik;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.create-challenge-buttons {
+  font-family: Rubik;
+  width: 40vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* START CHALLENGE STYLING */
+
+.start-challenge-page {
+  height: 100vw;
+  /* background-color: #f8f9fa; */
+  display: flex; 
+  justify-content: center;
+  align-items: start;
+}
+
+.start-challenge-page h1{
+    color: #f05454;
+    margin: 0;
+}
+
+.start-challenge-page h2 {
+  color: #30475e
+}
+
+.start-challenge-page p {
+
+}
+
+.start-challenge-page-content {
+  margin: 0;
+  padding: 0;
+  width: 50vw;
+  /* border: 2px solid #6c757d; */
+  margin: 3vw;
+  padding: 3vw;
+  border-radius: 10px;
 }

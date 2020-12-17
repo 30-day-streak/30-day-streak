@@ -61,15 +61,13 @@ export default class Challenges extends Component {
   render() {
     const filtered = this.filter()
 
-    const categories = this.state.challenges.map(challenge => { return challenge.category})
+    const categories = this.state.challenges.map(challenge => { return challenge.category })
     .filter((category, index, array) => { return array.indexOf(category) === index })
 
     return (
       <div>
         <div className="tool-bar">
           <Filter 
-            // challenges={ this.state.challenges }
-            // user={ this.props.user}
             categories={ categories }
             setFilter={ this.setFilter }
           />
