@@ -19,7 +19,7 @@ const challengeSchema = new Schema(
     },
     category: {
       type: String,
-      eNum: ['Eat', 'Train', 'Habit', 'Skill', 'Other'],
+      eNum: ['career', 'finance', 'fitness', 'health', 'productivity', 'other'],
       required: true,
     },
     owner: {

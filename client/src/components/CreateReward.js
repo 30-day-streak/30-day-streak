@@ -32,7 +32,7 @@ export default class CreateReward extends Component {
     event.preventDefault();
     // axios call to api
     axios
-      .post('/rewards', {
+      .post('/api/rewards', {
         name: this.state.name,
         description: this.state.description,
         category: this.state.category,
@@ -93,12 +93,14 @@ export default class CreateReward extends Component {
                 id="category"
                 name="category"
                 value={this.state.category}
+                placeholder="Select category"
                 onChange={this.handleChange}>
-                <option value="Food">Food</option>
-                <option value="Activity/Experience">Activity/Experience</option>
-                <option value="" selected="selected">Select a category</option>
-                <option value="Gift">Gift</option>
-                <option value="Self-care">Self-care</option>
+                {/* <option value="" selected="selected">Select a category</option> */}
+                <option value="entertainment">Art and Entertainment</option>
+                <option value="food">Food</option>
+                <option value="self-care">Self-care</option>
+                <option value="shopping">Shopping</option>
+                <option value="travel and outdoors">Travel and Outdoors</option>
                 <option value="Other">Other</option>
               </select>
               <br />

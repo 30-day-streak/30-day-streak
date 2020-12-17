@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import './FullTracker.css'
 
 export default class TrackerButton extends Component {
   render() {
+    console.log('tracker props', this.props);
     let challengeTracker = this.props.challenge.tracker;
     let index = this.props.index
     let label = Number.parseInt(index) + 1

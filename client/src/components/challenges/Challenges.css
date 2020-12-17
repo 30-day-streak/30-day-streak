@@ -3,10 +3,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-  background-color: #FAF3DD;
-}
-
 .tool-bar {
   display: flex;
   flex-flow: row nowrap;
@@ -18,7 +14,7 @@ body{
 }
 
 .challenges-container{
-  width: 80%;
+  /* width: 80%; */
   min-height: 100vh;  
   display: -webkit-box;  
   display: -ms-flexbox;  
@@ -57,10 +53,11 @@ body{
 }
 
 .card {
-  background-color: #C8D5B9;
-  width: 250px;
+  background-color: #e8e8e8;
+  width: 350px;
   min-height: 250px * 1.618;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
   display: -webkit-box;
   
@@ -72,11 +69,11 @@ body{
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 20px;
-  margin: 5px;
+  margin: 10px 15px;
   
-  -webkit-box-shadow: -20px -20px 0px 0px lighten(#68B0AB, 5%);
+  -webkit-box-shadow: -20px -20px 0px 0px lighten(#30475e, 5%);
   
-          box-shadow: -20px -20px 0px 0px lighten(#68B0AB, 5%);
+          box-shadow: -20px -20px 0px 0px lighten(#30475e, 5%);
   border-radius: 10px;
   
   -webkit-animation-name: shadow-show; /* Safari 4.0 - 8.0 */
@@ -90,18 +87,18 @@ body{
 }
   
   h1,h2,h3,h4,h5 {
-    margin: 0px;
+    margin: 0 0 10px 0;
     padding: 0px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.4rem;
-    color: #696D7D;
+    color: #222831;
   }
   
   hr {
     display: block;
     border: none;
-    height: 3px;
-    background-color: #696D7D;
+    height: 1.5px;
+    background-color: #222831;
     margin: 0px;
     
     -webkit-animation-name: line-show; /* Safari 4.0 - 8.0 */
@@ -114,7 +111,7 @@ body{
   }
   
   p {
-    margin: 15px 0px 0px 0px;
+    margin: 15px 0px 5px 0px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 100;
     letter-spacing: -0.25px;
@@ -122,7 +119,7 @@ body{
     font-size: 16px;
     word-break: break-all;
     word-wrap: pre-wrap;
-    color: #696D7D;
+    color: #222831;
     
     -webkit-animation-name: p-show; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
@@ -132,11 +129,11 @@ body{
   
   button {
     border: none;
-    background-color: #696D7D;
+    background-color: #f05454;
     width: 40%;
     margin-top: 10px;;
     padding: 10px 15px;
-    color: #FAF3DD;
+    color: #e8e8e8;
     font-family: 'Noto Sans KR', sans-serif;
     text-transform: uppercase;
   }
@@ -159,30 +156,30 @@ body{
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes p-show {
-  from {color: #FAF3DD;}
-  to {color: #696D7D;}
+  from {color: #e8e8e8;}
+  to {color: #222831;}
 }
 
 /* Standard syntax */
 @keyframes p-show {
-  from {color: #FAF3DD;}
-  to {color: #696D7D;}
+  from {color: #e8e8e8;}
+  to {color: #222831;}
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes shadow-show {
   from {
-    -webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;
-    box-shadow: 0px 0px 0px 0px #e0e0e0;
+    -webkit-box-shadow: 0px 0px 0px 0px #222831;
+    box-shadow: 0px 0px 0px 0px #222831;
   }
   to {
-    -webkit-box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%);
-    box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%);
+    -webkit-box-shadow: -20px -20px 0px 0px lighten(#e8e8e8, 5%);
+    box-shadow: -20px -20px 0px 0px lighten(#e8e8e8, 5%);
   }
 }
 
 /* Standard syntax */
 @keyframes shadow-show {
   from {-webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;box-shadow: 0px 0px 0px 0px #e0e0e0;}
-  to {-webkit-box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%); box-shadow: -20px -20px 0px 0px lighten(#C8D5B9, 5%);}
+  to {-webkit-box-shadow: -20px -20px 0px 0px lighten(#696D7D, 5%); box-shadow: -20px -20px 0px 0px lighten(#696D7D, 5%);}
 }
