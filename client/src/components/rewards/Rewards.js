@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Filter from './filter/Filter';
+import Filter from '../filter/Filter';
 import OneReward from './OneReward';
-// import './challenges/Challenges.css';
 import CreateReward from './CreateReward';
+import '../challenges/Challenges.css';
 
 export default class Rewards extends Component {
 
@@ -19,8 +19,6 @@ export default class Rewards extends Component {
   getData = () => {
     axios.get('/api/rewards')
       .then(response => {
-        // console.log({ response });
-
         this.setState({
           rewards: response.data
         })
@@ -36,10 +34,15 @@ export default class Rewards extends Component {
     const favoriteIds = this.props.user.rewards.map(reward => reward._id)
 
     if (this.state.favoritesFilter) {
+      console.log('here')
+      console.log('0', this.state.rewards)
       return this.state.rewards.filter(reward => { 
+        console.log('FAV', favoriteIds, 'ID',reward._id, "?", favoriteIds.includes(reward._id))
+
         return favoriteIds.includes(reward._id)
       })
     } else {
+      console.log('1', this.state.rewards)
       return this.state.rewards.filter(reward => { 
         // search bar filter
         return `${reward.name}${reward.description}`.toLowerCase().includes(this.state.searchFilter.toLowerCase()) &&
@@ -51,13 +54,13 @@ export default class Rewards extends Component {
 
   componentDidMount() {
     this.getData();
-    // console.log(`props`, this.props);
   }
 
   render() {
     const filtered = this.filter();
+    console.log('filtered', filtered)
+    console.log('2', this.state.rewards)
 
-    // console.log('filtered on rewards page', filtered);
 
     const categories = this.state.rewards.map(reward => { return reward.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
@@ -66,8 +69,6 @@ export default class Rewards extends Component {
       <div>
         <div className="tool-bar">
           <Filter 
-            // challenges={ this.state.challenges }
-            // user={ this.props.user}
             categories={ categories }
             setFilter={ this.setFilter }
           />

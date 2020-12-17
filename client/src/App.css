@@ -6,100 +6,26 @@ body {
   background-color: #e8e8e8;
 }
 
-/* .App {
-} */
-
-.container {
-  margin: 50px;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-.create-challenge-form {
-  padding: 0;
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black
-}
-
-.create-challenge-page {
-  background-color: #e8e8e8;
-  height: 100vw;
-}
-
-.create-challenge-form h1 {
-  color: #68B0AB
-}
-
-.create-challenge-form button {
-  background-color:  #f05454;
-  color: #e8e8e8;
-  border: none;
-  border-radius: 3px;
-  padding: 1.5vw;
-  margin: 2vw;
-  font-size: 1.2vw;
-  font-weight: bold;
-}
-
-.create-challenge-form input {
-  width: 70vw;
-}
-
-.create-challenge-form-item {
-  text-align: left;
-  /* margin: 2vw; */
-}
-
-.create-challenge-form-item input {
-  margin: 1vw 0 
-}
-.create-challenge-form-select {
-  width: 70vw
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .button-light {
-  width: 10vw;
   background-color: #e8e8e8;
   border: 2px solid #f05454;
-  border-radius: 5px;
   color: #f05454;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  width: 100px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 10px;
 }
 
 .button-dark {
-  width: 10vw;
+  background-color: #f05454;
+  border: 2px solid #f05454;
+  color: #e8e8e8;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  width: 100px;
   border-radius: 5px;
+  padding: 10px;
+  margin: 0 10px;
 }
