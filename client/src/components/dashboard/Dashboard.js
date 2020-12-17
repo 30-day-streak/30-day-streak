@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
 import ActiveChallengePreview from './ActiveChallengePreview';
-import ActiveChallengeDetails from './ActiveChallengeDetails';
+// import ActiveChallengeDetails from './ActiveChallengeDetails';
 import axios from 'axios';
 
 export default class Dashboard extends Component {
@@ -49,6 +49,7 @@ export default class Dashboard extends Component {
     }
     return output
   }
+
 
   render() {
     // logged in user

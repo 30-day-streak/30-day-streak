@@ -24,7 +24,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
 /* Create Challenges CSS */
 
 .create-challenge-form {
@@ -71,7 +70,7 @@ body {
 .create-challenge-form-select {
   width: 70vw
 }
-=======
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -93,8 +92,7 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
+
 /* NavBar */
 /* nav {
   background-color:  #f67358
