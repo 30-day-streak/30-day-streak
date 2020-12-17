@@ -9,11 +9,11 @@ body {
 .button-light {
   background-color: #e8e8e8;
   border: 2px solid #f05454;
-  color: #e8e8e8;
-  font-weight: 500;
-  width: 10vw;
-  border-radius: 5px;
   color: #f05454;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  width: 100px;
+  border-radius: 5px;
   padding: 10px;
   margin: 0 10px;
 }
@@ -24,7 +24,7 @@ body {
   color: #e8e8e8;
   font-family: 'Rubik', sans-serif;
   font-weight: 500;
-  width: 10vw;
+  width: 100px;
   border-radius: 5px;
   padding: 10px;
   margin: 0 10px;

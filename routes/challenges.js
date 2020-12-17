@@ -6,7 +6,7 @@ const Challenge = require('../models/Challenge');
 router.get('/', (req, res) => {
   Challenge.find()
     .then(challenges => {
-      console.log('CHALLENGES', challenges)
+      // console.log('CHALLENGES', challenges)
       res.status(200).json(challenges);
     })
     .catch(err => {

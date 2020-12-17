@@ -21,7 +21,7 @@ export default class ActiveChallengeDetails extends Component {
 
     return (
       <div className="activeContainer">
-        <p className="progress">Progress day {this.props.challengeDay}</p>
+        {/* <p className="progress">Progress day {this.props.challengeDay}</p> */}
         <div className="active-challenge-details-user-info-container">
           {/* <div className="tracker-component"> */}
           <FullTracker
@@ -36,7 +36,7 @@ export default class ActiveChallengeDetails extends Component {
           />
           {/* </div> */}
           <div className="active-challenge-details-user-info-text">
-            <p> {daysLeft} days to go!</p>
+            <div className="days-left"> <h1>{daysLeft}</h1> <p>days to go!</p></div>
             <p>Current streak: {currentStreak}</p>
             <p>Longest streak: {longestStreak}</p>
 
