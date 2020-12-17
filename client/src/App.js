@@ -12,15 +12,19 @@ import CreateReward from "./components/rewards/CreateReward";
 import Dashboard from './components/dashboard/Dashboard';
 import Profile from './components/profile/Profile';
 import Modal from './components/modal/Modal';
+<<<<<<< HEAD
+import Profile from './components/Profile'
+=======
 import Notifications from './components/Notifications';
+>>>>>>> main
 
 class App extends Component {
 
   state = {
     user: this.props.user,
-    modalIsActive: true,
-    modalEvent: 7,
-    modalReward: '',
+    modalIsActive: false,
+    modalEvent: "",
+    modalReward: {},
   }
 
   setUser = user => {
@@ -29,22 +33,98 @@ class App extends Component {
     })
   }
 
-  modalToggle = () => {
-    this.setState({ modalIsActive: !this.state.modalIsActive })
+  modalOff = () => {
+    this.setState({
+      modalIsActive: false,
+      modalEvent: "",
+      modalReward: {}
+    })
   }
 
+  notifyMilestone = (notification) => {
+    console.log(`milestone notified:`, notification);
+
+    const milestone = notification[0];
+    const reward = notification[1];
+    const challengeId = notification[2]
+    const changedToggle = notification[3]
+    console.log({ milestone }, { reward }, { changedToggle })
+    this.setState({
+      modalIsActive: true,
+      modalEvent: milestone,
+      modalReward: reward
+    })
+
+
+    const userChallenges = this.props.user.challenges.map(challenge => {
+      console.log(challenge[changedToggle]);
+
+      //   if (challenge.id == challengeId){
+      //     challenge[changedToggle] = false
+      //   }
+      // })
+      // console.log(userChallenges);
+
+      // const updatedUser = await axios.put(`api/users/${this.state.user._id}`), {
+      //   challenges: this.state.user.challenges,
+      // })
+    });
+    return null;
+  }
+
+<<<<<<< HEAD
+
+
+
+  // toggleFavoriteReward = (rewardId, favStatus) => {
+  //   console.log(`toggling`, rewardId, favStatus);
+  //   const updatedUser = this.state.user
+  //   if (favStatus) {
+  //     updatedUser.rewards.push(rewardId);
+  //     console.log(`updated user rewards`, updatedUser.rewards);
+  //   } else {
+  //     updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
+  //       console.log({ profileRewardId }, { rewardId })
+  //       return profileRewardId !== rewardId
+  //     });
+  //     console.log(`updated user rewards`, updatedUser.rewards);
+  //   }
+  //   this.setState({
+  //     user: updatedUser
+  //   })
+  //   axios.put(`/users/${updatedUser._id}`, {
+  //     challenges: updatedUser.challenges,
+  //     rewards: updatedUser.rewards
+  //   })
+  // }
+
+=======
+>>>>>>> main
   render() {
     return (
-      <div className="App">
+      <div className="App" >
+
         <Navbar user={this.state.user} setUser={this.setUser} />
 
+<<<<<<< HEAD
+        { this.state.modalIsActive && <div className="modal">
+          <Modal
+            modalIsActive={this.state.modalIsActive}
+            modalOff={this.modalOff}
+            event={this.state.modalEvent}
+            reward={this.state.modalReward}
+          />
+        </div>
+        }
+=======
         {/* <Modal
           modalIsActive={this.state.modalIsActive}
           event={this.state.modalEvent}
           reward={this.state.modalReward}
         /> */}
+>>>>>>> main
 
-        <Switch>
+        < Switch >
           <Route
             exact
             path='/signup'
@@ -59,7 +139,10 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={props => <Dashboard setUser={this.setUser} user={this.state.user} {...props} />}
+            render={props => <Dashboard
+              notifyMilestone={this.notifyMilestone}
+              setUser={this.setUser}
+              user={this.state.user} {...props} />}
           />
           <Route
             exact
@@ -99,14 +182,15 @@ class App extends Component {
           <Route
             exact
             path='/profile'
-            render={props => <Profile setUser={this.setUser} {...props} user={this.state.user}/>}
+            render={props => <Profile setUser={this.setUser} {...props} user={this.state.user} />}
           />
 
-      </Switch>
+        </Switch >
 
-      </div>
+      </div >
     );
   }
 }
+
 
 export default App;

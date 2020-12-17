@@ -27,13 +27,18 @@ export default class FullTracker extends Component {
       // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
+      
+      const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, this.props.challengeDay)
+      const generateNotifications = this.props.notifier(streakStatusData)
 
       if (event.target.id < this.props.challengeDay) {
+        // challengeTracker[index] = (challengeTracker[index]++) % 3
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
         } else if (challengeTracker[index] === 1) {
           challengeTracker[index]++;
         } else {
+          challengeTracker[index]--;
           challengeTracker[index]--;
         }
         // console.log('challenge tracker after click', challengeTracker);
@@ -46,12 +51,16 @@ export default class FullTracker extends Component {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
+<<<<<<< HEAD
+        const refresh = this.props.refreshActiveChallengeDetails()
+=======
         const refresh = this.props.refreshActiveChallengeDetails();
         const streakStatusData = this.props.streakStatus(
           this.props.challenge.tracker,
           this.props.challengeDay
         );
         const generateNotifications = this.props.notifier(streakStatusData);
+>>>>>>> main
       }
     } catch (error) {
       console.log(error);
