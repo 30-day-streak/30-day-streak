@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Filter from './filter/Filter';
+import Filter from '../filter/Filter';
 import OneReward from './OneReward';
-// import './challenges/Challenges.css';
 import CreateReward from './CreateReward';
+import '../challenges/Challenges.css';
 
 export default class Rewards extends Component {
 

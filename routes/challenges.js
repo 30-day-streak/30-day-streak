@@ -4,11 +4,13 @@ const Challenge = require('../models/Challenge');
 
 // get all challenges
 router.get('/', (req, res) => {
-  Challenge.find()
+  Challenge.find().populate('')
     .then(challenges => {
+      console.log('CHALLENGES', challenges)
       res.status(200).json(challenges);
     })
     .catch(err => {
+      console.log(err)
       res.json(err);
     })
 });

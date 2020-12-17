@@ -91,10 +91,12 @@ export default class ActiveChallengePreview extends Component {
 }
 
   withdrawFromChallenge = () => {
-    axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
-    .then(() => {
+    axios.put(`/api/users/${this.props.challenge.id._id}/withdraw`)
+    .then((user) => {
+      console.log('user', user.data)
+      this.props.setUser(user.data)
       console.log('test')
-      // this.props.history.push('/')
+      this.props.history.push('/')
     })
   }
 
@@ -215,6 +217,5 @@ export default class ActiveChallengePreview extends Component {
         </div>
       );
     }
-
   }
 // }
