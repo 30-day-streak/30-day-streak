@@ -154,6 +154,10 @@ export default class StartChallenge extends Component {
         challenges: this.state.user.challenges,
         rewards: this.state.user.rewards,
       });
+      console.log('updatedUser.data', updatedUser.data);
+      this.props.setUser(updatedUser.data)
+      // let updatedUser = await axios.get('/auth/loggedin')
+
       const {history} = this.props
       history.push('/');
     } catch (error) {
