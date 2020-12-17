@@ -15,7 +15,7 @@ export default class OneChallenge extends Component {
     this.setState({ favorite: newFavorite });
     // update database
     const challengeID = this.props.challenge._id;
-    axios.put(`/users/${challengeID}/challengesfavorite`, {
+    axios.put(`/api/users/${challengeID}/challengesfavorite`, {
       favorite: newFavorite,
     })
     //refresh displayed information

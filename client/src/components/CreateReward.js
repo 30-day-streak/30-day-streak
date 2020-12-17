@@ -32,7 +32,7 @@ export default class CreateReward extends Component {
     event.preventDefault();
     // axios call to api
     axios
-      .post('/rewards', {
+      .post('/api/rewards', {
         name: this.state.name,
         description: this.state.description,
         category: this.state.category,

@@ -27,7 +27,7 @@ export default class CreateChallenge extends Component {
     console.log('user before post', this.state.user);
     let id = this.state.user._id;
     try {
-      const newChallenge = await axios.post('/challenges', {
+      const newChallenge = await axios.post('/api/challenges', {
         title: this.state.title,
         goal: this.state.goal,
         dailyTarget: {
@@ -48,7 +48,7 @@ export default class CreateChallenge extends Component {
       });
       console.log('user after set state', this.state.user);
 
-      const updatedUser = await axios.put(`/users/${id}`, {
+      const updatedUser = await axios.put(`/api/users/${id}`, {
         challenges: this.state.user.challenges, 
         rewards: this.state.user.rewards
       });
@@ -64,7 +64,7 @@ export default class CreateChallenge extends Component {
     // console.log('user before post', this.state.user);
     let id = this.state.user._id;
     try {
-      const newChallenge = await axios.post('/challenges', {
+      const newChallenge = await axios.post('/api/challenges', {
         title: this.state.title,
         goal: this.state.goal,
         dailyTarget: {
@@ -85,7 +85,7 @@ export default class CreateChallenge extends Component {
       });
       // console.log('user after set state', this.state.user);
 
-      const updatedUser = await axios.put(`/users/${id}`, {
+      const updatedUser = await axios.put(`/api/users/${id}`, {
         challenges: this.state.user.challenges, 
         rewards: this.state.user.rewards
       });
