@@ -118,6 +118,8 @@ export default class Dashboard extends Component {
                     user={this.props.user}
                     calculateChallengeDay={this.calculateChallengeDay}
                     streakStatus={this.streakStatus}
+                    setUser={this.props.setUser}
+                    {...this.props}
                   />
                 );
               })}
@@ -142,6 +144,7 @@ export default class Dashboard extends Component {
           <div className="scroll-container two">
             <h1>Why do a 30-day challenge?</h1>
             <iframe 
+              title="embedded YouTube"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/UNP03fDSj1U"

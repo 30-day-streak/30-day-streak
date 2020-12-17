@@ -24,7 +24,6 @@ body {
   }
 }
 
-/* Create Challenges CSS */
 
 .create-challenge-form {
   padding: 0;
@@ -92,63 +91,6 @@ body {
   }
 }
 
-
-/* NavBar */
-/* nav {
-  background-color:  #f67358
-  height: 4vw;
-  display: flex;
-  justify-content: space-between;
-}  */
-
-/* nav a {
-  color: white;
-  text-decoration: none;
-  padding: 1vw;
-  font-size: 1.9vw;
-}
-
-.nav-bar-right-side {
-  display: flex
-} */
-
-
-/* Create Challenges CSS */
-
-
-
-
-/* Start Challenge CSS */
-
-.start-challenge-page {
-  height: 100vw;
-  /* background-color: #f8f9fa; */
-  display: flex; 
-  justify-content: center;
-  align-items: start;
-}
-
-.start-challenge-page h1{
-    color: #f05454;
-    margin: 0;
-    /* padding: 2vw 0 0 0 */
-}
-
-.start-challenge-page h2 {
-  color: #f05454
-}
-
-.start-challenge-page-content {
-  margin: 0;
-  padding: 0;
-  width: 50vw;
-  /* border: 2px solid #6c757d; */
-  margin: 3vw;
-  padding: 3vw;
-  border-radius: 10px;
-}
-
-
 .button-light {
   width: 10vw;
   background-color: #e8e8e8;
@@ -165,7 +107,7 @@ body {
 .modal {
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 15vh;
   width:100vw;

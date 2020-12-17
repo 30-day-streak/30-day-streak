@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import './Modal.css';
 
 export default class Modal extends Component {
+
+  // hideModal() {
+  //   this.props.modalOff()
+  // }
+
   render() {
     const showModalClassName = this.props.modalIsActive ? "display-modal" : "hide-modal"
     if (!this.props.modalIsActive) {
@@ -22,7 +27,7 @@ export default class Modal extends Component {
               <br />
               <p> Enjoy your reward and think about what you have achieved - that will give you strength for the remainder of your challenge!</p>
               <br />
-              <button onClick={this.hideModal}>Close</button>
+              <button onClick={this.props.modalOff}>Close</button>
             </div>
           </div>
         );
@@ -31,11 +36,11 @@ export default class Modal extends Component {
         return (
           <div className={showModalClassName}>
             <div className="modal-main">
-              <h2>It's day 15</h2>
-              <h1>You're half way through your challenge!!</h1>
-              <p>Well done for making it this far</p>
+              <h2>You're half way through your challenge!!</h2>
+              <h1>Well done for making it this far</h1>
+              <p>Keep up the hard work!</p>
               <br />
-              <button onClick={this.hideModal}>Close</button>
+              <button onClick={this.props.modalOff}>Close</button>
             </div>
           </div>
 
@@ -49,7 +54,7 @@ export default class Modal extends Component {
               <h2>There's only a couple fo days left until the end of your challenge</h2>
               <p>You can be really proud of what you have achieved!</p>
               <br />
-              <button onClick={this.hideModal}>Close</button>
+              <button onClick={this.props.modalOff}>Close</button>
             </div>
           </div>
         )
@@ -64,7 +69,7 @@ export default class Modal extends Component {
               {/* insert grand prize */}
               <h2>Enjoy it and we look forward to seeing you again soon!</h2>
               <br />
-              <button onClick={this.hideModal}>Close</button>
+              <button onClick={this.props.modalOff}>Close</button>
             </div>
           </div>
         )
@@ -80,7 +85,7 @@ export default class Modal extends Component {
               {/* put links in above line? */}
               <p>and have another try at 30-DAY-STREAK?</p>
               <br />
-              <button onClick={this.hideModal}>Close</button>
+              <button onClick={this.props.modalOff}>Close</button>
             </div>
           </div>
         )
@@ -95,7 +100,7 @@ export default class Modal extends Component {
               {/* put links in above line? */}
               <p>and have another try at 30-DAY-STREAK?</p>
               <br />
-              <button onClick={this.hideModal}>Close</button>
+              <button onClick={this.props.modalOff}>Close</button>
             </div>
           </div>
         )

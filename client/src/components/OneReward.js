@@ -70,7 +70,7 @@ export default class OneReward extends Component {
       <div className="card" key={this.props.reward._id}>
         <div className="card-header">
           <p>{ this.props.reward.category }</p>
-          <img src={ this.state.favorite ? '/images/favorite.png' : '/images/unfavorite.png'} onClick={this.toggleFavorite} alt="favorite" />
+          <img src={ this.state.favorite ? './images/favorite1.png' : './images/unfavorite1.png'} onClick={this.toggleFavorite} alt="favorite" />
         </div>
         <h3>{ this.props.reward.name }</h3>
         <hr/>

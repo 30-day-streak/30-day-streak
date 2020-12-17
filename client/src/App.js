@@ -20,7 +20,7 @@ class App extends Component {
     user: this.props.user,
     modalIsActive: false,
     modalEvent: "",
-    modalReward:{},
+    modalReward: {},
   }
 
   setUser = user => {
@@ -33,9 +33,42 @@ class App extends Component {
     this.setState({
       modalIsActive: false,
       modalEvent: "",
-      modalReward:{}
-     })
+      modalReward: {}
+    })
   }
+
+  notifyMilestone = (notification) => {
+    console.log(`milestone notified:`, notification);
+
+    const milestone = notification[0];
+    const reward = notification[1];
+    const challengeId = notification[2]
+    const changedToggle = notification[3]
+    console.log({ milestone }, { reward }, { changedToggle })
+    this.setState({
+      modalIsActive: true,
+      modalEvent: milestone,
+      modalReward: reward
+    })
+
+
+    const userChallenges = this.props.user.challenges.map(challenge => {
+      console.log(challenge[changedToggle]);
+
+      //   if (challenge.id == challengeId){
+      //     challenge[changedToggle] = false
+      //   }
+      // })
+      // console.log(userChallenges);
+
+      // const updatedUser = await axios.put(`api/users/${this.state.user._id}`), {
+      //   challenges: this.state.user.challenges,
+      // })
+    });
+    return null;
+  }
+
+
 
 
   // toggleFavoriteReward = (rewardId, favStatus) => {
@@ -62,19 +95,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" >
 
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-        <div className="modal">
+        { this.state.modalIsActive && <div className="modal">
           <Modal
             modalIsActive={this.state.modalIsActive}
+            modalOff={this.modalOff}
             event={this.state.modalEvent}
             reward={this.state.modalReward}
           />
         </div>
+        }
 
-        <Switch>
+        < Switch >
           <Route
             exact
             path='/signup'
@@ -89,7 +124,10 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={props => <Dashboard setUser={this.setUser} user={this.state.user} {...props} />}
+            render={props => <Dashboard
+              notifyMilestone={this.notifyMilestone}
+              setUser={this.setUser}
+              user={this.state.user} {...props} />}
           />
           <Route
             exact
@@ -135,11 +173,12 @@ class App extends Component {
             render={props => <Profile setUser={this.setUser} {...props} user={this.state.user} />}
           />
 
-        </Switch>
+        </Switch >
 
-      </div>
+      </div >
     );
   }
 }
+
 
 export default App;
