@@ -277,7 +277,7 @@
 
 .create-challenge-buttons {
   font-family: Rubik;
-  width: 40vw;
+  /* width: 40vw; */
   display: flex;
   justify-content: space-around;
 }
