@@ -17,10 +17,12 @@ export default class ActiveChallengePreview extends Component {
   };
 
   withdrawFromChallenge = () => {
-    axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
-    .then(() => {
+    axios.put(`/users/${this.props.challenge.id._id}/withdraw`)
+    .then((user) => {
+      console.log('user', user.data)
+      this.props.setUser(user.data)
       console.log('test')
-      // this.props.history.push('/')
+      this.props.history.push('/')
     })
   }
 
@@ -54,7 +56,7 @@ export default class ActiveChallengePreview extends Component {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -70,7 +72,7 @@ export default class ActiveChallengePreview extends Component {
     if (!this.props.challenge.id.title) {
       window.location.reload(false);
     } else {
-      console.log('props from preview ');
+      // console.log('props from preview ');
       return (
         <div className="active-preview">
           <div className="preview-title">

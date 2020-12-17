@@ -117,6 +117,8 @@ export default class Dashboard extends Component {
                     user={this.props.user}
                     calculateChallengeDay={this.calculateChallengeDay}
                     streakStatus={this.streakStatus}
+                    setUser={this.props.setUser}
+                    {...this.props}
                   />
                 );
               })}
