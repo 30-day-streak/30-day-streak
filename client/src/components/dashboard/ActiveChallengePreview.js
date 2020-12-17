@@ -8,6 +8,7 @@ export default class ActiveChallengePreview extends Component {
   state = {
     challengeDay: 0,
     activeChallengeDetails: false,
+    user: '',
   };
 
   toggleChallengeDetails = () => {
@@ -27,12 +28,13 @@ export default class ActiveChallengePreview extends Component {
     const today = this.state.challengeDay
     const thisProjectsTracker = this.props.challenge.tracker
     const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, today)
-    console.log({ streakStatusData });
-    console.log(`thisProjectTracker ${thisProjectsTracker}, today ${today}`);
-    console.log({ streakStatusData });
-    console.log(`tracker today`, thisProjectsTracker[today - 1]);
-    console.log(`current streak`, streakStatusData.currentStreak);
-    console.log(`this.props.challenge.subGoals7DayStreak`, this.props.challenge.subGoals7DayStreak);
+    // console.log({ streakStatusData });
+
+    // console.log(`thisProjectTracker ${thisProjectsTracker}, today ${today}`);
+    // console.log({ streakStatusData });
+    // console.log(`tracker today`, thisProjectsTracker[today - 1]);
+    // console.log(`current streak`, streakStatusData.currentStreak);
+    // console.log(`this.props.challenge.subGoals7DayStreak`, this.props.challenge.subGoals7DayStreak);
 
     //7-day streak
     if (thisProjectsTracker[today - 1] === 1 &&
@@ -88,13 +90,6 @@ export default class ActiveChallengePreview extends Component {
   };
 }
 
-  componentDidMount() {
-    const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
-    this.setState({
-      challengeDay: challengeDay,
-    })
-  }
-
   withdrawFromChallenge = () => {
     axios.put(`/api/users/${this.props.challenge.id._id}/withdraw`)
     .then((user) => {
@@ -136,21 +131,32 @@ export default class ActiveChallengePreview extends Component {
       }
   };
 
-  componentDidMount() {
+  componentDidMount = async () => {
+    try {
     const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
     // console.log({challengeDay});
+    // console.log('updated user from mount', updatedUser.data);
     this.setState({
       challengeDay: challengeDay,
     });
-
+  }
+  catch (error){
+    console.log(error);
+  }
   }
 
+  // componentDidUpdate(prevProps) {
+  //   console.log('prev props from active challenge preview', prevProps);
+  // }
+
   render() {
+    // console.log('user challenges at render', this.props.user.challenges);
+    // console.log('challenge props from render', this.props.challenge)
     const challengeDay = this.state.challengeDay
     const todayIndex = challengeDay - 1
-    if (!this.props.challenge.id.title) {
-      window.location.reload(false);
-    } else {
+    // if (!this.props.challenge.id.title) {
+    //   window.location.reload(false);
+    // } else {
       // console.log('props from preview ');
       return (
         <div className="active-preview">
@@ -212,4 +218,4 @@ export default class ActiveChallengePreview extends Component {
       );
     }
   }
-}
+// }
