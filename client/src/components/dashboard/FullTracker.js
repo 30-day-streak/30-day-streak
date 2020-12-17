@@ -51,16 +51,13 @@ export default class FullTracker extends Component {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
-<<<<<<< HEAD
-        const refresh = this.props.refreshActiveChallengeDetails()
-=======
+
         const refresh = this.props.refreshActiveChallengeDetails();
         const streakStatusData = this.props.streakStatus(
           this.props.challenge.tracker,
           this.props.challengeDay
         );
         const generateNotifications = this.props.notifier(streakStatusData);
->>>>>>> main
       }
     } catch (error) {
       console.log(error);
