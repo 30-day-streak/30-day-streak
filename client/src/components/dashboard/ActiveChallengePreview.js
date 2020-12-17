@@ -183,7 +183,7 @@ export default class ActiveChallengePreview extends Component {
           challengeTracker[index]++;
         } else {
           challengeTracker[index]--;
-          challengeTracker[index]--;
+          // challengeTracker[index]--;
         }
         this.setState({
           [name]: value,
