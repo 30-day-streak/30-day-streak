@@ -3,7 +3,7 @@ const router  = express.Router();
 const Challenge = require('../models/Challenge');
 
 // get all challenges
-router.get('/', (req, res) => {
+router.get('/api', (req, res) => {
   Challenge.find()
     .then(challenges => {
       res.status(200).json(challenges);
