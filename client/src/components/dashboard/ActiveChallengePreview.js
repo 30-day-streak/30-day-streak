@@ -105,7 +105,7 @@ export default class ActiveChallengePreview extends Component {
       const updatedUser = await axios.put(`/api/users/${this.props.challenge.id._id}/withdraw`)
       this.props.setUser(updatedUser.data)
       console.log('updated user data', updatedUser.data);
-      console.log(this.props.setUser);
+      // console.log(this.);
       this.props.history.push('/');
     } catch (error) {
       console.log(error);

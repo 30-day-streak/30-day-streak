@@ -48,14 +48,18 @@ router.get('/:id', (req, res) => {
 // add a challenge to users challenges (favorites)
 router.put('/:id/challengesfavorite', (req, res, next) => {
   if (req.body.favorite) {
-    User.findByIdAndUpdate(req.user._id, {
-      $push: {
-        challenges: {
-          id: req.params.id,
-          status: 'favorite',
+    User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $push: {
+          challenges: {
+            id: req.params.id,
+            status: 'favorite',
+          },
         },
       },
-    }, { new: true })
+      { new: true }
+    )
       .populate('challenges.id')
       .populate('rewards')
       .then((user) => {
@@ -64,13 +68,17 @@ router.put('/:id/challengesfavorite', (req, res, next) => {
       })
       .catch((err) => next(err));
   } else {
-    User.findByIdAndUpdate(req.user._id, {
-      $pull: {
-        challenges: {
-          id: req.params.id,
+    User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $pull: {
+          challenges: {
+            id: req.params.id,
+          },
         },
       },
-    }, { new: true })
+      { new: true }
+    )
       .populate('challenges.id')
       .populate('rewards')
       .then((user) => {
@@ -83,11 +91,15 @@ router.put('/:id/challengesfavorite', (req, res, next) => {
 // add a reward to users rewards (favorites)
 router.put('/:id/rewardsfavorite', (req, res, next) => {
   if (req.body.favorite) {
-    User.findByIdAndUpdate(req.user._id, {
-      $push: {
-        rewards: req.params.id,
+    User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $push: {
+          rewards: req.params.id,
+        },
       },
-    }, { new: true })
+      { new: true }
+    )
       .populate('challenges.id')
       .populate('rewards')
       .then((reward) => {
@@ -95,11 +107,15 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
       })
       .catch((err) => next(err));
   } else {
-    User.findByIdAndUpdate(req.user._id, {
-      $pull: {
-        rewards: req.params.id,
+    User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $pull: {
+          rewards: req.params.id,
+        },
       },
-    }, { new: true })
+      { new: true }
+    )
       .populate('challenges.id')
       .populate('rewards')
       .then((reward) => {
@@ -111,22 +127,29 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
 
 // update status / withdrawn from challenge
 router.put('/:id/withdraw', (req, res, next) => {
-  console.log('challenge id', req.params.id, req.body.status)
-  User.findOneAndUpdate({ 
-    "_id": req.user._id,
-    "challenges.id": req.params.id
-  }, { 
-    "$set": {
-      "challenges.$.status": "withdrawn"
-    }
-  }, { new: true })
-  .then(challenge => {
-    // console.log('CHALLENGE', challenge)
-    res.status(200).json(challenge);
-  })
-  .catch(err => {
-    console.log(err)
-    next(err)})
+  console.log('challenge id', req.params.id, req.body.status);
+  User.findOneAndUpdate(
+    {
+      _id: req.user._id,
+      'challenges.id': req.params.id,
+    },
+    {
+      $set: {
+        'challenges.$.status': 'withdrawn',
+      },
+    },
+    { new: true }
+  )
+    .populate('challenges.id')
+    .populate('rewards')
+    .then((challenge) => {
+      // console.log('CHALLENGE', challenge)
+      res.status(200).json(challenge);
+    })
+    .catch((err) => {
+      console.log(err);
+      next(err);
+    });
 });
 
 // general user update from frontend
