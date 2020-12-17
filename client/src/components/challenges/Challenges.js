@@ -30,6 +30,7 @@ export default class Challenges extends Component {
   }
 
   filter = () => {
+    console.log('this.props.user.challenges at filter', this.props.user.challenges);
     const favoriteIds = this.props.user.challenges.filter(challenge => {
       return challenge.status === 'favorite'
     }).map(challenge => challenge.id._id)
@@ -82,6 +83,7 @@ export default class Challenges extends Component {
                     user={ this.props.user }
                     getData={ this.getData }
                     filtered={ filtered }
+                    setUser={this.props.setUser}
                 />
               )
             })
