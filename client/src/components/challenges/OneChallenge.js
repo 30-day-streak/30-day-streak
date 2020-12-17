@@ -76,7 +76,7 @@ export default class OneChallenge extends Component {
           <hr />
           <p>{this.props.challenge.goal && this.props.challenge.goal}</p>
           <Link to={`/challenges/${this.props.challenge._id}/start`}>
-            <button>Start</button>
+            <button className="button-light">Start</button>
           </Link>
         </div>
         {/* </div> */}

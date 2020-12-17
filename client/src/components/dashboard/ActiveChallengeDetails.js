@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FullTracker from './FullTracker';
-import './ActiveChallengeDetails.css';
+import './Dashboard.css';
 
 export default class ActiveChallengeDetails extends Component {
   state = {
