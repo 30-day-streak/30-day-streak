@@ -107,6 +107,7 @@ export default class ActiveChallengePreview extends Component {
       const name = target.id;
       // console.log('target', target, 'value', value, 'name', name);
       let challengeTracker = this.props.challenge.tracker;
+      console.log('challenge tracker from one button', challengeTracker);
       let index = target.id;
       if (event.target.id < this.state.challengeDay) {
         if (challengeTracker[index] === 0) {
@@ -124,7 +125,7 @@ export default class ActiveChallengePreview extends Component {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
-        const refresh = this.props.refreshActiveChallengeDetails() 
+        // const refresh = this.props.refreshActiveChallengeDetails() 
       }
       } catch (error) {
         console.log(error);
@@ -138,6 +139,7 @@ export default class ActiveChallengePreview extends Component {
     // console.log('updated user from mount', updatedUser.data);
     this.setState({
       challengeDay: challengeDay,
+      user: this.props.user,
     });
   }
   catch (error){
