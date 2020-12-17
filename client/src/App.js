@@ -12,16 +12,15 @@ import Rewards from './components/Rewards';
 // import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
 import Modal from './components/modal/Modal';
-import Notifications from './components/Notifications';
 import Profile from './components/Profile'
 
 class App extends Component {
 
   state = {
     user: this.props.user,
-    modalIsActive: true,
-    modalEvent: 7,
-    modalReward: '',
+    modalIsActive: false,
+    modalEvent: "",
+    modalReward:{},
   }
 
   setUser = user => {
@@ -30,8 +29,12 @@ class App extends Component {
     })
   }
 
-  modalToggle = () => {
-    this.setState({ modalIsActive: !this.state.modalIsActive })
+  modalOff = () => {
+    this.setState({
+      modalIsActive: false,
+      modalEvent: "",
+      modalReward:{}
+     })
   }
 
 
@@ -60,13 +63,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-        <Modal
-          modalIsActive={this.state.modalIsActive}
-          event={this.state.modalEvent}
-          reward={this.state.modalReward}
-        />
+        <div className="modal">
+          <Modal
+            modalIsActive={this.state.modalIsActive}
+            event={this.state.modalEvent}
+            reward={this.state.modalReward}
+          />
+        </div>
 
         <Switch>
           <Route
@@ -126,10 +132,10 @@ class App extends Component {
           <Route
             exact
             path='/profile'
-            render={props => <Profile setUser={this.setUser} {...props} user={this.state.user}/>}
+            render={props => <Profile setUser={this.setUser} {...props} user={this.state.user} />}
           />
 
-      </Switch>
+        </Switch>
 
       </div>
     );

@@ -161,3 +161,14 @@ body {
   width: 10vw;
   border-radius: 5px;
 }
+
+.modal {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  top: 15vh;
+  width:100vw;
+  height: 70vh;
+}
+  

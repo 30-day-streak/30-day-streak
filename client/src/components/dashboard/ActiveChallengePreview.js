@@ -17,6 +17,7 @@ export default class ActiveChallengePreview extends Component {
   };
 
 
+
   selectReward = () => {
     const rewards = this.props.user.rewards
     const chosenRewardIndex = Math.floor(Math.random() * rewards.length)
@@ -27,13 +28,13 @@ export default class ActiveChallengePreview extends Component {
     const today = this.state.challengeDay
     const thisProjectsTracker = this.props.challenge.tracker
     const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, today)
-    console.log({ streakStatusData });
+    // console.log({ streakStatusData });
 
-    console.log(`thisProjectTracker ${thisProjectsTracker}, today ${today}`);
-    console.log({ streakStatusData });
-    console.log(`tracker today`, thisProjectsTracker[today - 1]);
-    console.log(`current streak`, streakStatusData.currentStreak);
-    console.log(`this.props.challenge.subGoals7DayStreak`, this.props.challenge.subGoals7DayStreak);
+    // console.log(`thisProjectTracker ${thisProjectsTracker}, today ${today}`);
+    // console.log({ streakStatusData });
+    // console.log(`tracker today`, thisProjectsTracker[today - 1]);
+    // console.log(`current streak`, streakStatusData.currentStreak);
+    // console.log(`this.props.challenge.subGoals7DayStreak`, this.props.challenge.subGoals7DayStreak);
 
     //7-day streak
     if (thisProjectsTracker[today - 1] === 1 &&
@@ -42,7 +43,7 @@ export default class ActiveChallengePreview extends Component {
       console.log(`7 day streak`);
       this.props.challenge.subGoals7DayStreak = true;
       let todaysReward = this.selectReward();
-      return [7, todaysReward];
+      return ["7", todaysReward];
       //show notification
     }
 
@@ -52,7 +53,7 @@ export default class ActiveChallengePreview extends Component {
       this.props.challenge.notification15Days === false) {
       console.log(`half way`);
       this.props.challenge.notification15Days = true;
-      return [7];
+      return ["15", {}];
       //show a notification
     }
 
@@ -63,7 +64,7 @@ export default class ActiveChallengePreview extends Component {
       console.log(`21-day streak`);
       this.props.challenge.subGoals21DayStreak = true;
       let todaysReward = this.selectReward();
-      return [21, todaysReward];
+      return ["21", todaysReward];
       //select prize
       //show notification
     }
@@ -74,7 +75,7 @@ export default class ActiveChallengePreview extends Component {
       this.props.challenge.notification28Days === false) {
       console.log(`nearly there`);
       this.props.challenge.notification15Days = true;
-      return [28];
+      return [28, {}];
       //show notification
     }
 
@@ -82,26 +83,26 @@ export default class ActiveChallengePreview extends Component {
     if (today >= 30 && this.props.challenge.notificationComplete === false) {
       this.props.challenge.notificationComplete = true;
       if (streakStatusData.daysCompleted === 30) {
-        return ["success"];
-    } else{
-      return["notQuite"];
-    }
-  };
-}
+        return ["success", {}];//main goal
+      } else {
+        return ["notQuite", {}];
+      }
+    };
+  }
 
   componentDidMount() {
     const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
     this.setState({
       challengeDay: challengeDay,
     })
-
+  }
 
   withdrawFromChallenge = () => {
     axios.put(`/users/${this.props.challenge.id._id}/withdraw`, { status: 'withdrawn' })
-    .then(() => {
-      console.log('test')
-      // this.props.history.push('/')
-    })
+      .then(() => {
+        console.log('test')
+        // this.props.history.push('/')
+      })
   }
 
   handleChange = async (event) => {
@@ -129,21 +130,12 @@ export default class ActiveChallengePreview extends Component {
           challenges: this.state.user.challenges,
           rewards: this.state.user.rewards,
         });
-        const refresh = this.props.refreshActiveChallengeDetails() 
+        const refresh = this.props.refreshActiveChallengeDetails()
       }
-      } catch (error) {
-        console.log(error);
-      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  componentDidMount() {
-    const challengeDay = this.props.calculateChallengeDay(this.props.challenge.startDate);
-    // console.log({challengeDay});
-    this.setState({
-      challengeDay: challengeDay,
-    });
-
-  }
 
   render() {
     const challengeDay = this.state.challengeDay
@@ -200,12 +192,12 @@ export default class ActiveChallengePreview extends Component {
               hide details
             </button>
           )}
-          {this.state.activeChallengeDetails && 
-            <button 
-              className="button-light" 
+          {this.state.activeChallengeDetails &&
+            <button
+              className="button-light"
               onClick={this.withdrawFromChallenge}
             >
-            i give up, i'm a bit fat looser
+              i give up, i'm a bit fat looser
             </button>
           }
         </div>
