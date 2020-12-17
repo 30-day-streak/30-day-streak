@@ -208,7 +208,9 @@ button :hover {
 
 .active-challenge-details-user-info-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 }
 
 .active-challenge-details-user-info-text {
@@ -217,7 +219,7 @@ button :hover {
   justify-content: space-around;
   align-items: center;
   height: 35vw;
-  border: 2px, solid, black
+  /* border: 2px, solid, black/ */
 }
 
 .activeContainer {
@@ -225,11 +227,13 @@ button :hover {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  /* align-items: ; */
+  justify-content: center;
+  flex-wrap: wrap;
+  /* align-items: cetner; */
   text-align: left;
   margin: 10px;
   padding: 10px
+  /* height: flex; */
 }
 
 .progress {
