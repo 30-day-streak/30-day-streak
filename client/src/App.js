@@ -11,12 +11,16 @@ import StartChallenge from './components/challenges/StartChallenge'
 import Rewards from './components/Rewards';
 // import axios from 'axios';
 import Dashboard from './components/dashboard/Dashboard';
+import Modal from './components/modal/Modal';
 import Notifications from './components/Notifications';
 
 class App extends Component {
 
   state = {
-    user: this.props.user
+    user: this.props.user,
+    modalIsActive: true,
+    modalEvent: 7,
+    modalReward: '',
   }
 
   setUser = user => {
@@ -24,6 +28,11 @@ class App extends Component {
       user: user
     })
   }
+
+  modalToggle = () => {
+    this.setState({ modalIsActive: !this.state.modalIsActive })
+  }
+
 
   // toggleFavoriteReward = (rewardId, favStatus) => {
   //   console.log(`toggling`, rewardId, favStatus);
@@ -48,17 +57,23 @@ class App extends Component {
   // }
 
   render() {
-    // console.log('user from app page', this.props.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
+
+        <Modal
+          modalIsActive={this.state.modalIsActive}
+          event={this.state.modalEvent}
+          reward={this.state.modalReward}
+        />
+
         <Switch>
           <Route
             exact
             path='/signup'
             render={props => <SignUp setUser={this.setUser} {...props} />}
           />
-      
+
           <Route
             exact
             path='/login'
@@ -80,7 +95,7 @@ class App extends Component {
           <Route
             exact
             path='/challenges/create'
-            render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.state.user}/>}
+            render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.state.user} />}
           />
           <Route
             exact
@@ -92,22 +107,22 @@ class App extends Component {
             path='/rewards'
             render={props => {
               if (this.state.user) return (
-              <Rewards
-                {...props}
-                user={this.state.user}
-                setUser={this.setUser}
+                <Rewards
+                  {...props}
+                  user={this.state.user}
+                  setUser={this.setUser}
                 // toggleFavoriteReward={this.toggleFavoriteReward}
-              />)
+                />)
               else return (<Redirect to='/' />)
             }}
           />
-          <Route 
+          <Route
             exact
             path='/challenges/:id/start'
-            render={props => <StartChallenge setUser={this.setUser} {...props} user={this.state.user}/>}
+            render={props => <StartChallenge setUser={this.setUser} {...props} user={this.state.user} />}
           />
 
-      </Switch>
+        </Switch>
       </div>
     );
   }
