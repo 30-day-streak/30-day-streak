@@ -40,11 +40,10 @@ const User = require('../models/User');
 // });
 
 router.get('/:id', (req, res) => {
-  User.findById(req.params.id)
-    .then(() => {
-      res.json(req.user);
-    })
-})
+  User.findById(req.params.id).then(() => {
+    res.json(req.user);
+  });
+});
 
 // add a challenge to users challenges (favorites)
 router.put('/:id/challengesfavorite', (req, res, next) => {
@@ -55,26 +54,32 @@ router.put('/:id/challengesfavorite', (req, res, next) => {
           id: req.params.id,
           status: 'favorite',
         },
-      }
-    })
-      .then(challenge => {
-        res.status(200).json(challenge);
+      },
+    }, { new: true })
+      .populate('challenges.id')
+      .populate('rewards')
+      .then((user) => {
+        console.log('add favorite user', user);
+        res.status(200).json(user);
       })
-      .catch(err => next(err))
+      .catch((err) => next(err));
   } else {
     User.findByIdAndUpdate(req.user._id, {
       $pull: {
         challenges: {
           id: req.params.id,
         },
-      }
-    })
-      .then(challenge => {
-        res.status(200).json(challenge);
+      },
+    }, { new: true })
+      .populate('challenges.id')
+      .populate('rewards')
+      .then((user) => {
+        console.log('delete favorite user', user);
+        res.status(200).json(user);
       })
-      .catch(err => next(err))
+      .catch((err) => next(err));
   }
-})
+});
 
 // add a reward to users rewards (favorites)
 router.put('/:id/rewardsfavorite', (req, res, next) => {
@@ -82,66 +87,63 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
     User.findByIdAndUpdate(req.user._id, {
       $push: {
         rewards: req.params.id,
-      }
-    })
-      .then(reward => {
+      },
+    }, { new: true })
+      .then((reward) => {
         res.status(200).json(reward);
       })
-      .catch(err => next(err))
+      .catch((err) => next(err));
   } else {
     User.findByIdAndUpdate(req.user._id, {
       $pull: {
         rewards: req.params.id,
-      }
-    })
-      .then(reward => {
+      },
+    }, { new: true })
+      .then((reward) => {
         res.status(200).json(reward);
       })
-      .catch(err => next(err))
+      .catch((err) => next(err));
   }
-})
+});
 
 // update status / withdrawn from challenge
 router.put('/:id/withdraw', (req, res, next) => {
-  console.log('challenge id', req.params.id, req.body.status)
-  User.findByIdAndUpdate(req.user._id, 
+  console.log('challenge id', req.params.id, req.body.status);
+  User.findByIdAndUpdate(
+    req.user._id,
     { 'challenges.id': req.params.id },
-    { $set: {status: req.body.status }}
+    { $set: { status: req.body.status } }
   )
-  .then(challenge => {
-    // console.log(challenge)
-    res.status(200).json(challenge);
-  })
-  .catch(err => next(err))
+    .then((challenge) => {
+      // console.log(challenge)
+      res.status(200).json(challenge);
+    })
+    .catch((err) => next(err));
 });
 
 // general user update from frontend
 router.put('/:id', (req, res, next) => {
-  const { challenges, rewards } = req.body
+  const { challenges, rewards } = req.body;
 
-  User.findByIdAndUpdate(
-    req.params.id,
-    { challenges, rewards },
-    { new: true }
-  )
-  .populate('challenges.id')
-  .populate('rewards')
-  .then(user => {
-    console.log({ user });
-    res.status(200).json(user);
-  })
-  .catch(err => { 
-    // console.log(err) 
-  })
+  User.findByIdAndUpdate(req.params.id, { challenges, rewards }, { new: true })
+    .populate('challenges.id')
+    .populate('rewards')
+    .then((user) => {
+      console.log({ user });
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      // console.log(err)
+    });
 });
 
 //router.put('/:id', (req, res, next) => {
-  // console.log('req user', req.user);
- // const {challenges} = req.body.user;
- // console.log('user challenges', challenges);
- // User.findByIdAndUpdate(
+// console.log('req user', req.user);
+// const {challenges} = req.body.user;
+// console.log('user challenges', challenges);
+// User.findByIdAndUpdate(
 //    req.params.id,
- //   {challenges}
+//   {challenges}
 //  )
 //  .then(user => {
 //    res.status(200).json(user)
@@ -156,13 +158,10 @@ router.put('/:id', (req, res, next) => {
 //   // const {challenges} = req.user
 //   console.log('req.body', req.body.user.challenges);
 //   let usersChallenges = await Challenge.findById(req.params.id)
-  
-  
+
 //   // User.findByIdAndUpdate(id, {challenges})
 // })
 
-
 // change challenge status from favorite to active
-
 
 module.exports = router;
