@@ -96,7 +96,7 @@ export default class ActiveChallengePreview extends Component {
   }
 
   withdrawFromChallenge = () => {
-    axios.put(`/users/${this.props.challenge.id._id}/withdraw`)
+    axios.put(`/api/users/${this.props.challenge.id._id}/withdraw`)
     .then((user) => {
       console.log('user', user.data)
       this.props.setUser(user.data)

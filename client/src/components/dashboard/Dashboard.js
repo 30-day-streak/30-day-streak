@@ -7,11 +7,6 @@ import ActiveChallengePreview from './ActiveChallengePreview';
 import axios from 'axios';
 
 export default class Dashboard extends Component {
-  
-  // state = {
-  //   user: '',
-  //   reload: true,
-  // };
 
   calculateChallengeDay = (created_at) => {
     const startAsMilliseconds = new Date(created_at).getTime();
@@ -49,7 +44,6 @@ export default class Dashboard extends Component {
     }
     return output
   }
-
 
   render() {
     // logged in user
