@@ -19,20 +19,20 @@ export default function DashboardNoActiveChallenges(props) {
         <div className="one-button">
         <h5>Challenges</h5>
         <Link to="/challenges">
-          <button >BROWSE</button>
+          <button className="bottom-dark">BROWSE</button>
         </Link>
         <Link to="/challenges/create">
-          <button>CREATE</button>
+          <button className="bottom-light">CREATE</button>
         </Link>
         </div>
 
         <div className="one-button">
         <h5>Rewards</h5>
         <Link to="/rewards">
-            <button>BROWSE</button>
+            <button className="bottom-dark">BROWSE</button>
           </Link>
           <Link to="/rewards/create">
-            <button>CREATE</button>
+            <button className="bottom-light">CREATE</button>
           </Link>
         </div>
       </div>

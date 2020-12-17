@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ActiveChallengeDetails from './ActiveChallengeDetails';
 import TrackerButton from './TrackerButton';
-import './ActiveChallengePreview.css';
+import './Dashboard.css';
 
 export default class ActiveChallengePreview extends Component {
   state = {

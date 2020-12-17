@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './FullTracker.css';
+import './Dashboard.css';
 import TrackerButton from './TrackerButton';
 
 export default class FullTracker extends Component {
