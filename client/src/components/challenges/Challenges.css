@@ -273,32 +273,81 @@
 /* START CHALLENGE STYLING */
 
 .start-challenge-page {
-  height: 100vw;
-  /* background-color: #f8f9fa; */
-  display: flex; 
+  display: flex;
   justify-content: center;
-  align-items: start;
+  background-image: url('./startBackground.jpg');
+  background-size: cover;
 }
 
+
 .start-challenge-page h1{
-    color: #f05454;
+    color: #30475e;
     margin: 0;
+    /* border: 2px solid #30475e; */
 }
 
 .start-challenge-page h2 {
-  color: #30475e
+  color: #222831;
+  margin: 0;
 }
 
 .start-challenge-page p {
-
+  margin: 0;
 }
 
 .start-challenge-page-content {
-  margin: 0;
-  padding: 0;
   width: 50vw;
-  /* border: 2px solid #6c757d; */
-  margin: 3vw;
-  padding: 3vw;
+  /* height: 100vw; */
+  margin: 50px;
+  padding: 50px;
   border-radius: 10px;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: Rubik;
+  background-color:rgb(232,232,232, 0.5)
+}
+
+.start-challenge-page-content * {
+  padding: 10px 0
+}
+
+.start-challenge-page-content input {
+  width: 40vw;
+  /* margin: 2vw; */
+}
+
+.start-challenge-page-content form * {
+  margin: 2vw
+}
+
+.start-divider-line {
+  border-top: 1px solid #222831;
+  width: 40vw;
+  border-bottom: #e8e8e8;
+  border-right: #e8e8e8;
+  border-left: #e8e8e8;;
+}
+
+.start-challenge-page-content placeholder {
+  margin: 4px
+}
+
+.start-challenge-challenge-details {
+  border: 2px solid #222831;
+  border-radius: 5px;
+  margin: 1vw;
+  width: 30vw
+}
+
+.start-challenge-page button {
+  background-color: #30475e;
+  border: 2px solid #30475e;
+}
+
+.challenge-starting-info {
+  border: 2px solid black;
+  width: 60vw
 }

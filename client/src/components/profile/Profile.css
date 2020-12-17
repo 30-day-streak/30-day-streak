@@ -1,0 +1,32 @@
+.profile-page {
+  /* border: black; */
+  /* display: flex;
+  flex-wrap: wrap;
+  align-items: space-between; */
+}
+
+.profile-page-all-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.profile-divider-line {
+  border-top: 1px solid  #f05454;
+  width: 80vw
+}
+
+.tool-box {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+  width: 300px;
+  padding: 0 0 25px;
+}
+
+.profile-challenges-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
