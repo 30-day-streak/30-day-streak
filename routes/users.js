@@ -129,7 +129,7 @@ router.put('/:id', (req, res, next) => {
     req.params.id,
     { challenges, rewards },
     { new: true }
-  )
+  ).populate('challenges.id').populate('rewards')
   .then(user => {
     // console.log({ user });
     res.status(200).json(user);
