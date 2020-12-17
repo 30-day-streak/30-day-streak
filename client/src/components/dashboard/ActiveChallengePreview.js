@@ -29,9 +29,10 @@ export default class ActiveChallengePreview extends Component {
       const target = event.target;
       const value = target.checked;
       const name = target.id;
+      // console.log('target', target, 'value', value, 'name', name);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
-      if (event.target.id < this.props.challengeDay) {
+      if (event.target.id < this.state.challengeDay) {
         if (challengeTracker[index] === 0) {
           challengeTracker[index]++;
         } else if (challengeTracker[index] === 1) {
@@ -39,8 +40,6 @@ export default class ActiveChallengePreview extends Component {
         } else {
           challengeTracker[index]--;
         }
-        // console.log('challenge tracker after click', challengeTracker);
-        // console.log('state after click', this.state);
         this.setState({
           [name]: value,
         });
