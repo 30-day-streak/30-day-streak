@@ -91,7 +91,9 @@ export default class Dashboard extends Component {
 // guest user (not logged in)
     } else {
       return (
+
         <DashboardHome />
+
       )
     }
   }
