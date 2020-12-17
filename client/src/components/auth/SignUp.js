@@ -7,7 +7,7 @@ export default class SignUp extends Component {
     username: '',
     password: '',
     message: '',
-    name: '',
+    firstName: '',
     lastName: '',
     email: ''
   }
@@ -19,20 +19,21 @@ export default class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('TARGET', event.target, 'STATE', this.state)
-    const { username, password, name, lastName, email } = this.state;
-    signup(username, password, name, lastName, email)
+    // console.log('TARGET', event.target, 'STATE', this.state)
+    const { username, password, firstName, lastName, email } = this.state;
+    signup(username, password, firstName, lastName, email)
     .then(data => {
-      console.log(data)
+      // console.log('data', data)
       if (data.message) {
         this.setState({ 
           message: data.message,
           username: '',
           password: '',
-          name: '',
+          firstName: '',
           lastName: '',
           email: ''
         });
+        // console.log(this.state);
       } else {
         //put the user in the state of App.js
         this.props.setUser(data);
@@ -70,12 +71,12 @@ export default class SignUp extends Component {
             <p>{ this.state.message }</p>
           )}
           <div>
-            <label htmlFor="name">Name: </label>
+            <label htmlFor="firstName">Name: </label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={ this.state.name }
+              id="firstName"
+              name="firstName"
+              value={ this.state.firstName }
               onChange={ this.handleChange }
             />
           </div>

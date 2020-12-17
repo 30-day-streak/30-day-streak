@@ -59,13 +59,13 @@ export default class Dashboard extends Component {
       const userHasActiveChallenges = this.props.user.challenges.some(
         (challenge) => challenge.status === 'active'
       );
-
+      // console.log(this.props.user);
       if (!userHasActiveChallenges) {
         return (
           <div className="instruction-container">
             <h2>Welcome{' '}
-              {this.props.user.name
-                ? this.props.user.name
+              {this.props.user.firstName
+                ? this.props.user.firstName
                 : this.props.user.username} !
             </h2>
             <h4>You don't have any active challenges at the moment.<br/><br/>
@@ -103,8 +103,8 @@ export default class Dashboard extends Component {
         return (
           <>
             <h2>Welcome{' '}
-              {this.props.user.name
-                ? this.props.user.name
+              {this.props.user.firstName
+                ? this.props.user.firstName
                 : this.props.user.username}!
             </h2>
             <p>Your Active Challenges:</p>
