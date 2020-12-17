@@ -64,10 +64,7 @@ class App extends Component {
           <Route
             exact
             path='/challenges'
-            render={props => {
-              if (this.state.user) return <Challenges {...props} user={this.state.user} setUser={this.setUser}/>
-              else return <Redirect to='/' />
-            }}
+            render={props => <Challenges user={this.state.user} setUser={this.setUser} {...props} />}
           />
           <Route
             exact

@@ -4,13 +4,12 @@ const Challenge = require('../models/Challenge');
 
 // get all challenges
 router.get('/', (req, res) => {
-  Challenge.find().populate('')
+  Challenge.find()
     .then(challenges => {
       // console.log('CHALLENGES', challenges)
       res.status(200).json(challenges);
     })
     .catch(err => {
-      console.log(err)
       res.json(err);
     })
 });
@@ -35,7 +34,7 @@ router.post('/', (req, res) => {
   // console.log('test');
   // console.log('req user:', req.user._id);
   const { title, goal, category} = req.body;
-  const {description} = req.body.dailyTarget
+  const { description } = req.body.dailyTarget
   const owner = req.user._id
   // console.log('owner', owner);
   Challenge.create({
