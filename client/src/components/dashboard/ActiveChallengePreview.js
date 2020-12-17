@@ -29,7 +29,6 @@ export default class ActiveChallengePreview extends Component {
       const target = event.target;
       const value = target.checked;
       const name = target.id;
-      // console.log('user tracker array', this.state.user.challenges[0].tracker);
       let challengeTracker = this.props.challenge.tracker;
       let index = target.id;
       if (event.target.id < this.props.challengeDay) {
