@@ -63,6 +63,11 @@ button :hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px auto;
   padding: 15px;
+  font-family: Rubik;
+}
+
+.active-preview button {
+  width: 150px
 }
 
 .preview-title {
@@ -204,19 +209,32 @@ button :hover {
 
 .active-challenge-details-user-info-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 }
 
 .active-challenge-details-user-info-text {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 35vw;
+  /* border: 2px, solid, black/ */
 }
 
 .activeContainer {
-  /* border: 2px solid black; */
+  border: 2px solid  #222831;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* align-items: cetner; */
   text-align: left;
+  margin: 10px;
+  padding: 10px
+  /* height: flex; */
 }
 
 .progress {
@@ -241,7 +259,7 @@ button :hover {
 /* FULL TRACKER */
 
 .completed {
-  background-color: #30475e;
+  background-color:  #f05454;
   width: 50px;
   height: 50px;
   border: 2px solid #222831;
@@ -256,7 +274,7 @@ button :hover {
 }
 
 .failed {
-  background-color:  #30475e;
+  background-color:  #bebebe;
   width: 50px;
   height: 50px;
   border: 2px solid #222831;
@@ -281,6 +299,69 @@ button :hover {
   text-align: center;
 }
 
+.full-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .set-of-five-checkboxes {
   display: flex
+}
+
+.days-left {
+  /* border: 2px solid #222831; */
+  border-radius: 3px;
+  width: 130px;
+  /* height: 140px; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.days-left h1 {
+  color:  #30475e
+}
+
+.loser-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #30475e;
+  border: 2px solid #30475e;
+  color: #e8e8e8;
+  font-size: 1.5vw;
+  font-family: Rubik;
+}
+
+.prize {
+  color: #30475e
+}
+
+.active-challenge-details-prize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 60px;
+}
+
+.active-challenge-details-prize p {
+  margin: 0;
+  padding: 0
+}
+
+.days-left-and-prize {
+  /* border: 2px solid #30475e; */
+  border-radius: 5px;
+  padding: 10px
+}
+
+.days-left-and-prize h1 {
+  margin: 0
+}
+
+.streak-info-details b {
+  color: #30475e
 }

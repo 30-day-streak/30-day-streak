@@ -39,7 +39,7 @@ export default class FullTracker extends Component {
           challengeTracker[index]++;
         } else {
           challengeTracker[index]--;
-          challengeTracker[index]--;
+          // challengeTracker[index]--;
         }
         // console.log('challenge tracker after click', challengeTracker);
         // console.log('state after click', this.state);
@@ -74,7 +74,7 @@ export default class FullTracker extends Component {
     let challengeTracker = this.props.challenge.tracker;
     return (
       <div className="full-tracker">
-        <p>click on a day to update the tracker</p>
+        <p>Click on a day to update the tracker</p>
 
         <div className="full-tracker-grid">
           <div className="set-of-five-checkboxes">
@@ -108,9 +108,7 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
-          </div>
 
-          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="5"
               user={this.props.user}
@@ -123,6 +121,9 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
+          </div>
+
+          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="7"
               user={this.props.user}
@@ -141,9 +142,7 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
-          </div>
 
-          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="10"
               user={this.props.user}
@@ -168,15 +167,16 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
+          </div>
+
+          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="14"
               user={this.props.user}
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
-          </div>
 
-          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="15"
               user={this.props.user}
@@ -207,21 +207,23 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
-          </div>
 
-          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="20"
               user={this.props.user}
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
+          </div>
+
+          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="21"
               user={this.props.user}
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
+
             <TrackerButton
               index="22"
               user={this.props.user}
@@ -240,9 +242,7 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
-          </div>
 
-          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="25"
               user={this.props.user}
@@ -261,6 +261,9 @@ export default class FullTracker extends Component {
               handleChange={this.handleChange}
               challenge={this.props.challenge}
             />
+          </div>
+
+          <div className="set-of-five-checkboxes">
             <TrackerButton
               index="28"
               user={this.props.user}
