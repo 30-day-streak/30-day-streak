@@ -7,13 +7,24 @@ export default class CreateReward extends Component {
     this.state = {
       name: '',
       description: '',
-      category: '',
+      category: 'entertainment',
       url: '',
-      showForm: false
+      showForm: true
     }
     this.initialState = this.state
   }
 
+  getData = () => {
+    axios.get('/api/rewards')
+      .then(response => {
+        console.log({ response });
+
+        this.setState({
+          rewards: response.data
+        })
+      })
+      .catch(err => console.log(err))
+  }
 
   handleChange = (event) => {
     const name = event.target.name;
@@ -21,7 +32,7 @@ export default class CreateReward extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
+    console.log('state form create rewards', this.state);
   };
 
   resetState = () => {
@@ -42,7 +53,8 @@ export default class CreateReward extends Component {
         console.log(`axios response`, response);
         // reinitialise state
         this.resetState()
-        this.props.forceRewardListUpdate()
+        this.getData()
+        this.props.history.push('/rewards');
       })
       .catch(err => console.log(err));
   }

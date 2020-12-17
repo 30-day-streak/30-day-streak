@@ -24,7 +24,6 @@ body {
   }
 }
 
-/* Create Challenges CSS */
 
 .create-challenge-form {
   padding: 0;
@@ -91,7 +90,6 @@ body {
     transform: rotate(360deg);
   }
 }
-
 
 /* NavBar */
 /* nav {
