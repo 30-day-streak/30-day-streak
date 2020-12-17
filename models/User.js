@@ -35,23 +35,23 @@ const userSchema = new Schema({
     ],
   subGoals7DayStreak: {
     type:Boolean,
-  value: false
+    value: false
   },
   subGoal21DayStreak: {
     type:Boolean,
-  value: false
+    value: false
   },
   notification15days: {
     type:Boolean,
-  value: false
+    value: false
   },
   notification28Days: {
     type:Boolean,
-  value: false
+    value: false
   },
   notificationComplete: {
     type:Boolean,
-  value: false
+    value: false
   }
 }, {
   timestamps: true
