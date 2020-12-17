@@ -259,7 +259,7 @@ button :hover {
 /* FULL TRACKER */
 
 .completed {
-  background-color:  #f05454;
+  background-color:#e8e8e8;
   width: 50px;
   height: 50px;
   border: 2px solid #222831;
@@ -269,12 +269,13 @@ button :hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url('./Transparent_X.png');
+  background-image: url('./check.png');
   background-size: cover;
+  color: #e8e8e8;
 }
 
 .failed {
-  background-color:  #bebebe;
+  background-color: #e8e8e8;
   width: 50px;
   height: 50px;
   border: 2px solid #222831;
@@ -284,6 +285,8 @@ button :hover {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url('./x.png');
+  color: #e8e8e8
 }
 
 .not-attempted {
