@@ -100,18 +100,6 @@ export default class ActiveChallengePreview extends Component {
     }
   };
 
-  withdrawFromChallenge = async () => {
-    try {
-      const updatedUser = await axios.put(`/api/users/${this.props.challenge.id._id}/withdraw`)
-      this.props.setUser(updatedUser.data)
-      console.log('updated user data', updatedUser.data);
-      // console.log(this.);
-      this.props.history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   handleChange = async (event) => {
     try {
       const target = event.target;
@@ -206,21 +194,20 @@ export default class ActiveChallengePreview extends Component {
             calculateChallengeDay={this.props.calculateChallengeDay}
             streakStatus={this.props.streakStatus}
             notifier={this.notifier}
+            setUser={this.props.setUser}
           />
         )}
         {!this.state.activeChallengeDetails && (
           <button className="button-dark" onClick={this.toggleChallengeDetails}>
-            show details
+            SHOW DETAILS
           </button>
         )}
-        {this.state.activeChallengeDetails && (
-          <button className="button-light" onClick={this.withdrawFromChallenge}>
-            i give up, i'm a bit fat looser
-          </button>
-        )}
+        {/* {this.state.activeChallengeDetails && (
+          
+        )} */}
         {this.state.activeChallengeDetails && (
           <button className="button-dark" onClick={this.toggleChallengeDetails}>
-            hide details
+            HIDE DETAILS
           </button>
         )}
       </div>
