@@ -51,7 +51,6 @@ export default class CreateReward extends Component {
       })
       .then((response) => {
         console.log(`axios response`, response);
-        // this.props.toggleFavouriteReward(response.data._id, true)
         // reinitialise state
         this.resetState()
         this.getData()

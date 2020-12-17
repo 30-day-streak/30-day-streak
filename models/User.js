@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-  username: { 
+  username: {
     type: String,
     required: true,
     unique: true,
   },
-  password: { 
+  password: {
     type: String,
     required: true,
   },
-  email: { 
+  email: {
     type: String,
     required: true,
     unique: true,
@@ -19,40 +19,45 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   challenges: [{
-    id: { 
-      type: Schema.Types.ObjectId, ref: 'Challenge' 
+    id: {
+      type: Schema.Types.ObjectId, ref: 'Challenge'
     },
-    status: { 
+    status: {
       type: String,
       enum: ['active', 'favorite', 'completed', 'withdrawn']
     },
     tracker: [],
     startDate: Date,
-    grandPrize: String
+    grandPrize: String,
+    subGoals7DayStreak: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    subGoals21DayStreak: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    notification15Days: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    notification28Days: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    notificationComplete: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
   }],
   rewards: [
     { type: Schema.Types.ObjectId, ref: 'Reward' }
-    ],
-  subGoals7DayStreak: {
-    type:Boolean,
-  value: false
-  },
-  subGoal21DayStreak: {
-    type:Boolean,
-  value: false
-  },
-  notification15days: {
-    type:Boolean,
-  value: false
-  },
-  notification28Days: {
-    type:Boolean,
-  value: false
-  },
-  notificationComplete: {
-    type:Boolean,
-  value: false
-  }
+  ],
 }, {
   timestamps: true
 });
