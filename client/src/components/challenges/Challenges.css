@@ -181,7 +181,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('./startBackground.jpg');
+  background-image: url('./startBackground3.jpg');
   background-size: cover;
   height: 100vh;
 }
@@ -296,7 +296,7 @@
   height: 90vh;
   display: flex; 
   justify-content: center;
-  background-image: url('./startBackground.jpg');
+  background-image: url('./startBackground3.jpg');
   background-size: cover;
   height: 100vh
 }

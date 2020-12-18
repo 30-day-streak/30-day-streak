@@ -87,13 +87,13 @@
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
 }
 
 .scroll-container {
   display: block;
   margin: 0 auto;
-  padding: 30px;
+  padding: 30px 50px;
   text-align: center;
   width: 100vw;
   height: 70vh;
@@ -117,13 +117,13 @@
 
 .one {
   width: 100vw;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   vertical-align: center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
 
-  background-image: url('./background3.jpg');
+  background-image: url('./background5.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
@@ -132,10 +132,18 @@
   background-size: cover;
 }
 
+.one-text {
+  width: 60vw;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #e8e8e8;
+  opacity: 0.6;
+}
+
 .one h1, h2 {
   font-family: Rubik;
   color: #222831;
-  width: 50%;
+  width: 80%;
   margin: 30px auto;
   opacity: 1;
 }
@@ -206,18 +214,34 @@
 }
 
 .how-box-text {
-  width: 60vw;
-  padding: 20px;
+  width: 40vw;
+  padding: 20px 60px;
+}
+
+.how-box-text p {
   line-height: 1.5;
 }
 
 .how-box img {
-  width: 40vw;
+  height: 35vh;
   justify-self: center;
+  border: 1px dotted #30475e;
+}
+
+.step-one, .step-two {
+  margin-bottom: 30px;
+}
+.step-one, .step-three {
+  text-align: left
+}
+
+.step-two {
+  text-align: right;
 }
 
 .four {
   display: flex;
+  justify-content: center;
   text-align: left;
   height: 100%;
 }
@@ -233,13 +257,12 @@
 .four p {
   font-size: 1.4rem;
   font-weight: 300;
-  margin: 30px 100px;
-  justify-content: center;
+  /* margin: 30px 100px; */
 }
 
 .four ul {
-  margin: 30px 100px;
-
+  /* margin: 30px 100px; */
+  margin-left: 15vw;
 }
 
 .four li {
@@ -250,7 +273,7 @@
 
 .tips {
   width: 60vw;
-
+  margin: 0 auto;
 }
 
 
