@@ -34,52 +34,19 @@ export default class CreateChallenge extends Component {
       });
 
       let user = this.props.user;
-      console.log(newChallenge);
       user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'favorite',
-        tracker: [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-        ],
+        tracker: [],
       });
       this.setState({
         user: this.props.user,
       });
+
       const updatedUser = await axios.put(`/api/users/${id}`, {
         challenges: this.state.user.challenges, 
         rewards: this.state.user.rewards
       });
-      console.log('updatedUser.data', updatedUser.data);
-      this.props.setUser(updatedUser.data);
       this.props.history.push('/challenges');
     } catch (error) {
       console.log(error);
@@ -98,50 +65,16 @@ export default class CreateChallenge extends Component {
         },
         category: this.state.category,
       });
-      console.log('', newChallenge.data);
+
       let user = this.props.user;
-      await user.challenges.unshift({
+      user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'active',
-        tracker:  [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-        ],
-        startDate: new Date(),
-        grandPrize: '',
+        tracker: [],
       });
-      await this.setState({
+      this.setState({
         user: this.props.user,
       });
-      console.log(this.state);
       const updatedUser = await axios.put(`/api/users/${id}`, {
         challenges: this.state.user.challenges, 
         rewards: this.state.user.rewards
@@ -237,9 +170,9 @@ export default class CreateChallenge extends Component {
               </div>
             
             <div className="create-challenge-buttons">
-              {/* <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+              <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
                 Cancel
-              </button> */}
+              </button>
               <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
                 Save for later
               </button>

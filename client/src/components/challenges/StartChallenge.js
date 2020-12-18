@@ -51,19 +51,13 @@ export default class StartChallenge extends Component {
     event.preventDefault();
     let userId = this.state.user._id;
     const challengeId = this.props.match.params.id;
-    // console.log('userId', userId);
-    // console.log('challengeId', challengeId);
     try {
       let user = this.props.user;
-      console.log('user from start challenge props', this.props.user);
       const alreadyInUser = user.challenges.some((challenge) => {
-        console.log('challenge from start', challenge);
-        // issue seem sto be with challenge.id._id
-        return challenge.id === challengeId;
+        return challenge.id._id === challengeId;
       });
-      console.log(alreadyInUser);
       if (alreadyInUser) {
-        user =  user.challenges.map((challenge) => {
+        user = user.challenges.map((challenge) => {
           if (challenge.id._id === challengeId) {
             challenge.status = 'active';
             challenge.startDate = new Date();
@@ -101,7 +95,6 @@ export default class StartChallenge extends Component {
             ];
             challenge.grandPrize = this.state.prize;
           }
-          console.log('challenge after update', challenge);
           return challenge;
         });
       } else {
