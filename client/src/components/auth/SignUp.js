@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { signup } from '../../services/auth';
+// import './Auth.css';
 
 export default class SignUp extends Component {
 
@@ -19,11 +20,9 @@ export default class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // console.log('TARGET', event.target, 'STATE', this.state)
     const { username, password, firstName, lastName, email } = this.state;
     signup(username, password, firstName, lastName, email)
     .then(data => {
-      // console.log('data', data)
       if (data.message) {
         this.setState({ 
           message: data.message,
@@ -33,9 +32,7 @@ export default class SignUp extends Component {
           lastName: '',
           email: ''
         });
-        // console.log(this.state);
       } else {
-        //put the user in the state of App.js
         this.props.setUser(data);
         this.props.history.push('/')
       }
@@ -44,65 +41,90 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <>
-        <h2>Sign Up</h2>
-        <form onSubmit={ this.handleSubmit }>
-          <div>
-            <label htmlFor="username">Username: </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={ this.state.username }
-              onChange={ this.handleChange }
-            />
+      <div className="auth-container">
+        <div className="left">
+          <div className="header">
+            <h2 className="animation a1">Welcome</h2>
+            <h4 className="animation a2">Sign up to start a 30-day-challenge</h4>
           </div>
-          <div>
-            <label htmlFor="password">Password: </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={ this.state.password }
-              onChange={ this.handleChange }
-            />
+          <div className="form">
+            <form onSubmit={ this.handleSubmit }>
+
+              <div className="form-field-box">
+                {/* <label htmlFor="username">Username: </label> */}
+                <input
+                  className="form-field animation a3"
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={ this.state.username }
+                  onChange={ this.handleChange }
+                  placeholder="Username"
+                />
+              </div>
+
+              <div className="form-field-box">
+                {/* <label htmlFor="password">Password: </label> */}
+                <input
+                  className="form-field animation a4"
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={ this.state.password }
+                  onChange={ this.handleChange }
+                  placeholder="Password"
+                />
+              </div>
+
+              {this.state.message && (
+                <p>{ this.state.message }</p>
+              )}
+
+              <div className="form-field-box">
+                {/* <label htmlFor="firstName">Name: </label> */}
+                <input
+                  className="form-field animation a3"
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={ this.state.firstName }
+                  onChange={ this.handleChange }
+                  placeholder="First Name"
+                />
+              </div>
+              <div className="form-field-box">
+                {/* <label htmlFor="lastName">Last Name: </label> */}
+                <input
+                  className="form-field animation a4"
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={ this.state.lastName }
+                  onChange={ this.handleChange }
+                  placeholder="Last Name"
+                />
+              </div>
+              <div className="form-field-box">
+                {/* <label htmlFor="email">Email: </label> */}
+                <input
+                  className="form-field animation a3"
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={ this.state.email }
+                  onChange={ this.handleChange }
+                  placeholder="Email"
+                />
+              </div>
+              <br/>
+              <button className="button-dark animation a6" type="submit">Sign Up</button>
+            </form>
           </div>
-          {this.state.message && (
-            <p>{ this.state.message }</p>
-          )}
-          <div>
-            <label htmlFor="firstName">Name: </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={ this.state.firstName }
-              onChange={ this.handleChange }
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName">Last Name: </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={ this.state.lastName }
-              onChange={ this.handleChange }
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email: </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={ this.state.email }
-              onChange={ this.handleChange }
-            />
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
-      </>
+        </div>
+        <div className="right"></div>
+      </div>
     )
   }
 }
+
+

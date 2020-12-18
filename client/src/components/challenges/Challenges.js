@@ -15,7 +15,7 @@ export default class Challenges extends Component {
     favoritesFilter: false,
   }
 
-  getData = () => {
+  getChallenges = () => {
     axios.get('/api/challenges')
       .then(response => {
         this.setState({
@@ -56,15 +56,15 @@ export default class Challenges extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getChallenges();
   }
 
   render() {
 
-    const filtered = this.filter()
-    console.log('filtered', filtered)
+    const filtered = this.filter();
+
     const categories = this.state.challenges.map(challenge => { return challenge.category })
-    .filter((category, index, array) => { return array.indexOf(category) === index })
+    .filter((category, index, array) => { return array.indexOf(category) === index });
     
     return (
       <div>
@@ -82,9 +82,11 @@ export default class Challenges extends Component {
                 <OneChallenge
                     challenge={ challenge }
                     user={ this.props.user }
-                    getData={ this.getData }
+
+                    getChallenges={ this.getChallenges }
                     filtered={ filtered }
                     setUser={this.props.setUser}
+                  
                 />
               )
             })

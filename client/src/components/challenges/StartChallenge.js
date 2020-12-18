@@ -21,7 +21,7 @@ export default class StartChallenge extends Component {
     });
   };
 
-  getData = () => {
+  getChallenges = () => {
     const challengeId = this.props.match.params.id;
     axios
       .get(`/api/challenges/${challengeId}`)
@@ -41,7 +41,7 @@ export default class StartChallenge extends Component {
 
   // activate this with get data
   componentDidMount = () => {
-    this.getData();
+    this.getChallenges();
     this.setState({
       user: this.props.user,
     });

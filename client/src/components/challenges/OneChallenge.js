@@ -5,8 +5,19 @@ import './Challenges.css';
 
 export default class OneChallenge extends Component {
   state = {
+    users: [],
     favorite: '',
   };
+
+  getUsers = () => {
+    axios.get('/api/users')
+      .then(response => {
+        this.setState({
+          users: response.data
+        })
+      })
+      .catch(err => console.log(err))
+  }
 
   toggleFavorite = async () => {
     try {
@@ -22,7 +33,7 @@ export default class OneChallenge extends Component {
       // console.log('updated user data after favorite from axios', updatedUser.data);
       // console.log('state .user.challenges', this.props.user.challenges);
       //refresh displayed information
-      this.props.getData();
+      this.props.getChallenges();
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +58,7 @@ export default class OneChallenge extends Component {
 
   componentDidMount() {
     this.initialSetUp();
+    this.getUsers();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -56,31 +68,37 @@ export default class OneChallenge extends Component {
   }
 
   render() {
+    let participantCounter = 0
+    this.state.users.forEach(user => {
+      user.challenges.forEach(challenge => {
+        if (challenge.id === this.props.challenge._id && 
+          (challenge.status === 'completed' || challenge.status === 'active' || challenge.status === 'withdrawn')) {
+          participantCounter++
+        }
+      })
+    })
+
     return (
-      <>
-        {/* <div class="container center"> */}
-        <div className="card" key={this.props.challenge._id}>
-          <div className="card-header">
-            <p>{this.props.challenge.category}</p>
-            <img
-              src={
-                this.state.favorite
-                  ? './images/favorite1.png'
-                  : './images/unfavorite1.png'
-              }
-              onClick={this.toggleFavorite}
-              alt="favorite"
-            />
-          </div>
-          <h3>{this.props.challenge.title}</h3>
-          <hr />
-          <p>{this.props.challenge.goal && this.props.challenge.goal}</p>
-          <Link to={`/challenges/${this.props.challenge._id}/start`}>
-            <button className="button-light">Start</button>
-          </Link>
+      <div className="card" key={this.props.challenge._id}>
+        <div className="card-header">
+          <span>{this.props.challenge.category}</span>
+          <img
+            src={
+              this.state.favorite
+                ? './images/favorite1.png'
+                : './images/unfavorite1.png'
+            }
+            onClick={this.toggleFavorite}
+            alt="favorite"
+          />
         </div>
-        {/* </div> */}
-      </>
+        <h3>{this.props.challenge.title}</h3>
+        <hr />
+        <p>{this.props.challenge.goal && this.props.challenge.goal}</p>
+        <Link to={`/challenges/${this.props.challenge._id}/start`}>
+          <button className="button-light">Start</button>
+        </Link>
+      </div>
     );
   }
 }
