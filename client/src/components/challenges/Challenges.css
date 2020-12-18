@@ -277,6 +277,7 @@
   justify-content: center;
   background-image: url('./startBackground.jpg');
   background-size: cover;
+  height: 100vh
 }
 
 
@@ -298,8 +299,8 @@
 .start-challenge-page-content {
   width: 50vw;
   /* height: 100vw; */
-  margin: 50px;
-  padding: 50px;
+  margin: 30px;
+  padding: 30px;
   border-radius: 10px;
   display: flex; 
   flex-direction: column;
@@ -307,11 +308,11 @@
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: Rubik;
-  background-color:rgb(232,232,232, 0.5)
+  background-color:rgb(232,232,232, 0.6)
 }
 
 .start-challenge-page-content * {
-  padding: 10px 0
+  padding: 5px 0
 }
 
 .start-challenge-page-content input {
@@ -321,6 +322,10 @@
 
 .start-challenge-page-content form * {
   margin: 2vw
+}
+
+.start-challenge-page-content form {
+  padding: 0
 }
 
 .start-divider-line {
@@ -339,7 +344,8 @@
   border: 2px solid #222831;
   border-radius: 5px;
   margin: 1vw;
-  width: 30vw
+  padding: 2vw;
+  width: 45vw
 }
 
 .start-challenge-page button {
@@ -348,6 +354,6 @@
 }
 
 .challenge-starting-info {
-  border: 2px solid black;
-  width: 60vw
+  /* border: 2px solid black; */
+  width: 30vw
 }
