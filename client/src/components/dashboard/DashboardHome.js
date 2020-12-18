@@ -5,10 +5,12 @@ export default function DashboardHome() {
     <div className="welcome-container">
 
       <div className="scroll-container one" >
-          <h1>30-DAY-CHALLENGE</h1>
-          <h2>Think about something you always wanted to add to your life and try it for the next 30 days...</h2>
-          <h2>30 days just about the right amount of time to add a new habit or substract a habit.</h2>
-          <h2><strong>So... what are you waiting for?</strong></h2>
+          <div className="one-text">
+            <h1>30-DAY-CHALLENGE</h1>
+            <h2>Think about something you always wanted to add to your life and try it for the next 30 days...</h2>
+            <h2>30 days just about the right amount of time to add a new habit or substract a habit.</h2>
+            <h2><strong>So... what are you waiting for?</strong></h2>
+          </div>
       </div>
 
       {/* WHY do it? > video */}
@@ -29,7 +31,7 @@ export default function DashboardHome() {
         <h1>How to get started?</h1>
         <div className="how-container">
           <div className="how-box step-one">
-            <img src="../../images/home2.png" alt="challenges"/>
+            <img src="../../images/home1b.png" alt="challenges"/>
             <div className="how-box-text">
               <h3>Challenges</h3>
               <p>30 Day Challenges are a great way of implementing new habits in life, trying 
@@ -47,10 +49,10 @@ export default function DashboardHome() {
               This way you find starting to work on your goals much Easier. Again, you can add 
               one of the rewards from existing collections to your favorites or create your own.</p>
             </div>
-            <img src="" alt="rewards"/>
+            <img src="../../images/home2c.png" alt="rewards"/>
           </div>
           <div className="how-box step-three">
-            <img src="" alt="progress"/>
+            <img src="../../images/home3a.png" alt="progress"/>
             <div className="how-box-text">
               <h3>Progress</h3>
               <p>Track your progress. Checking each day on our virtual calendar encourages you 
