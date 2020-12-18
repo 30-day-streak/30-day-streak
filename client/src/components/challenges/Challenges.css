@@ -178,6 +178,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('./startBackground.jpg');
+  background-size: cover;
+  height: 100vh;
 }
 
 .create-challenge-form {
@@ -187,7 +190,8 @@
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2vw;
-  margin: 4vw
+  margin: 4vw;
+  background-color: #e8e8e8b4;
 }
 
 .create-challenge-header {
