@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Challenges.css'
-
+import './Challenges.css';
 
 export default class StartChallenge extends Component {
   state = {
@@ -135,7 +134,7 @@ export default class StartChallenge extends Component {
             0,
           ],
           startDate: new Date(),
-          grandPrize: this.state.prize
+          grandPrize: this.state.prize,
         });
       }
       this.setState({
@@ -146,9 +145,9 @@ export default class StartChallenge extends Component {
         rewards: this.state.user.rewards,
       });
       console.log('updatedUser.data', updatedUser.data);
-      this.props.setUser(updatedUser.data)
+      this.props.setUser(updatedUser.data);
       // let updatedUser = await axios.get('/auth/loggedin')
-      const {history} = this.props
+      const { history } = this.props;
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -160,18 +159,26 @@ export default class StartChallenge extends Component {
       <div className="start-challenge-page">
         <div className="start-challenge-page-content">
           <h1>Congratulations!</h1>
-          <p>
-            Here is the information for the CHALLENGE you're starting TODAY!
+          <p className="challenge-starting-info">
+            Here is the information for the <b>challenge</b> you're starting{' '}
+            <b>today</b>!
           </p>
-          <h3>{this.state.title}</h3>
-          <p>Goal: {this.state.goal}</p>
-          <p>
-            Daily target: {this.state.dailyTargetDescription}{' '}
-            {this.state.dailyTargetNumber} {this.state.dailyTargetUnit}
-          </p>
-          <h2>Pick your GRAND PRIZE for completing it</h2>
+          <div className="start-challenge-challenge-details">
+            <h3>{this.state.title}</h3>
+            <p>
+              {' '}
+              <b>Goal: </b>
+              {this.state.goal}
+            </p>
+            <p>
+              <b>Daily action: </b>
+              {this.state.dailyTargetDescription} {this.state.dailyTargetNumber}{' '}
+              {this.state.dailyTargetUnit}
+            </p>
+          </div>
+          <h2>Pick your prize for completing it!</h2>
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="prize">Prize</label>
+            {/* <label htmlFor="prize">Prize</label> */}
             <input
               type="text"
               id="prize"
@@ -179,9 +186,14 @@ export default class StartChallenge extends Component {
               value={this.state.prize}
               onChange={this.handleChange}
               required
+              placeholder="Example: ticket to a concert"
             />
-            <button className="button-dark" type="submit" onSubmit={this.handleSubmit}>
-              Let's do it!
+            <button
+              className="button-dark"
+              type="submit"
+              onSubmit={this.handleSubmit}
+            >
+              LET'S DO IT!
             </button>
           </form>
         </div>

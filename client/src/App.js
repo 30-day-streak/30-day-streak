@@ -19,6 +19,8 @@ class App extends Component {
     user: this.props.user,
     modalIsActive: false,
     modalEvent: "",
+    // modalIsActive: true,
+    // modalEvent: "withdraw",
     modalReward: {},
   }
 
