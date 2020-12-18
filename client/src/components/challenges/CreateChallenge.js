@@ -128,8 +128,7 @@ export default class CreateChallenge extends Component {
                     value={this.state.goal}
                     onChange={this.handleChange}
                     placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
-                    required
-                    textarea
+                    required textarea
                   />
                 </div>
     
