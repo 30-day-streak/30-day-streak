@@ -1,6 +1,6 @@
 .auth-container {
   display: flex;
-  height: 90vh;
+  height: 100vh;
   background-color: #e8e8e8;
 }
 
@@ -17,7 +17,6 @@
   animation-fill-mode: both;
   animation-delay: 1s;
   background-color: #e8e8e8;
-
 }
 
 .right {
