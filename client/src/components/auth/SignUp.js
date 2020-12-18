@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { signup } from '../../services/auth';
-import './Auth.css';
+// import './Auth.css';
 
 export default class SignUp extends Component {
 
