@@ -3,6 +3,7 @@ import './Dashboard.css';
 import ActiveChallengePreview from './ActiveChallengePreview';
 import DashboardHome from './DashboardHome';
 import DashboardNoActiveChallenges from './DashboardNoActiveChallenges';
+import Modal from '../modal/Modal'
 
 export default class Dashboard extends Component {
 
@@ -83,7 +84,6 @@ export default class Dashboard extends Component {
                 })
               }
             </div>
-
           </>
         );
       }
