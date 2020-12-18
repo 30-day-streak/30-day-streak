@@ -16,11 +16,9 @@ export default class Rewards extends Component {
     favoritesFilter: false,
   }
 
-  getData = () => {
+  getRewards = () => {
     axios.get('/api/rewards')
       .then(response => {
-        // console.log({ response });
-
         this.setState({
           rewards: response.data
         })
@@ -50,14 +48,11 @@ export default class Rewards extends Component {
   }
 
   componentDidMount() {
-    this.getData();
-    // console.log(`props`, this.props);
+    this.getRewards();
   }
 
   render() {
     const filtered = this.filter();
-
-    // console.log('filtered on rewards page', filtered);
 
     const categories = this.state.rewards.map(reward => { return reward.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
@@ -66,8 +61,6 @@ export default class Rewards extends Component {
       <div>
         <div className="tool-bar">
           <Filter 
-            // challenges={ this.state.challenges }
-            // user={ this.props.user}
             categories={ categories }
             setFilter={ this.setFilter }
           />
@@ -84,7 +77,7 @@ export default class Rewards extends Component {
                     reward={ reward }
                     user={ this.props.user}
                     filtered={ filtered }
-                    getData={ this.getData }
+                    getRewards={ this.getRewards }
                     setUser={ this.props.setUser }
                     // toggleFavoriteReward = { this.props.toggleFavoriteReward }
                   />

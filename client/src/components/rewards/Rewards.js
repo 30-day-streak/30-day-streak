@@ -16,7 +16,7 @@ export default class Rewards extends Component {
     favoritesFilter: false,
   }
 
-  getData = () => {
+  getRewards = () => {
     axios.get('/api/rewards')
       .then(response => {
         this.setState({
@@ -53,7 +53,7 @@ export default class Rewards extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getRewards();
   }
 
   render() {
@@ -85,7 +85,7 @@ export default class Rewards extends Component {
                     reward={ reward }
                     user={ this.props.user}
                     filtered={ filtered }
-                    getData={ this.getData }
+                    getRewards={ this.getRewards }
                     setUser={ this.props.setUser }
                     // toggleFavoriteReward = { this.props.toggleFavoriteReward }
                   />

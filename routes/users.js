@@ -3,42 +3,17 @@ const Challenge = require('../models/Challenge');
 const router = express.Router();
 const User = require('../models/User');
 
-// change challenge status (when liking or starting a challenge)
-// I think this below had been replaced by the code at the bottom but kept it just in case
-// router.put('/:id/status', (req, res, next) => {
-//   console.log(req.body.challenges);
-//   const { status } = req.body.challenges;
-//   User.findByIdAndUpdate(req.params.id, { status }, { new: true })
-//     .then((challenge) => {
-//       console.log(challenge);
-//       res.status(200).json(challenge);
-//     })
-//     .catch((err) => next(err));
-// });
 
-// this is a whole mess trying to query into the user array
-// hopefully it will be functional some day
-// maybe post?
-// here we are changing the status to active
-// and adding the grand prize to the user challenge
-// route that add challenge to user array
-// router.put('/test', (req, res, next) => {
-//   // challengeID = req.params.id
-//   challengeID = '5fd367522fc3862285e03fab';
-//   loggedInUser = req.user._id;
-//   User.find(
-//     { _id: req.user.id},
-//     { 'challenges.2.status' : 'favorite'}
-//   ).then(
-//     (response) => {
-//       console.log('response from mongo find', response);
-//     },
-//     (error) => {
-//       console.log(error);
-//     }
-//   );
-// });
+//get all users
+router.get('/', (req, res) => {
+  User.find()
+  .then((users) => {
+    res.status(200).json(users);
+  })
+  .catch((err) => next(err));
+})
 
+// get a specific user
 router.get('/:id', (req, res) => {
   User.findById(req.params.id).then(() => {
     res.json(req.user);
@@ -63,7 +38,6 @@ router.put('/:id/challengesfavorite', (req, res, next) => {
       .populate('challenges.id')
       .populate('rewards')
       .then((user) => {
-        console.log('add favorite user', user);
         res.status(200).json(user);
       })
       .catch((err) => next(err));
@@ -127,7 +101,6 @@ router.put('/:id/rewardsfavorite', (req, res, next) => {
 
 // update status / withdrawn from challenge
 router.put('/:id/withdraw', (req, res, next) => {
-  console.log('challenge id', req.params.id, req.body.status);
   User.findOneAndUpdate(
     {
       _id: req.user._id,
@@ -143,11 +116,9 @@ router.put('/:id/withdraw', (req, res, next) => {
     .populate('challenges.id')
     .populate('rewards')
     .then((challenge) => {
-      // console.log('CHALLENGE', challenge)
       res.status(200).json(challenge);
     })
     .catch((err) => {
-      console.log(err);
       next(err);
     });
 });
@@ -162,7 +133,6 @@ router.put('/:id', (req, res, next) => {
     { new: true }
   ).populate('challenges.id').populate('rewards')
     .then(user => {
-      // console.log({ user });
       res.status(200).json(user);
     })
     .catch(err => {
@@ -194,7 +164,5 @@ router.put('/:id', (req, res, next) => {
 
 //   // User.findByIdAndUpdate(id, {challenges})
 // })
-
-// change challenge status from favorite to active
 
 module.exports = router;
