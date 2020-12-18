@@ -126,12 +126,14 @@ router.put('/:id/withdraw', (req, res, next) => {
 // general user update from frontend
 router.put('/:id', (req, res, next) => {
   const { challenges, rewards } = req.body;
-
+  console.log(challenges);
   User.findByIdAndUpdate(
     req.params.id,
     { challenges, rewards },
     { new: true }
-  ).populate('challenges.id').populate('rewards')
+  )
+  .populate('challenges.id')
+  .populate('rewards')
     .then(user => {
       res.status(200).json(user);
     })
