@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FullTracker from './FullTracker';
 import './Dashboard.css';
+import axios from 'axios';
 
 export default class ActiveChallengeDetails extends Component {
   state = {
@@ -9,6 +10,20 @@ export default class ActiveChallengeDetails extends Component {
 
   refreshActiveChallengeDetails = () => {
     this.setState({ refreshToggle: !this.state.refreshToggle });
+  };
+
+  withdrawFromChallenge = async () => {
+    try {
+      const updatedUser = await axios.put(
+        `/api/users/${this.props.challenge.id._id}/withdraw`
+      );
+      this.props.setUser(updatedUser.data);
+      console.log('updated user data', updatedUser.data);
+      // console.log(this.);
+      this.props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -21,7 +36,6 @@ export default class ActiveChallengeDetails extends Component {
 
     return (
       <div className="activeContainer">
-        <p className="progress">Progress day {this.props.challengeDay}</p>
         <div className="active-challenge-details-user-info-container">
           {/* <div className="tracker-component"> */}
           <FullTracker
@@ -36,21 +50,37 @@ export default class ActiveChallengeDetails extends Component {
           />
           {/* </div> */}
           <div className="active-challenge-details-user-info-text">
-            <div className="days-left">
-              {' '}
-              <h1>{daysLeft}</h1> days to go!{' '}
-            </div>
-            <div>
-              <p>Current streak: {currentStreak}</p>
-              <p>Longest streak: {longestStreak}</p>
-
+            <div className="days-left-and-prize">
+              <div className="days-left">
+                {' '}
+                <h1>{daysLeft}</h1> days to go!{' '}
+              </div>
               <div className="active-challenge-details-prize">
-                <p>
-                  EYES ON THE PRIZE: <br />
-                  {this.props.challenge.grandPrize}
-                </p>
+                <p>Eyes on the prize: </p>
+                <div className="prize">
+                  <b>{this.props.challenge.grandPrize}</b>
+                </div>
               </div>
             </div>
+            <div className="streak-info-details">
+              <p>
+                Current streak: <b>{currentStreak}</b>
+              </p>
+              <p>
+                Longest streak: <b>{longestStreak}</b>
+              </p>
+            </div>
+            <button
+              className="button-dark loser-button"
+              onClick={this.withdrawFromChallenge}
+            >
+              I GIVE UP{' '}
+              <img
+                src="./images/loserEmoji.png"
+                alt="loser image"
+                width="40px"
+              />
+            </button>
           </div>
         </div>
       </div>

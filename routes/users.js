@@ -127,14 +127,17 @@ router.put('/:id/withdraw', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   const { challenges, rewards } = req.body;
 
-  User.findByIdAndUpdate(req.params.id, { challenges, rewards }, { new: true })
-    .populate('challenges.id')
-    .populate('rewards')
-    .then((user) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { challenges, rewards },
+    { new: true }
+  ).populate('challenges.id').populate('rewards')
+    .then(user => {
       res.status(200).json(user);
     })
-    .catch((err) => {
-    });
+    .catch(err => {
+      // console.log(err) 
+    })
 });
 
 //router.put('/:id', (req, res, next) => {
