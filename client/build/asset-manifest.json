@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.d20f6bec.chunk.css",
+    "main.css": "/static/css/main.c2d19816.chunk.css",
     "main.js": "/static/js/main.6ab28402.chunk.js",
     "main.js.map": "/static/js/main.6ab28402.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.4eb06c5d.js",
@@ -10,16 +10,16 @@
     "static/js/3.2ccaa584.chunk.js": "/static/js/3.2ccaa584.chunk.js",
     "static/js/3.2ccaa584.chunk.js.map": "/static/js/3.2ccaa584.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.d20f6bec.chunk.css.map": "/static/css/main.d20f6bec.chunk.css.map",
+    "static/css/main.c2d19816.chunk.css.map": "/static/css/main.c2d19816.chunk.css.map",
     "static/js/2.a4b4515d.chunk.js.LICENSE.txt": "/static/js/2.a4b4515d.chunk.js.LICENSE.txt",
-    "static/media/Dashboard.css": "/static/media/background3.be355618.jpg",
+    "static/media/Dashboard.css": "/static/media/background5.9dc12223.jpg",
     "static/media/Modal.css": "/static/media/modalBackground.6f7a0c86.jpg",
-    "static/media/Challenges.css": "/static/media/startBackground.6f7a0c86.jpg"
+    "static/media/Challenges.css": "/static/media/startBackground3.4934216b.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.4eb06c5d.js",
     "static/js/2.a4b4515d.chunk.js",
-    "static/css/main.d20f6bec.chunk.css",
+    "static/css/main.c2d19816.chunk.css",
     "static/js/main.6ab28402.chunk.js"
   ]
 }
