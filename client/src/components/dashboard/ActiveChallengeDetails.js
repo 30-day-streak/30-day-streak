@@ -18,8 +18,6 @@ export default class ActiveChallengeDetails extends Component {
         `/api/users/${this.props.challenge.id._id}/withdraw`
       );
       this.props.setUser(updatedUser.data);
-      console.log('updated user data', updatedUser.data);
-      // console.log(this.);
       this.props.history.push('/');
     } catch (error) {
       console.log(error);
@@ -37,7 +35,6 @@ export default class ActiveChallengeDetails extends Component {
     return (
       <div className="activeContainer">
         <div className="active-challenge-details-user-info-container">
-          {/* <div className="tracker-component"> */}
           <FullTracker
             challenge={this.props.challenge}
             user={this.props.user}
@@ -48,7 +45,6 @@ export default class ActiveChallengeDetails extends Component {
             notifier={this.props.notifier}
             streakStatus={this.props.streakStatus}
           />
-          {/* </div> */}
           <div className="active-challenge-details-user-info-text">
             <div className="days-left-and-prize">
               <div className="days-left">
