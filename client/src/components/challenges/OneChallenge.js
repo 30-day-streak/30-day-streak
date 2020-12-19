@@ -9,15 +9,15 @@ export default class OneChallenge extends Component {
     favorite: '',
   };
 
-  getUsers = () => {
-    axios.get('/api/users')
-      .then(response => {
-        this.setState({
-          users: response.data
-        })
-      })
-      .catch(err => console.log(err))
-  }
+  // getUsers = () => {
+  //   axios.get('/api/users')
+  //     .then(response => {
+  //       this.setState({
+  //         users: response.data
+  //       })
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   toggleFavorite = async () => {
     try {
@@ -58,7 +58,7 @@ export default class OneChallenge extends Component {
 
   componentDidMount() {
     this.initialSetUp();
-    this.getUsers();
+    // this.getUsers();
   }
 
   componentDidUpdate(prevProps, prevState) {
