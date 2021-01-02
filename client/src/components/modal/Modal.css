@@ -23,7 +23,7 @@ display: hide;
   -o-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
   transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
 
-  background-image: url('../challenges/startBackground3.jpg');
+  background-image: url('../challenges/startBackground.jpg');
   background-size: cover;
 }
 
@@ -31,9 +31,9 @@ display: hide;
   color:#e8e8e8;
 } */
   
-h1, h2, h3, h4, h5, h6, p, a {
+/* h1, h2, h3, h4, h5, h6, p, a {
   color: #222831;
-}
+} */
 
 .modal-main a{
   border: 2px solid #e8e8e8;

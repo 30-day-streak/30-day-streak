@@ -83,6 +83,8 @@
   padding: 10px;
 }
 
+/* HOME */
+
 .welcome-container {
   display: flex;
   margin: 0 auto;
@@ -92,57 +94,48 @@
 
 .scroll-container {
   display: block;
-  margin: 0 auto;
-  padding: 30px 50px;
+  margin: 0;
+  padding: 50px 0;
   text-align: center;
-  width: 100vw;
-  /* height: 60vh; */
 }
-
-
 
 .light {
   background-color: #e8e8e8;
 }
 
-.light h1, h2, h3, h4, h5, h6, p {
+/* .light h1, h2, h3, h4, h5, h6, p {
   color: #222831;
-}
+} */
 
 .dark {
   background-color: #222831;
 }
 
-.dark h1, h2, h3, h4, h5, h6, p {
+/* .dark h1, h2, h3, h4, h5, h6, p {
   color: #e8e8e8;
-}
+} */
 
 .one {
-  width: 100vw;
-  opacity: 0;
   vertical-align: center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
 
   background-image: url('./background3.jpg');
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
 }
 
 .one-text {
   width: 60vw;
   padding: 20px;
   margin: 0 auto;
-  background-color: #e8e8e8;
-  opacity: 0.6;
 }
 
-.one h1, h2 {
+.one-text h1, h2 {
   font-family: Rubik;
   color: #222831;
   width: 80%;
@@ -171,7 +164,12 @@
   font-family: Rubik;
   font-size: 2rem;
   color: #e8e8e8;
-  margin: 50px auto;
+  margin-top: 0;
+}
+
+.two iframe {
+  /* height: 80%; */
+  max-width: 80%;
 }
 
 .three {
@@ -183,7 +181,6 @@
   font-family: Rubik;
   font-size: 2rem;
   color: #222831;
-  margin: 30px auto;
 }
 
 .three h3 {
@@ -191,7 +188,6 @@
   font-size: 1.5rem;
   font-weight: 500;
   color: #f05454;
-  /* margin: 30px auto; */
 }
 
 .three p {
@@ -199,13 +195,11 @@
   font-size: 1.2rem;
   line-height: 1.5rem;
   color: #222831;
-  /* margin: 30px auto; */
 }
 
 .how-container {
   display: flex;
   flex-flow: column nowrap;
-  margin: 50px;
 }
 
 .how-box {
@@ -216,25 +210,20 @@
 }
 
 .how-box-text {
-  width: 40vw;
-  padding: 20px 60px;
-}
-
-.how-box-text p {
-  line-height: 1.5;
+  padding: 0 2%;
+  width: 50vw;
 }
 
 .how-box img {
-  height: 35vh;
+  margin: 0 5%;
+  height: 20vh;
+  width: auto;
   justify-self: center;
   border: 1px dotted #30475e;
 }
 
-.step-one, .step-two {
-  margin-bottom: 30px;
-}
 .step-one, .step-three {
-  text-align: left
+  text-align: left;
 }
 
 .step-two {
@@ -259,11 +248,9 @@
 .four p {
   font-size: 1.4rem;
   font-weight: 300;
-  /* margin: 30px 100px; */
 }
 
 .four ul {
-  /* margin: 30px 100px; */
   margin-left: 15vw;
 }
 
