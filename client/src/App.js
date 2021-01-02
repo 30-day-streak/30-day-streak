@@ -37,69 +37,24 @@ class App extends Component {
   }
 
   notifyMilestone = (notification) => {
-    console.log(`milestone notified:`, notification);
-
     const milestone = notification[0];
     const reward = notification[1];
     const challengeId = notification[2]
     const changedToggle = notification[3]
-    console.log({ milestone }, { reward }, { changedToggle })
+
     this.setState({
       modalIsActive: true,
       modalEvent: milestone,
       modalReward: reward
     })
-
-
-    const userChallenges = this.props.user.challenges.map(challenge => {
-      console.log(challenge[changedToggle]);
-
-      //   if (challenge.id == challengeId){
-      //     challenge[changedToggle] = false
-      //   }
-      // })
-      // console.log(userChallenges);
-
-      // const updatedUser = await axios.put(`api/users/${this.state.user._id}`), {
-      //   challenges: this.state.user.challenges,
-      // })
-    });
-    return null;
   }
-
-
-
-
-
-  // toggleFavoriteReward = (rewardId, favStatus) => {
-  //   console.log(`toggling`, rewardId, favStatus);
-  //   const updatedUser = this.state.user
-  //   if (favStatus) {
-  //     updatedUser.rewards.push(rewardId);
-  //     console.log(`updated user rewards`, updatedUser.rewards);
-  //   } else {
-  //     updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
-  //       console.log({ profileRewardId }, { rewardId })
-  //       return profileRewardId !== rewardId
-  //     });
-  //     console.log(`updated user rewards`, updatedUser.rewards);
-  //   }
-  //   this.setState({
-  //     user: updatedUser
-  //   })
-  //   axios.put(`/users/${updatedUser._id}`, {
-  //     challenges: updatedUser.challenges,
-  //     rewards: updatedUser.rewards
-  //   })
-  // }
 
 
   render() {
     return (
-      <div className="App" >
+      <div className="App">
 
         <Navbar user={this.state.user} setUser={this.setUser} />
-
 
         { this.state.modalIsActive && <div className="modal">
           <Modal
@@ -111,51 +66,36 @@ class App extends Component {
         </div>
         }
 
-        {/* <Modal
-          modalIsActive={this.state.modalIsActive}
-          event={this.state.modalEvent}
-          reward={this.state.modalReward}
-        /> */}
-
-
         < Switch >
           <Route
-            exact
-            path='/signup'
+            exact path='/signup'
             render={props => <SignUp setUser={this.setUser} {...props} />}
           />
-
           <Route
-            exact
-            path='/login'
+            exact path='/login'
             render={props => <Login setUser={this.setUser} {...props} />}
           />
           <Route
-            exact
-            path='/'
+            exact path='/'
             render={props => <Dashboard
               notifyMilestone={this.notifyMilestone}
               setUser={this.setUser}
               user={this.state.user} {...props} />}
           />
           <Route
-            exact
-            path='/challenges'
+            exact path='/challenges'
             render={props => <Challenges user={this.state.user} setUser={this.setUser} {...props} />}
           />
           <Route
-            exact
-            path='/challenges/create'
+            exact path='/challenges/create'
             render={props => <CreateChallenge setUser={this.setUser} {...props} user={this.state.user} />}
           />
           <Route
-            exact
-            path="/rewards/create"
+            exact path="/rewards/create"
             render={props => <CreateReward setUser={this.setUser} {...props} />}
           />
           <Route
-            exact
-            path='/rewards'
+            exact path='/rewards'
             render={props => {
               if (this.state.user) return (
                 <Rewards
@@ -168,14 +108,11 @@ class App extends Component {
             }}
           />
           <Route
-            exact
-            path='/challenges/:id/start'
+            exact path='/challenges/:id/start'
             render={props => <StartChallenge setUser={this.setUser} {...props} user={this.state.user} />}
           />
-
           <Route
-            exact
-            path='/profile'
+            exact path='/profile'
             render={props => <Profile setUser={this.setUser} {...props} user={this.state.user} />}
           />
 

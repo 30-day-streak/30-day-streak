@@ -11,40 +11,17 @@ export default class OneReward extends Component {
     try {
       const newFavorite = !this.state.favorite;
 
-      // 1. via Apps.js
-      // this.props.toggleFavoriteReward(this.props.reward._id, newFavorite);
       this.setState({ favorite: newFavorite });
-      // 2. the way it's done with challenges / different route
       const rewardID = this.props.reward._id;
-      // 3. toggleFavoriteReward but moved from App.js
-      // const updatedUser = this.props.user;
-      // console.log('newFavorite', newFavorite)
-      // console.log('user', updatedUser.rewards)
-      // if (newFavorite) updatedUser.rewards.push(this.props.reward._id);
-      // else {
-      //   updatedUser.rewards = updatedUser.rewards.filter(profileRewardId => {
-      //     console.log(profileRewardId._id, this.props.reward._id, profileRewardId._id !== this.props.reward._id)
-      //     return profileRewardId._id !== this.props.reward._id
-      //   });
-      //   console.log('updated user', updatedUser.rewards)
-      //   // updatedUser.rewards.pop(this.props.reward._id);
-      // }
-      // this.props.setUser(updatedUser);
-      // axios.put(`/users/${updatedUser._id}`, {
-      //   rewards: updatedUser.rewards
-      // })
 
       //update state
-
       const updatedUser = await axios.put(
         `/api/users/${rewardID}/rewardsfavorite`,
         {
           favorite: newFavorite,
         }
       );
-      console.log('udpatedUser', updatedUser.data);
       this.props.setUser(updatedUser.data)
-      console.log('user after set new user', this.props.user);
       // refresh data
       this.props.getRewards();
     } catch (error) {

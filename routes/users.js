@@ -135,15 +135,11 @@ router.put('/:id', (req, res, next) => {
     .then(user => {
       res.status(200).json(user);
     })
-    .catch(err => {
-      // console.log(err) 
-    })
+    .catch(err => next(err))
 });
 
 //router.put('/:id', (req, res, next) => {
-// console.log('req user', req.user);
 // const {challenges} = req.body.user;
-// console.log('user challenges', challenges);
 // User.findByIdAndUpdate(
 //    req.params.id,
 //   {challenges}
@@ -157,9 +153,7 @@ router.put('/:id', (req, res, next) => {
 
 // router.put('/:id', async (req, res, next) => {
 //   const id = req.params.id
-//   // console.log('id', id);
 //   // const {challenges} = req.user
-//   console.log('req.body', req.body.user.challenges);
 //   let usersChallenges = await Challenge.findById(req.params.id)
 
 //   // User.findByIdAndUpdate(id, {challenges})

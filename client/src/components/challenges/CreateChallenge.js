@@ -43,9 +43,7 @@ export default class CreateChallenge extends Component {
         },
         category: this.state.category,
       });
-      console.log("new challenge from later", newChallenge.data);
       let user = this.props.user;
-      console.log("user props from new challenge", user);
       user.challenges.unshift({
         id: newChallenge.data._id,
         status: 'favorite',

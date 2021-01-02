@@ -32,11 +32,6 @@ export default class ActiveChallengePreview extends Component {
     );
     const userID = this.props.userId;
     let changedToggle = '';
-    console.log(`notifier called`);
-    console.log({ today });
-    console.log(`todays val`, thisProjectsTracker[today - 1]);
-
-    console.log({ streakStatusData });
 
     //7-day streak
     if (
@@ -53,7 +48,6 @@ export default class ActiveChallengePreview extends Component {
         changedToggle,
       ]);
 
-      console.log(`7 day streak`);
       this.props.challenge.subGoals7DayStreak = true;
       return;
     }
@@ -64,7 +58,6 @@ export default class ActiveChallengePreview extends Component {
       (today === 15 || today === 16 || today === 17) &&
       this.props.challenge.notification15Days === false
     ) {
-      console.log(this.props.challenge.notification15Days);
       changedToggle = 'notification15Days';
       await this.props.notifyMilestone([
         '15',
@@ -72,9 +65,7 @@ export default class ActiveChallengePreview extends Component {
         this.props.challenge.id,
         changedToggle,
       ]);
-      console.log(`half way`);
       this.props.challenge.notification15Days = true;
-      console.log(this.props.challenge.notification15Days);
       return;
     }
 
@@ -92,7 +83,6 @@ export default class ActiveChallengePreview extends Component {
         this.props.challenge.id,
         changedToggle,
       ]);
-      console.log(`21-day streak`);
       this.props.challenge.subGoals21DayStreak = true;
       return;
     }
@@ -111,7 +101,6 @@ export default class ActiveChallengePreview extends Component {
         changedToggle,
       ]);
 
-      console.log(`nearly there`);
       this.props.challenge.notification28Days = true;
       return;
     }
@@ -126,10 +115,8 @@ export default class ActiveChallengePreview extends Component {
           this.props.challenge.id,
           changedToggle,
         ]);
-        console.log(`notify complete`);
         //main goal
       } else {
-        console.log(`notify near complete`);
         changedToggle = 'notificationCompleted';
         await this.props.notifyMilestone([
           'notQuite',
@@ -150,15 +137,12 @@ export default class ActiveChallengePreview extends Component {
     this.setState({
       challengeDay: challengeDay,
     });
-    console.log(`startdate`, this.props.challenge.startDate);
   }
 
   // withdrawFromChallenge = async () => {
   //   try {
   //     const updatedUser = await axios.put(`/api/users/${this.props.challenge.id._id}/withdraw`)
   //     this.props.setUser(updatedUser.data)
-  //     console.log('updated user data', updatedUser.data);
-  //     // console.log(this.);
   //     this.props.history.push('/');
   //   } catch (error) {
   //     console.log(error);
@@ -166,15 +150,12 @@ export default class ActiveChallengePreview extends Component {
   // };
 
   handleChange = async (event) => {
-    console.log(this.props.user);
 
     try {
       const target = event.target;
       const value = target.checked;
       const name = target.id;
-      // console.log('target', target, 'value', value, 'name', name);
       let challengeTracker = this.props.challenge.tracker;
-      console.log('challenge tracker from one button', challengeTracker);
       let index = target.id;
       if (event.target.id < this.state.challengeDay) {
         if (challengeTracker[index] === 0) {
@@ -206,8 +187,6 @@ export default class ActiveChallengePreview extends Component {
       const challengeDay = this.props.calculateChallengeDay(
         this.props.challenge.startDate
       );
-      // console.log({challengeDay});
-      // console.log('updated user from mount', updatedUser.data);
       this.setState({
         challengeDay: challengeDay,
         user: this.props.user,
@@ -217,19 +196,10 @@ export default class ActiveChallengePreview extends Component {
     }
   };
 
-  // componentDidUpdate(prevProps) {
-  //   console.log('prev props from active challenge preview', prevProps);
-  // }
-
   render() {
-    // console.log('user challenges at render', this.props.user.challenges);
-    // console.log('challenge props from render', this.props.challenge)
     const challengeDay = this.state.challengeDay;
     const todayIndex = challengeDay - 1;
-    // if (!this.props.challenge.id.title) {
-    //   window.location.reload(false);
-    // } else {
-    // console.log('props from preview ');
+
     return (
       <div className="active-preview">
         <div className="active-preview-no-button">
@@ -274,9 +244,6 @@ export default class ActiveChallengePreview extends Component {
             SHOW DETAILS
           </button>
         )}
-        {/* {this.state.activeChallengeDetails && (
-          
-        )} */}
         {this.state.activeChallengeDetails && (
           <button className="button-dark" onClick={this.toggleChallengeDetails}>
             HIDE DETAILS

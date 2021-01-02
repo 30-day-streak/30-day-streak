@@ -19,8 +19,11 @@ export default class Rewards extends Component {
   getRewards = () => {
     axios.get('/api/rewards')
       .then(response => {
+        const sortedRewards = response.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt)
+        })
         this.setState({
-          rewards: response.data
+          rewards: sortedRewards
         })
       })
       .catch(err => console.log(err))
@@ -58,9 +61,6 @@ export default class Rewards extends Component {
 
   render() {
     const filtered = this.filter();
-    console.log('filtered', filtered)
-    console.log('2', this.state.rewards)
-
 
     const categories = this.state.rewards.map(reward => { return reward.category})
     .filter((category, index, array) => { return array.indexOf(category) === index })
