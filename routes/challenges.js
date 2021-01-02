@@ -6,7 +6,6 @@ const Challenge = require('../models/Challenge');
 router.get('/', (req, res) => {
   Challenge.find()
     .then(challenges => {
-      // console.log('CHALLENGES', challenges)
       res.status(200).json(challenges);
     })
     .catch(err => {
@@ -31,16 +30,12 @@ router.get('/:id', (req, res) => {
 
 // create a project
 router.post('/', (req, res) => {
-  // console.log('test');
-  // console.log('req user:', req.user._id);
   const { title, goal, category} = req.body;
   const { description } = req.body.dailyTarget
   const owner = req.user._id
-  // console.log('owner', owner);
   Challenge.create({
     title,
     goal,
-    // owner
     dailyTarget: {
       description,
     },
@@ -51,7 +46,6 @@ router.post('/', (req, res) => {
     // // best practice to send http code so that the client knows what's happening
     // .then(res.status(201));
   .then(challenge => {
-    // console.log('sucessful add');
     res.status(201).json(challenge)
   })
   .catch(err => {

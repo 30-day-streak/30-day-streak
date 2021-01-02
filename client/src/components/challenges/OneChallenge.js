@@ -30,8 +30,6 @@ export default class OneChallenge extends Component {
         favorite: newFavorite,
       });
       this.props.setUser(updatedUser.data)
-      // console.log('updated user data after favorite from axios', updatedUser.data);
-      // console.log('state .user.challenges', this.props.user.challenges);
       //refresh displayed information
       this.props.getChallenges();
     } catch (error) {
@@ -95,6 +93,7 @@ export default class OneChallenge extends Component {
         <h3>{this.props.challenge.title}</h3>
         <hr />
         <p>{this.props.challenge.goal && this.props.challenge.goal}</p>
+        {/* <p>{this.props.challenge.goal && this.props.challenge.goal}</p> */}
         <Link to={`/challenges/${this.props.challenge._id}/start`}>
           <button className="button-light">Start</button>
         </Link>

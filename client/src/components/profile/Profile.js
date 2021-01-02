@@ -60,14 +60,14 @@ export default class Profile extends Component {
           <div className="profile-basic-info">
             <h2>Profile</h2>
             <p>
-              <b>Username:</b> {this.props.user.username}
+              <b>Username: </b> {this.props.user.username}
             </p>
             <p>
-              <b>Name:</b> {this.props.user.firstName}{' '}
+              <b>Name: </b> {this.props.user.firstName}{' '}
               {this.props.user.lastName}
             </p>
             <p>
-              <b>Email:</b> {this.props.user.email}
+              <b>Email: </b> {this.props.user.email}
             </p>
           </div>
           <hr className="profile-divider-line"/>
@@ -111,12 +111,14 @@ export default class Profile extends Component {
                       <p>
                         <strong>Goal:</strong> {challenge.goal}
                       </p>
-                      <p>
-                        <strong>Daily Target:</strong>{' '}
-                        {challenge.dailyTarget.description}{' '}
-                        {challenge.dailyTarget.number}{' '}
-                        {challenge.dailyTarget.unit}
-                      </p>
+                      {challenge.dailyTarget.description && 
+                        (<p>
+                          <strong>Daily Target: </strong>
+                          { challenge.dailyTarget.description && challenge.dailyTarget.description } &nbsp;
+                          { challenge.dailyTarget.number && challenge.dailyTarget.number } &nbsp;
+                          { challenge.dailyTarget.unit && challenge.dailyTarget.unit}
+                        </p>)
+                      }
                     </div>
                   );
                 }
@@ -128,27 +130,27 @@ export default class Profile extends Component {
                     <h3>{challenge.id.title}</h3>
                     <hr />
                     <p>
-                      <strong>Status:</strong> {challenge.status}
+                      <strong>Status: </strong> {challenge.status}
                     </p>
                     <p>
-                      <strong>Goal:</strong> {challenge.id.goal}
+                      <strong>Goal: </strong> {challenge.id.goal}
+                    </p>
+                    {challenge.id.dailyTarget.description &&
+                      (<p>
+                        <strong>Daily Target: </strong>
+                        { challenge.id.dailyTarget.description && challenge.id.dailyTarget.description } &nbsp;
+                        { challenge.id.dailyTarget.number && challenge.id.dailyTarget.number } &nbsp;
+                        { challenge.id.dailyTarget.unit && challenge.id.dailyTarget.unit } 
+                      </p>)
+                    }
+                    <p>
+                      <strong>Start date: </strong>
+                      {challenge.startDate && challenge.startDate.slice(0,10)}
                     </p>
                     <p>
-                      <strong>Daily Target:</strong>{' '}
-                      {challenge.id.dailyTarget.description}{' '}
-                      {challenge.id.dailyTarget.number}{' '}
-                      {challenge.id.dailyTarget.unit}
-                    </p>
-                    <p>
-                      <strong>Start date:</strong>{' '}
-                      {challenge.startDate && challenge.startDate}
-                    </p>
-                    <p>
-                      <strong>Grand Prize:</strong> {challenge.grandPrize}
+                      <strong>Grand Prize: </strong> {challenge.grandPrize && challenge.grandPrize}
                     </p>
                   </div>
-                  // { this.props.challenge.status }, { this.props.challenge.tracker }
-                  // { this.props.challenge.id._id }  { this.props.challenge.id.owner }
                 );
               })}
             </div>

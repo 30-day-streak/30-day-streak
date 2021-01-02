@@ -6,11 +6,9 @@ import './NavBar.css'
 export default function Navbar(props) {
 
   const handleLogout = (props) => {
-    console.log('logout')
     logout().then(() => {
       props.setUser(null)
     })
-    console.log('logout successful')
   }
 
   

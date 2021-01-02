@@ -18,8 +18,12 @@ export default class Challenges extends Component {
   getChallenges = () => {
     axios.get('/api/challenges')
       .then(response => {
+        const sortedChallenges = response.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        })
+        // console.log('sortedChallenges', sortedChallenges)
         this.setState({
-          challenges: response.data
+          challenges: sortedChallenges
         })
       })
       .catch(err => console.log(err))
