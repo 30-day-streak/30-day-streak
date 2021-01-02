@@ -96,8 +96,10 @@
   padding: 30px 50px;
   text-align: center;
   width: 100vw;
-  height: 70vh;
+  /* height: 60vh; */
 }
+
+
 
 .light {
   background-color: #e8e8e8;
@@ -123,7 +125,7 @@
   flex-flow: column nowrap;
   justify-content: center;
 
-  background-image: url('./background5.jpg');
+  background-image: url('./background3.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
@@ -149,16 +151,16 @@
 }
 
 .one h1 {
-  font-size: 2.5rem;
+  font-size: 4vw;
   font-weight: 600;
 }
 
 .one h2 {
-  font-size: 1.8rem;
+  font-size: 2vw;
   font-weight: 400;
 }
 
-.two {
+.two { 
   background-color: #222831;
   flex-direction: column;
   justify-content: center;
