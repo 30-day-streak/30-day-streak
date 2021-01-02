@@ -12,6 +12,17 @@ export default class CreateChallenge extends Component {
     challengeID: '',
   };
 
+  resetState = () => {
+    this.setState({
+      title: '',
+      goal: '',
+      dailyTargetDescription: '',
+      category: '',
+      user: this.props.user,
+      challengeID: '',
+    })
+  }
+
   handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -170,7 +181,7 @@ export default class CreateChallenge extends Component {
               </div>
             
             <div className="create-challenge-buttons">
-              <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+              <button className="button-light" form="create-challenge-form" onClick={this.resetState}>
                 Cancel
               </button>
               <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>

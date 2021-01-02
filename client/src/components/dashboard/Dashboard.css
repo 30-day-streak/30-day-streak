@@ -117,7 +117,7 @@
 
 .one {
   width: 100vw;
-  /* opacity: 0.8; */
+  opacity: 0;
   vertical-align: center;
   display: flex;
   flex-flow: column nowrap;

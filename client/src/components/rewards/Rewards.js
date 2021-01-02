@@ -34,15 +34,15 @@ export default class Rewards extends Component {
     const favoriteIds = this.props.user.rewards.map(reward => reward._id)
 
     if (this.state.favoritesFilter) {
-      console.log('here')
-      console.log('0', this.state.rewards)
-      return this.state.rewards.filter(reward => { 
-        console.log('FAV', favoriteIds, 'ID',reward._id, "?", favoriteIds.includes(reward._id))
 
-        return favoriteIds.includes(reward._id)
+      return this.state.rewards.filter(reward => { 
+        return favoriteIds.includes(reward._id) &&
+        // search bar filter
+        `${reward.name}${reward.description}`.toLowerCase().includes(this.state.searchFilter.toLowerCase()) &&
+        // categories filter
+        (this.state.categoryFilter === reward.category || !this.state.categoryFilter)
       })
     } else {
-      console.log('1', this.state.rewards)
       return this.state.rewards.filter(reward => { 
         // search bar filter
         return `${reward.name}${reward.description}`.toLowerCase().includes(this.state.searchFilter.toLowerCase()) &&
