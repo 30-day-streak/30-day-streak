@@ -118,7 +118,7 @@
     letter-spacing: -0.25px;
     line-height: 1.25;
     font-size: 16px;
-    word-break: break-all;
+    /* word-break: break-all; */
     word-wrap: pre-wrap;
     color: #222831;
     
@@ -131,6 +131,19 @@
   .challenges-container a {
     margin: 0;
     color: #f05454;
+  }
+
+  .challenges-container span {
+    color: #f05454;
+  }
+  
+  #participants {
+    font-size: 12px;
+  }
+
+  .favorites {
+    display: flex;
+    flex-flow: row nowrap;
   }
 
 /* Safari 4.0 - 8.0 */

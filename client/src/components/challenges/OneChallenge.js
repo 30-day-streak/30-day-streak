@@ -38,8 +38,6 @@ export default class OneChallenge extends Component {
   };
 
   initialSetUp = () => {
-    //find instead of some?
-    // console.log(this.props.user.challenges)
     const foundInUserFavorites = this.props.user.challenges.some(
       (challenge) => {
         return (
@@ -60,7 +58,7 @@ export default class OneChallenge extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.filtered.length !== this.props.filtered.length) {
+    if (prevProps.filtered !== this.props.filtered) {
       this.initialSetUp();
     }
   }
@@ -93,10 +91,10 @@ export default class OneChallenge extends Component {
         <h3>{this.props.challenge.title}</h3>
         <hr />
         <p>{this.props.challenge.goal && this.props.challenge.goal}</p>
-        {/* <p>{this.props.challenge.goal && this.props.challenge.goal}</p> */}
         <Link to={`/challenges/${this.props.challenge._id}/start`}>
           <button className="button-light">Start</button>
         </Link>
+        <p id="participants">Accepted the challenge: <span>{participantCounter} users</span></p>
       </div>
     );
   }
