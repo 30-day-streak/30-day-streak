@@ -23,7 +23,7 @@ display: hide;
   -o-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
   transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
 
-  background-image: url('./modalBackground.jpg');
+  background-image: url('../challenges/startBackground3.jpg');
   background-size: cover;
 }
 

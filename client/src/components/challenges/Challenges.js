@@ -41,7 +41,12 @@ export default class Challenges extends Component {
 
     if (this.state.favoritesFilter) {
       return this.state.challenges.filter(challenge => {
-        return favoriteIds.includes(challenge._id)
+        // only favorites
+        return favoriteIds.includes(challenge._id) && 
+        // search bar filter
+        `${challenge.title}${challenge.goal}`.toLowerCase().includes(this.state.searchFilter.toLowerCase()) &&
+        // categories filter
+        (this.state.categoryFilter === challenge.category || !this.state.categoryFilter)
       })
     } else {
       return this.state.challenges.filter(challenge => {

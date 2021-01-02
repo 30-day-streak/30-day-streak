@@ -104,7 +104,7 @@ export default class Profile extends Component {
                   return (
                     <div className="card" key={challenge._id}>
                       <div className="card-header">
-                        <p>{challenge.category}</p>
+                        <span>{challenge.category}</span>
                       </div>
                       <h3>{challenge.title}</h3>
                       <hr />
@@ -123,7 +123,7 @@ export default class Profile extends Component {
                 return (
                   <div className="card" key={challenge._id}>
                     <div className="card-header">
-                      <p>{challenge.id.category}</p>
+                      <span>{challenge.id.category}</span>
                     </div>
                     <h3>{challenge.id.title}</h3>
                     <hr />
