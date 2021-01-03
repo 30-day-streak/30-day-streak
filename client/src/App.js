@@ -49,7 +49,6 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <div className="App">
@@ -66,7 +65,7 @@ class App extends Component {
         </div>
         }
 
-        < Switch >
+        <Switch>
           <Route
             exact path='/signup'
             render={props => <SignUp setUser={this.setUser} {...props} />}
@@ -116,9 +115,9 @@ class App extends Component {
             render={props => <Profile setUser={this.setUser} {...props} user={this.state.user} />}
           />
 
-        </Switch >
+        </Switch>
 
-      </div >
+      </div>
     );
   }
 }

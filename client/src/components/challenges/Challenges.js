@@ -91,11 +91,9 @@ export default class Challenges extends Component {
                 <OneChallenge
                     challenge={ challenge }
                     user={ this.props.user }
-
-                    getChallenges={ this.getChallenges }
-                    filtered={ filtered }
                     setUser={this.props.setUser}
-                  
+                    filtered={ filtered }
+                    getChallenges={ this.getChallenges }
                 />
               )
             })
