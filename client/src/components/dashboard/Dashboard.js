@@ -62,13 +62,8 @@ export default class Dashboard extends Component {
       } else {
         return (
           <>
-            <h2>Welcome{' '}
-              {this.props.user.firstName
-                ? this.props.user.firstName
-                : this.props.user.username}!
-            </h2>
+            <h2>Welcome &nbsp; {this.props.user.firstName ? this.props.user.firstName : this.props.user.username}!</h2>
             <p>Your Active Challenges:</p>
-
             <div className="dashboard-container">
               { activeChallenges.map((challenge) => {
                   return (

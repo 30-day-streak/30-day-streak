@@ -28,7 +28,7 @@ export default class FullTracker extends Component {
       let index = target.id;
       
       const streakStatusData = this.props.streakStatus(this.props.challenge.tracker, this.props.challengeDay)
-      const generateNotifications = this.props.notifier(streakStatusData)
+      // const generateNotifications = this.props.notifier(streakStatusData)
 
       if (event.target.id < this.props.challengeDay) {
         // challengeTracker[index] = (challengeTracker[index]++) % 3
@@ -54,7 +54,7 @@ export default class FullTracker extends Component {
           this.props.challenge.tracker,
           this.props.challengeDay
         );
-        const generateNotifications = this.props.notifier(streakStatusData);
+        // const generateNotifications = this.props.notifier(streakStatusData);
       }
     } catch (error) {
       console.log(error);

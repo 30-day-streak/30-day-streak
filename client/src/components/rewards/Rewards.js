@@ -74,22 +74,17 @@ export default class Rewards extends Component {
           />
           <Link to="/rewards/create"><img src="/images/plus.png" /></Link>
         </div>
-        
-        {/* <CreateReward {...this.props} forceRewardListUpdate={this.getData}/> */}
         <div className="challenges-container">
           { 
             filtered.map(reward => {
               return (
-                <div key={reward._id}>
                   <OneReward
                     reward={ reward }
-                    user={ this.props.user}
+                    user={ this.props.user }
+                    setUser={ this.props.setUser }
                     filtered={ filtered }
                     getRewards={ this.getRewards }
-                    setUser={ this.props.setUser }
-                    // toggleFavoriteReward = { this.props.toggleFavoriteReward }
                   />
-                </div>
               ) 
             })
           }
