@@ -6,11 +6,8 @@
   padding: 15px 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   align-items: center;
-}
-
-.links {
-  display: flex;
-  flex-direction: row;
+  overflow: hidden;
+  max-width: 1200vw;
 }
 
 .link {
@@ -26,6 +23,60 @@
   padding: 0 0 0 2vw
 }
 
-@media screen and (max-width: 600px) {
-  
+/* .dropdown-link-container > a {
+  margin-left: 20px;
+} */
+
+.mobile-dropdown-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) { 
+  .dropdown-link-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    /* fix nav height on mobile safari, where 100vh is a little off */
+    height: -webkit-fill-available;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    margin: 0;
+    padding-left: 7vw;
+    padding-right: 7vw;
+
+    background: #30475e;
+
+    z-index: 0; 
+    opacity: 0; /* fade out */
+    transform: translateY(-100%); /* move out of view */
+    transition: transform 0.2s, opacity 0.2s; /* transition smoothly */
+  }
+
+  .link {
+    color: #e8e8e8;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 2;
+  }
+
+  .navbar-logo, .mobile-dropdown-toggle {
+    z-index: 1;
+  }
+
+  .mobile-dropdown-toggle {
+    display: initial; /* override 'display: none' attribute from before */
+    height: 5vh;
+  }
+
+  nav.dropdown-opened > .dropdown-link-container {
+    opacity: 1; /* fade in */
+    transform: translateY(0); /* move into view */
+  }
 }

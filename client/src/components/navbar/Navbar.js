@@ -1,39 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../services/auth';
-import './NavBar.css'
+import './NavBar.css';
 
-export default function Navbar(props) {
+export default class Navbar extends Component {
 
-  const handleLogout = (props) => {
-    logout().then(() => {
-      props.setUser(null)
-    })
+  state = {
+    menuIsOpen: false
   }
 
-  
-  return (
-    <nav className="navbar">
-      <div className="logo">
-        <Link className="link" to="/">
-        <img src="./images/logoLight.png" alt="logo link to homepage" width="30vw" className="navbar-logo"/>
-        </Link>
-      </div>
-      {props.user ? (
-        <div className="links">
-          <Link className="link" to="/challenges">Challenges</Link>
-          <Link className="link" to="/rewards">Rewards</Link>
-          <Link className="link" to="/profile">Profile</Link>
-          <Link className="link" to="/login" onClick={() => handleLogout(props)}>Log Out</Link>
+  handleChange = () => {
+    this.setState((prevState) => ({ 
+      menuIsOpen: !prevState.menuIsOpen,
+    }))
+  }
 
+  handleLogout = () => {
+    logout().then(() => {
+      this.props.setUser(null)
+    })
+    this.setState((prevState) => ({ 
+      menuIsOpen: !prevState.menuIsOpen,
+    }))
+  }
+
+  render() {
+    return (
+      <nav id="main-nav" className={this.state.menuIsOpen ? "navbar dropdown-opened" : "navbar" }>
+        <div className="navbar-logo">
+          <Link className="link" to="/">
+            <img src="./images/logoLight.png" alt="logo link to homepage" width="30vw" className="navbar-logo"/>
+          </Link>
         </div>
-      ) : (
-          <div className="links">
-            <Link className="link" to="/signup">Sign Up</Link>
-            <Link className="link" to="/login">Log In</Link>
-          </div>
-        )}
-    </nav>
-  )
+        <img 
+          src="./images/menu.png" 
+          alt="menu button" 
+          className="mobile-dropdown-toggle" 
+          aria-hidden="true"
+          onClick={ this.handleChange }
+        />
+        {/* <div className="dropdown-link-container"> */}
+          {this.props.user ? (
+            <div className="dropdown-link-container">
+              <Link className="link" to="/challenges" onClick={ this.handleChange }>Challenges</Link>
+              <Link className="link" to="/rewards" onClick={ this.handleChange }>Rewards</Link>
+              <Link className="link" to="/profile" onClick={ this.handleChange }>Profile</Link>
+              <Link className="link" to="/logout" onClick={() => this.handleLogout()}>Log Out</Link>
+            </div>
+          ) : (
+            <div className="dropdown-link-container">
+              <Link className="link" to="/signup" onClick={ this.handleChange }>Sign Up</Link>
+              <Link className="link" to="/login" onClick={ this.handleChange }>Log In</Link>
+            </div>
+            )}
+        {/* </div> */}
+      </nav>
+    )
+  }
 }
 

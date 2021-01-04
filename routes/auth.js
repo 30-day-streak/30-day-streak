@@ -5,6 +5,25 @@ const Challenge = require('../models/Challenge');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
+// router.get('/google', passport.authenticate("google", {
+//   scope: [
+//     "https://www.googleapis.com/auth/userinfo.profile",
+//     "https://www.googleapis.com/auth/userinfo.email"
+//   ]
+// }))
+
+// router.get('/auth/google/callback', passport.authenticate('google', { 
+//     successRedirect: '/', 
+//     failureRedirect: '/login'
+//   })
+// )
+
+// router.post('/google', passport.authenticate('local', { 
+//   successRedirect: '/', 
+//   failureRedirect: '/login'
+//   })
+// )
+
 router.post('/signup', (req, res, next) => {
   const { username, password, firstName, lastName, email } = req.body;
 
