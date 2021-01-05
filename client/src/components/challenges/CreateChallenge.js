@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Challenges.css';
+import { Link } from 'react-router-dom';
 
 export default class CreateChallenge extends Component {
   state = {
@@ -33,7 +34,6 @@ export default class CreateChallenge extends Component {
   };
 
   handleSubmit = async (event) => {
-    console.log(this.state.button);
     event.preventDefault()
     let id = this.state.user._id;
     try {
@@ -110,6 +110,7 @@ export default class CreateChallenge extends Component {
             id="create-challenge-form"
             onSubmit={this.handleSubmit}
           >
+          <Link to={`/challenges`} className="cancel-x"><img src="/images/Transparent_Xpink.png" alt="cancel" width="20px" /></Link>
             <h1>Create a Challenge</h1>
             <div className="create-challenge-form-fields">
               <div className="create-challenge-form-item">

@@ -388,3 +388,8 @@
   /* border: 2px solid black; */
   width: 30vw
 }
+
+.cancel-x {
+  width: 55vw;
+  display: flex;
+}
