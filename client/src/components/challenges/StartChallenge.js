@@ -53,12 +53,16 @@ export default class StartChallenge extends Component {
     const challengeId = this.props.match.params.id;
     try {
       let user = this.props.user;
+      console.log('user from start challenge', user);
+      console.log('challengeId from start challenge', challengeId);
       const alreadyInUser = user.challenges.some((challenge) => {
-        return challenge.id._id === challengeId;
+        console.log('challenge from some', challenge);
+        return challenge.id === challengeId;
       });
+      console.log('alreadyInUser', alreadyInUser);
       if (alreadyInUser) {
         user = user.challenges.map((challenge) => {
-          if (challenge.id._id === challengeId) {
+          if (challenge.id === challengeId) {
             challenge.status = 'active';
             challenge.startDate = new Date();
             challenge.tracker = [
@@ -97,7 +101,9 @@ export default class StartChallenge extends Component {
           }
           return challenge;
         });
+      // }
       } else {
+        console.log('add challenges from startChallenge');
         user.challenges.unshift({
           id: this.props.match.params.id,
           status: 'active',

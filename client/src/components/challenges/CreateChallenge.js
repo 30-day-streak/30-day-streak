@@ -64,6 +64,7 @@ export default class CreateChallenge extends Component {
   };
 
   handleSubmitStart = async (event) => {
+    console.log('sumbit start challenge');
     event.preventDefault();
     let id = this.state.user._id;
     try {
@@ -75,7 +76,6 @@ export default class CreateChallenge extends Component {
         },
         category: this.state.category,
       });
-
       let user = this.props.user;
       user.challenges.unshift({
         id: newChallenge.data._id,
@@ -89,6 +89,7 @@ export default class CreateChallenge extends Component {
         challenges: this.state.user.challenges, 
         rewards: this.state.user.rewards
       });
+      await console.log('state after creating new challenge', this.state);
       this.props.history.push(`/challenges/${newChallenge.data._id}/start`);
     } catch (error) {
       console.log(error);
@@ -138,7 +139,7 @@ export default class CreateChallenge extends Component {
                     value={this.state.goal}
                     onChange={this.handleChange}
                     placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
-                    required textarea
+                    required
                   />
                 </div>
     
@@ -153,8 +154,7 @@ export default class CreateChallenge extends Component {
                     name="dailyTargetDescription"
                     value={this.state.dailyTargetDescription}
                     onChange={this.handleChange}
-                    placeholder="Example Action: Get 8 hours of sleep each night"
-                    required
+                    placeholder="Example Action: Get 8 hours of sleep each night" 
                   />
                 </div>
     
@@ -168,7 +168,7 @@ export default class CreateChallenge extends Component {
                     id="category"
                     value={this.state.category}
                     onChange={this.handleChange}
-                    required>
+                    >
                     <option value="health">Health</option>
                     <option value="fitness">Fitness</option>
                     <option value="career">Career</option>
@@ -180,13 +180,13 @@ export default class CreateChallenge extends Component {
               </div>
             
             <div className="create-challenge-buttons">
-              <button className="button-light" form="create-challenge-form" onClick={this.resetState}>
+              <button type ="submit" className="button-light" form="create-challenge-form" onClick={this.resetState}>
                 Cancel
               </button>
-              <button className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+              <button type ="submit" className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
                 Save for later
               </button>
-              <button className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>
+              <button type ="submit" className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>
                 Start now!
               </button>
             </div>
