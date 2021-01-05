@@ -176,7 +176,7 @@ export default class StartChallenge extends Component {
               {this.state.goal}
             </p>
             <p>
-              <b>Daily action: </b>
+              {this.state.dailyTargetDescription && <b>Daily action: </b>}
               {this.state.dailyTargetDescription} {this.state.dailyTargetNumber}{' '}
               {this.state.dailyTargetUnit}
             </p>

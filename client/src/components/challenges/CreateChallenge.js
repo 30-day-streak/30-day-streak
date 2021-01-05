@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Challenges.css'
+import './Challenges.css';
 
 export default class CreateChallenge extends Component {
   state = {
@@ -10,6 +10,7 @@ export default class CreateChallenge extends Component {
     category: 'health',
     user: this.props.user,
     challengeID: '',
+    button: '',
   };
 
   resetState = () => {
@@ -20,8 +21,8 @@ export default class CreateChallenge extends Component {
       category: '',
       user: this.props.user,
       challengeID: '',
-    })
-  }
+    });
+  };
 
   handleChange = (event) => {
     const name = event.target.name;
@@ -31,10 +32,12 @@ export default class CreateChallenge extends Component {
     });
   };
 
-  handleSubmitLater = async (event) => {
-    event.preventDefault();
+  handleSubmit = async (event) => {
+    console.log(this.state.button);
+    event.preventDefault()
     let id = this.state.user._id;
     try {
+      if(this.state.button  === 'later') {
       const newChallenge = await axios.post('/api/challenges', {
         title: this.state.title,
         goal: this.state.goal,
@@ -54,20 +57,13 @@ export default class CreateChallenge extends Component {
       });
 
       const updatedUser = await axios.put(`/api/users/${id}`, {
-        challenges: this.state.user.challenges, 
-        rewards: this.state.user.rewards
+        challenges: this.state.user.challenges,
+        rewards: this.state.user.rewards,
       });
       this.props.history.push('/challenges');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  handleSubmitStart = async (event) => {
-    console.log('sumbit start challenge');
-    event.preventDefault();
-    let id = this.state.user._id;
-    try {
+    } 
+    
+    else if (this.state.button === 'start') {
       const newChallenge = await axios.post('/api/challenges', {
         title: this.state.title,
         goal: this.state.goal,
@@ -86,15 +82,18 @@ export default class CreateChallenge extends Component {
         user: this.props.user,
       });
       const updatedUser = await axios.put(`/api/users/${id}`, {
-        challenges: this.state.user.challenges, 
-        rewards: this.state.user.rewards
+        challenges: this.state.user.challenges,
+        rewards: this.state.user.rewards,
       });
       await console.log('state after creating new challenge', this.state);
       this.props.history.push(`/challenges/${newChallenge.data._id}/start`);
-    } catch (error) {
+    }
+
+  } catch (error) {
       console.log(error);
     }
   };
+
 
   componentDidMount() {
     this.setState({
@@ -103,90 +102,96 @@ export default class CreateChallenge extends Component {
   }
 
   render() {
-
     return (
       <>
         <div className="create-challenge-page">
           <form
             className="create-challenge-form"
             id="create-challenge-form"
+            onSubmit={this.handleSubmit}
           >
             <h1>Create a Challenge</h1>
-              <div className="create-challenge-form-fields">
-                <div className="create-challenge-form-item">
-                  <label htmlFor="title">Title: </label>
-                  <br />
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={this.state.title}
-                    onChange={this.handleChange}
-                    placeholder="Example Title: Get More Sleep"
-                    required
-                  />
-                </div>
-    
-                <div className="create-challenge-form-item">
-                  <label htmlFor="goal">
-                    Goal:
-                  </label>
-                  <br />
-                  <textarea
-                    type="text"
-                    id="goal"
-                    name="goal"
-                    value={this.state.goal}
-                    onChange={this.handleChange}
-                    placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
-                    required
-                  />
-                </div>
-    
-                <div className="create-challenge-form-item">
-                  <label htmlFor="dailyTargetDescription">
-                    Daily Action:
-                  </label>
-                  <br />
-                  <input
-                    type="text"
-                    id="dailyTargetDescription"
-                    name="dailyTargetDescription"
-                    value={this.state.dailyTargetDescription}
-                    onChange={this.handleChange}
-                    placeholder="Example Action: Get 8 hours of sleep each night" 
-                  />
-                </div>
-    
-                <div className="create-challenge-form-item">
-                  <label htmlFor="category">
-                    Category &nbsp; &nbsp;
-                  </label>
-                  {/* <br /> */}
-                  <select
-                    name="category"
-                    id="category"
-                    value={this.state.category}
-                    onChange={this.handleChange}
-                    >
-                    <option value="health">Health</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="career">Career</option>
-                    <option value="productivity">Productivity</option>
-                    <option value="finance">Finance</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+            <div className="create-challenge-form-fields">
+              <div className="create-challenge-form-item">
+                <label htmlFor="title">Title: </label>
+                <br />
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                  placeholder="Example Title: Get More Sleep"
+                  required
+                />
               </div>
-            
+
+              <div className="create-challenge-form-item">
+                <label htmlFor="goal">Goal:</label>
+                <br />
+                <textarea
+                  type="text"
+                  id="goal"
+                  name="goal"
+                  value={this.state.goal}
+                  onChange={this.handleChange}
+                  placeholder="Example Goal: Improve my sleep habits so I feel more rested and alert throughout the day"
+                  required
+                />
+              </div>
+
+              <div className="create-challenge-form-item">
+                <label htmlFor="dailyTargetDescription">Daily Action:</label>
+                <br />
+                <input
+                  type="text"
+                  id="dailyTargetDescription"
+                  name="dailyTargetDescription"
+                  value={this.state.dailyTargetDescription}
+                  onChange={this.handleChange}
+                  placeholder="Example Action: Get 8 hours of sleep each night"
+                />
+              </div>
+
+              <div className="create-challenge-form-item">
+                <label htmlFor="category">Category &nbsp; &nbsp;</label>
+                {/* <br /> */}
+                <select
+                  name="category"
+                  id="category"
+                  value={this.state.category}
+                  onChange={this.handleChange}
+                >
+                  <option value="health">Health</option>
+                  <option value="fitness">Fitness</option>
+                  <option value="career">Career</option>
+                  <option value="productivity">Productivity</option>
+                  <option value="finance">Finance</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
             <div className="create-challenge-buttons">
-              <button type ="submit" className="button-light" form="create-challenge-form" onClick={this.resetState}>
+              {/* <button type ="submit" className="button-light" form="create-challenge-form" onClick={() => this.state.button = 'cancel'}>
                 Cancel
-              </button>
-              <button type ="submit" className="button-light" form="create-challenge-form" onClick={this.handleSubmitLater}>
+              </button> */}
+              <button
+                type="submit"
+                className="button-light"
+                form="create-challenge-form"
+                value="later"
+                onClick={() => this.state.button = 'later'}
+              >
                 Save for later
               </button>
-              <button type ="submit" className="button-dark" form="create-challenge-form" onClick={this.handleSubmitStart}>
+              <button
+                type="submit"
+                className="button-dark"
+                form="create-challenge-form"
+                value="start"
+                onClick={() => this.state.button = 'start'}
+              >
                 Start now!
               </button>
             </div>
