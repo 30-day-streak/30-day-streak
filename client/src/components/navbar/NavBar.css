@@ -58,6 +58,11 @@
     transition: transform 0.2s, opacity 0.2s; /* transition smoothly */
   }
 
+  .navbar {
+    padding: 0;
+    height: 8vh;
+  }
+
   .link {
     color: #e8e8e8;
     font-size: 2rem;
@@ -73,6 +78,7 @@
   .mobile-dropdown-toggle {
     display: initial; /* override 'display: none' attribute from before */
     height: 5vh;
+    margin-right: 20px;
   }
 
   nav.dropdown-opened > .dropdown-link-container {
