@@ -118,8 +118,8 @@ export default class SignUp extends Component {
               </div>
               <br/>
               <button className="button-dark animation a6" type="submit">Sign Up</button>
-              <a href="/google"><img src="images/btn_google_signin_dark_normal_web.png" alt="Log in with Google"/></a>
-            </form>
+            </form><br/>
+            <a href="http://localhost:5555/api/auth/google" className="animation a7"><img src="/images/btn_google.png" alt="google sign up" /></a>
           </div>
         </div>
         <div className="right"></div>
