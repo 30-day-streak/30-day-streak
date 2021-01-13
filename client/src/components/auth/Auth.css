@@ -1,6 +1,6 @@
 .auth-container {
   display: flex;
-  height: 100vh;
+  height: 93vh;
   background-color: #e8e8e8;
 }
 
@@ -126,6 +126,10 @@
 
 .a6 {
   animation-delay: 2.5s;
+}
+
+.a7 {
+  animation-delay: 2.6s;
 }
 
 @keyframes move {
