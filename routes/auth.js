@@ -13,8 +13,11 @@ router.get('/google', passport.authenticate("google", {
 }))
 
 router.get('/google/callback', passport.authenticate('google', { 
-    successRedirect: '/', 
-    failureRedirect: '/login'
+    successRedirect: `${process.env.SERVER_URL}/`, 
+    failureRedirect: `${process.env.SERVER_URL}/login`
+    //for heroku
+    // successRedirect: '/', 
+    // failureRedirect: '/login'
   })
 )
 
