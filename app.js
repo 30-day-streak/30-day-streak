@@ -4,14 +4,18 @@ const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
+// const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
 mongoose
-  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -47,42 +51,6 @@ app.use(
   })
 )
 
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "https://thirty-day-streak.herokuapp.com/api/auth/google/callback",
-      // callbackURL: "http://localhost:3000/api/auth/google/callback",
-    },
-    (accessToken, refreshToken, profile, done) => {
-      // to see the structure of the data in received response:
-      console.log("Google account details:", profile._json);
-      User.findOne({ googleID: profile.id })
-        .then((user) => {
-          if (user) {
-            done(null, user);
-            return;
-          } else {
-            // console.log('profile', profile);
-            User.create({
-              username: profile.id,
-              email: profile._json.email,
-              firstName: profile._json.given_name,
-              lastName: profile._json.family_name,
-            }).then(newUser => {
-                done(null, newUser);
-              })
-              .catch((err) => done(err));
-          }
-        })
-        .catch((err) => done(err));
-    }
-  )
-);
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -107,10 +75,8 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
-
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
-
+app.locals.title = '30-day-streak';
 
 
 const dashboard = require('./routes/dashboard');
