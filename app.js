@@ -47,41 +47,41 @@ app.use(
   })
 )
 
-// const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-// passport.use(
-//   new GoogleStrategy(
-//     {
-//       clientID: process.env.GOOGLE_ID,
-//       clientSecret: process.env.GOOGLE_SECRET,
-//       // callbackURL: "https://thirty-day-streak.herokuapp.com/google/callback",
-//       callbackURL: "http://localhost:3000/google/callback",
-//     },
-//     (accessToken, refreshToken, profile, done) => {
-//       // to see the structure of the data in received response:
-//       console.log("Google account details:", profile._json);
-//       User.findOne({ googleID: profile.id })
-//         .then((user) => {
-//           if (user) {
-//             done(null, user);
-//             return;
-//           } else {
-//             // console.log('profile', profile);
-//             User.create({
-//               username: profile.id,
-//               email: profile._json.email,
-//               firstName: profile._json.given_name,
-//               lastName: profile._json.family_name,
-//             }).then(newUser => {
-//                 done(null, newUser);
-//               })
-//               .catch((err) => done(err));
-//           }
-//         })
-//         .catch((err) => done(err));
-//     }
-//   )
-// );
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: "https://thirty-day-streak.herokuapp.com/api/auth/google/callback",
+      // callbackURL: "http://localhost:3000/api/auth/google/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+      console.log("Google account details:", profile._json);
+      User.findOne({ googleID: profile.id })
+        .then((user) => {
+          if (user) {
+            done(null, user);
+            return;
+          } else {
+            // console.log('profile', profile);
+            User.create({
+              username: profile.id,
+              email: profile._json.email,
+              firstName: profile._json.given_name,
+              lastName: profile._json.family_name,
+            }).then(newUser => {
+                done(null, newUser);
+              })
+              .catch((err) => done(err));
+          }
+        })
+        .catch((err) => done(err));
+    }
+  )
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -101,8 +101,8 @@ app.use(require('node-sass-middleware')({
 }));
       
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, '/client/build')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
@@ -117,7 +117,7 @@ const dashboard = require('./routes/dashboard');
 app.use('/', dashboard);
 
 const auth = require('./routes/auth');
-app.use('/auth', auth);
+app.use('/api/auth', auth);
 
 const challenges = require('./routes/challenges');
 app.use('/api/challenges', challenges);
