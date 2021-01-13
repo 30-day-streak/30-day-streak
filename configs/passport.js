@@ -1,5 +1,6 @@
 const User = require('../models/User.js');
 const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
@@ -17,6 +18,7 @@ passport.deserializeUser((id, done) => {
     })
 });
 
+// local login
 passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username })
@@ -34,3 +36,38 @@ passport.use(
       })
   })
 )
+
+// Google login
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: "https://thirty-day-streak.herokuapp.com/api/auth/google/callback",
+      // callbackURL: "http://localhost:5555/api/auth/google/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+      console.log("Google account details:", profile._json);
+      User.findOne({ googleID: profile.id })
+        .then((user) => {
+          if (user) {
+            done(null, user);
+            return;
+          } else {
+            // console.log('profile', profile);
+            User.create({
+              username: profile.id,
+              email: profile._json.email,
+              firstName: profile._json.given_name,
+              lastName: profile._json.family_name,
+            }).then(newUser => {
+                done(null, newUser);
+              })
+              .catch((err) => done(err));
+          }
+        })
+        .catch((err) => done(err));
+    }
+  )
+);
