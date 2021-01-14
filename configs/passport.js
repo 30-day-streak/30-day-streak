@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const User = require('../models/User.js');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
