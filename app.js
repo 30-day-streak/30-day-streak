@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -8,13 +7,12 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
+    // useUnifiedTopology: true,
+    // useFindAndModify: false,
+    // useCreateIndex: true,
   })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -71,7 +69,7 @@ app.locals.title = '30-day-streak';
 
 
 const dashboard = require('./routes/dashboard');
-app.use('/', dashboard);
+app.use('/api/', dashboard);
 
 const auth = require('./routes/auth');
 app.use('/api/auth', auth);
