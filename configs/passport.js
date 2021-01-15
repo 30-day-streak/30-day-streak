@@ -45,20 +45,23 @@ passport.use(
     {
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: `${SERVER_URL}/api/auth/google/callback`,
+      callbackURL: `${process.env.SERVER_URL}/api/auth/google/callback`,
+      // callbackURL: `http://localhost:5555/api/auth/google/callback`,
     },
     (accessToken, refreshToken, profile, done) => {
       // to see the structure of the data in received response:
-      console.log("Google account details:", profile._json);
+      console.log("Google account details:", profile);
       User.findOne({ googleID: profile.id })
         .then((user) => {
+          console.log('USER', user)
           if (user) {
+            console.log('HERE')
             done(null, user);
             return;
           } else {
-            // console.log('profile', profile);
+            console.log('THERE')
             User.create({
-              username: profile.id,
+              googleID: profile.id,
               email: profile._json.email,
               firstName: profile._json.given_name,
               lastName: profile._json.family_name,

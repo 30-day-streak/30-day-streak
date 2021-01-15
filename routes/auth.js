@@ -1,9 +1,10 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const router  = express.Router();
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
 const passport = require('passport');
+const bcrypt = require('bcrypt');
+const User = require('../models/User');
+
 
 router.get('/google', passport.authenticate("google", {
   scope: [
