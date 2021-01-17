@@ -46,7 +46,6 @@ passport.use(
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: `${process.env.SERVER_URL}/api/auth/google/callback`,
-      // callbackURL: `http://localhost:5555/api/auth/google/callback`,
     },
     (accessToken, refreshToken, profile, done) => {
       // to see the structure of the data in received response:
